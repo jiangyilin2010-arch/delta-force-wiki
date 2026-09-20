@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>烽火地带｜三角洲行动 Wiki</title>
+<style>
+  :root{--bg:#07100d;--panel:#0c1712;--line:#24382d;--green:#9fe870;--text:#e8f2ea;--muted:#8fa395;--warn:#d9c272;--shadow:0 18px 45px rgba(0,0,0,.35)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),radial-gradient(circle at 84% 5%,rgba(77,131,79,.15),transparent 28%),var(--bg);background-size:32px 32px,32px 32px,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}.wrap{max-width:1440px;margin:auto;padding:0 28px}.topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 40%,#5eae62 70%,transparent 96%)}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}.mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}.brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover{border-color:var(--line);background:#0d1813;color:var(--green)}.back{height:40px;border:1px solid var(--line);background:#08110d;display:flex;align-items:center;padding:0 12px;color:var(--muted);white-space:nowrap}
+  .hero{padding:58px 0 28px}.hero-main{min-height:470px;border:1px solid #2c4235;background:linear-gradient(90deg,rgba(4,9,7,.98),rgba(4,9,7,.7) 48%,rgba(4,9,7,.22)),url("https://web.df.garena.com/02_h5/240923_official_website/zh_tw/pc/gamemode_bg_02.jpg") center/cover no-repeat;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-main:after{content:"OPERATIONS";position:absolute;right:-28px;bottom:-46px;color:rgba(159,232,112,.05);font-size:116px;font-weight:900;letter-spacing:-6px;transform:rotate(-7deg)}.hero-copy{position:relative;z-index:1;max-width:700px;padding:52px}.eyebrow{color:var(--green);font:700 11px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:3px}h1{font-size:68px;line-height:.94;margin:18px 0 14px;letter-spacing:-3px}.lead{max-width:640px;color:#b5c5b8;font-size:15px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.btn{padding:12px 17px;border:1px solid #477052;background:#11261a;font-weight:800}.btn.primary{background:var(--green);color:#07100d;border-color:var(--green)}
+  .section{padding:24px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:15px}.section h2{font-size:20px;margin:0;letter-spacing:.5px}.section h2:before{content:"// ";color:var(--green)}.section-head span{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1.2px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{border:1px solid #21362a;background:linear-gradient(155deg,#11231a,#0a130f 68%);padding:18px;min-height:168px}.card b{display:block;font-size:18px;margin:8px 0}.card p{margin:0;color:#b5c5b8;font-size:12px}.tag{display:inline-block;font-size:10px;padding:3px 7px;border:1px solid #3b5b43;color:#abc7ae}
+  .layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:16px}.panel{border:1px solid var(--line);background:#0a140f;padding:22px}.timeline{display:grid;gap:10px}.step{display:grid;grid-template-columns:72px 1fr;gap:14px;border:1px solid #21362a;background:#0d1913;padding:14px}.step strong{color:var(--green);font:900 13px ui-monospace,monospace}.step b{display:block}.step p{margin:4px 0 0;color:#b5c5b8;font-size:12px}
+  .map-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.map{border:1px solid #21362a;background:#0d1913;padding:15px;min-height:150px}.map strong{display:block;font-size:16px}.map small{display:inline-block;margin:8px 0;color:var(--green);font:800 10px ui-monospace,monospace}.map p{margin:0;color:#b5c5b8;font-size:12px}
+  .queue{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.queue div{border:1px dashed #34523c;background:#08110d;padding:13px;color:#c5d2c8;font-size:12px}.source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.source{border:1px solid #21362a;background:#0d1913;padding:14px}.source strong{display:block;font-size:12px;margin-bottom:5px}.source span{display:block;color:var(--muted);font-size:11px}.footer{margin-top:36px;border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}.warning{color:#a9b7ac;max-width:860px}
+  @media(max-width:1100px){.grid,.map-grid,.queue{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}nav{display:none}.brand{min-width:0}}
+  @media(max-width:620px){.wrap{padding:0 18px}.hero-copy{padding:34px 24px}h1{font-size:42px}.grid,.map-grid,.queue,.source-grid{grid-template-columns:1fr}.step{grid-template-columns:1fr}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a href="#loop">行动循环</a><a href="#mandelbrick">曼德尔砖</a><a href="#maps">地图入口</a><a href="map_easter_eggs.html">彩蛋攻略</a><a href="#sources">来源</a><a href="community_forum.html">玩家交流</a></nav>
+  <a class="back" href="delta_force_wiki_home.html">← 返回首页</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <div class="eyebrow">MODE FILE // OPERATIONS</div>
+        <h1>烽火地带</h1>
+        <p class="lead" id="fireSummary">三人小队入局，搜刮物资，完成任务，争夺高价值目标，并在时限内安全撤离。</p>
+        <div class="actions"><a class="btn primary" href="#loop">查看行动循环</a><a class="btn" href="#maps">地图入口</a><a class="btn" href="map_easter_eggs.html">彩蛋攻略</a><a class="btn" href="avoid_blackroom.html">避黑屋指南</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="loop">
+    <div class="section-head"><h2>行动循环</h2><span>先把玩法骨架接稳</span></div>
+    <div class="grid" id="pillarGrid"></div>
+  </section>
+
+  <section class="section" id="mandelbrick">
+    <div class="section-head"><h2>风险收益框架</h2><span>搜刮、曼德尔砖、撤离</span></div>
+    <div class="layout">
+      <div class="panel">
+        <div class="eyebrow">TACTICAL NOTE</div>
+        <h2>为什么先接烽火？</h2>
+        <p class="lead">烽火是资料复利最高的模式：地图、物资、任务、撤离点、首领、曼德尔砖和路线攻略都能围绕同一个循环不断扩展。先把它做成稳定骨架，后面每补一张地图都会自然落位。</p>
+      </div>
+      <div class="panel">
+        <div class="timeline">
+          <div class="step"><strong>01</strong><div><b>入局前</b><p>确认小队兵种、装备成本、任务目标和撤离策略，避免高价值装备无计划进图。</p></div></div>
+          <div class="step"><strong>02</strong><div><b>局内搜刮</b><p>优先记录高价值点、限制区域、任务点、首领刷新和玩家交战热点。</p></div></div>
+          <div class="step"><strong>03</strong><div><b>曼德尔砖</b><p>破译可能带来稀有奖励，但携带会暴露队伍位置，需要专门记录转移路线和防守点。</p></div></div>
+          <div class="step"><strong>04</strong><div><b>成功撤离</b><p>只有活着抵达撤离点，物资才会真正进入仓库；失败或超时会失去随身携带物品。</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="maps">
+    <div class="section-head"><h2>地图入口</h2><span>先做索引，后补详情</span></div>
+    <div class="map-grid" id="mapGrid"></div>
+  </section>
+
+  <section class="section" id="easter-eggs">
+    <div class="section-head"><h2>地图彩蛋攻略</h2><a href="map_easter_eggs.html">查看完整攻略 →</a></div>
+    <div class="grid" id="easterPreview"></div>
+  </section>
+
+  <section class="section" id="backlog">
+    <div class="section-head"><h2>后续补录队列</h2><span>按玩家查询价值排序</span></div>
+    <div class="queue" id="backlogGrid"></div>
+  </section>
+
+  <section class="section" id="sources">
+    <div class="section-head"><h2>来源与核验</h2><span>官方优先，社区交叉验证</span></div>
+    <div class="source-grid" id="sourceGrid"></div>
+  </section>
+
+  <footer class="footer"><div class="warning">资料说明：本页只接入“烽火地带 / Operations”。内容优先采用 Garena 官方公开资料，并把后续地图、物资、任务和路线补录拆成独立队列，避免一次性堆资料导致页面失控。</div><div>OPERATIONS FILE // 2026-08-27</div></footer>
+</main>
+
+<script src="assets/wiki-data.js"></script>
+<script>
+  const wikiData = window.DELTA_WIKI_DATA || { sources: [], fireMode: {} };
+  const fireMode = wikiData.fireMode || {};
+  const escapeHtml = (value)=>String(value ?? "").replace(/[&<>"']/g,(char)=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char]));
+
+  document.querySelector("#fireSummary").textContent = fireMode.summary || "烽火地带资料已接入。";
+  document.querySelector("#pillarGrid").innerHTML = (fireMode.pillars || []).map((item)=>`
+    <article class="card"><span class="tag">${escapeHtml(item.tag)}</span><b>${escapeHtml(item.title)}</b><p>${escapeHtml(item.body)}</p></article>
+  `).join("");
+  document.querySelector("#mapGrid").innerHTML = (fireMode.maps || []).map((item)=>`
+    <article class="map"><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml(item.status)}</small><p>${escapeHtml(item.note)}</p></article>
+  `).join("");
+  document.querySelector("#backlogGrid").innerHTML = (fireMode.backlog || []).map((item)=>`<div>${escapeHtml(item)}</div>`).join("");
+  document.querySelector("#easterPreview").innerHTML = ((wikiData.mapEasterEggs || {}).guides || []).slice(0,4).map((guide)=>`
+    <a class="card" href="map_easter_eggs.html#${escapeHtml(guide.slug)}"><span class="tag">${escapeHtml(guide.confidence)}</span><b>${escapeHtml(guide.map)}</b><p>${escapeHtml(guide.summary)}</p></a>
+  `).join("");
+  document.querySelector("#sourceGrid").innerHTML = (fireMode.sourceIds || []).map((sourceId)=>wikiData.sources.find((source)=>source.id === sourceId)).filter(Boolean).map((source)=>`
+    <a class="source" href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer"><strong>${escapeHtml(source.name)}</strong><span>${escapeHtml(source.use)}</span></a>
+  `).join("");
+</script>
+</body>
+</html>

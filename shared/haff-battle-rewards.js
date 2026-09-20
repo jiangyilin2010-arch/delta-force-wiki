@@ -1,0 +1,19 @@
+(function(root){
+'use strict';
+const star=n=>n>=9?3:n>=3?2:n>=1?1:0;
+function upgrades(before,after){return Object.keys(after||{}).filter(id=>star(before?.[id])>=1&&star(after[id])>star(before[id])).map(id=>({id,from:star(before[id]),to:star(after[id])}));}
+let toast=null,timer=0,forging=false,currentItem=null;const queue=[];
+function enqueue(items){
+ for(const item of items){if(item.to===3){for(let i=queue.length-1;i>=0;i--)if(queue[i].id===item.id&&queue[i].to<3)queue.splice(i,1);if(toast&&currentItem?.id===item.id){clearTimeout(timer);toast.remove();toast=null;currentItem=null;}}queue.push(item);}
+ next();
+}
+function next(){if(toast||forging||!queue.length)return;const item=queue.shift(),data=root.HaffWar.units[item.id];if(!data){next();return;}if(item.to===3&&root.HaffStarForge){forging=true;const shown=root.HaffStarForge.show({data,onComplete:cancelled=>{forging=false;if(cancelled)queue.length=0;next();}});if(shown)return;forging=false;}currentItem=item;toast=document.createElement('div');toast.className='hb-star-toast';toast.setAttribute('role','status');const art=document.createElement('img');art.src=data.portrait;art.alt='';const copy=document.createElement('div'),label=document.createElement('small'),name=document.createElement('strong'),stars=document.createElement('div'),caption=document.createElement('p');label.textContent='OPERATOR UPGRADED / 干员晋升';name.textContent=data.name;stars.className='hb-stars';stars.setAttribute('aria-label',item.to+'星');for(let i=0;i<item.to;i++){const s=document.createElement('i');s.textContent='★';s.setAttribute('aria-hidden','true');stars.append(s);}caption.textContent=`${item.from} 星 → ${item.to} 星 · 战力提升`;copy.append(label,name,stars,caption);toast.append(art,copy);document.body.append(toast);timer=setTimeout(()=>{toast?.remove();toast=null;currentItem=null;next();},matchMedia('(prefers-reduced-motion: reduce)').matches?1300:2400);}
+function upgraded(before,after){enqueue(upgrades(before,after));}
+function cardsUpgraded(before,after){const previous=new Map(before.map(card=>[card.uid,card.stars]));enqueue(after.filter(card=>previous.has(card.uid)&&card.stars>previous.get(card.uid)).map(card=>({id:card.id,from:previous.get(card.uid),to:card.stars})));}
+function kill(scene,event,state,reduced){const targets=[...new Set((event.effects||[]).filter(e=>e.type==='down').map(e=>e.target))].map(id=>state.units.find(u=>u.id===id)).filter(u=>u?.side==='enemy');if(!targets.length)return;
+for(const unit of targets){const p=scene.position(unit.side,unit.slot),g=scene.keep(scene.add.graphics().setPosition(p.x,p.y-60));g.lineStyle(4,0xffd6a0,.95);g.lineBetween(-26,-24,26,24);g.lineBetween(26,-24,-26,24);g.lineStyle(1,0xffad73,.75);g.strokeCircle(0,0,39);scene.tweens.add({targets:g,alpha:0,scale:reduced?1:1.7,duration:reduced?200:650,onComplete:()=>{if(g.scene)scene.discard(g);}});if(!reduced)for(let i=0;i<8;i++){const a=i*Math.PI/4,spark=scene.keep(scene.add.rectangle(p.x,p.y-60,3,7,0xffca85));scene.tweens.add({targets:spark,x:p.x+Math.cos(a)*60,y:p.y-60+Math.sin(a)*45,alpha:0,rotation:a,duration:500,onComplete:()=>{if(spark.scene)scene.discard(spark);}});}}
+const caption=scene.keep(scene.add.text(scene.scale.width/2,42,targets.length>1?`${targets.length} 重击破`:'目标击破',{fontFamily:'system-ui',fontSize:'24px',fontStyle:'bold',color:'#ffe3b2',stroke:'#0b1710',strokeThickness:5}).setOrigin(.5));scene.tweens.add({targets:caption,y:reduced?42:24,alpha:0,delay:300,duration:650,onComplete:()=>{if(caption.scene)scene.discard(caption);}});
+}
+root.addEventListener?.('pagehide',()=>{queue.length=0;clearTimeout(timer);toast?.remove();toast=null;currentItem=null;forging=false;});
+const api={upgrades,upgraded,cardsUpgraded,kill};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.HaffBattleRewards=api;
+})(typeof window!=='undefined'?window:globalThis);

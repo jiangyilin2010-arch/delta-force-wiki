@@ -1,0 +1,39 @@
+/* Fixed, top-layer choreography never transforms the board or inventory layout. */
+dialog.hf-forge{--forge:#ffcc70;position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;overflow:hidden;color:var(--forge);background:#080e12;perspective:1100px;isolation:isolate}
+.hf-forge::backdrop{background:#080e12}
+.hf-forge[data-quality=red]{--forge:#ff947e}
+.hf-stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 45% 50%,#55402e77,transparent 65%);perspective:1100px}
+.hf-grid{position:absolute;inset:-70%;background:linear-gradient(#ffc66a16 1px,transparent 1px),linear-gradient(90deg,#ffc66a16 1px,transparent 1px);background-size:70px 70px;transform:rotateX(65deg) rotateZ(-18deg);animation:hf-grid 2800ms cubic-bezier(.16,1,.3,1) both}
+.hf-orbit{position:absolute;left:50%;top:50%;width:70vmin;height:70vmin;border:2px dashed #ffcf7866;border-radius:50%;box-shadow:0 0 0 24px #ffcb7109,0 0 0 26px #ffcb7126;animation:hf-orbit 2800ms cubic-bezier(.2,.7,.2,1) both}
+.hf-source,.hf-hero{position:absolute;left:50%;top:50%;width:min(25vw,35dvh,210px);height:min(40vw,52dvh,310px);border:2px solid var(--forge);border-radius:6px;background:#152023;box-shadow:0 0 22px #ffd57a44;overflow:hidden;backface-visibility:hidden}
+.hf-art{position:absolute;inset:0;background-size:cover;background-position:center 20%;background-repeat:no-repeat}
+.hf-art::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,#090e15dd)}
+.hf-source{animation:hf-converge 900ms cubic-bezier(.7,0,.2,1) both}
+.hf-source-stars{position:absolute;inset:auto 0 8px;text-align:center;font-size:24px;letter-spacing:8px}
+.hf-camera{position:absolute;inset:0;perspective:1100px;transform-style:preserve-3d;animation:hf-camera 2800ms cubic-bezier(.16,1,.3,1) both}
+.hf-hero{box-shadow:0 0 0 5px #ffcb7122,0 0 75px #ffc07155;animation:hf-hero 2800ms cubic-bezier(.65,0,.18,1) both}
+.hf-hero::after{content:"";position:absolute;inset:-100%;background:linear-gradient(110deg,transparent 42%,#fff1bc99 50%,transparent 58%);animation:hf-sheen 2800ms ease-out both}
+.hf-burst{position:absolute;inset:0;background:radial-gradient(ellipse at center,#fff0ca 0%,#ffd16c44 23%,transparent 64%);animation:hf-burst 2800ms ease-out both;pointer-events:none}
+.hf-rays{position:absolute;left:50%;top:50%;animation:hf-rays 2800ms cubic-bezier(.1,.8,.2,1) both;pointer-events:none}
+.hf-ray{position:absolute;width:3px;height:21vmin;background:linear-gradient(var(--forge),transparent);transform-origin:50% 0;transform:rotate(var(--angle)) translateY(23vmin)}
+.hf-reveal{position:absolute;left:56%;top:41%;width:38%;text-align:center;animation:hf-reveal 2800ms cubic-bezier(.16,1,.3,1) both}
+.hf-crown{display:flex;justify-content:center;gap:clamp(7px,1.5vw,24px);filter:drop-shadow(0 0 18px #ffd38677)}
+.hf-crown i{font-style:normal;font-size:clamp(36px,6vw,94px);line-height:1.2;animation:hf-star 650ms cubic-bezier(.12,.8,.2,1.25) both;animation-delay:calc(1450ms + var(--order)*130ms)}
+.hf-name{display:block;color:#fff0d2;font-size:clamp(24px,3vw,46px);letter-spacing:.25em;margin-top:14px}
+.hf-legendary-title{display:block;margin-top:12px;color:#ffc1bc;font-size:18px;line-height:1.4;letter-spacing:0}
+.hf-legendary-reward{max-width:300px;margin:8px auto 0;color:#e3d8ce;font-size:12px;line-height:1.6;letter-spacing:0;overflow-wrap:anywhere}
+.hf-skip{position:absolute;right:24px;bottom:24px;width:48px;height:40px;min-height:0;padding:0;border:1px solid #e4c08466;background:#091014cc;color:#ffe2a6;font-size:28px;line-height:1;z-index:5}
+.hf-skip:focus-visible{outline:2px solid #fff1c5;outline-offset:4px}
+@keyframes hf-converge{0%{opacity:0;transform:translate(calc(-50% + var(--lane)*38vw),-20%) rotateY(calc(var(--lane)*-45deg)) rotateZ(calc(var(--lane)*18deg)) scale(.65)}25%{opacity:1;transform:translate(calc(-50% + var(--lane)*24vw),-50%) rotateY(calc(var(--lane)*-18deg)) scale(1)}70%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) rotateY(0) scale(.65)}}
+@keyframes hf-hero{0%,27%{opacity:0;transform:translate(-50%,-50%) rotateY(-85deg) scale(.6)}34%{opacity:1;transform:translate(-65%,-50%) rotateY(-32deg) scale(.9)}44%{transform:translate(-23%,-50%) rotateY(25deg) scale(1.05)}61%,92%{opacity:1;transform:translate(-115%,-50%) rotateY(-9deg) scale(1.38)}100%{opacity:0;transform:translate(-115%,-50%) rotateY(-9deg) scale(1.42)}}
+@keyframes hf-camera{0%,30%{transform:scale(.88) translateY(15px)}49%{transform:scale(1.02) translateY(-4px)}65%,92%{transform:scale(1.08) translateY(0)}100%{transform:scale(1.1)}}
+@keyframes hf-burst{0%,26%{opacity:0;transform:scale(.4)}32%{opacity:.8;transform:scale(1)}46%,100%{opacity:0;transform:scale(1.5)}}
+@keyframes hf-rays{0%,29%{opacity:0;transform:scale(.1) rotate(-18deg)}35%{opacity:.8}69%,100%{opacity:0;transform:scale(1.7) rotate(25deg)}}
+@keyframes hf-orbit{0%{opacity:0;transform:translate(-50%,-50%) rotate(-120deg) scale(.5)}24%{opacity:.65}65%{opacity:.35;transform:translate(-50%,-50%) rotate(70deg) scale(1.3)}100%{opacity:0;transform:translate(-50%,-50%) rotate(95deg) scale(1.4)}}
+@keyframes hf-grid{0%{opacity:0;transform:rotateX(65deg) rotateZ(-28deg) scale(.8)}40%,85%{opacity:1}100%{opacity:0;transform:rotateX(65deg) rotateZ(-14deg) scale(1.1)}}
+@keyframes hf-reveal{0%,48%{opacity:0;transform:translateX(35px)}63%,93%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(0)}}
+@keyframes hf-star{0%{opacity:0;transform:scale(2.4) rotate(-24deg)}70%{opacity:1;transform:scale(.92) rotate(3deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes hf-sheen{0%,58%{transform:translateX(-75%)}82%,100%{transform:translateX(75%)}}
+.hf-still *{animation:none!important}.hf-still :is(.hf-grid,.hf-orbit,.hf-source,.hf-burst,.hf-rays){display:none}.hf-still .hf-hero{transform:translate(-110%,-50%) scale(1.2)}.hf-still .hf-hero::after{display:none}
+@media(max-width:600px){.hf-source,.hf-hero{width:min(32vw,35dvh);height:min(48vw,52dvh)}.hf-reveal{left:53%;width:44%}.hf-crown{gap:4px}.hf-crown i{font-size:10vw}}
+@media(prefers-reduced-motion:reduce){.hf-forge *{animation:none!important}.hf-forge :is(.hf-grid,.hf-orbit,.hf-source,.hf-burst,.hf-rays){display:none}.hf-forge .hf-hero{transform:translate(-110%,-50%) scale(1.2)}.hf-forge .hf-hero::after{display:none}}

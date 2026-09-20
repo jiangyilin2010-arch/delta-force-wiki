@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>工程干员｜三角洲行动 Wiki</title>
+<style>
+  :root{--bg:#07100d;--panel:#0c1712;--line:#24382d;--green:#9fe870;--text:#e8f2ea;--muted:#8fa395;--shadow:0 18px 45px rgba(0,0,0,.35)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),radial-gradient(circle at 84% 5%,rgba(77,131,79,.15),transparent 28%),var(--bg);background-size:32px 32px,32px 32px,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}button{font:inherit}.wrap{max-width:1440px;margin:auto;padding:0 28px}.topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 40%,#5eae62 70%,transparent 96%)}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}.mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}.brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover,nav a.active{border-color:#77ae68;background:#0d1813;color:var(--green)}.back{height:40px;border:1px solid var(--line);background:#08110d;display:flex;align-items:center;padding:0 12px;color:var(--muted);white-space:nowrap}
+  .hero{padding:48px 0 22px}.hero-main{border:1px solid #2c4235;background:linear-gradient(135deg,#11231a,#08110d 70%);box-shadow:var(--shadow);position:relative;overflow:hidden;min-height:285px}.hero-main:after{content:"ENGINEER";position:absolute;right:-24px;bottom:-42px;font-size:112px;font-weight:900;color:rgba(159,232,112,.045);letter-spacing:-5px;transform:rotate(-7deg)}.hero-copy{position:relative;z-index:1;padding:42px;max-width:760px}.eyebrow{color:var(--green);font:700 11px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:3px}h1{font-size:58px;line-height:.96;margin:18px 0 14px;letter-spacing:-3px}.lead{max-width:640px;color:#b5c5b8;font-size:15px}.role-count{display:inline-block;margin-top:18px;border:1px solid #446b4c;color:var(--green);font:900 11px ui-monospace,monospace;letter-spacing:1px;padding:7px 10px}
+  .section{padding:20px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:15px}.section h2{font-size:20px;margin:0;letter-spacing:.5px}.section h2:before{content:"// ";color:var(--green)}.section-head span{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1.2px}
+  .layout{display:grid;grid-template-columns:minmax(320px,.85fr) 1.15fr;gap:16px;align-items:start}.operator-list{display:grid;gap:12px}.operator-card{border:1px solid #22382b;background:linear-gradient(160deg,#0f1d16,#09130e 70%);display:grid;grid-template-columns:178px 1fr;gap:0;min-height:136px;overflow:hidden;cursor:pointer;text-align:left;color:inherit;padding:0}.operator-card:hover,.operator-card.active{border-color:#77ae68;background:#102019}.operator-card img{width:100%;height:100%;min-height:136px;object-fit:cover;background:#08110d}.operator-body{padding:15px}.operator-body b{display:block;font-size:22px;line-height:1.1}.operator-body small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.tag{display:inline-block;font-size:10px;padding:3px 7px;border:1px solid #3b5b43;color:#abc7ae}.operator-body p{margin:12px 0 0;color:#b4c5b8;font-size:12px;line-height:1.65}
+  .detail{border:1px solid #2c4235;background:#0a140f;box-shadow:var(--shadow);position:sticky;top:92px}.poster{height:300px;background:#08110d center/cover no-repeat;border-bottom:1px solid #22382b}.detail-copy{padding:24px}.detail-title{font-size:44px;line-height:1;margin:10px 0 8px;letter-spacing:-2px}.detail-real{color:#c6d4c9;margin-bottom:12px}.skill-grid{display:grid;gap:10px;margin-top:18px}.skill{border:1px solid #22382b;background:#0d1913;padding:14px}.skill header{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}.skill b{font-size:15px}.skill small{color:var(--green);font:800 10px ui-monospace,monospace;white-space:nowrap}.skill p{margin:0;color:#b9c8bc;font-size:12px;line-height:1.7}.note{margin-top:14px;color:var(--muted);font-size:11px}.source-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.source-row a{color:var(--green);font-size:12px;border-bottom:1px solid rgba(159,232,112,.35)}
+  .footer{margin-top:36px;border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}.warning{color:#a9b7ac;max-width:820px}
+  @media(max-width:1050px){.layout{grid-template-columns:1fr}.detail{position:static}nav{display:none}.brand{min-width:0}}
+  @media(max-width:620px){.wrap{padding:0 18px}.hero-copy{padding:32px 24px}h1{font-size:40px}.operator-card{grid-template-columns:1fr}.operator-card img{height:190px}.poster{height:230px}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a class="" href="operators_assault.html">突击</a><a class="" href="operators_support.html">支援</a><a class="active" href="operators_engineer.html">工程</a><a class="" href="operators_recon.html">侦察</a><a href="operations_fire.html">烽火地带</a><a href="community_forum.html">玩家交流</a></nav>
+  <a class="back" href="delta_force_wiki_home.html#operators">← 返回干员总览</a>
+</div></header>
+<main class="wrap">
+  <section class="hero"><div class="hero-main"><div class="hero-copy"><div class="eyebrow">ROLE FILE // 工程 OPERATORS</div><h1>工程干员</h1><p class="lead">阵地、防护、控场、反载具与地形改造。 本页集中展示该定位下所有干员，点击左侧名片即可在同一页查看技能详情。</p><span class="role-count">5 OPERATORS</span></div></div></section>
+  <section class="section"><div class="section-head"><h2>工程名片与技能</h2><span>官方名片图 / 单页内切换</span></div><div class="layout"><div class="operator-list" id="operatorList"></div><article class="detail" id="operatorDetail" aria-live="polite"></article></div></section>
+  <footer class="footer"><div class="warning">非官方玩家 Wiki 定位页。干员主图采用 Garena 官方公开名片/海报图；技能说明按公开资料整理，具体数值以游戏内当前版本为准。</div><div>工程 FILE // 5 OPERATORS</div></footer>
+</main>
+<script src="assets/wiki-data.js"></script>
+<script>
+  const roleName = "工程";
+  const escapeHtml = (value)=>String(value ?? "").replace(/[&<>"']/g,(char)=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char]));
+  const operators = (window.DELTA_WIKI_DATA && window.DELTA_WIKI_DATA.operators ? window.DELTA_WIKI_DATA.operators : []).filter((op)=>op.status === "live" && op.role === roleName);
+  const operatorList = document.querySelector("#operatorList");
+  const operatorDetail = document.querySelector("#operatorDetail");
+
+  function tagHtml(items){ return items.map((trait)=>'<span class="tag">' + escapeHtml(trait) + '</span>').join(''); }
+
+  function renderList(activeSlug){
+    operatorList.innerHTML = operators.map((op)=>'<button class="operator-card ' + (op.slug === activeSlug ? 'active' : '') + '" type="button" data-slug="' + escapeHtml(op.slug) + '"><img src="' + escapeHtml(op.image) + '" alt="' + escapeHtml(op.name) + '官方干员名片" loading="lazy" /><span class="operator-body"><b>' + escapeHtml(op.name) + '</b><small>' + escapeHtml(op.real) + ' · ' + escapeHtml(op.code) + '</small><span class="tag-row">' + tagHtml(op.traits) + '</span><p>' + escapeHtml(op.summary) + '</p></span></button>').join('');
+    operatorList.querySelectorAll('[data-slug]').forEach((button)=>button.addEventListener('click',()=>selectOperator(button.dataset.slug, true)));
+  }
+
+  function renderDetail(op){
+    const skillHtml = op.details.map((skill)=>'<article class="skill"><header><b>' + escapeHtml(skill[0]) + '</b><small>' + escapeHtml(skill[1]) + '</small></header><p>' + escapeHtml(skill[2]) + '</p></article>').join('');
+    operatorDetail.innerHTML = '<div class="poster" style="background-image:url(&quot;' + escapeHtml(op.image) + '&quot;)"></div>' +
+      '<div class="detail-copy"><div class="eyebrow">' + escapeHtml(op.code) + ' // ' + escapeHtml(op.role) + ' OPERATOR</div>' +
+      '<h2 class="detail-title">' + escapeHtml(op.name) + '</h2><div class="detail-real">' + escapeHtml(op.real) + '</div>' +
+      '<div class="tag-row">' + tagHtml(op.traits) + '</div><p class="lead">' + escapeHtml(op.summary) + '</p>' +
+      '<div class="skill-grid">' + skillHtml + '</div><div class="note">技能说明按公开图鉴资料整理；主图为 Garena 官方干员名片/海报图。</div>' +
+      '<div class="source-row"><a href="https://deltaforce.garena.com/zh_tw/?redirect=0" target="_blank" rel="noreferrer">Garena 官方资料页</a><a href="delta_force_wiki_home.html#sources">更多来源</a></div></div>';
+    document.title = op.name + '｜' + roleName + '｜三角洲行动 Wiki';
+  }
+
+  function selectOperator(slug, pushHash){
+    const op = operators.find((item)=>item.slug === slug) || operators[0];
+    if(!op) return;
+    if(pushHash) history.replaceState(null, '', '#' + op.slug);
+    renderList(op.slug);
+    renderDetail(op);
+  }
+
+  window.addEventListener('hashchange',()=>selectOperator(location.hash.replace('#', ''), false));
+  selectOperator(location.hash.replace('#', ''), false);
+</script>
+</body>
+</html>

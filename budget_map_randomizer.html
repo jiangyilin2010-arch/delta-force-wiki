@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>随机金额玩随机地图｜三角洲行动 Wiki</title>
+<style>
+  :root{--bg:#07100d;--panel:#0a140f;--panel2:#0d1913;--line:#24382d;--green:#9fe870;--text:#e8f2ea;--muted:#8fa395;--warn:#d9c272;--red:#ff5a62;--cyan:#77d9ff;--shadow:0 18px 45px rgba(0,0,0,.35)}
+  *{box-sizing:border-box}body{margin:0;min-height:100vh;background:linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),radial-gradient(circle at 80% 8%,rgba(159,232,112,.14),transparent 28%),radial-gradient(circle at 18% 82%,rgba(119,217,255,.08),transparent 26%),var(--bg);background-size:32px 32px,32px 32px,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1320px;margin:auto;padding:0 28px}.topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 42%,#5eae62 72%,transparent 96%)}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}.mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}.brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover,nav a.active{border-color:#77ae68;background:#0d1813;color:var(--green)}.back{height:40px;border:1px solid var(--line);background:#08110d;display:flex;align-items:center;padding:0 12px;color:var(--muted);white-space:nowrap}
+  .hero{padding:46px 0 16px;display:grid;grid-template-columns:1.02fr .98fr;gap:16px}.hero-main{position:relative;overflow:hidden;border:1px solid #2c4235;background:linear-gradient(105deg,rgba(4,9,7,.98),rgba(7,15,11,.78) 56%,rgba(9,17,13,.32)),url("assets/mini-games-cover-atlas.png");background-size:100% 100%,cover;background-position:center;box-shadow:var(--shadow);padding:34px}.hero-main:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(118deg,transparent 0 38px,rgba(255,255,255,.04) 39px 40px)}.hero-main:after{content:"BUDGET RUN";position:absolute;right:-34px;bottom:-38px;color:rgba(159,232,112,.045);font-size:88px;font-weight:1000;letter-spacing:-4px;transform:rotate(-5deg)}.hero-main>*{position:relative;z-index:1}.eyebrow,.kicker{color:var(--green);font:900 10px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:2.4px}.hero h1{font-size:52px;line-height:1;margin:16px 0 14px;letter-spacing:-2px}.hero p{color:#b6c6ba;margin:0;max-width:740px}.quick{border:1px solid var(--line);background:linear-gradient(180deg,#0e1a14,#09120e);padding:22px}.quick h2{font-size:18px;margin:0 0 14px}.preset-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.preset{border:1px solid #344f3d;background:#0a140f;color:#c8d8cc;text-align:left;padding:13px;cursor:pointer;min-height:82px}.preset:hover{border-color:var(--green);transform:translateY(-2px)}.preset b{display:block;color:var(--green);font-size:16px}.preset span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.mode-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0 12px}.mode-card{border:1px solid #344f3d;background:#08130f;color:#c8d8cc;text-align:left;padding:10px;cursor:pointer;min-height:78px}.mode-card.active{border-color:var(--green);background:linear-gradient(180deg,#18311f,#0b1711);box-shadow:0 0 0 2px rgba(159,232,112,.08)}.mode-card b{display:block;color:var(--green);font-size:15px}.mode-card span{display:block;color:var(--muted);font-size:11px;margin-top:4px}.entry-note{border:1px solid #2d4735;background:#08130f;color:#b8c8bc;font-size:12px;padding:10px;margin:0 0 13px}.entry-note b{color:var(--warn)}
+  .layout{display:grid;grid-template-columns:390px minmax(0,1fr);gap:16px;margin:16px 0 42px}.panel{border:1px solid var(--line);background:#0a140f;box-shadow:var(--shadow)}.setup{padding:18px}.setup h2,.result h2,.history h2{font-size:20px;margin:0 0 14px}.setup h2:before,.result h2:before,.history h2:before{content:"// ";color:var(--green)}.field{display:grid;gap:7px;margin-bottom:12px}.field label{color:var(--muted);font:900 10px ui-monospace,monospace;letter-spacing:1.2px}.money-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.input-wrap{position:relative}.input-wrap span{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--warn);font-weight:900}.input-wrap input{width:100%;height:48px;border:1px solid #35513e;background:#07100d;color:var(--text);font-weight:900;font-size:18px;padding:0 12px 0 30px;outline:none}.input-wrap input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(159,232,112,.1)}.hint{color:var(--muted);font-size:12px;margin:4px 0 14px}.button-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:1px solid #477052;background:#11261a;color:var(--text);font-weight:900;padding:13px 14px;cursor:pointer;text-align:center}.btn.primary{grid-column:1 / -1;background:var(--green);color:#07100d;border-color:var(--green);font-size:16px}.btn:hover{filter:brightness(1.07)}.check-row{display:grid;gap:8px;margin:14px 0}.check{display:flex;align-items:center;gap:9px;color:#c4d2c7;font-size:13px}.check input{accent-color:var(--green);width:16px;height:16px}.error{min-height:20px;color:var(--red);font-size:12px;margin-top:8px}
+  .result{position:relative;overflow:hidden;min-height:548px;padding:22px;background:radial-gradient(circle at 74% 24%,rgba(159,232,112,.1),transparent 28%),linear-gradient(180deg,#0a140f,#08110d)}.result:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(159,232,112,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.035) 1px,transparent 1px);background-size:38px 38px;mask-image:linear-gradient(180deg,#000,transparent 88%);pointer-events:none}.scan{position:absolute;left:0;right:0;height:86px;top:-100px;background:linear-gradient(180deg,transparent,rgba(159,232,112,.18),transparent);opacity:0;pointer-events:none}.result.scanning .scan{opacity:1;animation:scan 1.2s ease-in-out}.result-content{position:relative;z-index:1;display:grid;gap:16px}.rollout{position:relative;overflow:hidden;border:1px solid #34513d;background:rgba(7,16,13,.88);padding:18px;min-height:270px;display:grid;align-content:center;text-align:center}.amount{position:relative;font:1000 clamp(44px,7vw,88px)/.9 ui-monospace,SFMono-Regular,monospace;color:var(--warn);letter-spacing:-4px;text-shadow:0 0 24px rgba(217,194,114,.22);transition:filter .2s,transform .2s}.amount.rolling{filter:blur(.7px) brightness(1.18);animation:slotShake .12s steps(2,end) infinite}.amount:before,.amount:after{content:"";position:absolute;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,var(--warn),transparent);opacity:0}.amount.rolling:before{top:-10px;opacity:.55;animation:coinLine .32s linear infinite}.amount.rolling:after{bottom:-12px;opacity:.36;animation:coinLine .32s linear infinite reverse}.coin-burst{position:absolute;inset:0;pointer-events:none;overflow:hidden}.coin{position:absolute;top:-34px;width:22px;height:22px;border-radius:50%;border:2px solid rgba(217,194,114,.92);background:radial-gradient(circle at 32% 28%,#fff2a4,#d9c272 45%,#80692a);box-shadow:0 0 12px rgba(217,194,114,.38);animation:coinFall var(--dur,2s) ease-in forwards}.coin:after{content:"$";position:absolute;inset:0;display:grid;place-items:center;color:#44330b;font:1000 13px/1 ui-monospace,SFMono-Regular,monospace}.map{font-size:34px;font-weight:1000;line-height:1.05;margin-top:12px;color:var(--green);min-height:38px}.map.typing:after{content:"_";animation:blink .7s steps(1,end) infinite}.subtitle{margin-top:8px;color:#b8c8bc}.radar-readout{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;margin:16px auto 0;max-width:500px;text-align:left}.radar-screen{position:relative;width:110px;aspect-ratio:1;border:1px solid rgba(119,217,255,.45);border-radius:50%;background:radial-gradient(circle,rgba(119,217,255,.12) 0 2px,transparent 3px),repeating-radial-gradient(circle,rgba(119,217,255,.18) 0 1px,transparent 2px 22px),#07100d;overflow:hidden;box-shadow:0 0 24px rgba(119,217,255,.12)}.radar-screen:before{content:"";position:absolute;left:50%;top:50%;width:50%;height:2px;background:linear-gradient(90deg,rgba(119,217,255,.9),transparent);transform-origin:left center;animation:radarSweep 1.3s linear infinite}.radar-screen:after{content:"";position:absolute;inset:23px;border:1px solid rgba(119,217,255,.28);border-radius:50%}.ping{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);opacity:.8}.ping.one{left:58%;top:24%;animation:ping 1.2s ease-in-out infinite}.ping.two{left:28%;top:68%;animation:ping 1.2s .25s ease-in-out infinite}.ping.three{left:72%;top:62%;animation:ping 1.2s .48s ease-in-out infinite}.radar-copy{min-width:0}.radar-copy span{display:block;color:var(--muted);font:900 10px ui-monospace,monospace;letter-spacing:1.2px}.radar-copy b{display:block;margin-top:6px;color:#d7e7dc;font-size:15px;min-height:24px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.card{border:1px solid #263d30;background:#08130f;padding:14px;min-height:126px}.card span{display:block;color:var(--muted);font:900 10px ui-monospace,monospace;letter-spacing:1.1px}.card b{display:block;font-size:18px;line-height:1.12;margin:9px 0 7px}.card p{margin:0;color:#b5c7ba;font-size:12px}.story{border-left:3px solid var(--green);background:#09140f;padding:15px 16px;color:#d8e5dc;font-size:15px}.rarity-low .amount{color:#b9c8bc;text-shadow:none}.rarity-mid .amount{color:var(--green)}.rarity-high .amount{color:var(--warn)}.rarity-extreme .amount{color:var(--red);text-shadow:0 0 28px rgba(255,90,98,.28)}.rarity-extreme .rollout{border-color:rgba(255,90,98,.65);box-shadow:0 0 34px rgba(255,90,98,.15)}
+  .history{padding:18px}.history-list{display:grid;gap:8px;max-height:250px;overflow:auto}.history-item{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;border:1px solid #22362a;background:#08130f;padding:9px 10px;color:#c6d6c9}.history-item b{color:var(--green)}.history-item span{color:var(--muted);font-size:12px}.history-item strong{color:var(--warn);font:900 13px ui-monospace,monospace}.empty{color:var(--muted);font-size:13px;margin:0}.footer{border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}
+  @keyframes scan{0%{top:-110px}100%{top:100%}}@keyframes slotShake{0%{transform:translateY(-1px)}100%{transform:translateY(2px)}}@keyframes coinLine{0%{transform:translateY(-8px)}100%{transform:translateY(8px)}}@keyframes coinFall{0%{transform:translateY(-30px) rotate(0);opacity:0}10%{opacity:1}78%{opacity:1}100%{transform:translateY(340px) rotate(540deg);opacity:0}}@keyframes radarSweep{from{transform:rotate(0deg);transform-origin:left center}to{transform:rotate(360deg);transform-origin:left center}}@keyframes ping{0%,100%{transform:scale(.7);opacity:.35}50%{transform:scale(1.7);opacity:1}}@keyframes blink{50%{opacity:0}}@media(max-width:1060px){.hero,.layout{grid-template-columns:1fr}nav{display:none}.brand{min-width:0}.result{min-height:auto}}@media(max-width:680px){.wrap{padding:0 18px}.hero-main{padding:28px 22px}.hero h1{font-size:38px}.preset-grid,.money-row,.button-row,.cards,.mode-grid{grid-template-columns:1fr}.btn.primary{grid-column:auto}.amount{letter-spacing:-2px}.radar-readout{grid-template-columns:1fr;text-align:center}.radar-screen{margin:auto}.footer{flex-direction:column}}
+</style>
+<link rel="stylesheet" href="shared/player-card.css">
+<script src="shared/player-card.js"></script>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a href="delta_force_wiki_home.html">首页</a><a href="operations_fire.html">烽火地带</a><a href="operators_assault.html">干员档案</a><a href="map_easter_eggs.html">地图彩蛋</a><a class="active" href="mini_games.html">小游戏</a><a href="community_forum.html">玩家交流</a></nav>
+  <a class="back" href="mini_games.html">← 返回小游戏大厅</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="eyebrow">G.T.I. BUDGET ASSIGNMENT // RANDOM MAP</div>
+      <h1>随机金额玩随机地图</h1>
+      <p>把选择困难症交给终端：输入这把愿意花多少钱，系统随机给你抽预算、地图、流派和出征宣言。抽到高额预算就别嘴硬，说不定今天你就是板板。</p>
+    </div>
+    <aside class="quick">
+      <h2>快速预算</h2>
+      <div class="preset-grid">
+        <button class="preset" data-min="0" data-max="80000" data-mode="regular"><b>常规跑刀</b><span>0 - 80,000，能开火就算胜利</span></button>
+        <button class="preset" data-min="112500" data-max="250000" data-mode="secret"><b>机密卡线</b><span>112,500 - 250,000，凑够起进线</span></button>
+        <button class="preset" data-min="250000" data-max="800000" data-mode="secret"><b>机密上班</b><span>250,000 - 800,000，开始心疼保险</span></button>
+        <button class="preset" data-min="780000" data-max="3000000" data-mode="top"><b>绝密板板</b><span>780,000 - 3,000,000，魔王护请就位</span></button>
+      </div>
+    </aside>
+  </section>
+
+  <section class="layout">
+    <aside>
+      <div class="panel setup">
+        <h2>金额范围</h2>
+        <div class="money-row">
+          <div class="field">
+            <label for="minMoney">MIN MONEY</label>
+            <div class="input-wrap"><span>$</span><input id="minMoney" type="number" min="0" step="1000" value="80000"></div>
+          </div>
+          <div class="field">
+            <label for="maxMoney">MAX MONEY</label>
+            <div class="input-wrap"><span>$</span><input id="maxMoney" type="number" min="0" step="1000" value="600000"></div>
+          </div>
+        </div>
+        <p class="hint">支持自定义任意范围。系统会自动修正负数和上下限写反的情况。</p>
+        <h2>行动难度</h2>
+        <div class="mode-grid" id="modeGrid">
+          <button class="mode-card active" data-mode="all"><b>全选</b><span>常规、机密、绝密一起交给终端</span></button>
+          <button class="mode-card" data-mode="regular"><b>常规</b><span>无最低准入价值，适合随便整活</span></button>
+          <button class="mode-card" data-mode="secret"><b>机密</b><span>地图会有最低战备起进线</span></button>
+          <button class="mode-card" data-mode="top"><b>绝密</b><span>高门槛，高风险，高节目效果</span></button>
+        </div>
+        <p class="entry-note" id="entryNote">当前为 <b>全选</b>：常规、机密、绝密都会参与随机。</p>
+        <div class="check-row">
+          <label class="check"><input id="wholeTen" type="checkbox" checked> 金额按整万取整</label>
+          <label class="check"><input id="avoidSameMap" type="checkbox" checked> 尽量不连续抽到同一张地图</label>
+        </div>
+        <div class="button-row">
+          <button class="btn primary" id="rollBtn">启动随机终端</button>
+          <button class="btn" id="copyBtn">复制结果</button>
+          <button class="btn" id="clearBtn">清空记录</button>
+        </div>
+        <div class="error" id="error"></div>
+      </div>
+
+      <div class="panel history">
+        <h2>最近出征签</h2>
+        <div class="history-list" id="history"><p class="empty">还没有抽签。第一把先交给命运。</p></div>
+      </div>
+    </aside>
+
+    <section class="panel result rarity-mid" id="resultPanel">
+      <div class="scan"></div>
+      <div class="result-content">
+        <h2>终端结果</h2>
+        <div class="rollout">
+          <div class="coin-burst" id="coinBurst"></div>
+          <div class="amount" id="amount">$ --</div>
+          <div class="map" id="map">等待抽取</div>
+          <div class="subtitle" id="subtitle">输入金额范围，然后启动随机终端。</div>
+          <div class="radar-readout">
+            <div class="radar-screen" aria-hidden="true"><i class="ping one"></i><i class="ping two"></i><i class="ping three"></i></div>
+            <div class="radar-copy"><span>RADAR MAP LOCK</span><b id="radarText">地图信号待扫描</b></div>
+          </div>
+        </div>
+        <div class="cards">
+          <div class="card"><span>ACTION LEVEL</span><b id="modeName">全选</b><p id="modeLine">常规、机密、绝密一起参与随机。</p></div>
+          <div class="card"><span>BUDGET CLASS</span><b id="budgetClass">未分配</b><p id="budgetLine">终端还没决定你今天是鼠，还是老板。</p></div>
+          <div class="card"><span>PLAYSTYLE</span><b id="style">待命</b><p id="styleLine">流派会跟金额和地图一起生成。</p></div>
+          <div class="card"><span>LOADOUT</span><b id="loadout">待整备</b><p id="loadoutLine">别急，钱包还没开闸。</p></div>
+        </div>
+        <div class="story" id="story">G.T.I.终端待机中。等你一拍按钮，它会决定这把去哪、花多少、怎么白给。</div>
+      </div>
+    </section>
+  </section>
+
+  <footer class="footer"><div>非官方娱乐小游戏。随机结果可以不听，但不听以后白给就少了一个借口。</div><div>G.T.I. BUDGET MAP BUILD 0.1 // 2026</div></footer>
+</main>
+
+<script>
+(() => {
+  const modes = {
+    all: { name:"全选", label:"全选随机", note:"常规、机密、绝密全部参与随机；抽到机密/绝密会自动遵守起进线。", tone:"终端全频道乱扫，抽到什么就去什么。" },
+    regular: { name:"常规", label:"常规行动", note:"无起进线限制，钱包可以自由发挥。", tone:"今天主打轻装整活，亏了也不至于睡不着。" },
+    secret: { name:"机密", label:"机密行动", note:"金额会自动不低于抽中地图的最低准入价值。", tone:"终端已切入机密频道，低于起进线的钱包会被强行垫高。" },
+    top: { name:"绝密", label:"绝密行动", note:"金额会自动不低于绝密地图起进线。", tone:"绝密不是来散步的，抽到的每一块钱都带着压力。" }
+  };
+  const maps = [
+    { name:"零号大坝", tag:"行政楼 / 水泥厂", entry:{regular:0, secret:112500}, low:"别急着进楼，先摸边路容器，听见行政楼响就当没听见。", high:"行政楼可以去，但烟和甲别省，不然预算会变成对面背包里的故事。" },
+    { name:"长弓溪谷", tag:"酒店 / 雷达站", entry:{regular:0, secret:112500}, low:"低预算跑溪谷，能绕就绕，远点有人看你就趴下装成地形。", high:"预算够就去酒店和雷达站打信息差，别在大马路上展示你的身价。" },
+    { name:"航天基地", tag:"黑室 / 蓝室", entry:{secret:187500, top:600000}, low:"航天低预算属于胆量测试，先摸外围，黑室门口别硬闻味。", high:"高预算进航天就是奔着红货去的，黑室蓝室都可以碰，但撤离路线提前想好。" },
+    { name:"巴克什", tag:"浴场 / 博物馆", entry:{secret:187500, top:550000}, low:"巷道多，便宜枪也能有梦想，先贴墙搜小房间。", high:"浴场和博物馆会检验护甲含金量，老板进场也要尊重每个拐角。" },
+    { name:"潮汐监狱", tag:"核心区 / 水路", entry:{top:780000}, low:"低预算进监狱，建议把自己当水路里的临时生态。", high:"钱到位可以冲核心区，但管道和监区会专治不看角落的人。" },
+    { name:"AZ3", tag:"核电站 / 泄漏区", entry:{regular:0, secret:112500}, low:"新图低预算就稳一点，先记路线，别把自己交给未知角落。", high:"预算高就把药和护甲带足，核电站不是让钱包裸泳的地方。" }
+  ];
+  const styles = [
+    { name:"鼠鼠摸边", min:0, max:120000, line:"不求富贵，只求把包里的小东西活着带出去。", loadout:"野牛 / UZI + 基础甲 + 止痛片" },
+    { name:"卡战备跑刀", min:0, max:90000, line:"成本低到对面都不好意思搜你，但你可以搜遍全图。", loadout:"能开火的枪 + 空间大的包" },
+    { name:"稳健交战搜索", min:90000, max:320000, line:"能打、能搜、能撤，钱包和尊严都留一点余地。", loadout:"中配步枪 + 听力头 + 烟雾弹" },
+    { name:"堵桥收费", min:180000, max:760000, line:"此路由你承包，路过的人都要接受预算审判。", loadout:"工程位 + 全家福 + 修脚弹" },
+    { name:"大红巡逻队", min:450000, max:1400000, line:"目标不是活着，是带着值钱东西活着。", loadout:"高配步枪 + 金弹 + 充足药品" },
+    { name:"板板体验卡", min:760000, max:999999999, line:"你穿得越贵，魔王护来的越有仪式感。", loadout:"六套 + 满改枪 + 队友的祝福" }
+  ];
+  const amountNode = document.querySelector("#amount");
+  const mapNode = document.querySelector("#map");
+  const subtitleNode = document.querySelector("#subtitle");
+  const modeNameNode = document.querySelector("#modeName");
+  const modeLineNode = document.querySelector("#modeLine");
+  const budgetClassNode = document.querySelector("#budgetClass");
+  const budgetLineNode = document.querySelector("#budgetLine");
+  const styleNode = document.querySelector("#style");
+  const styleLineNode = document.querySelector("#styleLine");
+  const loadoutNode = document.querySelector("#loadout");
+  const loadoutLineNode = document.querySelector("#loadoutLine");
+  const storyNode = document.querySelector("#story");
+  const resultPanel = document.querySelector("#resultPanel");
+  const historyNode = document.querySelector("#history");
+  const errorNode = document.querySelector("#error");
+  const radarTextNode = document.querySelector("#radarText");
+  const coinBurst = document.querySelector("#coinBurst");
+  const rollBtn = document.querySelector("#rollBtn");
+  const minInput = document.querySelector("#minMoney");
+  const maxInput = document.querySelector("#maxMoney");
+  const wholeTen = document.querySelector("#wholeTen");
+  const avoidSameMap = document.querySelector("#avoidSameMap");
+  let lastResult = null;
+  let history = [];
+  let rollToken = 0;
+  let selectedMode = "all";
+
+  function clampNumber(value) {
+    const number = Number(value);
+    return Number.isFinite(number) ? Math.max(0, Math.floor(number)) : 0;
+  }
+
+  function formatMoney(value) {
+    return `$ ${value.toLocaleString("zh-CN")}`;
+  }
+
+  function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function availableMaps(mode) {
+    if (mode === "all") return maps;
+    return maps.filter(item => Number.isFinite(item.entry[mode]));
+  }
+
+  function availableAssignments(mode) {
+    if (mode !== "all") {
+      return availableMaps(mode).map(map => ({ map, modeKey:mode, entry:map.entry[mode] || 0 }));
+    }
+    return maps.flatMap(map => ["regular", "secret", "top"]
+      .filter(modeKey => Number.isFinite(map.entry[modeKey]))
+      .map(modeKey => ({ map, modeKey, entry:map.entry[modeKey] || 0 })));
+  }
+
+  function snapMoney(value, min, max) {
+    let snapped = value;
+    if (wholeTen.checked) {
+      snapped = Math.round(value / 10000) * 10000;
+      if (snapped < min) snapped = Math.ceil(min / 10000) * 10000;
+      if (snapped > max) snapped = Math.floor(max / 10000) * 10000;
+    }
+    if (snapped < min || snapped > max) snapped = min;
+    return Math.min(Math.max(snapped, min), max);
+  }
+
+  function updateModeNote() {
+    const mode = modes[selectedMode];
+    const assignments = availableAssignments(selectedMode);
+    const pool = [...new Map(assignments.map(item => [item.map.name, item.map])).values()];
+    const floors = assignments.map(item => item.entry).filter(value => value > 0);
+    const floorText = floors.length ? `${formatMoney(Math.min(...floors))} - ${formatMoney(Math.max(...floors))}` : "无限制";
+    document.querySelector("#entryNote").innerHTML = `当前为 <b>${mode.name}</b>：${mode.note} 可用地图 ${pool.map(item => item.name).join(" / ")}，起进线 ${floorText}。`;
+  }
+
+  function normalizeRange() {
+    let min = clampNumber(minInput.value);
+    let max = clampNumber(maxInput.value);
+    if (min > max) [min, max] = [max, min];
+    if (max === 0) max = 10000;
+    minInput.value = min;
+    maxInput.value = max;
+    return { min, max };
+  }
+
+  function classify(amount) {
+    if (amount < 80000) return { key:"low", name:"鼠鼠预算", line:"今天不拼身价，拼路线和容器记忆。" };
+    if (amount < 250000) return { key:"mid", name:"正经进场", line:"有一点容错，也有一点心疼。" };
+    if (amount < 800000) return { key:"high", name:"豪华整备", line:"终于不是卡战备了，走路都带一点金属声。" };
+    return { key:"extreme", name:"板板候选人", line:"终端检测到钱包正在燃烧，建议呼叫护航。" };
+  }
+
+  function chooseAssignment(mode) {
+    const options = availableAssignments(mode);
+    if (!avoidSameMap.checked || !lastResult) return options[randomInt(0, options.length - 1)];
+    const pool = options.filter(item => item.map.name !== lastResult.map.name);
+    return (pool.length ? pool : options)[randomInt(0, (pool.length ? pool : options).length - 1)];
+  }
+
+  function chooseStyle(amount) {
+    const pool = styles.filter(item => amount >= item.min && amount <= item.max);
+    return pool.length ? pool[randomInt(0, pool.length - 1)] : styles[2];
+  }
+
+  function renderHistory() {
+    if (!history.length) {
+      historyNode.innerHTML = '<p class="empty">还没有抽签。第一把先交给命运。</p>';
+      return;
+    }
+    historyNode.innerHTML = history.map((item, index) => `
+      <div class="history-item">
+        <span>#${history.length - index}</span>
+        <b>${item.mode.name} · ${item.map.name}</b>
+        <strong>${formatMoney(item.amount)}</strong>
+      </div>
+    `).join("");
+  }
+
+  function renderResult(result) {
+    PlayerCard.offer("budget", {title: `${result.map.name} · ${formatMoney(result.amount)}`, lines: [result.mode.label, result.classInfo.name, `打法：${result.style.name}`, `装备：${result.style.loadout}`]});
+    resultPanel.className = `panel result rarity-${result.classInfo.key}`;
+    amountNode.textContent = formatMoney(result.amount);
+    mapNode.textContent = result.map.name;
+    subtitleNode.textContent = `${result.mode.label} · ${result.map.tag}`;
+    radarTextNode.textContent = `${result.map.name} 信号锁定`;
+    modeNameNode.textContent = result.mode.label;
+    modeLineNode.textContent = result.entry > 0 ? `最低准入价值 ${formatMoney(result.entry)}，本次金额已达标。` : "常规行动无最低准入价值，想怎么整活都行。";
+    budgetClassNode.textContent = result.classInfo.name;
+    budgetLineNode.textContent = result.classInfo.line;
+    styleNode.textContent = result.style.name;
+    styleLineNode.textContent = result.style.line;
+    loadoutNode.textContent = result.style.loadout;
+    loadoutLineNode.textContent = result.amount >= 800000 ? "今天你负责让队友喊老板大气。" : "够用就行，别让预算拖住撤离。";
+    const mapLine = result.amount >= 250000 || result.entry >= 450000 ? result.map.high : result.map.low;
+    storyNode.textContent = `终端拍板：${result.mode.label}，带 ${formatMoney(result.amount)} 去 ${result.map.name}。${mapLine} 本局流派：${result.style.name}。`;
+  }
+
+  function makeCoin(delay = 0) {
+    const coin = document.createElement("span");
+    coin.className = "coin";
+    coin.style.left = `${randomInt(3, 94)}%`;
+    coin.style.animationDelay = `${delay}s`;
+    coin.style.setProperty("--dur", `${1.45 + Math.random() * 1.35}s`);
+    coin.addEventListener("animationend", () => coin.remove());
+    coinBurst.appendChild(coin);
+  }
+
+  function dropCoins(count = 24, token = rollToken) {
+    coinBurst.innerHTML = "";
+    let wave = 0;
+    let emitted = 0;
+    const timer = setInterval(() => {
+      if (token !== rollToken) {
+        clearInterval(timer);
+        return;
+      }
+      const left = count - emitted;
+      const batch = Math.min(left, Math.max(1, 8 - wave * 2));
+      for (let i = 0; i < batch; i += 1) makeCoin(i * .08 + Math.random() * .08);
+      emitted += batch;
+      wave += 1;
+      if (emitted >= count) clearInterval(timer);
+    }, 360);
+  }
+
+  function animateMoney(target, min, max, token) {
+    amountNode.classList.add("rolling");
+    let ticks = 0;
+    const timer = setInterval(() => {
+      if (token !== rollToken) {
+        clearInterval(timer);
+        return;
+      }
+      ticks += 1;
+      let fake = randomInt(min, max);
+      fake = snapMoney(fake, min, max);
+      amountNode.textContent = formatMoney(fake);
+      if (ticks >= 22) {
+        clearInterval(timer);
+        amountNode.textContent = formatMoney(target);
+        amountNode.classList.remove("rolling");
+      }
+    }, 58);
+  }
+
+  function typeMapName(name, token, done) {
+    mapNode.classList.add("typing");
+    mapNode.textContent = "";
+    subtitleNode.textContent = "雷达正在锁定行动区域";
+    let index = 0;
+    const timer = setInterval(() => {
+      if (token !== rollToken) {
+        clearInterval(timer);
+        return;
+      }
+      index += 1;
+      mapNode.textContent = name.slice(0, index);
+      radarTextNode.textContent = `扫描坐标：${maps[randomInt(0, maps.length - 1)].name}`;
+      if (index >= name.length) {
+        clearInterval(timer);
+        mapNode.classList.remove("typing");
+        radarTextNode.textContent = `${name} 信号锁定`;
+        done();
+      }
+    }, 150);
+  }
+
+  function playReveal(result, range) {
+    PlayerCard.pending("budget");
+    const token = ++rollToken;
+    rollBtn.disabled = true;
+    resultPanel.className = "panel result rarity-mid scanning";
+    modeNameNode.textContent = modes[selectedMode].label;
+    modeLineNode.textContent = "正在读取行动难度和准入线。";
+    budgetClassNode.textContent = "金额滚动中";
+    budgetLineNode.textContent = "金币槽正在疯狂转，钱包已经开始冒汗。";
+    styleNode.textContent = "雷达待锁定";
+    styleLineNode.textContent = "地图信号正在扫，还不知道今天去哪白给。";
+    loadoutNode.textContent = "整备计算中";
+    loadoutLineNode.textContent = "等金额落定，终端再决定你配不配当老板。";
+    storyNode.textContent = "金币槽启动，地图雷达开扫，出征签正在生成。";
+    mapNode.textContent = "扫描中";
+    subtitleNode.textContent = "正在读取地图信号";
+    radarTextNode.textContent = "雷达扫频中";
+    dropCoins(result.amount >= 800000 ? 42 : 26, token);
+    resultPanel.classList.remove("scanning");
+    void resultPanel.offsetWidth;
+    resultPanel.classList.add("scanning");
+    animateMoney(result.amount, range.min, range.max, token);
+    let mapCycle = setInterval(() => {
+      if (token !== rollToken) {
+        clearInterval(mapCycle);
+        return;
+      }
+      radarTextNode.textContent = `扫描坐标：${maps[randomInt(0, maps.length - 1)].name}`;
+    }, 110);
+    setTimeout(() => {
+      if (token !== rollToken) return;
+      clearInterval(mapCycle);
+      typeMapName(result.map.name, token, () => {
+        if (token !== rollToken) return;
+        renderResult(result);
+        history.unshift(result);
+        history = history.slice(0, 8);
+        renderHistory();
+        rollBtn.disabled = false;
+      });
+    }, 1380);
+  }
+
+  function roll() {
+    errorNode.textContent = "";
+    let range = normalizeRange();
+    const assignment = chooseAssignment(selectedMode);
+    const map = assignment.map;
+    const actualMode = assignment.modeKey;
+    const entry = assignment.entry;
+    const originalMax = range.max;
+    range = { min:Math.max(range.min, entry), max:Math.max(range.max, entry) };
+    let amount = snapMoney(randomInt(range.min, range.max), range.min, range.max);
+    const style = chooseStyle(amount);
+    const result = { amount, map, style, entry, mode:modes[actualMode], classInfo: classify(amount) };
+    lastResult = result;
+    if (entry > 0 && originalMax < entry) errorNode.textContent = `你填的上限低于${map.name}${modes[actualMode].name}起进线，终端已抬到 ${formatMoney(entry)}。`;
+    else if (entry > 0 && Number(minInput.value) < entry) errorNode.textContent = `${map.name}${modes[actualMode].name}起进线是 ${formatMoney(entry)}，本次金额不会低于它。`;
+    playReveal(result, range);
+  }
+
+  function copyResult() {
+    if (!lastResult) {
+      errorNode.textContent = "先抽一次，再复制出征签。";
+      return;
+    }
+    const entryText = lastResult.entry > 0 ? `，起进线：${formatMoney(lastResult.entry)}` : "";
+    const text = `今日出征签：${lastResult.mode.label}${entryText}，金额：${formatMoney(lastResult.amount)}，地图：${lastResult.map.name}，流派：${lastResult.style.name}。`;
+    navigator.clipboard?.writeText(text).then(() => {
+      errorNode.textContent = "结果已复制，可以发给队友开锅了。";
+    }).catch(() => {
+      errorNode.textContent = text;
+    });
+  }
+
+  document.querySelectorAll(".preset").forEach(button => {
+    button.addEventListener("click", () => {
+      minInput.value = button.dataset.min;
+      maxInput.value = button.dataset.max;
+      if (button.dataset.mode) setMode(button.dataset.mode);
+      roll();
+    });
+  });
+  function setMode(mode) {
+    selectedMode = mode;
+    document.querySelectorAll(".mode-card").forEach(button => button.classList.toggle("active", button.dataset.mode === mode));
+    updateModeNote();
+  }
+  document.querySelectorAll(".mode-card").forEach(button => {
+    button.addEventListener("click", () => setMode(button.dataset.mode));
+  });
+  rollBtn.addEventListener("click", roll);
+  document.querySelector("#copyBtn").addEventListener("click", copyResult);
+  document.querySelector("#clearBtn").addEventListener("click", () => {
+    history = [];
+    renderHistory();
+    errorNode.textContent = "记录清空，命运重新洗牌。";
+  });
+  updateModeNote();
+  renderHistory();
+})();
+</script>
+</body>
+</html>

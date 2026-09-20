@@ -1,0 +1,31 @@
+.combat-inspector{--ci-line:#40554c;--ci-good:#b6ddbc;--ci-bad:#f09c94;width:min(1000px,calc(100vw - 28px));max-height:90dvh;padding:0;border:1px solid #718c82;border-radius:6px;background:#15201d;color:#edf2ef;overflow:auto;overscroll-behavior:contain}
+.ci-source .ci-source-attributes{grid-column:1/-1;color:#a9bdae;font-size:11px;line-height:1.65;font-variant-numeric:tabular-nums}
+.ci-source .ci-source-attributes:empty{display:none}
+.combat-inspector::backdrop{background:#040c0aca}
+.ci-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;border-bottom:1px solid var(--ci-line);position:sticky;top:0;background:#15201d;z-index:2}
+.ci-heading h2{font-size:20px;line-height:1.5;overflow-wrap:anywhere}.ci-heading button{font-size:14px;white-space:nowrap;padding:8px 12px}
+.ci-roster{display:flex;gap:7px;padding:14px 22px;border-bottom:1px solid var(--ci-line);overflow-x:auto;scrollbar-width:thin}
+.ci-roster button{width:64px;flex:0 0 64px;min-width:0;padding:4px;border-radius:3px;display:grid;gap:4px;border:1px solid #50695f;background:#1d2d26;align-content:start}
+.ci-roster button[data-side=enemy]{border-color:#976d67;background:#322522}.ci-roster button[aria-pressed=true]{outline:2px solid #e5cc8d;outline-offset:1px}.ci-roster button[data-downed=true]{opacity:.6}
+.ci-roster .ci-portrait{position:relative;display:block;width:100%;height:40px;overflow:hidden}.ci-roster .ci-portrait img{position:absolute;max-width:none;object-fit:fill}.ci-roster span{font-size:12px;line-height:1.4;overflow-wrap:anywhere}
+.ci-body{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:26px;padding:20px 22px}.ci-body>section{min-width:0}.ci-body h3{font-size:17px;margin:0 0 14px}.ci-body h4{font-size:15px;margin:6px 0}.ci-body p{font-size:14px;line-height:1.75;margin:8px 0;overflow-wrap:anywhere}
+.ci-skills{border-right:1px solid var(--ci-line);padding-right:22px}.ci-skill{border-bottom:1px solid var(--ci-line);padding:12px 0}.ci-skill:first-of-type{padding-top:0}.ci-skill small{font-size:12px;color:#b4c6bd;line-height:1.7}.ci-skill[data-active=true] h4{color:var(--ci-good)}
+.ci-vitals{color:#d7c589;font-variant-numeric:tabular-nums}.ci-stats{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}.ci-stats th,.ci-stats td{padding:9px 5px;border-bottom:1px solid var(--ci-line);text-align:right}.ci-stats th:first-child{text-align:left}.ci-stats thead th{font-weight:400;color:#abbfb4;font-size:12px}.ci-stats td:nth-child(2){font-weight:650;font-size:16px}.ci-stats td:nth-child(n+3){color:#cbd7cc}
+.ci-derived{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:9px 12px;font-size:14px;margin:16px 0}.ci-derived dt{color:#aabfb3}.ci-derived dd{margin:0;font-variant-numeric:tabular-nums}.ci-conditional{color:#d7c589}
+.ci-statuses{border-top:1px solid var(--ci-line);padding-top:16px;margin-top:16px}.ci-statuses h4{font-size:13px;color:#b7c7bc;margin-top:14px}.ci-effect{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;padding:10px 0;border-bottom:1px solid var(--ci-line)}.ci-effect strong{font-size:14px;color:var(--ci-good)}.ci-effect[data-type=debuff] strong{color:var(--ci-bad)}.ci-effect small{font-size:12px;color:#c6cec4}.ci-effect p{grid-column:1/-1;margin:0}.ci-empty{color:#91a297}
+.ci-sources{border-top:1px solid var(--ci-line);padding-top:16px;margin-top:20px}.ci-sources summary{font-size:14px;cursor:pointer}.ci-source{display:grid;grid-template-columns:minmax(0,1fr);padding:13px 0;border-bottom:1px solid var(--ci-line)}.ci-source:has(img){grid-template-columns:32px minmax(0,1fr);gap:0 8px}.ci-source img{width:32px;height:32px;object-fit:contain;grid-row:1/3}.ci-source strong{font-size:14px}.ci-source small{font-size:12px;color:#cbbd90;margin-top:5px}.ci-source p{grid-column:1/-1}
+#battle-view .hb-skill-note button:has(img){display:inline-flex;align-items:center;gap:4px}#battle-view .hb-skill-note button img{width:14px;height:14px}.rear-skill[data-active=true] h3{color:#b6ddbc}
+@media(max-width:700px){.ci-body{grid-template-columns:1fr;padding:16px;gap:22px}.ci-panel{grid-row:1}.ci-skills{border-right:0;padding:0;border-top:1px solid var(--ci-line);padding-top:18px}.ci-heading{padding:12px 16px}.ci-heading h2{font-size:17px}.ci-roster{padding:12px 16px}.ci-roster button{width:56px;flex-basis:56px}.ci-roster img{width:46px;height:36px}}
+
+/* Stack counts remain visible beside stats; no hover or disclosure required. */
+.ci-stack-panel{margin:16px 0;border-block:1px solid var(--ci-line);padding:12px 0}
+.ci-stack-panel h3{font-size:13px;color:var(--ci-good);margin-bottom:6px}
+.ci-stack-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 12px;padding:7px 0;font-size:13px}
+.ci-stack-row>span{overflow-wrap:anywhere}.ci-stack-row strong{color:#e5cc8d;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ci-stack-row small{grid-column:1/-1;color:#a9bdae;font-variant-numeric:tabular-nums}
+#action-panel .hb-action-stacks{display:flex;gap:5px;overflow-x:auto;overflow-y:hidden;max-width:100%;min-width:0;flex:1;order:1;scrollbar-width:none}
+#action-panel .decision-heading:has(.hb-action-stacks:not([hidden])) label{order:2}
+#action-panel .hb-action-stacks:focus-visible{outline:1px solid #e5cc8d;outline-offset:2px}
+#action-panel .hb-action-stacks[hidden]{display:none}
+.hb-stack-chip{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;padding:1px 5px;border:1px solid #40554c;background:#15201d;color:#c6d5ca;border-radius:3px;font-size:10px;line-height:1.4}
+.hb-stack-chip b{color:#e5cc8d;font-variant-numeric:tabular-nums;white-space:nowrap}

@@ -1,0 +1,30 @@
+/* Rotation accelerates into a short lock, then releases; the underlying page stays still. */
+.ht-icons{--ht-accent:#c6e6a6;--ht-cycle:1400ms;--ht-size:124px}
+.ht-glyph{position:absolute;z-index:8;left:50%;top:50%;width:var(--ht-size);height:var(--ht-size);transform:translate(-50%,-50%);pointer-events:none;color:var(--ht-accent);contain:layout style}
+.ht-orbit{position:absolute;inset:0;border:2px solid currentColor;border-radius:50%;border-left-color:transparent;border-right-color:transparent;opacity:.8;animation:ht-spin var(--ht-cycle) cubic-bezier(.65,.02,.18,1) both}
+.ht-orbit-outer:after{content:'';position:absolute;inset:7px;border:1px dashed currentColor;border-radius:50%;opacity:.25}
+.ht-orbit-inner{inset:15%;border-width:1px;border-top-color:transparent;border-bottom-color:transparent;border-left-color:currentColor;border-right-color:currentColor;animation-name:ht-counter;opacity:.55}
+.ht-mark{position:absolute;inset:19%;width:62%;height:62%;overflow:visible;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;animation:ht-lock var(--ht-cycle) cubic-bezier(.65,.02,.18,1) both}
+.ht-dot{position:absolute;top:-3px;left:calc(50% - 3px);width:6px;height:6px;background:currentColor;transform:rotate(45deg)}
+.ht-icons button svg{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ht-icons :is(.hc-skip,.hi-skip,.hp-skip,.hb-footer button){display:grid;place-items:center;width:44px;height:44px;padding:0;min-height:44px;border-radius:50%;background:#0a1712;border:1px solid #9abd8366;color:var(--ht-accent)}
+.hc-entry.ht-icons :is(.hc-band,.hc-scan),.hi-insertion.ht-icons :is(.hi-header,.hi-copy,.hi-telemetry,.hi-radio,.hi-ready,.hi-progress),.hp-transition.ht-icons :is(.hp-header,.hp-code,.hp-content,.hp-route,.hp-status,.hp-progress),.hb-outro.ht-icons :is(.hb-header,.hb-verdict,.hb-shutter,.hb-sweep,.hb-status,.hb-progress){display:none}
+.hi-insertion.ht-icons .hi-aircraft text{display:none}
+.hc-entry.ht-icons{background:#08130f;--ht-cycle:1400ms}
+.hi-insertion.ht-icons{--ht-cycle:6400ms;--ht-size:88px}
+.hi-insertion.ht-icons>.ht-glyph{top:78%}
+.hb-outro.ht-icons{--ht-cycle:3400ms;--ht-accent:#edce8d;background:#0b1511}
+.hb-outro.ht-icons[data-outcome=defeat]{--ht-accent:#e79682}
+.hp-transition.ht-icons{--ht-cycle:3800ms;background:#08130f}
+.ht-icons :is(.hi-footer,.hb-footer,.hp-footer){justify-content:flex-end}
+.hx-screen-mask.ht-icons{--ht-cycle:280ms;--ht-size:80px;background-image:radial-gradient(ellipse at center,#193322,#07120e 68%)}
+.hx-screen-mask.ht-icons:before,.hx-screen-mask.ht-icons:after{display:none;content:''}
+.hm-bridge>div:not(.ht-glyph){display:none}.hm-bridge.ht-icons{padding:0;background:#07120e;--ht-cycle:280ms}.hm-bridge>.ht-glyph{border:0;padding:0;background:none}
+@keyframes ht-spin{0%{transform:rotate(-160deg);opacity:.25}65%{transform:rotate(170deg);opacity:.9}83%{transform:rotate(180deg);opacity:.9}100%{transform:rotate(220deg);opacity:0}}
+@keyframes ht-counter{0%{transform:rotate(130deg);opacity:0}68%{transform:rotate(-170deg);opacity:.65}85%{transform:rotate(-180deg);opacity:.65}100%{transform:rotate(-220deg);opacity:0}}
+@keyframes ht-lock{0%{transform:rotate(-80deg) scale(.55);opacity:0}55%{transform:rotate(6deg) scale(1.08);opacity:1}75%{transform:rotate(0) scale(1);opacity:1}100%{transform:rotate(0) scale(1.12);opacity:0}}
+@media(max-width:600px){.ht-icons{--ht-size:100px}.hb-outro.ht-icons .hb-footer{align-items:flex-end}.hi-insertion.ht-icons{--ht-size:72px}}
+@media(prefers-reduced-motion:reduce){.ht-glyph *{animation:none!important}.ht-mark{opacity:1;transform:none}.ht-orbit{opacity:.45}}
+
+/* Reveal settlement information together instead of waiting through staggered rows. */
+.hd-debrief :is(.hd-portrait,.hd-stamp,.hd-hero-copy,.hd-leader,.hd-metrics,.hd-team,.hd-rewards){animation-duration:280ms;animation-delay:0s}

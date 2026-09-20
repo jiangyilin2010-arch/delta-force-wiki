@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>玩家交流广场｜三角洲行动 Wiki</title>
+<style>
+  :root{--bg:#07100d;--panel:#0a140f;--panel2:#0d1913;--line:#24382d;--green:#9fe870;--text:#e8f2ea;--muted:#8fa395;--warn:#d9c272;--bad:#d88972;--shadow:0 18px 45px rgba(0,0,0,.35)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),radial-gradient(circle at 84% 5%,rgba(77,131,79,.15),transparent 28%),var(--bg);background-size:32px 32px,32px 32px,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}.wrap{max-width:1440px;margin:auto;padding:0 28px}.topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 40%,#5eae62 70%,transparent 96%)}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}.mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}.brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover,nav a.active{border-color:#77ae68;background:#0d1813;color:var(--green)}.back{height:40px;border:1px solid var(--line);background:#08110d;display:flex;align-items:center;padding:0 12px;color:var(--muted);white-space:nowrap}
+  .hero{padding:50px 0 22px}.hero-main{border:1px solid #2c4235;background:linear-gradient(135deg,#11231a,#08110d 70%);box-shadow:var(--shadow);position:relative;overflow:hidden;min-height:330px}.hero-main:after{content:"COMMUNITY";position:absolute;right:-26px;bottom:-44px;font-size:112px;font-weight:900;color:rgba(159,232,112,.045);letter-spacing:-5px;transform:rotate(-7deg)}.hero-copy{position:relative;z-index:1;padding:46px;max-width:820px}.eyebrow{color:var(--green);font:700 11px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:3px}h1{font-size:60px;line-height:.96;margin:18px 0 14px;letter-spacing:-3px}.lead{max-width:720px;color:#b5c5b8;font-size:15px}.notice{margin-top:18px;border:1px solid #665b32;background:#15140c;color:#d9c272;padding:12px 14px;font-size:12px;max-width:820px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+  .btn{border:1px solid #477052;background:#11261a;color:var(--text);font-weight:800;padding:11px 14px;cursor:pointer}.btn.primary{background:var(--green);color:#07100d;border-color:var(--green)}.btn.warn{border-color:#665b32;background:#15140c;color:#d9c272}.btn.bad{border-color:#704337;background:#1a0f0d;color:#e8aa96}.btn:disabled{opacity:.45;cursor:not-allowed}.btn:hover:not(:disabled){filter:brightness(1.06)}
+  .section{padding:22px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:15px}.section h2{font-size:20px;margin:0;letter-spacing:.5px}.section h2:before{content:"// ";color:var(--green)}.section-head span{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1.2px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{border:1px solid #21362a;background:var(--panel2);padding:15px}.stat b{display:block;color:var(--green);font-size:28px;line-height:1}.stat span{display:block;color:var(--muted);font-size:11px;margin-top:6px}
+  .layout{display:grid;grid-template-columns:minmax(320px,.9fr) 1.1fr;gap:16px;align-items:start}.panel{border:1px solid var(--line);background:var(--panel);padding:20px;box-shadow:var(--shadow)}.form-grid{display:grid;gap:12px}.field span{display:block;color:var(--muted);font-size:11px;margin-bottom:5px}.field input,.field textarea,.field select{width:100%;border:1px solid #2b4535;background:#07100d;color:var(--text);padding:11px 12px;outline:0}.field textarea{min-height:138px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:#75af66;box-shadow:0 0 0 2px rgba(159,232,112,.12)}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .login-panel{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.auth-card{border:1px solid #31513a;background:linear-gradient(135deg,#0f2118,#08110d 64%);padding:20px;box-shadow:var(--shadow)}.auth-state{border:1px solid #203429;background:#08110d;padding:14px;color:#b9c8bc}.auth-line{display:flex;justify-content:space-between;gap:14px;align-items:center;border-bottom:1px solid #17271e;padding:8px 0}.auth-line:last-child{border-bottom:0}.code-hint{display:none;border:1px dashed #665b32;background:#15140c;color:#d9c272;padding:10px 12px;font-size:12px}.rules{border:1px dashed #34523c;background:#08110d;color:#b9c8bc;font-size:12px;padding:12px}.rules b{color:var(--green)}
+  .toolbar{display:grid;grid-template-columns:1fr auto auto;gap:10px;margin-bottom:12px}.toolbar input,.toolbar select{border:1px solid #2b4535;background:#07100d;color:var(--text);padding:10px 12px;outline:0}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.tab{border:1px solid #2d4536;background:#0c1712;color:#c4d3c7;padding:8px 10px;font:800 10px ui-monospace,monospace;cursor:pointer}.tab:hover,.tab.active{border-color:#77ae68;color:#07100d;background:var(--green)}
+  .thread-list{display:grid;gap:10px}.thread{border:1px solid #22382b;background:var(--panel2);padding:15px;cursor:pointer;text-align:left;color:inherit}.thread:hover,.thread.active{border-color:#77ae68;background:#102019}.thread-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.thread h3{font-size:17px;line-height:1.25;margin:0}.pill{border:1px solid #3b5b43;color:#abc7ae;font:800 10px ui-monospace,monospace;padding:3px 7px;white-space:nowrap}.thread p{margin:10px 0;color:#b5c5b8;font-size:12px}.thread-meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font:800 10px ui-monospace,monospace}.empty{display:none;border:1px dashed #34523c;background:#08110d;color:var(--muted);padding:18px;text-align:center}
+  .detail{border:1px solid #2c4235;background:var(--panel);box-shadow:var(--shadow);position:sticky;top:92px}.detail-head{padding:20px;border-bottom:1px solid #1e3327}.detail-head h2{font-size:30px;line-height:1.1;margin:8px 0}.detail-body{padding:20px;color:#c3d1c6;white-space:pre-wrap}.detail-meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font:800 10px ui-monospace,monospace}.reply-list{display:grid;gap:10px;padding:0 20px 20px}.reply{border:1px solid #21362a;background:#08110d;padding:12px}.reply b{display:block;font-size:13px}.reply p{margin:8px 0 0;color:#c3d1c6;white-space:pre-wrap}.reply-form{border-top:1px solid #1e3327;padding:20px;display:grid;gap:10px}.reply-form textarea{width:100%;min-height:92px;border:1px solid #2b4535;background:#07100d;color:var(--text);padding:10px;resize:vertical}.actions-row{display:flex;gap:8px;flex-wrap:wrap}.small{font-size:11px;color:var(--muted)}.locked{border:1px solid #665b32;background:#15140c;color:#d9c272;padding:12px}
+  .footer{margin-top:36px;border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}.warning{color:#a9b7ac;max-width:900px}
+  @media(max-width:1050px){.layout,.login-panel{grid-template-columns:1fr}.detail{position:static}nav{display:none}.brand{min-width:0}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1 / -1}.stats{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.wrap{padding:0 18px}.hero-copy{padding:34px 24px}h1{font-size:40px}.field-row,.toolbar,.stats{grid-template-columns:1fr}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a href="operations_fire.html">烽火地带</a><a href="map_easter_eggs.html">地图彩蛋</a><a href="operators_assault.html">干员</a><a href="streamers.html">主播名片</a><a class="active" href="community_forum.html">玩家交流</a></nav>
+  <a class="back" href="delta_force_wiki_home.html">← 返回首页</a>
+</div></header>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <div class="eyebrow">COMMUNITY PLAZA // EMAIL SIGN-IN</div>
+        <h1>玩家交流广场</h1>
+        <p class="lead">广场路线保留：玩家登录后可以发帖、回复、点赞、找队友、投同人和补攻略。第一版用邮箱验证码做身份入口，先让社区流动起来。</p>
+        <div class="notice">当前是本地开发版：邮箱验证码会直接显示在页面里，方便测试。正式上线时再接邮件服务商，验证码就会真正发到邮箱。</div>
+        <div class="hero-actions"><a class="btn primary" href="#login">邮箱登录</a><a class="btn" href="#composer">发布新帖</a><a class="btn" href="#threads">浏览广场</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="login">
+    <div class="section-head"><h2>邮箱登录</h2><span>验证码身份入口</span></div>
+    <div class="login-panel">
+      <form class="auth-card form-grid" id="loginForm">
+        <div class="field-row">
+          <label class="field"><span>邮箱</span><input id="emailInput" type="email" autocomplete="email" placeholder="player@example.com" required /></label>
+          <label class="field"><span>验证码</span><input id="codeInput" inputmode="numeric" maxlength="6" placeholder="6 位数字" /></label>
+        </div>
+        <label class="field"><span>广场昵称</span><input id="nicknameInput" maxlength="18" placeholder="不填则用邮箱前缀" /></label>
+        <div class="code-hint" id="codeHint"></div>
+        <div class="actions-row"><button class="btn" type="button" id="sendCodeButton">发送验证码</button><button class="btn primary" type="submit">登录广场</button><button class="btn warn" type="button" id="logoutButton">退出登录</button></div>
+      </form>
+      <aside class="auth-card">
+        <div class="eyebrow">ACCOUNT STATE</div>
+        <h2>当前身份</h2>
+        <div class="auth-state" id="authState"></div>
+        <div class="rules" style="margin-top:12px">
+          <b>广场版规：</b>可以发攻略、提问、组队、同人、活动建议。不要发外挂、代练黑产、真实交易、人身攻击、开盒或未授权搬运。
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2>广场状态</h2><span>本地原型数据</span></div>
+    <div class="stats">
+      <div class="stat"><b id="statThreads">0</b><span>主题帖</span></div>
+      <div class="stat"><b id="statReplies">0</b><span>回复</span></div>
+      <div class="stat"><b id="statUsers">0</b><span>登录用户样本</span></div>
+      <div class="stat"><b id="statToday">0</b><span>今日新增</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="composer">
+    <div class="section-head"><h2>发布新帖</h2><span>攻略 / 组队 / 同人 / 反馈</span></div>
+    <div class="layout">
+      <form class="panel form-grid" id="postForm">
+        <div class="locked" id="postLock">请先完成邮箱登录，再发布新帖。</div>
+        <div class="field-row">
+          <label class="field"><span>作者</span><input id="authorInput" maxlength="18" readonly /></label>
+          <label class="field"><span>分区</span><select id="sectionInput"></select></label>
+        </div>
+        <label class="field"><span>标题</span><input id="titleInput" maxlength="42" placeholder="一句话说明你的帖子" required /></label>
+        <div class="field-row">
+          <label class="field"><span>地图 / 主题标签</span><select id="tagInput"></select></label>
+          <label class="field"><span>帖子类型</span><select id="typeInput"><option>讨论</option><option>攻略</option><option>求助</option><option>招募</option><option>投稿</option></select></label>
+        </div>
+        <label class="field"><span>正文</span><textarea id="bodyInput" maxlength="1400" placeholder="写路线、需求、经历、作品说明都可以。" required></textarea></label>
+        <div class="actions-row"><button class="btn primary" id="postButton" type="submit">发布帖子</button><button class="btn" type="button" id="fillExample">填入示例</button></div>
+      </form>
+      <aside class="panel">
+        <div class="eyebrow">WHY EMAIL FIRST</div>
+        <h2>先有身份，再有广场</h2>
+        <div class="rules">
+          邮箱登录比微信/手机轻，适合我们现在这个阶段。它能让帖子和回复有稳定身份，后面也方便做找回账号、举报记录、版主权限和生日会报名。
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="threads">
+    <div class="section-head"><h2>帖子大厅</h2><span>点击帖子查看详情和回复</span></div>
+    <div class="layout">
+      <div class="panel">
+        <div class="toolbar">
+          <input id="searchInput" placeholder="搜索标题、正文、作者、地图…" />
+          <select id="sortInput"><option value="latest">最新回复</option><option value="hot">热度</option><option value="oldest">最早发布</option></select>
+          <button class="btn warn" id="resetDemo" type="button">重置示例</button>
+        </div>
+        <div class="tabs" id="sectionTabs"></div>
+        <div class="thread-list" id="threadList"></div>
+        <div class="empty" id="emptyState">没有找到符合条件的帖子</div>
+      </div>
+      <article class="detail" id="threadDetail" aria-live="polite"></article>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="warning">说明：这个版本已经把“邮箱身份 + 广场发帖”流程跑通，但数据仍只保存在本机浏览器。正式给玩家共用时，需要把邮箱验证码发送、帖子、回复、点赞迁到服务器和数据库。</div><div>COMMUNITY PLAZA // EMAIL AUTH PROTOTYPE</div></footer>
+</main>
+<script>
+  const threadStorageKey = "deltaWikiCommunityThreads.v1";
+  const authStorageKey = "deltaWikiEmailAuth.v1";
+  const codeStorageKey = "deltaWikiEmailCode.v1";
+  const sections = ["全部", "攻略问答", "组队招募", "同人投稿", "每日情报", "站务建议"];
+  const tags = ["烽火地带", "零号大坝", "长弓溪谷", "巴克什", "航天基地", "干员", "同人", "生日会", "综合"];
+  const seedThreads = [
+    {id:"seed-1", title:"零号大坝新手稳撤路线怎么走？", author:"仓库只剩两格", authorEmail:"seed@wiki.local", section:"攻略问答", tag:"零号大坝", type:"求助", body:"最近老是在行政楼附近撞队。有没有适合单排或双排的稳撤路线？最好能兼顾任务点和撤离安全。", createdAt:"2026-08-27T08:10:00.000Z", updatedAt:"2026-08-27T08:45:00.000Z", likes:8, likedBy:[], replies:[{author:"坝区老鼠", authorEmail:"seed2@wiki.local", body:"可以先绕游客中心外圈，别第一时间进楼。听到行政楼开火就等 40 秒再转，撤离点提前看负载。", createdAt:"2026-08-27T08:45:00.000Z"}]},
+    {id:"seed-2", title:"三角洲生日会可以先做节目征集页", author:"洲宝后勤组", authorEmail:"event@wiki.local", section:"站务建议", tag:"生日会", type:"投稿", body:"我觉得以后可以有节目单：同人动画、攻略整活、干员配音、摸金故事、生日贺图。Wiki 先做作品索引和报名表。", createdAt:"2026-08-27T07:00:00.000Z", updatedAt:"2026-08-27T07:15:00.000Z", likes:21, likedBy:[], replies:[{author:"资料终端", authorEmail:"system@wiki.local", body:"可以先做活动规则：原创、授权、投稿格式、展示位置、截止时间。", createdAt:"2026-08-27T07:15:00.000Z"}]},
+    {id:"seed-3", title:"找固定三排，晚上打烽火，不压力", author:"不会架枪的蜂医", authorEmail:"team@wiki.local", section:"组队招募", tag:"烽火地带", type:"招募", body:"主要打普通和机密，能开麦，掉了不压力。希望有人愿意一起跑任务和彩蛋。", createdAt:"2026-08-26T21:30:00.000Z", updatedAt:"2026-08-26T21:30:00.000Z", likes:5, likedBy:[], replies:[]},
+    {id:"seed-4", title:"想投一个红狼财神爷表情包系列", author:"画不动了", authorEmail:"fanart@wiki.local", section:"同人投稿", tag:"同人", type:"投稿", body:"主题是撤离成功、空包回家、队友别舔、老板救我。想问站里以后能不能开同人作品索引页？", createdAt:"2026-08-26T18:20:00.000Z", updatedAt:"2026-08-26T18:20:00.000Z", likes:13, likedBy:[], replies:[]}
+  ];
+  let activeSection = "全部";
+  let activeThreadId = "";
+  const $ = (selector)=>document.querySelector(selector);
+  const escapeHtml = (value)=>String(value ?? "").replace(/[&<>"']/g,(char)=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char]));
+  const formatTime = (iso)=>new Intl.DateTimeFormat("zh-CN",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}).format(new Date(iso));
+  const nowIso = ()=>new Date().toISOString();
+  const makeId = ()=>"thread-" + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+  const normalizeEmail = (email)=>email.trim().toLowerCase();
+  const maskEmail = (email)=>{
+    const [name, domain] = String(email).split("@");
+    if(!domain) return email;
+    return `${name.slice(0,2)}***@${domain}`;
+  };
+
+  function loadJson(key, fallback){
+    try {
+      const value = JSON.parse(localStorage.getItem(key) || "null");
+      return value ?? fallback;
+    } catch (error) {
+      return fallback;
+    }
+  }
+  function getAuth(){
+    return loadJson(authStorageKey, null);
+  }
+  function setAuth(auth){
+    if(auth) localStorage.setItem(authStorageKey, JSON.stringify(auth));
+    else localStorage.removeItem(authStorageKey);
+    render();
+  }
+  function loadThreads(){
+    const stored = loadJson(threadStorageKey, null);
+    if(Array.isArray(stored)) return stored.map((thread)=>({...thread, likedBy:thread.likedBy || []}));
+    localStorage.setItem(threadStorageKey, JSON.stringify(seedThreads));
+    return seedThreads;
+  }
+  function saveThreads(threads){
+    localStorage.setItem(threadStorageKey, JSON.stringify(threads));
+  }
+  function getThreads(){
+    return loadThreads();
+  }
+  function setThreads(threads){
+    saveThreads(threads);
+    render();
+  }
+  function requireAuth(message){
+    const auth = getAuth();
+    if(auth) return auth;
+    $("#codeHint").style.display = "block";
+    $("#codeHint").textContent = message || "请先邮箱登录。";
+    location.hash = "#login";
+    return null;
+  }
+  function renderAuth(){
+    const auth = getAuth();
+    $("#logoutButton").disabled = !auth;
+    $("#postLock").style.display = auth ? "none" : "block";
+    $("#postButton").disabled = !auth;
+    $("#authorInput").value = auth?.nickname || "";
+    if(auth){
+      $("#authState").innerHTML = `
+        <div class="auth-line"><span>状态</span><strong>已登录</strong></div>
+        <div class="auth-line"><span>昵称</span><strong>${escapeHtml(auth.nickname)}</strong></div>
+        <div class="auth-line"><span>邮箱</span><strong>${escapeHtml(maskEmail(auth.email))}</strong></div>
+      `;
+    } else {
+      $("#authState").innerHTML = `
+        <div class="auth-line"><span>状态</span><strong>未登录</strong></div>
+        <div class="auth-line"><span>发帖</span><strong>需要邮箱验证码</strong></div>
+      `;
+    }
+  }
+  function renderSelectors(){
+    $("#sectionInput").innerHTML = sections.filter((item)=>item !== "全部").map((item)=>`<option>${escapeHtml(item)}</option>`).join("");
+    $("#tagInput").innerHTML = tags.map((item)=>`<option>${escapeHtml(item)}</option>`).join("");
+    $("#sectionTabs").innerHTML = sections.map((item)=>`<button class="tab ${item === activeSection ? "active" : ""}" type="button" data-section="${escapeHtml(item)}">${escapeHtml(item)}</button>`).join("");
+    $("#sectionTabs").querySelectorAll("[data-section]").forEach((button)=>button.addEventListener("click",()=>{
+      activeSection = button.dataset.section;
+      render();
+    }));
+  }
+  function filteredThreads(){
+    const query = $("#searchInput").value.trim().toLowerCase();
+    let threads = getThreads().filter((thread)=>{
+      const sectionMatch = activeSection === "全部" || thread.section === activeSection;
+      const haystack = `${thread.title} ${thread.author} ${thread.section} ${thread.tag} ${thread.type} ${thread.body}`.toLowerCase();
+      return sectionMatch && (!query || haystack.includes(query));
+    });
+    if($("#sortInput").value === "hot") threads.sort((a,b)=>(b.likes + b.replies.length * 3) - (a.likes + a.replies.length * 3));
+    else if($("#sortInput").value === "oldest") threads.sort((a,b)=>new Date(a.createdAt) - new Date(b.createdAt));
+    else threads.sort((a,b)=>new Date(b.updatedAt) - new Date(a.updatedAt));
+    return threads;
+  }
+  function renderStats(){
+    const threads = getThreads();
+    const today = new Date().toISOString().slice(0,10);
+    const users = new Set(threads.flatMap((thread)=>[thread.authorEmail, ...thread.replies.map((reply)=>reply.authorEmail)]).filter(Boolean));
+    $("#statThreads").textContent = threads.length;
+    $("#statReplies").textContent = threads.reduce((sum, thread)=>sum + thread.replies.length, 0);
+    $("#statUsers").textContent = users.size;
+    $("#statToday").textContent = threads.filter((thread)=>thread.createdAt.slice(0,10) === today).length;
+  }
+  function renderThreadList(){
+    const threads = filteredThreads();
+    if(!activeThreadId || !threads.some((thread)=>thread.id === activeThreadId)) activeThreadId = threads[0]?.id || "";
+    $("#emptyState").style.display = threads.length ? "none" : "block";
+    $("#threadList").innerHTML = threads.map((thread)=>`
+      <button class="thread ${thread.id === activeThreadId ? "active" : ""}" type="button" data-id="${escapeHtml(thread.id)}">
+        <span class="thread-top"><h3>${escapeHtml(thread.title)}</h3><span class="pill">${escapeHtml(thread.section)}</span></span>
+        <p>${escapeHtml(thread.body.slice(0,92))}${thread.body.length > 92 ? "..." : ""}</p>
+        <span class="thread-meta"><span>${escapeHtml(thread.author)}</span><span>${escapeHtml(thread.tag)}</span><span>${thread.replies.length} 回复</span><span>${thread.likes} 赞</span><span>${formatTime(thread.updatedAt)}</span></span>
+      </button>
+    `).join("");
+    $("#threadList").querySelectorAll("[data-id]").forEach((button)=>button.addEventListener("click",()=>{
+      activeThreadId = button.dataset.id;
+      render();
+    }));
+  }
+  function renderDetail(){
+    const auth = getAuth();
+    const thread = getThreads().find((item)=>item.id === activeThreadId);
+    if(!thread){
+      $("#threadDetail").innerHTML = '<div class="detail-head"><div class="eyebrow">NO THREAD</div><h2>暂无帖子</h2><p class="lead">发布第一条主题，社区就开始热起来了。</p></div>';
+      return;
+    }
+    const canDelete = auth && auth.email === thread.authorEmail;
+    const hasLiked = auth && (thread.likedBy || []).includes(auth.email);
+    $("#threadDetail").innerHTML = `
+      <div class="detail-head">
+        <div class="eyebrow">${escapeHtml(thread.section)} // ${escapeHtml(thread.type)}</div>
+        <h2>${escapeHtml(thread.title)}</h2>
+        <div class="detail-meta"><span>${escapeHtml(thread.author)}</span><span>${escapeHtml(thread.tag)}</span><span>发布 ${formatTime(thread.createdAt)}</span><span>${thread.likes} 赞</span></div>
+      </div>
+      <div class="detail-body">${escapeHtml(thread.body)}</div>
+      <div class="actions-row" style="padding:0 20px 18px"><button class="btn" type="button" id="likeButton">${hasLiked ? "已赞" : "赞一下"}</button>${canDelete ? '<button class="btn bad" type="button" id="deleteButton">删除本帖</button>' : ""}</div>
+      <div class="reply-list">
+        ${thread.replies.map((reply)=>`<div class="reply"><b>${escapeHtml(reply.author)} <span class="small">${formatTime(reply.createdAt)}</span></b><p>${escapeHtml(reply.body)}</p></div>`).join("") || '<div class="reply"><b>系统提示</b><p>还没有回复，来坐第一排。</p></div>'}
+      </div>
+      <form class="reply-form" id="replyForm">
+        ${auth ? `<div class="small">以 ${escapeHtml(auth.nickname)} 的身份回复</div>` : '<div class="locked">请先完成邮箱登录，再参与回复。</div>'}
+        <textarea id="replyBody" maxlength="700" placeholder="写一条回复…" required></textarea>
+        <button class="btn primary" type="submit" ${auth ? "" : "disabled"}>发表回复</button>
+      </form>
+    `;
+    $("#likeButton").addEventListener("click",()=>{
+      const current = requireAuth("登录后才能点赞。");
+      if(!current) return;
+      const threads = getThreads().map((item)=>{
+        if(item.id !== thread.id) return item;
+        const likedBy = item.likedBy || [];
+        if(likedBy.includes(current.email)) return item;
+        return {...item, likes:item.likes + 1, likedBy:[...likedBy, current.email], updatedAt:nowIso()};
+      });
+      setThreads(threads);
+    });
+    if(canDelete){
+      $("#deleteButton").addEventListener("click",()=>{
+        const threads = getThreads().filter((item)=>item.id !== thread.id);
+        activeThreadId = "";
+        setThreads(threads);
+      });
+    }
+    $("#replyForm").addEventListener("submit",(event)=>{
+      event.preventDefault();
+      const current = requireAuth("登录后才能回复。");
+      if(!current) return;
+      const reply = {author:current.nickname, authorEmail:current.email, body:$("#replyBody").value.trim(), createdAt:nowIso()};
+      if(!reply.body) return;
+      const threads = getThreads().map((item)=>item.id === thread.id ? {...item, replies:[...item.replies, reply], updatedAt:reply.createdAt} : item);
+      setThreads(threads);
+    });
+  }
+  function render(){
+    renderAuth();
+    renderSelectors();
+    renderStats();
+    renderThreadList();
+    renderDetail();
+  }
+
+  $("#sendCodeButton").addEventListener("click",()=>{
+    const email = normalizeEmail($("#emailInput").value);
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      $("#codeHint").style.display = "block";
+      $("#codeHint").textContent = "请先输入有效邮箱。";
+      return;
+    }
+    const code = String(Math.floor(100000 + Math.random() * 900000));
+    localStorage.setItem(codeStorageKey, JSON.stringify({email, code, expiresAt:Date.now() + 5 * 60 * 1000}));
+    $("#codeHint").style.display = "block";
+    $("#codeHint").textContent = `开发模式验证码：${code}。正式上线后，这串数字会发到 ${maskEmail(email)}。`;
+  });
+  $("#loginForm").addEventListener("submit",(event)=>{
+    event.preventDefault();
+    const email = normalizeEmail($("#emailInput").value);
+    const inputCode = $("#codeInput").value.trim();
+    const pending = loadJson(codeStorageKey, null);
+    if(!pending || pending.email !== email || pending.code !== inputCode || Date.now() > pending.expiresAt){
+      $("#codeHint").style.display = "block";
+      $("#codeHint").textContent = "验证码不正确或已过期，请重新发送。";
+      return;
+    }
+    const nickname = ($("#nicknameInput").value.trim() || email.split("@")[0]).slice(0,18);
+    setAuth({email, nickname, loginAt:nowIso()});
+    localStorage.removeItem(codeStorageKey);
+    $("#codeHint").style.display = "block";
+    $("#codeHint").textContent = "登录成功，可以发帖和回复了。";
+    $("#codeInput").value = "";
+  });
+  $("#logoutButton").addEventListener("click",()=>setAuth(null));
+  $("#postForm").addEventListener("submit",(event)=>{
+    event.preventDefault();
+    const auth = requireAuth("请先邮箱登录，再发布新帖。");
+    if(!auth) return;
+    const createdAt = nowIso();
+    const thread = {
+      id: makeId(),
+      title: $("#titleInput").value.trim(),
+      author: auth.nickname,
+      authorEmail: auth.email,
+      section: $("#sectionInput").value,
+      tag: $("#tagInput").value,
+      type: $("#typeInput").value,
+      body: $("#bodyInput").value.trim(),
+      createdAt,
+      updatedAt: createdAt,
+      likes: 0,
+      likedBy: [],
+      replies: []
+    };
+    if(!thread.title || !thread.body) return;
+    activeSection = "全部";
+    activeThreadId = thread.id;
+    setThreads([thread, ...getThreads()]);
+    $("#postForm").reset();
+    $("#authorInput").value = auth.nickname;
+    location.hash = "#threads";
+  });
+  $("#fillExample").addEventListener("click",()=>{
+    const auth = getAuth();
+    if(!auth) requireAuth("先登录一下，我再帮你填示例帖。");
+    $("#sectionInput").value = "站务建议";
+    $("#tagInput").value = "生日会";
+    $("#typeInput").value = "投稿";
+    $("#titleInput").value = "民间生日会节目征集怎么做？";
+    $("#bodyInput").value = "建议先开三个栏目：同人作品投稿、攻略整活节目、玩家故事征集。每个投稿都要有作者授权、平台链接和展示说明。";
+  });
+  $("#searchInput").addEventListener("input", render);
+  $("#sortInput").addEventListener("change", render);
+  $("#resetDemo").addEventListener("click",()=>{
+    localStorage.setItem(threadStorageKey, JSON.stringify(seedThreads));
+    activeThreadId = "";
+    activeSection = "全部";
+    $("#searchInput").value = "";
+    render();
+  });
+  render();
+</script>
+</body>
+</html>

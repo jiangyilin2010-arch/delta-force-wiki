@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>赛事板块｜三角洲行动 Wiki</title>
+<style>
+  :root{--bg:#07100d;--panel:#0c1712;--line:#24382d;--green:#9fe870;--gold:#d9c272;--text:#e8f2ea;--muted:#8fa395;--shadow:0 18px 45px rgba(0,0,0,.35)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),radial-gradient(circle at 78% 7%,rgba(217,194,114,.13),transparent 28%),var(--bg);background-size:32px 32px,32px 32px,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}.wrap{max-width:1440px;margin:auto;padding:0 28px}.topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 38%,var(--gold) 68%,transparent 96%)}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}.mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}.brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover{border-color:var(--line);background:#0d1813;color:var(--green)}.back{height:40px;border:1px solid var(--line);background:#08110d;display:flex;align-items:center;padding:0 12px;color:var(--muted);white-space:nowrap}
+  .hero{padding:58px 0 28px;display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.hero-main{min-height:420px;border:1px solid #2c4235;background:linear-gradient(90deg,rgba(4,9,7,.98),rgba(6,12,9,.76) 58%,rgba(20,20,9,.42));box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-main:after{content:"ESPORTS";position:absolute;right:-24px;bottom:-44px;color:rgba(217,194,114,.07);font-size:112px;font-weight:900;letter-spacing:-6px;transform:rotate(-7deg)}.hero-copy{position:relative;z-index:1;max-width:700px;padding:48px}.eyebrow{color:var(--green);font:700 11px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:3px}h1{font-size:68px;line-height:.94;margin:18px 0 14px;letter-spacing:-3px}.lead{max-width:640px;color:#b5c5b8;font-size:15px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.btn{padding:12px 17px;border:1px solid #477052;background:#11261a;font-weight:800}.btn.primary{background:var(--green);color:#07100d;border-color:var(--green)}
+  .trophy-panel{border:1px solid var(--line);background:linear-gradient(180deg,#111d15,#09120e);display:grid;place-items:center;box-shadow:var(--shadow);min-height:420px;position:relative;overflow:hidden}.trophy-panel:before{content:"WIN CONDITION";position:absolute;right:-34px;top:18px;color:rgba(159,232,112,.045);font-size:70px;font-weight:900;letter-spacing:-4px;transform:rotate(90deg);transform-origin:center}
+  .trophy{position:relative;width:210px;height:250px}.cup{position:absolute;left:40px;top:28px;width:130px;height:104px;background:linear-gradient(145deg,#f1dc89,#a9832f 68%,#624914);clip-path:polygon(8% 0,92% 0,78% 100%,22% 100%);box-shadow:0 0 38px rgba(217,194,114,.2)}.cup:before,.cup:after{content:"";position:absolute;top:16px;width:58px;height:58px;border:12px solid #b58c34;border-top-color:#e6ce78;background:transparent}.cup:before{left:-50px;border-right:0;border-radius:34px 0 0 34px}.cup:after{right:-50px;border-left:0;border-radius:0 34px 34px 0}.stem{position:absolute;left:88px;top:124px;width:34px;height:52px;background:linear-gradient(90deg,#8d6722,#e0c46e,#735117)}.base1{position:absolute;left:60px;top:172px;width:90px;height:28px;background:linear-gradient(90deg,#5f4517,#d5b661,#5f4517)}.base2{position:absolute;left:32px;top:198px;width:146px;height:38px;border:1px solid rgba(217,194,114,.55);background:#0b130f;box-shadow:0 15px 32px rgba(0,0,0,.32)}.trophy-label{position:absolute;left:0;right:0;top:236px;text-align:center;color:var(--gold);font:900 12px ui-monospace,monospace;letter-spacing:2px}
+  .section{padding:24px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:15px}.section h2{font-size:20px;margin:0;letter-spacing:.5px}.section h2:before{content:"// ";color:var(--green)}.section-head span,.kicker{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1.2px}
+  .status-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.status{border:1px solid #21362a;background:#0d1913;padding:15px}.status b{display:block;font-size:24px;color:var(--gold);line-height:1.2}.status span{color:var(--muted);font-size:11px}
+  .match-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.match-card{border:1px solid #21362a;background:linear-gradient(155deg,#11231a,#0a130f 68%);padding:18px;min-height:202px;display:flex;flex-direction:column;justify-content:space-between;transition:.18s}.match-card:hover{transform:translateY(-3px);border-color:#6d8753;background:#102019}.match-card.official{border-color:#4b6a43}.meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:.7px}.match-card b{display:block;font-size:17px;line-height:1.35;margin:10px 0}.match-card p{margin:0;color:#b5c5b8;font-size:12px}.tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.tag{font-size:10px;padding:3px 7px;border:1px solid #3b5b43;color:#abc7ae}.cta-line{margin-top:14px;color:var(--green);font-size:12px;font-weight:800}
+  .board{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}.panel{border:1px solid var(--line);background:#0a140f;padding:22px}.list{display:grid;gap:10px}.row{display:grid;grid-template-columns:76px 1fr auto;gap:12px;align-items:center;border-bottom:1px solid #17271e;padding:11px 0}.row:last-child{border-bottom:0}.badge{font:900 10px ui-monospace,monospace;color:var(--green)}.row strong{font-size:13px}.row span{font-size:11px;color:var(--muted);text-align:right}
+  .source-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.source{border:1px solid #21362a;background:#0d1913;padding:14px}.source strong{display:block;font-size:12px;margin-bottom:5px}.source span{display:block;color:var(--muted);font-size:11px}.footer{margin-top:36px;border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}.warning{color:#a9b7ac;max-width:860px}
+  @media(max-width:1100px){.hero,.board{grid-template-columns:1fr}.match-grid,.status-strip,.source-grid{grid-template-columns:repeat(2,1fr)}nav{display:none}.brand{min-width:0}}
+  @media(max-width:620px){.wrap{padding:0 18px}.hero-copy{padding:34px 24px}h1{font-size:42px}.match-grid,.status-strip,.source-grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.row span{text-align:left}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a href="#active">报名与赛程</a><a href="#tickets">线下购票</a><a href="#watch">观赛入口</a><a href="#archive">回放与售票</a><a href="streamers.html">主播名片</a><a href="#sources">来源</a></nav>
+  <a class="back" href="delta_force_wiki_home.html">返回首页</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <div class="eyebrow">COMPETITIVE OPS // TROPHY BOARD</div>
+        <h1>赛事板块</h1>
+        <p class="lead">把《三角洲行动》正在报名、即将开赛、可线上观赛、可线下购票和可看回放的比赛集中在这里。每周热点更新时，这一页会顺带核对比赛入口。</p>
+        <div class="actions"><a class="btn primary" href="#tickets">线下买票</a><a class="btn" href="#active">看报名赛程</a><a class="btn" href="#watch">去观赛</a><a class="btn" href="#archive">看回放</a></div>
+      </div>
+    </div>
+    <aside class="trophy-panel" aria-label="赛事奖杯">
+      <div class="trophy" aria-hidden="true">
+        <div class="cup"></div><div class="stem"></div><div class="base1"></div><div class="base2"></div><div class="trophy-label">CHAMPION ROUTE</div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section" id="active">
+    <div class="section-head"><h2>报名与赛程</h2><span>优先保留能报名、能参赛、即将开打的入口</span></div>
+    <div class="status-strip">
+      <div class="status"><b>6</b><span>赛事与回放条目</span></div>
+      <div class="status"><b>2</b><span>庆典官方售票平台</span></div>
+      <div class="status"><b>4</b><span>观赛/回放入口</span></div>
+      <div class="status"><b>每周</b><span>随热点更新核对</span></div>
+    </div>
+    <div class="match-grid" style="margin-top:12px">
+      <a class="match-card official" href="https://www.taptap.cn/forum/g531928?page=3&amp;type=official" target="_blank" rel="noreferrer"><div><div class="meta"><span>即将开赛</span><span>2026/09/25</span></div><b>烽火职业联赛夏季赛总决赛 · 重庆</b><p>官方世界杯预告确认 9 月 25 日重庆总决赛。具体开赛时刻以赛事官号为准；线下请核对庆典购票项目中总决赛场次与票种。</p><div class="tag-row"><span class="tag">DFPL 夏季赛</span><span class="tag">重庆</span><span class="tag">官方赛程</span></div></div><div class="cta-line">看官方赛程预告</div></a>
+      <a class="match-card official" href="https://www.taptap.cn/moment/847845531207075673?group_id=531928" target="_blank" rel="noreferrer"><div><div class="meta"><span>即将直播</span><span>9/25 14:00 北京时间</span></div><b>二洲年烽火明星表演赛</b><p>范丞丞、陈赫、何润东参加；官方账号全平台直播。表演赛与职业联赛总决赛分别核对，不混用开赛时刻。</p><div class="tag-row"><span class="tag">表演赛</span><span class="tag">官方直播</span></div></div><div class="cta-line">看官宣与观赛安排</div></a>
+      <a class="match-card official" href="https://www.taptap.cn/forum/g531928?page=3&amp;type=official" target="_blank" rel="noreferrer"><div><div class="meta"><span>已官宣</span><span>2026/11/27—11/29</span></div><b>2026 烽火世界杯 · 斯德哥尔摩</b><p>官方 9 月 1 日公告确认落地 DreamHack、12 支队伍参赛。国服有三个席位；最终观赛房间与单独票务待后续公告。</p><div class="tag-row"><span class="tag">国际赛事</span><span class="tag">DreamHack</span></div></div><div class="cta-line">看官方世界杯预告</div></a>
+    </div>
+  </section>
+
+  <section class="section" id="tickets">
+    <div class="section-head"><h2>线下购票地点</h2><span>重庆二洲年庆典 · 按场次购票</span></div>
+    <div class="board">
+      <div class="panel">
+        <div class="kicker">TICKET ROUTE</div>
+        <h2>大麦 APP / 同程旅行 APP</h2>
+        <p class="lead">官方售票公告指定大麦和同程旅行，9 月 12 日 12:00 开售；搜索“三角洲行动”，或扫描原文指引图中的二维码。庆典为 9 月 25—26 日，地点为重庆华熙生物·润百颜 ECM 中心。已到公告开售时间，实时余票未核实。</p>
+        <div class="list">
+          <div class="row"><div class="badge">STEP-01</div><strong>打开大麦 APP 或同程旅行 APP</strong><span>官方渠道</span></div>
+          <div class="row"><div class="badge">STEP-02</div><strong>搜索“三角洲行动”，进入二洲年庆典项目</strong><span>搜索词</span></div>
+          <div class="row"><div class="badge">STEP-03</div><strong>核对日期、总决赛或庆典场次及票种，再确认余票</strong><span>按项目说明</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="kicker">VERIFIED INFO</div>
+        <div class="list">
+          <a class="row" href="https://www.taptap.cn/moment/843954659390391218" target="_blank" rel="noreferrer"><div class="badge">SRC-01</div><strong>官方售票指引：大麦 / 同程 / 购票二维码</strong><span>9/1 公告</span></a>
+          <a class="row" href="https://www.taptap.cn/moment/847966919540608546?group_id=531928" target="_blank" rel="noreferrer"><div class="badge">SRC-02</div><strong>官方庆典日期与重庆场馆公告</strong><span>9/25—9/26</span></a>
+          <a class="row" href="https://www.weibo.com/u/7994205115" target="_blank" rel="noreferrer"><div class="badge">SRC-02</div><strong>三角洲行动赛事官方微博</strong><span>置顶购票</span></a>
+        </div>
+        <p class="lead" style="margin-top:16px">微信购票请使用官方原文二维码；此处未取得稳定的小程序商品直链。北京常规赛的同程售票指南保留在下方历史区，不能用于判断重庆场次票务。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="watch">
+    <div class="section-head"><h2>观赛入口</h2><span>直播间、赛事中心、全平台同步</span></div>
+    <div class="board">
+      <div class="panel">
+        <div class="kicker">WATCH ROUTES</div>
+        <div class="list">
+          <a class="row" href="https://www.huya.com/152792" target="_blank" rel="noreferrer"><div class="badge">LIVE-01</div><strong>三角洲行动赛事官方虎牙直播间</strong><span>房间 152792</span></a>
+          <a class="row" href="https://www.huya.com/148563" target="_blank" rel="noreferrer"><div class="badge">LIVE-02</div><strong>三角洲行动官方虎牙直播间</strong><span>房间 148563</span></a>
+          <a class="row" href="https://live.douyin.com/category/1_1" target="_blank" rel="noreferrer"><div class="badge">LIVE-03</div><strong>抖音游戏直播入口</strong><span>搜索三角洲行动赛事</span></a>
+          <a class="row" href="https://www.bilibili.com/search?keyword=%E4%B8%89%E8%A7%92%E6%B4%B2%E8%A1%8C%E5%8A%A8%E8%B5%9B%E4%BA%8B" target="_blank" rel="noreferrer"><div class="badge">LIVE-04</div><strong>B站赛事搜索入口</strong><span>直播/回放</span></a>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="kicker">CURRENT NOTE</div>
+        <p class="lead">9 月 14 日核验：已接入重庆夏季赛总决赛、9 月 25 日 14:00 明星表演赛和 11 月世界杯预告。国内观赛仍可从官方虎牙直播间进入，具体节目单以官号为准；9 月 25 日 14:00 仅为表演赛时间。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="archive">
+    <div class="section-head"><h2>回放与线下观赛</h2><span>错过直播时优先看这里</span></div>
+    <div class="match-grid">
+      <a class="match-card official" href="https://www.bilibili.com/video/BV1Mhug6NEes/" target="_blank" rel="noreferrer"><div><div class="meta"><span>赛事回放</span><span>9/6 常规赛收官</span></div><b>烽火职业联赛夏季赛第五周回放</b><p>保留常规赛第五周合集，补看收官阶段。季后赛回放请从赛事官方账号核对，不把常规赛合集标为季后赛。</p><div class="tag-row"><span class="tag">B站</span><span class="tag">常规赛</span></div></div><div class="cta-line">看第五周回放</div></a>
+      <a class="match-card official" href="https://www.sina.cn/news/detail/5323087412991984.html" target="_blank" rel="noreferrer"><div><div class="meta"><span>历史售票指南</span><span>2026/07/21</span></div><b>夏季赛常规赛：同程购票指南存档</b><p>原场馆为北京智慧融媒创新中心，售票渠道为同程 APP / 小程序。搜索“三角洲”核对场次；本指南不能证明季后赛或总决赛已经开票。</p><div class="tag-row"><span class="tag">北京</span><span class="tag">同程旅行</span><span class="tag">常规赛已结束</span></div></div><div class="cta-line">看官方售票指南</div></a>
+      <a class="match-card" href="https://hdpage.huya.com/live/webMainActivity/index?id=255289" target="_blank" rel="noreferrer"><div><div class="meta"><span>历史赛事</span><span>2026/08/02</span></div><b>三角洲主播巅峰赛总决赛</b><p>虎牙活动页记录上海宝山体育馆总决赛信息，并提供三角洲行动赛事官方与官方直播间入口。</p><div class="tag-row"><span class="tag">主播赛</span><span class="tag">总决赛</span></div></div><div class="cta-line">打开活动页</div></a>
+    </div>
+  </section>
+
+  <section class="section" id="sources">
+    <div class="section-head"><h2>来源与核验</h2><span>官方优先，平台补充</span></div>
+    <div class="source-grid">
+      <a class="source" href="https://steamcommunity.com/app/2507950/announcements/?l=schinese" target="_blank" rel="noreferrer"><strong>Steam 官方公告</strong><span>核对国际服 Rise Series、版本赛事与官方说明。</span></a>
+      <a class="source" href="https://www.weibo.com/u/7994205115" target="_blank" rel="noreferrer"><strong>三角洲行动赛事微博</strong><span>核对国内赛程、赛果、售票和直播通知。</span></a>
+      <a class="source" href="https://www.taptap.cn/moment/843954659390391218" target="_blank" rel="noreferrer"><strong>二洲年庆典官方售票指南</strong><span>大麦、同程与官方二维码；实时余票以商品页为准。</span></a>
+      <a class="source" href="https://www.huya.com/152792" target="_blank" rel="noreferrer"><strong>虎牙赛事官方直播间</strong><span>核对官方直播、重播和节目单。</span></a>
+      <a class="source" href="https://live.douyin.com/category/1_1" target="_blank" rel="noreferrer"><strong>抖音游戏直播入口</strong><span>补充核对短视频平台赛事直播热度和观赛入口。</span></a>
+      <a class="source" href="https://deltaforce.garena.com/zh_tw/news/event" target="_blank" rel="noreferrer"><strong>Garena 活动页</strong><span>核对台服报名、活动和自办赛事申请入口。</span></a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="warning">资料说明：赛事板块用于集中放置报名入口、观赛入口、线下购票和回放。线下购票优先标明官方售票平台、搜索词和售票指南来源；实际报名资格、赛程变动和票务规则以官方页面及同程旅行 APP / 小程序为准。</div><div>ESPORTS BOARD // 2026-09-14</div></footer>
+</main>
+</body>
+</html>

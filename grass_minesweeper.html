@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>探索阿萨拉草丛｜夺舍大师扫雷</title>
+<style>
+  :root{--bg:#07100d;--panel:#0a140f;--panel2:#0d1913;--line:#24382d;--green:#9fe870;--green2:#5eae62;--text:#e8f2ea;--muted:#8fa395;--warn:#d9c272;--danger:#d98672;--red:#ff5a62;--cyan:#77d9ff;--shadow:0 18px 45px rgba(0,0,0,.35)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),radial-gradient(circle at 82% 6%,rgba(77,131,79,.18),transparent 30%),radial-gradient(circle at 14% 70%,rgba(217,194,114,.08),transparent 24%),var(--bg);background-size:32px 32px,32px 32px,auto,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}.wrap{max-width:1320px;margin:auto;padding:0 28px}.topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 40%,var(--green2) 70%,transparent 96%);opacity:.8}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}.mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}.brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover,nav a.active{border-color:var(--line);background:#0d1813;color:var(--green)}
+  .hero{padding:48px 0 16px;display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.hero-main{min-height:280px;border:1px solid #2c4235;background:linear-gradient(90deg,rgba(4,9,7,.98),rgba(6,12,9,.72) 55%,rgba(9,17,13,.28)),linear-gradient(180deg,rgba(3,8,6,.08),rgba(3,8,6,.9)),url("assets/mini-games-cover-atlas.png");background-size:100% 100%,100% 100%,160% auto;background-position:center,center,18% 18%;box-shadow:var(--shadow);padding:34px;position:relative;overflow:hidden}.hero-main:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(116deg,transparent 0 38px,rgba(159,232,112,.05) 39px 40px);pointer-events:none}.hero-main:after{content:"GRASS SWEEP";position:absolute;right:-26px;bottom:-36px;color:rgba(159,232,112,.06);font-size:90px;font-weight:1000;letter-spacing:-5px;transform:rotate(-5deg)}
+  .eyebrow,.kicker{color:var(--green);font:800 10px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:2.4px}.hero h1{position:relative;z-index:1;font-size:52px;line-height:1;margin:16px 0 14px;letter-spacing:-2px}.hero p{position:relative;z-index:1;color:#aebdb1;margin:0;max-width:680px}.status-card{border:1px solid var(--line);background:linear-gradient(180deg,#0e1a14,#09120e);padding:24px}.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}.stat{border:1px solid #21362a;background:#0d1913;padding:14px}.stat strong{display:block;font-size:26px;color:var(--green);line-height:1}.stat span{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1px}
+  .game-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;margin:16px 0 42px;align-items:start}.field-shell{border:1px solid #31513a;background:#0a140f;box-shadow:var(--shadow);overflow:hidden}.field-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid #1b2d23;background:linear-gradient(90deg,#0f2118,#0a140f)}.field-head h2{font-size:20px;margin:0}.timer{font:900 26px ui-monospace,monospace;color:var(--green)}
+  .hud-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px 18px;border-bottom:1px solid #17271e;background:#09120e}.hud{border:1px solid #21362a;background:#0d1913;padding:12px}.hud strong{display:block;font:900 20px ui-monospace,monospace;color:#e8f2ea;line-height:1}.hud span{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1px}
+  .grass-zone{padding:18px;display:grid;place-items:center;background:radial-gradient(circle at center,rgba(159,232,112,.07),transparent 36%),linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),#07100d;background-size:auto,34px 34px,34px 34px;min-height:620px;position:relative;overflow:hidden}.grass-zone:before{content:"";position:absolute;inset:18px;border:1px solid rgba(159,232,112,.1);pointer-events:none}.grass-zone.scan:after{content:"";position:absolute;left:18px;right:18px;height:72px;background:linear-gradient(180deg,transparent,rgba(159,232,112,.16),rgba(255,255,255,.12),rgba(159,232,112,.08),transparent);box-shadow:0 0 28px rgba(159,232,112,.22);animation:sweep 1s ease-out both;pointer-events:none}@keyframes sweep{from{top:-80px}to{top:100%}}
+  .board{position:relative;z-index:1;display:grid;gap:4px;width:min(100%,640px);aspect-ratio:1;border:1px solid #284333;background:#07100d;padding:8px;box-shadow:0 24px 58px rgba(0,0,0,.36),inset 0 0 0 1px rgba(159,232,112,.06)}.cell{min-width:0;min-height:0;border:1px solid #24402d;background:radial-gradient(circle at 40% 34%,rgba(159,232,112,.18),transparent 22%),linear-gradient(135deg,#163522,#0c1a12 58%,#07100d);color:#dce9df;font:900 clamp(12px,2vw,22px) ui-monospace,monospace;display:grid;place-items:center;cursor:pointer;user-select:none;touch-action:manipulation;position:relative;overflow:hidden}.cell:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(132deg,transparent 0 7px,rgba(159,232,112,.08) 8px 9px);opacity:.65}.cell:hover{border-color:var(--green);filter:brightness(1.12)}.cell.revealed{background:linear-gradient(145deg,#101812,#0a110d);border-color:#1b2d23;cursor:default}.cell.revealed:before{opacity:.12}.cell.marked{border-color:var(--warn);background:linear-gradient(145deg,#2c2715,#0b130f)}.cell.marked:after{content:"标";position:relative;z-index:1;color:var(--warn);font-size:clamp(11px,1.8vw,18px)}.cell.trap{border-color:var(--red);background:radial-gradient(circle,rgba(255,90,98,.35),transparent 42%),linear-gradient(145deg,#3a1115,#0b130f);box-shadow:0 0 20px rgba(255,90,98,.18)}.cell.trap:after{content:"夺";position:relative;z-index:1;color:#ffd0d0;text-shadow:0 0 12px rgba(255,90,98,.55);font-size:clamp(12px,1.9vw,20px)}.cell.hint{animation:hintPulse .75s ease-in-out 3}.cell.n1{color:#9fe870}.cell.n2{color:#77d9ff}.cell.n3{color:#d9c272}.cell.n4,.cell.n5,.cell.n6,.cell.n7,.cell.n8{color:#ff9a87}@keyframes hintPulse{50%{box-shadow:0 0 0 2px rgba(159,232,112,.5),0 0 28px rgba(159,232,112,.28);filter:brightness(1.25)}}
+  .side{display:grid;gap:12px;position:sticky;top:90px}.panel{border:1px solid var(--line);background:#0a140f;padding:18px}.difficulty{display:grid;grid-template-columns:1fr;gap:8px}.btn{border:1px solid #477052;background:#11261a;color:var(--text);font-weight:900;padding:12px 14px;cursor:pointer;text-align:center}.btn.primary,.btn.active{background:var(--green);color:#07100d;border-color:var(--green)}.btn:hover{filter:brightness(1.07)}.btn:disabled{opacity:.45;cursor:not-allowed}.status-title{font-size:28px;line-height:1.05;margin:10px 0;color:var(--warn);font-weight:900}.status-line{margin:0;color:#c0cec4}.log{display:grid;gap:8px;max-height:220px;overflow:auto}.log-item{border-left:3px solid #3f6748;background:#0d1913;padding:9px 11px;color:#c7d6cb;font-size:12px}.log-item.danger{border-color:var(--danger)}.log-item.win{border-color:var(--green)}.log-item.warn{border-color:var(--warn)}.footer{border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}
+  @media(max-width:1040px){.hero,.game-layout{grid-template-columns:1fr}.side{position:static}nav{display:none}.brand{min-width:0}.grass-zone{min-height:auto}.hud-strip{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.wrap{padding:0 18px}.hero-main{padding:28px 22px}.hero h1{font-size:38px}.stat-grid,.hud-strip{grid-template-columns:1fr}.board{gap:3px;padding:6px}.cell{border-width:1px}.field-head{align-items:flex-start;flex-direction:column}.footer{flex-direction:column}}
+</style>
+<link rel="stylesheet" href="shared/player-card.css">
+<script src="shared/player-card.js"></script>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a href="delta_force_wiki_home.html">首页</a><a class="active" href="mini_games.html">小游戏</a><a href="operations_fire.html">烽火地带</a><a href="delta_force_wiki_home.html#operators">干员档案</a><a href="community_forum.html">玩家交流</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="eyebrow">G.T.I. GRASS SWEEP // RAT FIELD</div>
+      <h1>探索阿萨拉草丛</h1>
+      <p>每片草都可能是地图的一部分，也可能是正在等你路过的夺舍大师。翻草、插标记、活着穿过这片安静得不对劲的区域。</p>
+    </div>
+    <aside class="status-card">
+      <div class="kicker">FIELD CONFIG / 草区情报</div>
+      <div class="stat-grid">
+        <div class="stat"><strong>9-16</strong><span>GRID SIZE</span></div>
+        <div class="stat"><strong>10-45</strong><span>AMBUSH POINTS</span></div>
+        <div class="stat"><strong>3</strong><span>SCAN CHARGES</span></div>
+        <div class="stat"><strong>夺</strong><span>HIDDEN MASTER</span></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="game-layout">
+    <div class="field-shell">
+      <div class="field-head">
+        <div><div class="kicker">LIVE FIELD / 草区探索</div><h2 id="fieldName">普通草区</h2></div>
+        <div class="timer" id="timer">00:00</div>
+      </div>
+      <div class="hud-strip">
+        <div class="hud"><strong id="leftText">10</strong><span>剩余标记</span></div>
+        <div class="hud"><strong id="safeText">0</strong><span>已清草丛</span></div>
+        <div class="hud"><strong id="scanText">3</strong><span>听力头扫描</span></div>
+        <div class="hud"><strong id="riskText">低</strong><span>夺舍压力</span></div>
+      </div>
+      <div class="grass-zone" id="grassZone">
+        <div class="board" id="board" aria-label="阿萨拉草丛扫雷棋盘"></div>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="panel">
+        <div class="kicker">STATUS / 行动状态</div>
+        <div class="status-title" id="statusTitle">索降待命</div>
+        <p class="status-line" id="statusLine">选择草区难度后开始行动。</p>
+      </div>
+      <div class="panel difficulty">
+        <button class="btn active" type="button" data-difficulty="easy">普通草区</button>
+        <button class="btn" type="button" data-difficulty="normal">行政楼外草</button>
+        <button class="btn" type="button" data-difficulty="hard">撤离点野草</button>
+      </div>
+      <div class="panel difficulty">
+        <button class="btn primary" id="newBtn" type="button">重新索降</button>
+        <button class="btn" id="markBtn" type="button">标记模式：关</button>
+        <button class="btn" id="scanBtn" type="button">听力头扫描</button>
+      </div>
+      <div class="panel">
+        <div class="kicker">FIELD LOG / 现场记录</div>
+        <div class="log" id="log"></div>
+      </div>
+    </aside>
+  </section>
+
+  <footer class="footer"><div>非官方娱乐小游戏。夺舍大师仅代表草丛伏击点，不代表任何真实玩家。</div><div>G.T.I. GRASS SWEEP BUILD 0.1 // 2026</div></footer>
+</main>
+
+<script>
+  const configs = {
+    easy:{name:"普通草区",rows:9,cols:9,traps:10,risk:"低"},
+    normal:{name:"行政楼外草",rows:12,cols:12,traps:22,risk:"中"},
+    hard:{name:"撤离点野草",rows:16,cols:16,traps:45,risk:"高"}
+  };
+  const boardNode = document.querySelector("#board");
+  const grassZone = document.querySelector("#grassZone");
+  const timerNode = document.querySelector("#timer");
+  const leftText = document.querySelector("#leftText");
+  const safeText = document.querySelector("#safeText");
+  const scanText = document.querySelector("#scanText");
+  const riskText = document.querySelector("#riskText");
+  const fieldName = document.querySelector("#fieldName");
+  const statusTitle = document.querySelector("#statusTitle");
+  const statusLine = document.querySelector("#statusLine");
+  const logNode = document.querySelector("#log");
+  const newBtn = document.querySelector("#newBtn");
+  const markBtn = document.querySelector("#markBtn");
+  const scanBtn = document.querySelector("#scanBtn");
+  const difficultyBtns = document.querySelectorAll("[data-difficulty]");
+  let difficulty = "easy";
+  let cells = [];
+  let placed = false;
+  let status = "ready";
+  let markMode = false;
+  let startedAt = 0;
+  let timerId = 0;
+  let scans = 3;
+  let opened = 0;
+  let marks = 0;
+
+  function initGame(nextDifficulty = difficulty){
+    PlayerCard.pending("grass");
+    difficulty = nextDifficulty;
+    const cfg = configs[difficulty];
+    cells = Array.from({length:cfg.rows * cfg.cols}, (_, index)=>({index, trap:false, count:0, revealed:false, marked:false}));
+    placed = false;
+    status = "ready";
+    scans = 3;
+    opened = 0;
+    marks = 0;
+    startedAt = 0;
+    clearInterval(timerId);
+    timerNode.textContent = "00:00";
+    fieldName.textContent = cfg.name;
+    boardNode.style.gridTemplateColumns = `repeat(${cfg.cols}, minmax(0,1fr))`;
+    boardNode.innerHTML = cells.map(cell => `<button class="cell" type="button" data-index="${cell.index}" aria-label="草丛 ${cell.index + 1}"></button>`).join("");
+    statusTitle.textContent = "索降待命";
+    statusLine.textContent = "草区已刷新，夺舍大师正在尝试成为生态环境。";
+    logNode.innerHTML = "";
+    addLog("直升机滑索降落完成，草丛安静得很有职业素养。");
+    updateHud();
+  }
+
+  function startTimer(){
+    if(startedAt) return;
+    startedAt = performance.now();
+    timerId = setInterval(()=>{
+      const elapsed = Math.floor((performance.now() - startedAt) / 1000);
+      timerNode.textContent = `${String(Math.floor(elapsed / 60)).padStart(2,"0")}:${String(elapsed % 60).padStart(2,"0")}`;
+    }, 250);
+  }
+
+  function neighbors(index){
+    const cfg = configs[difficulty];
+    const row = Math.floor(index / cfg.cols);
+    const col = index % cfg.cols;
+    const list = [];
+    for(let dr = -1; dr <= 1; dr += 1){
+      for(let dc = -1; dc <= 1; dc += 1){
+        if(!dr && !dc) continue;
+        const nr = row + dr;
+        const nc = col + dc;
+        if(nr >= 0 && nr < cfg.rows && nc >= 0 && nc < cfg.cols) list.push(nr * cfg.cols + nc);
+      }
+    }
+    return list;
+  }
+
+  function placeTraps(firstIndex){
+    const cfg = configs[difficulty];
+    const forbidden = new Set([firstIndex, ...neighbors(firstIndex)]);
+    const candidates = cells.map(cell => cell.index).filter(index => !forbidden.has(index));
+    for(let i = candidates.length - 1; i > 0; i -= 1){
+      const j = Math.floor(Math.random() * (i + 1));
+      [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+    }
+    candidates.slice(0, cfg.traps).forEach(index => cells[index].trap = true);
+    cells.forEach(cell => cell.count = neighbors(cell.index).filter(index => cells[index].trap).length);
+    placed = true;
+  }
+
+  function reveal(index){
+    if(status === "lost" || status === "won") return;
+    const cell = cells[index];
+    if(cell.revealed || cell.marked) return;
+    startTimer();
+    status = "playing";
+    if(!placed) placeTraps(index);
+    if(cell.trap){
+      lose(index);
+      return;
+    }
+    openCell(index);
+    if(cell.count === 0) flood(index);
+    addLog(cell.count ? `草叶动了一下：附近 ${cell.count} 个夺舍信号。` : "这片草暂时安全，连脚步声都很清白。");
+    updateHud();
+    checkWin();
+  }
+
+  function openCell(index){
+    const cell = cells[index];
+    if(cell.revealed || cell.marked || cell.trap) return;
+    cell.revealed = true;
+    opened += 1;
+    const node = cellNode(index);
+    node.className = `cell revealed ${cell.count ? `n${cell.count}` : ""}`;
+    node.textContent = cell.count || "";
+  }
+
+  function flood(index){
+    const queue = [index];
+    const seen = new Set(queue);
+    while(queue.length){
+      const current = queue.shift();
+      neighbors(current).forEach(next => {
+        if(seen.has(next)) return;
+        seen.add(next);
+        const cell = cells[next];
+        if(cell.revealed || cell.marked || cell.trap) return;
+        openCell(next);
+        if(cell.count === 0) queue.push(next);
+      });
+    }
+  }
+
+  function toggleMark(index){
+    if(status === "lost" || status === "won") return;
+    const cell = cells[index];
+    if(cell.revealed) return;
+    cell.marked = !cell.marked;
+    marks += cell.marked ? 1 : -1;
+    cellNode(index).classList.toggle("marked", cell.marked);
+    addLog(cell.marked ? "标记已插下：这片草看着就像会接电话。" : "标记已拔掉：也许只是风，也许不是。", cell.marked ? "warn" : "");
+    updateHud();
+  }
+
+  function useScan(){
+    if(status === "lost" || status === "won" || scans <= 0) return;
+    if(!placed){
+      addLog("听力头还没捕获到有效声纹，先翻一片草。", "warn");
+      return;
+    }
+    const safe = cells.filter(cell => !cell.revealed && !cell.marked && !cell.trap);
+    if(!safe.length) return;
+    scans -= 1;
+    grassZone.classList.remove("scan");
+    void grassZone.offsetWidth;
+    grassZone.classList.add("scan");
+    const priority = safe.filter(cell => cell.count > 0);
+    const chosen = (priority.length ? priority : safe)[Math.floor(Math.random() * (priority.length ? priority.length : safe.length))];
+    const node = cellNode(chosen.index);
+    node.classList.add("hint");
+    setTimeout(()=>node.classList.remove("hint"), 2300);
+    addLog("听力头扫描完成：有一片草的呼吸声比较正常。", "win");
+    updateHud();
+  }
+
+  function lose(index){
+    status = "lost";
+    clearInterval(timerId);
+    cells.forEach(cell => {
+      if(cell.trap) cellNode(cell.index).classList.add("trap");
+    });
+    cellNode(index).classList.add("trap");
+    statusTitle.textContent = "被夺舍大师接电话";
+    statusLine.textContent = "你从草丛前经过，他不仅没有错过你，还亲自把你送回特勤处。";
+    PlayerCard.offer("grass", {title: statusTitle.textContent, lines: [document.querySelector("#fieldName").textContent, `已清草丛 ${opened} · 用时 ${document.querySelector("#timer").textContent}`, statusLine.textContent]});
+    addLog("夺舍大师从草里起身，G18修脚枪完成了一次很有教育意义的发言。", "danger");
+    updateHud();
+  }
+
+  function checkWin(){
+    const cfg = configs[difficulty];
+    if(opened !== cells.length - cfg.traps) return;
+    status = "won";
+    clearInterval(timerId);
+    statusTitle.textContent = "草区清理完成";
+    statusLine.textContent = rankLine();
+    PlayerCard.offer("grass", {title: statusTitle.textContent, lines: [document.querySelector("#fieldName").textContent, `已清草丛 ${opened} · 用时 ${document.querySelector("#timer").textContent}`, statusLine.textContent]});
+    addLog("全图草丛完成排查，夺舍大师开始怀疑自己的职业规划。", "win");
+    cells.forEach(cell => {
+      if(cell.trap && !cell.marked){
+        cell.marked = true;
+        cellNode(cell.index).classList.add("marked");
+      }
+    });
+    marks = cfg.traps;
+    updateHud();
+  }
+
+  function rankLine(){
+    const elapsed = startedAt ? Math.floor((performance.now() - startedAt) / 1000) : 0;
+    if(difficulty === "hard" && elapsed <= 240) return "撤离点野草也拦不住你，今日称号：阿萨拉园林安保。";
+    if(elapsed <= 90) return "你清草速度很快，像是开局自带草丛户口本。";
+    if(marks <= configs[difficulty].traps + 4) return "你标得很稳，夺舍大师在你面前失去神秘感。";
+    return "虽然绕了点路，但你真的活着穿过去了。";
+  }
+
+  function cellNode(index){
+    return boardNode.querySelector(`[data-index="${index}"]`);
+  }
+
+  function addLog(text, type = ""){
+    const item = document.createElement("div");
+    item.className = `log-item ${type}`;
+    item.textContent = text;
+    logNode.prepend(item);
+  }
+
+  function updateHud(){
+    const cfg = configs[difficulty];
+    leftText.textContent = Math.max(0, cfg.traps - marks);
+    safeText.textContent = `${opened}/${cells.length - cfg.traps}`;
+    scanText.textContent = scans;
+    riskText.textContent = cfg.risk;
+    scanBtn.disabled = scans <= 0 || status === "lost" || status === "won";
+    markBtn.classList.toggle("active", markMode);
+    markBtn.textContent = `标记模式：${markMode ? "开" : "关"}`;
+  }
+
+  boardNode.addEventListener("click", event => {
+    const button = event.target.closest(".cell");
+    if(!button) return;
+    const index = Number(button.dataset.index);
+    if(markMode) toggleMark(index);
+    else reveal(index);
+  });
+
+  boardNode.addEventListener("contextmenu", event => {
+    const button = event.target.closest(".cell");
+    if(!button) return;
+    event.preventDefault();
+    toggleMark(Number(button.dataset.index));
+  });
+
+  difficultyBtns.forEach(button => {
+    button.addEventListener("click", () => {
+      difficultyBtns.forEach(item => item.classList.remove("active"));
+      button.classList.add("active");
+      initGame(button.dataset.difficulty);
+    });
+  });
+
+  newBtn.addEventListener("click", () => initGame());
+  markBtn.addEventListener("click", () => {
+    markMode = !markMode;
+    updateHud();
+  });
+  scanBtn.addEventListener("click", useScan);
+  initGame();
+</script>
+</body>
+</html>

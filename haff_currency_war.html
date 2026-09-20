@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101513">
+  <meta name="description" content="哈夫币战争：前后台编队、藏品融合与战术构筑，穿越零号大坝、航天基地和潮汐监狱的分支路线。">
+  <title>哈夫币战争｜小队整备</title>
+  <link rel="stylesheet" href="shared/haff-war.css">
+  <link rel="stylesheet" href="shared/haff-campaign.css">
+  <link rel="stylesheet" href="shared/haff-black-market.css">
+  <link rel="stylesheet" href="shared/haff-formation.css">
+  <link rel="stylesheet" href="shared/haff-ultimate-director.css">
+  <link rel="stylesheet" href="shared/haff-plane-transition.css">
+  <link rel="stylesheet" href="shared/haff-battle-hud.css">
+  <link rel="stylesheet" href="shared/haff-battle-debrief.css">
+  <link rel="stylesheet" href="shared/haff-insertion.css">
+  <link rel="stylesheet" href="shared/haff-combat-entry.css">
+  <link rel="stylesheet" href="shared/haff-page-motion.css">
+  <script src="assets/vendor/phaser-3.90.0.min.js" defer></script>
+  <script src="shared/haff-events.js" defer></script>
+  <script src="shared/haff-formation-rules.js" defer></script>
+  <script src="shared/haff-timeline.js" defer></script>
+  <script src="shared/haff-tempo.js" defer></script>
+  <script src="shared/haff-arsenal-tactics.js" defer></script>
+  <script src="shared/haff-relics.js" defer></script>
+  <script src="shared/haff-enemies.js" defer></script>
+  <script src="shared/haff-branch-market.js" defer></script>
+  <script src="shared/haff-systems.js" defer></script>
+  <script src="shared/haff-tactic-mechanics.js" defer></script>
+  <script src="shared/haff-bond-tiers.js" defer></script>
+  <script src="shared/haff-role-bonds.js" defer></script>
+  <script src="shared/haff-tactics.js" defer></script>
+  <script src="shared/haff-tactic-mechanics-ui.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-buildcraft-ui.css">
+  <script src="shared/haff-bond-engines.js" defer></script>
+  <script src="shared/haff-buildcraft.js" defer></script>
+  <script src="shared/haff-buildcraft-ui.js" defer></script>
+  <script src="shared/haff-bond-members.js" defer></script>
+  <script src="shared/haff-link-tree.js" defer></script>
+  <script src="shared/haff-link-graph.js" defer></script>
+  <script src="shared/haff-link-ui.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-link-ui.css">
+  <link rel="stylesheet" href="shared/haff-link-network.css">
+  <script src="shared/haff-relic-slots.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-relic-slots.css">
+  <script src="shared/haff-war-core.js" defer></script>
+  <script src="shared/haff-rank-hazards.js" defer></script>
+  <script src="shared/haff-career-ranks.js" defer></script>
+  <script src="shared/haff-operator-cards.js" defer></script>
+  <script src="shared/haff-field-tools.js" defer></script>
+  <script src="shared/haff-prep-decisions.js" defer></script>
+  <script src="shared/haff-tool-drag.js" defer></script>
+  <script src="shared/haff-operator-cards-ui.js" defer></script>
+  <script src="shared/haff-campaign-core.js" defer></script>
+  <script src="shared/haff-loadout-guide.js" defer></script>
+  <script src="shared/haff-loadout-guide-ui.js" defer></script>
+  <script src="shared/haff-career.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-career-ui.css">
+  <script src="shared/haff-rank-hazards-ui.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-rank-hazards.css">
+  <script src="shared/haff-career-ui.js" defer></script>
+  <script src="shared/haff-battle-backdrop.js" defer></script>
+  <script src="shared/haff-plane-backdrops.js" defer></script>
+  <script src="shared/haff-art-direction.js" defer></script>
+  <script src="shared/haff-signature-fx.js" defer></script>
+  <script src="shared/haff-rifle-actions.js" defer></script>
+  <script src="shared/haff-ultimate-director.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-ultimate-roster.css">
+  <link rel="stylesheet" href="shared/haff-star-cinematics.css">
+  <script src="shared/haff-star-cinematics.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-board-cinematics.css">
+  <script src="shared/haff-board-cinematics.js" defer></script>
+  <script src="shared/haff-ultimate-roster.js" defer></script>
+  <script src="shared/haff-star-forge.js" defer></script>
+  <script src="shared/haff-battle-rewards.js" defer></script>
+  <script src="shared/haff-battle-hud.js" defer></script>
+  <script src="shared/haff-combat-report.js" defer></script>
+  <script src="shared/haff-combat-inspector.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-combat-inspector.css">
+  <script src="shared/haff-damage-ranking.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-damage-ranking.css">
+  <script src="shared/haff-target-preview.js" defer></script>
+  <script src="shared/haff-battle-debrief.js" defer></script>
+  <script src="shared/haff-transition-glyph.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-boss-outro.css">
+  <script src="shared/haff-boss-outro.js" defer></script>
+  <script src="shared/haff-insertion.js" defer></script>
+  <script src="shared/haff-combat-entry.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-smooth-motion.css">
+  <link rel="stylesheet" href="shared/haff-transition-glyph.css">
+  <link rel="stylesheet" href="shared/haff-operator-cards.css">
+  <script src="shared/haff-screen-mask.js" defer></script>
+  <script src="shared/haff-smooth-motion.js" defer></script>
+  <script src="shared/haff-page-motion.js" defer></script>
+  <script src="shared/haff-prep-stability.js" defer></script>
+  <script src="shared/haff-war.js" defer></script>
+  <script src="shared/haff-inventory-ui.js" defer></script>
+  <script src="shared/haff-black-market-ui.js" defer></script>
+  <script src="shared/haff-campaign.js" defer></script>
+  <script src="shared/haff-plane-transition.js" defer></script>
+  <link rel="stylesheet" href="shared/haff-icon-ui.css">
+  <link rel="stylesheet" href="shared/haff-bond-members.css">
+  <link rel="stylesheet" href="shared/haff-loadout-guide.css">
+  <link rel="stylesheet" href="shared/haff-tactic-quality.css">
+  <link rel="stylesheet" href="shared/haff-deployed-cards.css">
+  <link rel="stylesheet" href="shared/haff-star-forge.css">
+  <link rel="stylesheet" href="shared/haff-red-operator-cards.css">
+  <link rel="stylesheet" href="shared/haff-card-clarity.css">
+  <link rel="stylesheet" href="shared/haff-prep-decisions.css">
+  <link rel="stylesheet" href="shared/haff-art-direction.css">
+  <script src="shared/haff-icon-ui.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a href="mini_games.html">返回小游戏大厅</a><span>G.T.I. / OPERATIONS TERMINAL</span><span class="prototype">开发版本 0.79</span></header>
+  <main>
+    <div class="titlebar"><div><p class="eyebrow">HAFF CURRENCY WAR</p><h1>哈夫币战争</h1></div><div class="view-step"><b id="view-phase">01 / 小队整备</b><span id="view-status">待命</span></div></div>
+    <p id="campaign-notice" role="status" aria-live="polite"></p>
+    <section id="campaign-shell" aria-label="完整行动"></section>
+    <section id="prep-view" class="prep-view" aria-label="战前整备">
+      <div class="mission-band">
+        <div><span class="mission-code">OPERATION / 001</span><h2 id="mission-name">零号大坝 · 控制权争夺</h2></div>
+        <div class="enemy-brief"><span>敌情档案</span><strong id="mission-enemies">赛伊德 / 机枪兵 / 盾兵</strong></div>
+        <span class="mission-size" id="mission-team">3 人小队</span>
+      </div>
+      <section id="prep-tactics" class="prep-tactics" aria-label="行动战术" hidden></section>
+      <div class="prep-workspace formation-workspace">
+        <aside id="prep-synergies" class="prep-synergies" aria-label="编队羁绊" aria-live="polite" hidden></aside>
+        <section class="squad-stage" aria-label="小队阵型">
+          <div class="board-heading"><h2>作战阵位</h2><span id="board-count">出战 3 / 3</span></div>
+          <div id="deployment-with-parcels" class="deployment-with-parcels">
+          <div class="deployment-grid">
+          <div class="battle-direction">敌方方向 <span aria-hidden="true">↑</span></div>
+          <div class="row-heading"><h3>前排</h3><span>FRONTLINE / 04</span></div>
+          <div id="squad" class="formation-row front-row" role="group" aria-label="前排四个阵位"></div>
+          <div class="row-heading"><h3>后排</h3><span>BACKLINE / 05</span></div>
+          <div id="rear-squad" class="formation-row rear-row" role="group" aria-label="后排五个阵位"></div>
+          </div>
+          <aside id="parcel-station" class="parcel-station" aria-label="特勤处快递" hidden></aside>
+          </div>
+          <div class="bench-heading"><h2>备战席</h2><span id="bench-count">0 / 12</span><span id="roster-count">3 / 3</span></div>
+          <div id="bench-with-terminal" class="bench-with-terminal">
+            <div id="bench-squad" class="bench-row" role="group" aria-label="备战席"></div>
+            <aside id="bench-terminal" class="bench-terminal" aria-label="升级终端" hidden>
+              <span class="eyebrow">G.T.I. 终端</span>
+              <strong id="terminal-level">Lv.1</strong>
+              <span id="terminal-capacity">上阵 2 人</span>
+              <small id="terminal-next">下一级 3 人</small>
+              <button id="terminal-upgrade" type="button" class="primary">升级终端</button>
+              <small id="terminal-price">8 万哈夫币</small>
+            </aside>
+          </div>
+          <p id="formation-state" class="formation-state">战前整备</p>
+        </section>
+        <aside class="formation-inspector" aria-label="选中干员与装备">
+        <section class="operative-inspect" aria-label="干员档案">
+          <div class="operative-heading"><div><p id="prep-role" class="eyebrow"></p><h2 id="prep-name"></h2></div><label class="position-picker">阵位<select id="prep-position" aria-label="当前干员的阵位"><option value="0">前排 1</option><option value="1">前排 2</option><option value="2">前排 3</option><option value="3">前排 4</option><option value="4">后排 1</option><option value="5">后排 2</option><option value="6">后排 3</option><option value="7">后排 4</option><option value="8">后排 5</option><option value="bench">备战席</option></select></label></div>
+          <div id="prep-art" class="operative-art"></div>
+          <div class="operative-caption"><span id="prep-callsign"></span><strong id="prep-resource"></strong></div>
+          <div id="prep-stats" class="prep-stats" aria-live="polite"></div>
+          <p id="prep-passive" class="passive-note"></p>
+          <button id="sell-operator" class="text-command danger-command" type="button" hidden>出售干员</button>
+          <button id="strip-operator" class="text-command" type="button" hidden>卸下全部装备</button>
+        </section>
+        <section class="prep-workbench" aria-label="装备与技能">
+          <div class="prep-tabs" role="tablist" aria-label="整备项目"><button id="gear-tab" type="button" role="tab" aria-selected="true" aria-controls="gear-panel" data-prep-tab="gear">武器与防护</button><button id="skills-tab" type="button" role="tab" aria-selected="false" aria-controls="skills-panel" data-prep-tab="skills" tabindex="-1">干员技能</button></div>
+          <div id="gear-panel" role="tabpanel" aria-labelledby="gear-tab">
+            <div id="campaign-items" hidden></div>
+            <div id="training-equipment">
+            <div id="gear-slots" class="gear-slots"></div>
+            <div class="armory-heading"><h3 id="armory-title">武器库</h3><span id="armory-count"></span></div>
+            <div id="gear-candidates" class="gear-candidates" role="group" aria-label="军械库候选装备"></div>
+            <div id="gear-preview" class="gear-preview" aria-live="polite" hidden></div>
+            <div id="equip-actions" class="equip-actions" hidden><button type="button" id="unequip-item">卸下装备</button><button type="button" class="primary" id="equip-item" disabled>确认装备</button></div>
+            <button type="button" id="restore-loadout" class="text-command">还原该干员默认配装</button>
+            </div>
+          </div>
+          <div id="skills-panel" role="tabpanel" aria-labelledby="skills-tab" hidden><div id="prep-skills" class="prep-skills"></div></div>
+        </section>
+        </aside>
+      </div>
+      <div class="deploy-bar">
+        <div class="deploy-readiness"><span class="status-light"></span><div><strong>小队已就绪</strong><span id="deploy-summary"></span><span id="prep-feedback" class="prep-feedback" role="status">装备已就绪</span></div></div>
+        <label class="difficulty">敌方强度 <select id="difficulty"><option value="normal">标准</option><option value="hard">强化</option></select></label>
+        <button type="button" id="start" class="primary deploy-button">部署出战</button>
+      </div>
+      <p id="prep-error" class="prep-error" role="alert" hidden></p>
+    </section>
+    <div id="battle-view" hidden>
+    <section class="battle-shell" aria-label="战场">
+      <div class="battle-toolbar"><div class="battle-status"><span class="status-light"></span><b id="phase-label">战前部署</b><span id="round-label">第 0 轮</span></div><div class="controls"><fieldset class="segments"><legend>行动模式</legend><button type="button" data-mode="manual" aria-pressed="true">手动</button><button type="button" data-mode="auto" aria-pressed="false">自动</button></fieldset><fieldset class="segments"><legend>播放速度</legend><button type="button" data-speed="1" aria-pressed="true">1×</button><button type="button" data-speed="2" aria-pressed="false">2×</button></fieldset><button id="pause" type="button" disabled>暂停</button><button id="sound" type="button" aria-pressed="false">音效关</button></div></div>
+      <div class="turn-strip"><span class="strip-label">行动序列</span><div id="turn-order" class="turn-order"></div></div>
+      <div id="rear-support" class="rear-support" aria-label="后排支援状态"></div>
+      <div id="battlefield" class="battlefield"><div id="loading" role="status">正在调入战术档案…</div><div id="asset-error" role="alert" hidden><p>部分立绘未能载入，请刷新后重试。</p><button type="button" id="reload-assets">重新载入</button></div><div id="result-overlay" hidden><div class="result-box"><p id="result-kicker">行动完成</p><h2 id="result-title">作战胜利</h2><p id="result-summary"></p><div id="result-stats"></div><button type="button" id="result-retry">重新部署</button></div></div></div>
+      <div class="action-caption" aria-live="polite"><span id="actor-name">G.T.I.</span><strong id="action-name">小队已集结</strong><span id="action-note">等待行动指令</span></div>
+      <section id="action-panel" class="action-panel" aria-label="行动指令" hidden>
+        <div class="decision-heading"><h2 id="decision-title">行动指令</h2><label><span id="charge-label"></span><span id="needle-stock" class="needle-stock" aria-hidden="true"></span><progress id="charge-meter" max="100" value="0" aria-label="大招充能"></progress></label></div>
+        <div id="skill-options" class="skill-options"></div>
+        <div id="target-row" class="target-row"><div id="target-options" class="target-options" role="group" aria-label="选择目标"></div><div class="decision-buttons"><button id="cancel-action" type="button" disabled>取消选择</button><button id="confirm-action" class="primary" type="button" disabled>确认行动</button></div></div>
+      </section>
+      <div class="command-bar"><div class="team-vitals"><span>掩体 <b id="cover-value">0</b></span><span>烟幕 <b id="smoke-value">未部署</b></span></div><div class="commands"><button type="button" id="reset">返回整备</button></div></div>
+    </section>
+    <section class="battle-record"><details><summary>交战记录 <span id="log-count">0 次行动</span></summary><ol id="combat-log"></ol></details><details class="sources"><summary>技能改编与素材来源</summary><p>以下均为同人回合制规则。六名干员的被动仅在后排激活；威龙、红狼、露娜和蜂医保留后排行动，乌鲁鲁、骇爪通过支援触发与满能量自动大招作战。所有大招不占行动；激素枪仍消耗针。充能型干员初始能量 20，普攻基础回能 45、普通技能 35、实际受伤 12；武器与生效藏品可提高充能效率，上限额外 100%。蜂医携带 3 根针，基础每两轮补 1 根，效率同样加快补针，满库存不积攒普通进度。虎蹲炮没有直接伤害，蜂巢烟雾需激素枪激活治疗。出售干员按全部档案基础招募价的 70% 返还，装备回仓；最后一名出战干员不可出售。技能触发、装备加成与所有数值不代表原作。</p><div id="source-links"><a href="https://www.playdeltaforce.com/act/wikimap/m.html" target="_blank" rel="noreferrer">三角洲官方世界档案</a><a href="https://deltaforce.garena.com/zh_tw/?redirect=0" target="_blank" rel="noreferrer">Garena 官方干员资料</a><a href="https://deltaforce.garena.com/zh_tw/news/system/YECJDU" target="_blank" rel="noreferrer">蜂医技能官方说明</a></div></details></section>
+    </div>
+    <dialog id="parcel-dialog" class="parcel-dialog" aria-labelledby="parcel-title">
+      <p class="eyebrow">G.T.I. / DELIVERY RECEIVED</p>
+      <h2 id="parcel-title">快递已签收</h2>
+      <strong id="parcel-cash" class="parcel-cash"></strong>
+      <div id="parcel-items" class="parcel-items"></div>
+      <button id="parcel-close" class="primary" type="button">收好物资</button>
+    </dialog>
+    <dialog id="leave-dialog" class="leave-dialog" aria-labelledby="leave-title"><h2 id="leave-title">返回整备？</h2><p>本局战斗将结束，已穿戴的装备会保留。</p><div><button type="button" id="continue-battle">继续战斗</button><button type="button" id="leave-battle" class="danger-command">放弃本局并返回</button></div></dialog>
+    <dialog id="campaign-confirm" class="leave-dialog" aria-labelledby="campaign-confirm-title"><h2 id="campaign-confirm-title">确认操作</h2><p id="campaign-confirm-text"></p><div><button type="button" id="campaign-confirm-no">取消</button><button type="button" id="campaign-confirm-yes" class="danger-command">确认</button></div></dialog>
+    <div class="art-credits"><span>立绘来源</span><a href="https://play-deltaforce.com/vyron/" target="_blank" rel="noreferrer">干员资料站</a><a href="https://thedeltahandbook.com/AI.html" target="_blank" rel="noreferrer">赛伊德档案</a><a href="https://www.taptap.cn/moment/588731281915773370" target="_blank" rel="noreferrer">官方阿萨拉兵种图鉴</a></div>
+    <footer><span>哈夫币战争 / 非官方同人作品</span><span>角色与世界观素材版权归原权利方所有</span></footer>
+  </main>
+</body>
+</html>

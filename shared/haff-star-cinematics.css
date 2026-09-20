@@ -1,0 +1,16 @@
+/* No independent animation clock: pause and speed are driven by the director. */
+#battlefield .hsc-stage{position:absolute;inset:0;z-index:0;color:var(--hu-color);pointer-events:none;transform-origin:65% 50%;will-change:transform,opacity}
+#battlefield .hsc-stage svg{width:100%;height:100%;overflow:visible}
+#battlefield .hsc-device{transform-origin:500px 300px;fill:currentColor;fill-opacity:.07;stroke-width:4;filter:drop-shadow(0 0 9px var(--hu-color))}
+#battlefield .hsc-charge{transform-origin:500px 550px;stroke:#ffe7ac}
+#battlefield .hsc-frame{opacity:.5;stroke-width:2}
+#battlefield .hsc-badge{position:absolute;right:6%;top:18%;z-index:4;padding:8px 18px;color:var(--hu-color);border-left:3px solid currentColor;background:linear-gradient(90deg,#080d17ed,#080d1740);font:600 14px/1.5 system-ui;letter-spacing:3px;opacity:0}
+#battlefield .hur-cut[data-rank="3"] .hsc-badge{color:#ffe5a8;border:1px solid #e7bd6770;border-left:4px solid #ffe5a8;clip-path:polygon(0 0,95% 0,100% 25%,100% 100%,5% 100%,0 75%)}
+#battlefield .hur-cut[data-rank="3"] .hu-portrait{filter:contrast(1.14) saturate(1.1) drop-shadow(5px 0 0 #ffe3a845) drop-shadow(0 0 20px color-mix(in srgb,var(--hu-color) 40%,transparent))}
+#battlefield .hur-cut[data-rank="3"] .hur-art{opacity:.22!important;filter:none}
+#battlefield .hur-cut[data-rank="3"] .hu-copy em{color:#ffe5a8;font-size:24px;letter-spacing:12px;text-shadow:0 0 16px #ffd27b70}
+#battlefield .hur-cut[data-rank="3"] .hu-letterbox{height:7%;border-color:#ffe5a870;border-style:solid;border-width:0}
+#battlefield .hur-cut[data-rank="3"] .hu-letterbox.top{border-bottom-width:1px}
+#battlefield .hur-cut[data-rank="3"] .hu-letterbox.bottom{border-top-width:1px}
+@media(max-width:700px){#battlefield .hsc-stage{inset:0 -20%;transform-origin:60% 50%}#battlefield .hsc-badge{top:16%;right:4%;font-size:12px;letter-spacing:1px;padding:6px 10px}#battlefield .hur-cut[data-rank="3"] .hu-copy em{font-size:20px}}
+@media(prefers-reduced-motion:reduce){#battlefield .hsc-stage{display:none}}

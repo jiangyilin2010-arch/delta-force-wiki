@@ -1,0 +1,12 @@
+/* Quality accents occupy existing card bounds; no size changes or pulsing layout. */
+:is(.market-card,.tactical-candidate,.oc-mini,.oc-detail)[data-quality=red]{border-color:#ec6171;border-top-color:#ffb399;background:linear-gradient(145deg,#531f2b,#1d1820 50%,#10191a);box-shadow:inset 0 0 0 1px #ffb19633,0 0 16px #ff35431a}
+:is(.market-card,.tactical-candidate)[data-quality=red] :is(h3,.recruit-cost){color:#ffc6ab;text-shadow:0 0 12px #ff584566}
+:is(.market-card,.tactical-candidate)[data-quality=red] img{filter:drop-shadow(0 0 9px #ef53454d)}
+:is(.market-card,.tactical-candidate,.oc-mini)[data-quality=red]{position:relative}
+:is(.market-card,.tactical-candidate,.oc-mini)[data-quality=red]::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(110deg,#ffca9e,transparent 35%,transparent 65%,#ff8499) top/100% 2px no-repeat;box-shadow:inset 3px 0 0 #ed61744d,inset -3px 0 0 #ed61744d}
+.oc-mini[data-quality=red] span{background:linear-gradient(90deg,#661e2be6,#25151be6);color:#ffd7bc}
+.oc-detail[data-quality=red] h2{color:#ffc5ab}
+#prep-view :is(#squad,#rear-squad,#bench-squad) .operator-piece[data-quality=red]::after{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 2px #ed727b,inset 0 0 20px #ff47393d;background:linear-gradient(135deg,#ffe1a2 0 3px,transparent 3px) top left/18px 18px no-repeat,linear-gradient(-135deg,#ffe1a2 0 3px,transparent 3px) top right/18px 18px no-repeat,linear-gradient(0deg,#cf243f66,transparent 38%)}
+#prep-view :is(#squad,#rear-squad,#bench-squad) .operator-piece[data-quality=red][data-selected=true]::after{box-shadow:inset 0 0 0 2px #d3ffaf,inset 0 0 0 4px #c04c61,inset 0 0 22px #ff584533}
+#prep-view :is(#squad,#rear-squad,#bench-squad) .operator-piece[data-quality=red] :is(.seat-stars,.oc-card-stars){color:#ffe0b0;text-shadow:0 1px 4px #430816,0 0 8px #ff624b}
+#prep-view #bench-squad .operator-piece[data-quality=red] .operator-namebar{background:linear-gradient(90deg,#631e2de8,#1d1923e0);color:#ffd5b9}

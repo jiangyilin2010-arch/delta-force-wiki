@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>手速测试｜G.T.I. 反应校准靶场</title>
+<style>
+  :root{
+    --bg:#07100d;--panel:#0c1712;--line:#24382d;--green:#9fe870;--green2:#5eae62;
+    --text:#e8f2ea;--muted:#8fa395;--warn:#d9c272;--danger:#d98672;--shadow:0 18px 45px rgba(0,0,0,.35)
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;background:
+    linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),
+    radial-gradient(circle at 84% 5%,rgba(77,131,79,.15),transparent 28%),var(--bg);
+    background-size:32px 32px,32px 32px,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}.wrap{max-width:1320px;margin:auto;padding:0 28px}
+  .topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 40%,var(--green2) 70%,transparent 96%);opacity:.8}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}
+  .mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}
+  .brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}
+  nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover,nav a.active{border-color:var(--line);background:#0d1813;color:var(--green)}
+  .hero{padding:48px 0 16px;display:grid;grid-template-columns:1.06fr .94fr;gap:16px}.hero-main{border:1px solid #2c4235;background:linear-gradient(90deg,rgba(4,9,7,.98),rgba(6,12,9,.74) 58%,rgba(9,17,13,.35)),radial-gradient(circle at 82% 46%,#24432c 0,#112018 20%,#07100d 54%);box-shadow:var(--shadow);padding:34px;position:relative;overflow:hidden}.hero-main:after{content:"SPEED RANGE";position:absolute;right:-32px;bottom:-38px;color:rgba(159,232,112,.04);font-size:86px;font-weight:900;letter-spacing:-4px;transform:rotate(-5deg)}
+  .eyebrow,.kicker{color:var(--green);font:800 10px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:2.4px}.hero h1{position:relative;z-index:1;font-size:52px;line-height:1;margin:16px 0 14px;letter-spacing:-2px}.hero p{position:relative;z-index:1;color:#aebdb1;margin:0;max-width:720px}
+  .status-card{border:1px solid var(--line);background:linear-gradient(180deg,#0e1a14,#09120e);padding:24px}.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}.stat{border:1px solid #21362a;background:#0d1913;padding:14px}.stat strong{display:block;font-size:26px;color:var(--green);line-height:1}.stat span{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1px}
+  .game-layout{display:grid;grid-template-columns:1fr 340px;gap:16px;margin:16px 0 42px;align-items:start}.arena-shell{border:1px solid #31513a;background:#0a140f;box-shadow:var(--shadow);overflow:hidden}.arena-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid #1b2d23;background:linear-gradient(90deg,#0f2118,#0a140f)}.arena-head h2{font-size:20px;margin:0}.timer{font:900 28px ui-monospace,monospace;color:var(--green)}
+  .arena{height:560px;position:relative;overflow:hidden;cursor:crosshair;background:
+    radial-gradient(circle at center,rgba(159,232,112,.06),transparent 34%),
+    linear-gradient(rgba(159,232,112,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(159,232,112,.035) 1px,transparent 1px),#07100d;
+    background-size:auto,40px 40px,40px 40px;touch-action:manipulation;user-select:none}
+  .arena:before{content:"";position:absolute;inset:18px;border:1px solid rgba(159,232,112,.12);pointer-events:none}.arena:after{content:"G.T.I. REACTION GRID";position:absolute;right:18px;bottom:12px;color:rgba(159,232,112,.08);font:900 18px ui-monospace,monospace;letter-spacing:1px;pointer-events:none}
+  .target,.decoy-target{position:absolute;width:76px;height:76px;border:2px solid var(--green);border-radius:50%;background:radial-gradient(circle,var(--green) 0 10%,rgba(159,232,112,.18) 11% 42%,rgba(159,232,112,.04) 43% 100%);box-shadow:0 0 22px rgba(159,232,112,.38);transform:translate(-50%,-50%);display:none}
+  .target:before,.target:after,.decoy-target:before,.decoy-target:after{content:"";position:absolute;inset:50%;background:var(--green);transform:translate(-50%,-50%);opacity:.8}.target:before,.decoy-target:before{width:80%;height:1px}.target:after,.decoy-target:after{width:1px;height:80%}.target.active,.decoy-target.active{display:block;animation:pulse .7s ease-in-out infinite alternate}
+  .decoy-target{border-color:rgba(217,194,114,.86);background:radial-gradient(circle,rgba(217,194,114,.95) 0 8%,rgba(217,194,114,.15) 9% 40%,rgba(217,134,114,.05) 41% 100%);box-shadow:0 0 18px rgba(217,194,114,.22);cursor:not-allowed}
+  .decoy-target:before,.decoy-target:after{background:var(--warn);opacity:.62}.decoy-target:after{transform:translate(-50%,-50%) rotate(18deg)}.decoy-target.fake-red{border-color:rgba(217,134,114,.9);background:radial-gradient(circle,rgba(217,134,114,.95) 0 8%,rgba(217,134,114,.16) 9% 40%,rgba(217,134,114,.05) 41% 100%);box-shadow:0 0 18px rgba(217,134,114,.26)}.decoy-target.fake-red:before,.decoy-target.fake-red:after{background:var(--danger)}
+  @keyframes pulse{from{filter:brightness(1);transform:translate(-50%,-50%) scale(.96)}to{filter:brightness(1.18);transform:translate(-50%,-50%) scale(1.04)}}
+  .overlay{position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,12,9,.78);backdrop-filter:blur(3px);padding:24px;text-align:center}.overlay.hidden{display:none}.overlay-box{max-width:520px}.overlay h3{font-size:34px;line-height:1.05;margin:12px 0}.overlay p{color:#b8c8bc;margin:0}.flash{position:absolute;width:34px;height:34px;border:1px solid var(--green);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;animation:flash .34s ease-out forwards}@keyframes flash{to{opacity:0;transform:translate(-50%,-50%) scale(2.6)}}
+  .side{display:grid;gap:12px;position:sticky;top:90px}.panel{border:1px solid var(--line);background:#0a140f;padding:18px}.score{font-size:46px;line-height:1;font-weight:900;color:var(--green);margin:10px 0 4px}.muted{color:var(--muted);font-size:12px}.metric-grid{display:grid;gap:8px}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #17271e;padding:9px 0}.metric:last-child{border-bottom:0}.metric span{color:var(--muted)}.metric strong{font:900 14px ui-monospace,monospace;color:#dce9df;text-align:right}
+  .actions{display:grid;gap:8px}.btn{border:1px solid #477052;background:#11261a;color:var(--text);font-weight:900;padding:12px 14px;cursor:pointer;text-align:center}.btn.primary{background:var(--green);color:#07100d;border-color:var(--green)}.btn:hover{filter:brightness(1.07)}.rank{font-size:28px;line-height:1.1;font-weight:900;color:var(--warn);margin:10px 0}.footer{border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}
+  @media(max-width:1040px){.hero,.game-layout{grid-template-columns:1fr}.side{position:static}nav{display:none}.brand{min-width:0}}
+  @media(max-width:620px){.wrap{padding:0 18px}.hero-main{padding:28px 22px}.hero h1{font-size:38px}.stat-grid{grid-template-columns:1fr}.arena{height:470px}.arena-head{align-items:flex-start;flex-direction:column}.footer{flex-direction:column}}
+</style>
+<link rel="stylesheet" href="shared/player-card.css">
+<script src="shared/player-card.js"></script>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a href="delta_force_wiki_home.html">首页</a><a class="active" href="mini_games.html">小游戏</a><a href="delta_force_wiki_home.html#operators">干员档案</a><a href="operations_fire.html">烽火地带</a><a href="community_forum.html">玩家交流</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="eyebrow">G.T.I. REACTION RANGE // HAND SPEED TEST</div>
+      <h1>手速校准靶场</h1>
+      <p>20 秒内识别并点击随机出现的真目标。命中越快、误点越少，评级越高。适合开局前热手，也适合队友互相嘴硬。</p>
+    </div>
+    <aside class="status-card">
+      <div class="kicker">RANGE CONFIG / 训练参数</div>
+      <div class="stat-grid">
+        <div class="stat"><strong>20s</strong><span>TIME LIMIT</span></div>
+        <div class="stat"><strong>真假</strong><span>TARGET SPAWN</span></div>
+        <div class="stat"><strong>连击</strong><span>COMBO TRACK</span></div>
+        <div class="stat"><strong>评级</strong><span>FINAL RANK</span></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="game-layout">
+    <div class="arena-shell">
+      <div class="arena-head">
+        <div><div class="kicker">LIVE RANGE / 点击目标</div><h2>反应网格</h2></div>
+        <div class="timer" id="timer">20.0</div>
+      </div>
+      <div class="arena" id="arena">
+        <button class="target" id="target" type="button" aria-label="点击目标"></button>
+        <div class="overlay" id="overlay">
+          <div class="overlay-box">
+            <div class="kicker">STANDBY / 等待校准</div>
+            <h3>点击开始，真靶出现就打。</h3>
+            <p>目标会越来越小一点点，误导靶也会混进来。点空或点错都会断连击。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="panel">
+        <div class="kicker">SCORE / 当前命中</div>
+        <div class="score" id="score">0</div>
+        <div class="muted" id="statusText">等待开始</div>
+      </div>
+      <div class="panel metric-grid">
+        <div class="metric"><span>命中</span><strong id="hits">0</strong></div>
+        <div class="metric"><span>误点</span><strong id="misses">0</strong></div>
+        <div class="metric"><span>误导命中</span><strong id="decoyHits">0</strong></div>
+        <div class="metric"><span>最高连击</span><strong id="bestCombo">0</strong></div>
+        <div class="metric"><span>平均反应</span><strong id="avgReaction">--</strong></div>
+        <div class="metric"><span>每秒命中</span><strong id="hitRate">0.00</strong></div>
+      </div>
+      <div class="panel">
+        <div class="kicker">RESULT / 评级</div>
+        <div class="rank" id="rank">未校准</div>
+        <div class="muted" id="rankLine">完成一次测试后生成你的手速档案。</div>
+      </div>
+      <div class="panel actions">
+        <button class="btn primary" id="startBtn" type="button">开始测试</button>
+        <button class="btn" id="resetBtn" type="button">重置靶场</button>
+      </div>
+    </aside>
+  </section>
+
+  <footer class="footer"><div>非官方娱乐小游戏。数据只代表本次点击表现，不代表真实作战能力。</div><div>G.T.I. REACTION BUILD 0.1 // 2026</div></footer>
+</main>
+
+<script>
+  const duration = 20;
+  const arena = document.querySelector("#arena");
+  const target = document.querySelector("#target");
+  const overlay = document.querySelector("#overlay");
+  const timerNode = document.querySelector("#timer");
+  const scoreNode = document.querySelector("#score");
+  const statusText = document.querySelector("#statusText");
+  const hitsNode = document.querySelector("#hits");
+  const missesNode = document.querySelector("#misses");
+  const decoyHitsNode = document.querySelector("#decoyHits");
+  const bestComboNode = document.querySelector("#bestCombo");
+  const avgReactionNode = document.querySelector("#avgReaction");
+  const hitRateNode = document.querySelector("#hitRate");
+  const rankNode = document.querySelector("#rank");
+  const rankLine = document.querySelector("#rankLine");
+  const startBtn = document.querySelector("#startBtn");
+  const resetBtn = document.querySelector("#resetBtn");
+
+  let running = false;
+  let startTime = 0;
+  let endTime = 0;
+  let spawnTime = 0;
+  let frameId = 0;
+  let hits = 0;
+  let misses = 0;
+  let score = 0;
+  let decoyHits = 0;
+  let combo = 0;
+  let bestCombo = 0;
+  let reactions = [];
+
+  function resetStats(){
+    running = false;
+    cancelAnimationFrame(frameId);
+    hits = 0;
+    misses = 0;
+    score = 0;
+    decoyHits = 0;
+    combo = 0;
+    bestCombo = 0;
+    reactions = [];
+    timerNode.textContent = duration.toFixed(1);
+    scoreNode.textContent = "0";
+    hitsNode.textContent = "0";
+    missesNode.textContent = "0";
+    decoyHitsNode.textContent = "0";
+    bestComboNode.textContent = "0";
+    avgReactionNode.textContent = "--";
+    hitRateNode.textContent = "0.00";
+    statusText.textContent = "等待开始";
+    rankNode.textContent = "未校准";
+    rankLine.textContent = "完成一次测试后生成你的手速档案。";
+    target.classList.remove("active");
+    clearDecoys();
+    overlay.classList.remove("hidden");
+    startBtn.textContent = "开始测试";
+  }
+
+  function updateStats(){
+    const elapsed = running ? Math.max(.1, (performance.now() - startTime) / 1000) : duration;
+    const avg = reactions.length ? Math.round(reactions.reduce((sum, value)=>sum + value, 0) / reactions.length) : 0;
+    scoreNode.textContent = score;
+    hitsNode.textContent = hits;
+    missesNode.textContent = misses;
+    decoyHitsNode.textContent = decoyHits;
+    bestComboNode.textContent = bestCombo;
+    avgReactionNode.textContent = avg ? `${avg}ms` : "--";
+    hitRateNode.textContent = (hits / elapsed).toFixed(2);
+  }
+
+  function moveTarget(){
+    const rect = arena.getBoundingClientRect();
+    const size = Math.max(42, 76 - hits * 1.2);
+    const margin = size / 2 + 14;
+    const x = margin + Math.random() * Math.max(1, rect.width - margin * 2);
+    const y = margin + Math.random() * Math.max(1, rect.height - margin * 2);
+    clearDecoys();
+    target.style.width = `${size}px`;
+    target.style.height = `${size}px`;
+    target.style.left = `${x}px`;
+    target.style.top = `${y}px`;
+    spawnTime = performance.now();
+    target.classList.add("active");
+    spawnDecoys(rect, x, y, size);
+  }
+
+  function clearDecoys(){
+    arena.querySelectorAll(".decoy-target").forEach(node => node.remove());
+  }
+
+  function spawnDecoys(rect, targetX, targetY, size){
+    if(hits < 3) return;
+    const count = hits > 22 ? 3 : hits > 10 ? 2 : 1;
+    const placed = [{x:targetX,y:targetY,size}];
+    for(let i = 0; i < count; i += 1){
+      const decoySize = Math.max(38, size + Math.floor(Math.random() * 17) - 8);
+      const margin = decoySize / 2 + 14;
+      let x = margin;
+      let y = margin;
+      for(let attempt = 0; attempt < 18; attempt += 1){
+        x = margin + Math.random() * Math.max(1, rect.width - margin * 2);
+        y = margin + Math.random() * Math.max(1, rect.height - margin * 2);
+        const crowded = placed.some(item => Math.hypot(item.x - x, item.y - y) < (item.size + decoySize) * .72);
+        if(!crowded) break;
+      }
+      placed.push({x,y,size:decoySize});
+      const decoy = document.createElement("button");
+      decoy.type = "button";
+      decoy.className = `decoy-target active ${Math.random() > .55 ? "fake-red" : ""}`;
+      decoy.setAttribute("aria-label","误导靶");
+      decoy.style.width = `${decoySize}px`;
+      decoy.style.height = `${decoySize}px`;
+      decoy.style.left = `${x}px`;
+      decoy.style.top = `${y}px`;
+      decoy.addEventListener("click", hitDecoy);
+      arena.appendChild(decoy);
+    }
+  }
+
+  function makeFlash(x, y){
+    const flash = document.createElement("span");
+    flash.className = "flash";
+    flash.style.left = `${x}px`;
+    flash.style.top = `${y}px`;
+    arena.appendChild(flash);
+    setTimeout(()=>flash.remove(), 360);
+  }
+
+  function tick(){
+    if(!running) return;
+    const remaining = Math.max(0, (endTime - performance.now()) / 1000);
+    timerNode.textContent = remaining.toFixed(1);
+    if(remaining <= 0){
+      finishGame();
+      return;
+    }
+    frameId = requestAnimationFrame(tick);
+  }
+
+  function startGame(){
+    PlayerCard.pending("reaction");
+    resetStats();
+    running = true;
+    startTime = performance.now();
+    endTime = startTime + duration * 1000;
+    overlay.classList.add("hidden");
+    startBtn.textContent = "重新开始";
+    statusText.textContent = "目标接入中";
+    moveTarget();
+    tick();
+  }
+
+  function finishGame(){
+    running = false;
+    cancelAnimationFrame(frameId);
+    target.classList.remove("active");
+    clearDecoys();
+    timerNode.textContent = "0.0";
+    updateStats();
+    const rate = hits / duration;
+    const accuracy = hits + misses + decoyHits ? hits / (hits + misses + decoyHits) : 0;
+    const avg = reactions.length ? reactions.reduce((sum, value)=>sum + value, 0) / reactions.length : 999;
+    const cleanBonus = Math.max(0, Math.round((accuracy - .58) * 24));
+    const paceBonus = Math.max(0, Math.round((rate - 1.4) * 8));
+    const reactionBonus = avg < 999 ? Math.max(0, Math.round((520 - avg) / 28)) : 0;
+    const rankScore = hits + Math.floor(bestCombo * .45) + cleanBonus + paceBonus + reactionBonus - decoyHits * 2;
+    let rank = "靶场新星";
+    let line = "手已经醒了，终端认为你今天可以先从野牛开始热身。";
+    if((rankScore >= 74 && hits >= 46 && accuracy >= .72) || (hits >= 54 && accuracy >= .68)){ rank = "人形连点器"; line = "真靶刚亮就被你清掉，终端已经开始怀疑鼠标寿命。"; }
+    else if((rankScore >= 58 && hits >= 36 && accuracy >= .66) || (hits >= 42 && accuracy >= .62)){ rank = "闪电突击手"; line = "反应和准度都在线，撤离点红光一亮你先打招呼。"; }
+    else if((rankScore >= 42 && hits >= 28) || (hits >= 32 && accuracy >= .55)){ rank = "高压反应员"; line = "手速很顶，偶尔被误导靶骗一下，但整体压迫感已经出来了。"; }
+    else if(rankScore >= 28 || hits >= 24){ rank = "撤离点快枪手"; line = "26 左右已经很能点了，属于红光亮起时能先把场子热起来的人。"; }
+    else if(rankScore >= 18 || hits >= 16){ rank = "稳定校准员"; line = "节奏稳定，开局前热手已经够用，再控一下误点就能上档。"; }
+    else if(rankScore >= 10 || hits >= 9){ rank = "热手通过"; line = "不是菜，是刚开机。目标识别已经有了，连击再稳一点。"; }
+    else if(misses > hits){ rank = "误触观察员"; line = "你很努力，目标也很努力躲。先慢一点，命中比乱点更赚。"; }
+    PlayerCard.offer("reaction", {title: rank, lines: [`命中 ${hits} · 准确率 ${Math.round(accuracy * 100)}%`, `平均反应 ${reactions.length ? Math.round(avg) + " ms" : "暂无有效命中"}`, `最高连击 ${bestCombo} · 评级分 ${rankScore}`, line]});
+    rankNode.textContent = rank;
+    rankLine.textContent = line;
+    statusText.textContent = `完成校准，准确率 ${Math.round(accuracy * 100)}%，评级分 ${rankScore}`;
+    overlay.classList.remove("hidden");
+    overlay.querySelector(".kicker").textContent = "COMPLETE / 校准完成";
+    overlay.querySelector("h3").textContent = rank;
+    overlay.querySelector("p").textContent = line;
+  }
+
+  target.addEventListener("click",(event)=>{
+    if(!running) return;
+    event.stopPropagation();
+    const reaction = performance.now() - spawnTime;
+    reactions.push(reaction);
+    hits += 1;
+    score += 1 + Math.min(3, Math.floor(combo / 6));
+    combo += 1;
+    bestCombo = Math.max(bestCombo, combo);
+    const arenaRect = arena.getBoundingClientRect();
+    makeFlash(event.clientX - arenaRect.left, event.clientY - arenaRect.top);
+    updateStats();
+    moveTarget();
+  });
+
+  function hitDecoy(event){
+    if(!running) return;
+    event.stopPropagation();
+    decoyHits += 1;
+    misses += 1;
+    score = Math.max(0, score - 2);
+    combo = 0;
+    statusText.textContent = "误导靶命中，连击断了";
+    const arenaRect = arena.getBoundingClientRect();
+    makeFlash(event.clientX - arenaRect.left, event.clientY - arenaRect.top);
+    event.currentTarget.remove();
+    updateStats();
+  }
+
+  arena.addEventListener("click",(event)=>{
+    if(!running || event.target === target) return;
+    misses += 1;
+    score = Math.max(0, score - 1);
+    combo = 0;
+    statusText.textContent = "点空，连击断了";
+    updateStats();
+  });
+
+  startBtn.addEventListener("click", startGame);
+  resetBtn.addEventListener("click", resetStats);
+  resetStats();
+</script>
+</body>
+</html>

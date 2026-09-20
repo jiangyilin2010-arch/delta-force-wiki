@@ -1,0 +1,15 @@
+.hs-screen-veil{position:fixed;inset:0 -3%;z-index:74;pointer-events:none;background:linear-gradient(110deg,#07130fe6,#1a382c80 56%,#091611cc);contain:strict;opacity:0}.hs-motion .parcel-dialog[open]{animation:none}.hs-motion .formation-inspector,.hs-motion #gear-panel,.hs-motion #skills-panel,.hs-motion .inventory-detail,.hs-motion .hl-detail{backface-visibility:hidden}.hs-motion .operator-piece[data-selected=true]{transition:border-color .14s ease,background-color .14s ease}.hs-motion .hl-connection{transition:opacity .16s ease,stroke-width .16s ease}.hs-motion .hl-node{transition:border-color .16s ease,background-color .16s ease,box-shadow .16s ease}@media(prefers-reduced-motion:reduce){.hs-screen-veil{display:none}.hs-motion .hl-connection,.hs-motion .hl-node{transition:none}}
+
+/* A solid surface, clipped away only after the destination has laid out. */
+.hx-screen-mask{position:fixed;inset:0;z-index:2147483000;pointer-events:auto;overflow:hidden;contain:strict;background-color:#07120e;background-image:linear-gradient(115deg,#07120e 30%,#152c20 70%,#223d28);clip-path:inset(0);will-change:clip-path}
+.hx-screen-mask:before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 72px,#b3cf9810 73px 74px)}
+.hx-screen-mask:after{content:'G.T.I. / TACTICAL LINK';position:absolute;right:6vw;bottom:7vh;color:#c4daae;font:10px/1.5 monospace;letter-spacing:3px;border-top:2px solid #bbd890;padding-top:12px}
+/* Cinematics own the entire viewport, including their backing surface. */
+dialog.hc-entry{background:#08130f;background-image:radial-gradient(ellipse at 70% 45%,#203e2b,#08130f 65%)}
+.hc-entry::backdrop,.hi-insertion::backdrop,.hp-transition::backdrop,.hb-outro::backdrop,.hd-debrief::backdrop{background:#050c09}
+.formation-inspector,.unified-inventory,#gear-candidates,#prep-skills{scrollbar-gutter:stable;overflow-anchor:none}
+.hbc-preparing .unified-inventory{height:clamp(104px,22dvh,190px);min-height:104px;flex:none}
+.hbc-preparing #prep-view{overflow-anchor:none}
+.hbc-preparing .inventory-detail{box-sizing:border-box}
+.hbc-preparing .inventory-actions select{height:32px;min-height:32px;flex:0 0 100%;box-sizing:border-box}
+@media(prefers-reduced-motion:reduce){.hx-screen-mask{will-change:opacity}.hx-screen-mask:before{display:none}}

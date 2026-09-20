@@ -1,0 +1,35 @@
+/* Shared matte tactical materials. No size, position or inventory layout mutations. */
+:root{--ha-surface:#131c1b;--ha-raised:#1c2826;--ha-line:#3f514c;--ha-ink:#e4ebe4;--ha-muted:#a6b7ae;--ha-focus:#d4f7b8;--ha-edge:3px;--panel:var(--ha-surface);--line:var(--ha-line);--text:var(--ha-ink);--muted:var(--ha-muted)}
+body{background:radial-gradient(ellipse at 50% 0,#23312d55,transparent 65%),#0d1413}
+:is(.formation-inspector,.prep-synergies,.squad-stage,.hbm-market,.result-box,.ci-panel,.campaign-choice-page,.campaign-hud){border-color:var(--ha-line);border-radius:var(--ha-edge);background-color:var(--ha-surface);box-shadow:inset 0 1px 0 #e3f1df0c,0 6px 18px #0003}
+:is(.operative-heading,.board-heading,.bench-heading,.hbm-heading,.battle-toolbar){border-color:var(--ha-line)}
+:is(.operative-heading,.hbm-heading,.board-heading) h2{font-weight:650;letter-spacing:.025em}
+:is(.eyebrow,.mission-code,.prototype,.row-heading>span){font-family:ui-monospace,"SFMono-Regular",monospace;letter-spacing:.1em}
+button,select{border-radius:var(--ha-edge);transition:background-color 140ms,border-color 140ms,box-shadow 140ms}
+button:focus-visible,select:focus-visible{outline:2px solid var(--ha-focus);outline-offset:2px}
+button.primary{background:linear-gradient(150deg,#d4ecb3,#aaca85);border-color:#c6e5a3;color:#101b14;box-shadow:inset 0 1px 0 #ffffff38}
+:is(.hbm-buy,.hbm-refresh,.commands button,.controls button):not(.primary){background-color:var(--ha-raised)}
+:is(.hbm-help-copy,.hgl-tooltip,.ci-panel,.result-box){background-image:linear-gradient(145deg,#b4c9bc09,transparent 40%);border-color:#5b7165}
+/* Quality is encoded in metal edges, not a full-card wash or idle pulse. */
+:is(.operator-piece,.market-card,.tactical-candidate,.opening-protocol,.hbm-card,.inventory-item,.oc-mini)[data-quality]{--ha-metal:#78977e;--ha-glint:#d2dcc7;--ha-inlay:1px}
+:is(.operator-piece,.market-card,.tactical-candidate,.opening-protocol,.hbm-card,.inventory-item,.oc-mini)[data-quality=blue]{--ha-metal:#689bac;--ha-glint:#c0e2e9}
+:is(.operator-piece,.market-card,.tactical-candidate,.opening-protocol,.hbm-card,.inventory-item,.oc-mini)[data-quality=purple]{--ha-metal:#a490bb;--ha-glint:#e6d9ed}
+:is(.operator-piece,.market-card,.tactical-candidate,.opening-protocol,.hbm-card,.inventory-item,.oc-mini)[data-quality=gold]{--ha-metal:#c5ab72;--ha-glint:#fbe7b1;--ha-inlay:2px}
+:is(.operator-piece,.market-card,.tactical-candidate,.opening-protocol,.hbm-card,.inventory-item,.oc-mini)[data-quality=red]{--ha-metal:#c96566;--ha-glint:#ffe0ad;--ha-inlay:3px}
+:is(.market-card,.tactical-candidate,.hbm-card,.oc-mini)[data-quality],.campaign-choice-page .opening-protocol[data-quality]{border-color:var(--ha-metal);border-radius:3px;background:linear-gradient(135deg,#d3dfd008,transparent 40%),#141d1d;box-shadow:inset 0 0 0 1px #eaf4de0c,0 4px 12px #0004}
+.campaign-choice-page .opening-protocol[data-quality]::before{border-color:var(--ha-metal);opacity:.6}
+#prep-view :is(#squad,#rear-squad,#bench-squad) .operator-piece[data-quality]::after{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;border-radius:3px;border:1px solid var(--ha-metal);box-shadow:inset 0 0 0 2px #060d0ce0;background:linear-gradient(135deg,var(--ha-glint),var(--ha-metal)) top left/18px var(--ha-inlay) no-repeat,linear-gradient(var(--ha-glint),var(--ha-metal)) top left/var(--ha-inlay) 18px no-repeat,linear-gradient(315deg,var(--ha-glint),var(--ha-metal)) bottom right/18px var(--ha-inlay) no-repeat,linear-gradient(var(--ha-metal),var(--ha-glint)) bottom right/var(--ha-inlay) 18px no-repeat}
+#prep-view :is(#squad,#rear-squad,#bench-squad) .operator-piece[data-quality=red]::after{border-color:#c96566;box-shadow:inset 0 0 0 2px #080c0e,inset 0 0 0 3px #c5aa7255;background:linear-gradient(135deg,#ffe0ad 0 6px,#923e45 6px 10px,transparent 10px) top left/24px 24px no-repeat,linear-gradient(315deg,#ffe0ad 0 6px,#923e45 6px 10px,transparent 10px) bottom right/24px 24px no-repeat, repeating-linear-gradient(120deg,transparent 0 4px,#eed4a066 4px 5px,transparent 5px 9px) top right/32px 3px no-repeat}
+#prep-view :is(#squad,#rear-squad,#bench-squad) .operator-piece[data-selected=true]::after{outline:2px solid var(--ha-focus);outline-offset:-1px;box-shadow:inset 0 0 0 4px #080e0c}
+#prep-view :is(#squad,#rear-squad) .seat-stars{color:#f0deb0;text-shadow:0 1px 3px #000;background:#0c1513e8;border-radius:2px}
+:is(.market-card,.tactical-candidate)[data-quality=red] img{filter:none}
+:is(.market-card,.tactical-candidate)[data-quality=red] :is(h3,.recruit-cost){text-shadow:none;color:#f2dab9}
+.unified-inventory .inventory-item[data-quality]{border-color:var(--ha-metal);background:linear-gradient(140deg,#d6e6dd0b,transparent 55%),#141e1b;box-shadow:inset 0 -2px 0 var(--ha-metal)}
+.unified-inventory .inventory-item[aria-pressed=true]{outline:2px solid var(--ha-focus);outline-offset:-2px}
+#battlefield{box-shadow:inset 0 0 0 1px #adcfbd26}
+#battlefield .hur-cut[data-rank="3"] .hur-art{filter:drop-shadow(0 4px 14px #0008)}
+#battlefield .hur-cut[data-theme="resonator"]{background:linear-gradient(125deg,#0c1113f5,#393224ee)}
+#battlefield .hur-cut[data-theme="spider"]{background:linear-gradient(125deg,#0e1215f5,#37251aee)}
+#battlefield .hur-cut[data-theme="hummingbird"]{background:linear-gradient(125deg,#080f18f5,#1c3447ee)}
+#battlefield .hur-cut[data-theme="hound"]{background:linear-gradient(125deg,#0b1310f5,#263829ee)}
+@media(prefers-reduced-motion:reduce){button,select{transition:none}}

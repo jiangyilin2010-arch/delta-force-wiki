@@ -1,0 +1,22 @@
+/* The optional report shares the action rail and never covers the canvas. */
+#battle-view[data-damage-ranking=on]>.battle-shell{grid-template-columns:minmax(0,1fr) clamp(184px,17vw,238px)}
+#battle-view .turn-strip{overflow-y:auto;scrollbar-width:thin;overscroll-behavior:contain;scrollbar-gutter:stable}
+.hr-damage{--hr-row-height:43px;flex:none;min-width:0;padding:0 0 13px;border-bottom:1px solid #526b4b}
+.hr-damage[hidden]{display:none}.hr-heading{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:8px}.hr-heading h2{font:600 13px/1.4 system-ui;margin:0;color:#edf5e6}
+.hr-heading .hr-close{font:11px system-ui;padding:3px 6px;min-height:26px;min-width:0;background:transparent;border:1px solid #56704b;color:#aec2a6}
+.hr-total{display:flex;align-items:baseline;justify-content:space-between;gap:5px;margin:0 0 9px;color:#a0b498;font:10px system-ui}.hr-total strong{color:#d1eab5;font:600 18px ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.hr-rows{position:relative;height:calc(var(--hr-count,0)*var(--hr-row-height));list-style:none;margin:0;padding:0;contain:layout style}
+.hr-row{position:absolute;inset:0 0 auto;height:var(--hr-row-height);display:grid;grid-template-columns:13px 27px minmax(0,1fr) auto;grid-template-rows:19px 10px;align-content:center;gap:2px 5px;transform:translateY(calc(var(--hr-index,0)*var(--hr-row-height)));transition:transform .24s cubic-bezier(.2,.75,.2,1);font-variant-numeric:tabular-nums}
+.hr-rank{grid-area:1/1/3/2;align-self:center;font:11px monospace;color:#738c77}.hr-row:first-child .hr-rank{color:#e9d491}
+.hr-portrait{grid-area:1/2/3/3;position:relative;width:27px;height:27px;overflow:hidden;background:#1d2f22;border:1px solid #61795c}.hr-portrait img{position:absolute;max-width:none;object-fit:fill}.hr-row[data-downed=true] .hr-portrait{filter:grayscale(1);opacity:.55}
+.hr-name{grid-area:1/3;font:500 12px/19px system-ui;color:#e6efdf;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hr-amount{grid-area:1/4;font:12px/19px ui-monospace,monospace;color:#d8e8c7;text-align:right}
+.hr-bar{grid-area:2/3/3/5;height:5px;background:#304135;align-self:center;overflow:hidden}.hr-bar i{display:block;width:100%;height:100%;background:linear-gradient(90deg,#526d47,var(--hr-color));transform-origin:left;transition:transform .2s ease-out}
+.hr-share{display:none}.hr-note{display:block;font:10px/1.5 system-ui;color:#7e977e;margin-top:8px}
+#battle-view[data-damage-ranking=on] .turn-chip:nth-child(n+6){display:none}#battle-view[data-damage-ranking=on] .turn-order{flex-shrink:0}
+#battle-view .hr-toggle[aria-pressed=true]{border-color:#a9cc84;color:#d4edb4;background:#243522}
+@media(max-width:700px){#battle-view[data-damage-ranking=on]>.battle-shell{grid-template-columns:minmax(0,1fr) 108px}.hr-damage{--hr-row-height:36px;padding-bottom:8px}.hr-heading{flex-wrap:wrap;gap:3px}.hr-heading h2{font-size:11px}.hr-heading .hr-close{font-size:10px;padding:2px 4px}.hr-total{flex-direction:column;gap:1px;margin-bottom:3px}.hr-total strong{font-size:15px}.hr-row{grid-template-columns:10px minmax(0,1fr) auto;gap:1px 3px;grid-template-rows:18px 8px}.hr-portrait{display:none}.hr-rank{grid-area:1/1/3/2;font-size:9px}.hr-name{grid-area:1/2;font-size:10px}.hr-amount{grid-area:1/3;font-size:10px}.hr-bar{grid-area:2/2/3/4;height:4px}.hr-note{font-size:9px}.hr-toggle{white-space:nowrap}#battle-view .commands{gap:3px}#battle-view .command-bar .commands button{font-size:10px;padding-inline:5px}}
+@media(prefers-reduced-motion:reduce){.hr-row,.hr-bar i{transition:none}}
+
+/* The live list renders at most five entries; keep the rail bounded on small screens. */
+.hr-scroll{max-height:calc(5 * var(--hr-row-height));overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-gutter:stable;overflow-anchor:none}
+.hr-scroll:focus-visible{outline:1px solid #a9cc84;outline-offset:2px}

@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>阿萨拉摸金重开模拟器｜G.T.I. 终端</title>
+<style>
+  :root{--bg:#07100d;--panel:#0c1712;--line:#24382d;--green:#9fe870;--green2:#5eae62;--text:#e8f2ea;--muted:#8fa395;--warn:#d9c272;--danger:#d98672;--rare:#83c7ff;--epic:#c190ff;--red:#ff4b55;--shadow:0 18px 45px rgba(0,0,0,.35)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),radial-gradient(circle at 84% 5%,rgba(77,131,79,.15),transparent 28%),var(--bg);background-size:32px 32px,32px 32px,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}.wrap{max-width:1320px;margin:auto;padding:0 28px}.topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 40%,var(--green2) 70%,transparent 96%);opacity:.8}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}.mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}.brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover,nav a.active{border-color:var(--line);background:#0d1813;color:var(--green)}
+  .hero{padding:48px 0 16px;display:grid;grid-template-columns:1.12fr .88fr;gap:16px}.hero-main{border:1px solid #2c4235;background:linear-gradient(90deg,rgba(4,9,7,.98),rgba(6,12,9,.74) 58%,rgba(9,17,13,.35)),radial-gradient(circle at 82% 46%,#24432c 0,#112018 20%,#07100d 54%);box-shadow:var(--shadow);padding:34px;position:relative;overflow:hidden}.hero-main:after{content:"RESTART";position:absolute;right:-26px;bottom:-40px;color:rgba(159,232,112,.04);font-size:96px;font-weight:900;letter-spacing:-5px;transform:rotate(-5deg)}.eyebrow,.kicker{color:var(--green);font:800 10px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:2.4px}.hero h1{position:relative;z-index:1;font-size:52px;line-height:1;margin:16px 0 14px;letter-spacing:-2px}.hero p{position:relative;z-index:1;color:#aebdb1;margin:0;max-width:720px}.status-card{border:1px solid var(--line);background:linear-gradient(180deg,#0e1a14,#09120e);padding:24px}.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}.stat{border:1px solid #21362a;background:#0d1913;padding:14px}.stat strong{display:block;font-size:26px;color:var(--green);line-height:1}.stat span{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1px}
+  .game-layout{display:grid;grid-template-columns:1fr;gap:16px;margin:16px 0 42px;align-items:start}.terminal{border:1px solid #31513a;background:#0a140f;box-shadow:var(--shadow);overflow:hidden}.terminal-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid #1b2d23;background:linear-gradient(90deg,#0f2118,#0a140f)}.terminal-head h2{font-size:20px;margin:0}.run-id{font:900 12px ui-monospace,monospace;color:var(--muted);letter-spacing:1px}.maps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:18px;border-bottom:1px solid #17271e;background:#09120e}.map-card{min-height:118px;border:1px solid #21362a;background:linear-gradient(155deg,#11231a,#0a130f 68%);padding:13px;text-align:left;color:inherit;font:inherit;cursor:pointer;transition:.16s}.map-card:hover{border-color:#557d5e;background:#102019}.map-card.selected{border-color:var(--green);box-shadow:0 0 0 1px rgba(159,232,112,.35) inset}.map-card:disabled{opacity:.55;cursor:not-allowed}.map-card strong{display:block;font-size:15px}.map-card p{margin:8px 0 0;color:#aebdb1;font-size:12px}
+  .talents{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:18px;border-bottom:1px solid #17271e}.talent{min-height:132px;border:1px solid #21362a;background:linear-gradient(155deg,#11231a,#0a130f 68%);padding:13px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;color:inherit;font:inherit;cursor:pointer;transition:.16s}.talent:hover{border-color:#557d5e;background:#102019}.talent.selected{border-color:var(--green);box-shadow:0 0 0 1px rgba(159,232,112,.35) inset}.talent.locked{opacity:.45;cursor:not-allowed}.talent.rarity-RED{border-color:rgba(255,75,85,.55);background:linear-gradient(155deg,rgba(82,14,20,.92),#0a130f 68%);box-shadow:0 0 24px rgba(255,75,85,.12) inset}.talent strong{display:block;font-size:15px;line-height:1.25}.talent p{margin:8px 0 0;color:#aebdb1;font-size:12px}.rarity{font:900 10px ui-monospace,monospace;letter-spacing:1px}.rarity-N{color:#9eb0a4}.rarity-R{color:var(--rare)}.rarity-SR{color:var(--epic)}.rarity-SSR{color:var(--warn)}.rarity-RED{color:var(--red);text-shadow:0 0 12px rgba(255,75,85,.45)}
+  .attr-panel{display:none;padding:18px;border-bottom:1px solid #17271e;background:#09120e}.attr-panel.active{display:block}.attr-head{display:flex;justify-content:space-between;gap:16px;margin-bottom:12px}.attr-head p{margin:0;color:#aebdb1}.attr-tools{display:flex;align-items:center;gap:12px}.mini-btn{border:1px solid #3e6549;background:#11261a;color:var(--green);font-weight:900;padding:9px 12px;cursor:pointer;white-space:nowrap}.mini-btn:hover{filter:brightness(1.08)}.points{font:900 28px ui-monospace,monospace;color:var(--green);line-height:1;text-align:right}.points small{display:block;color:var(--muted);font-size:10px;letter-spacing:1px;margin-top:5px}.attr-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.attr-row{border:1px solid #21362a;background:#0d1913;padding:12px;display:grid;grid-template-columns:72px 1fr 86px;gap:10px;align-items:center}.attr-row b{font-size:13px}.attr-quality{font:900 11px ui-monospace,monospace;color:var(--warn);text-align:right}.stepper{display:flex;align-items:center;gap:8px;justify-content:center}.stepper button{width:28px;height:28px;border:1px solid #3e6549;background:#11261a;color:var(--green);font-weight:900;cursor:pointer}.stepper button:disabled{opacity:.35;cursor:not-allowed}.stepper span{min-width:24px;text-align:center;font:900 15px ui-monospace,monospace}
+  .screen{min-height:490px;max-height:620px;overflow:auto;padding:18px;background:linear-gradient(rgba(159,232,112,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.028) 1px,transparent 1px),#07100d;background-size:36px 36px}.screen.playing{cursor:pointer;box-shadow:inset 0 0 0 1px rgba(159,232,112,.12)}.screen.playing:hover{box-shadow:inset 0 0 0 1px rgba(159,232,112,.3)}.empty{height:430px;display:grid;place-items:center;text-align:center;color:#aebdb1}.empty h3{font-size:34px;line-height:1.05;margin:12px 0;color:var(--text)}.timeline{display:grid;gap:10px}.event{border-left:3px solid #3f6748;background:#0d1913;padding:12px 14px;animation:in .22s ease-out both}.event.danger{border-color:var(--danger)}.event.loot{border-color:var(--warn)}.event.extract{border-color:var(--green)}.event.system{border-color:var(--rare)}.event-time{display:block;color:var(--muted);font:900 10px ui-monospace,monospace;letter-spacing:1px;margin-bottom:4px}.event strong{color:#e8f2ea}.event p{margin:5px 0 0;color:#b9c8bd}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .event.red-loot{position:relative;border-color:var(--red);background:linear-gradient(135deg,rgba(115,12,20,.58),#130b0b 62%,rgba(217,194,114,.09));box-shadow:0 0 0 1px rgba(255,75,85,.35),0 0 30px rgba(255,75,85,.22),inset 0 0 24px rgba(217,194,114,.08);overflow:hidden}.event.red-loot:before{content:"HIGH VALUE";position:absolute;right:14px;top:10px;color:rgba(255,211,124,.18);font:900 18px ui-monospace,monospace;letter-spacing:2px}.event.red-loot:after{content:"";position:absolute;inset:-40% -20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.22) 47%,rgba(255,75,85,.14) 53%,transparent 62%);animation:redSweep 1.15s ease-out both}.event.red-loot strong{color:#ffd37c;text-shadow:0 0 12px rgba(255,75,85,.5)}.event.red-loot p{position:relative;z-index:1;color:#ffd9c7}.treasure-banner{position:relative;z-index:2;display:inline-block;margin:10px 0 0;padding:5px 9px;border:1px solid rgba(255,211,124,.55);background:rgba(255,75,85,.16);color:#ffd37c;font:900 12px ui-monospace,monospace;letter-spacing:1px;animation:redPop .55s ease-out both}.screen.treasure-flash{animation:treasureFlash .82s ease-out both}@keyframes redSweep{from{transform:translateX(-34%)}to{transform:translateX(34%)}}@keyframes redPop{0%{transform:scale(.85);opacity:0}45%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}@keyframes treasureFlash{0%{box-shadow:inset 0 0 0 1px rgba(255,75,85,.2),0 0 0 rgba(255,75,85,0);filter:saturate(1)}35%{box-shadow:inset 0 0 0 2px rgba(255,75,85,.75),0 0 48px rgba(255,75,85,.42);filter:saturate(1.45)}100%{box-shadow:inset 0 0 0 1px rgba(159,232,112,.12),0 0 0 rgba(255,75,85,0);filter:saturate(1)}}
+  .side{display:none;gap:12px}.side.setup-phase{display:grid;grid-template-columns:minmax(240px,520px);justify-content:center}.side.run-phase{display:grid;grid-template-columns:minmax(300px,.95fr) minmax(330px,1fr) minmax(300px,1.05fr)}.terminal .side{padding:18px;border-bottom:1px solid #17271e;background:#09120e}.panel{border:1px solid var(--line);background:#0a140f;padding:18px}.actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-content:start}.side.setup-phase .actions{grid-template-columns:1fr;background:linear-gradient(135deg,#10231a,#0a140f)}.side.setup-phase .panel:not(.actions),.side.setup-phase .auto-row,.side.setup-phase #resetBtn,.side.phase-standby #actionBtn,.side.phase-talent #rollBtn,.side.phase-attr #rollBtn,.side.run-phase #rollBtn{display:none}.actions .btn:last-child{grid-column:auto}.btn{border:1px solid #477052;background:#11261a;color:var(--text);font-weight:900;padding:12px 14px;cursor:pointer;text-align:center}.btn.primary{background:var(--green);color:#07100d;border-color:var(--green)}.btn:disabled{opacity:.45;cursor:not-allowed}.btn:hover:not(:disabled){filter:brightness(1.07)}.auto-row{border:1px solid #21362a;background:#0d1913;padding:11px 12px;display:flex;align-items:center;gap:10px;color:#c7d6cb}.auto-row input{accent-color:var(--green)}
+  .meter-list{display:grid;gap:9px}.meter{display:grid;grid-template-columns:74px 1fr 58px;gap:8px;align-items:center}.meter span{color:var(--muted);font-size:12px}.track{height:9px;border:1px solid #263d30;background:#07100d;overflow:hidden}.fill{height:100%;background:var(--green);width:0}.meter strong{font:900 12px ui-monospace,monospace;text-align:right;color:#e8f2ea}.result-title{font-size:30px;line-height:1.08;margin:10px 0;color:var(--warn);font-weight:900}.result-line{color:#c1cec5;margin:0}.share{margin-top:12px;border:1px solid #21362a;background:#0d1913;color:#b9c8bd;padding:12px;font-size:12px;white-space:pre-wrap}
+  .decision{border:1px solid #486d53;background:linear-gradient(135deg,#10231a,#07100d);padding:16px;box-shadow:0 14px 34px rgba(0,0,0,.28);animation:in .22s ease-out both}.decision.resolved{opacity:.74}.decision h3{margin:8px 0 6px;font-size:22px;line-height:1.15}.decision p{margin:0;color:#c0cec4}.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.choice-btn{border:1px solid #456a50;background:#0d1913;color:var(--text);text-align:left;padding:12px;cursor:pointer;font:inherit;min-height:78px}.choice-btn:hover{border-color:var(--green);background:#12281c}.choice-btn strong{display:block;color:var(--green);font-size:14px}.choice-btn span{display:block;color:#9fb0a4;font-size:12px;margin-top:4px}.choice-btn:disabled{opacity:.5;cursor:not-allowed}
+  .end-card{border:1px solid rgba(217,194,114,.55);background:linear-gradient(135deg,rgba(38,32,17,.9),#0b130f 58%,rgba(14,34,23,.75));padding:18px;box-shadow:0 0 36px rgba(217,194,114,.12);margin-top:4px}.end-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.end-head h3{font-size:34px;line-height:1;margin:8px 0;color:var(--warn)}.end-head p{margin:0;color:#d8d0af}.end-rank{font:900 12px ui-monospace,monospace;color:#07100d;background:var(--warn);padding:7px 10px;white-space:nowrap}.end-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:16px 0}.end-stat{border:1px solid #3a3927;background:#0d1913;padding:11px}.end-stat strong{display:block;color:#fff;font-size:18px;line-height:1.1}.end-stat span{color:var(--muted);font:900 10px ui-monospace,monospace;letter-spacing:1px}.highlight-list{display:grid;gap:8px;margin-top:12px}.highlight{border-left:3px solid var(--green);background:rgba(13,25,19,.78);padding:9px 11px;color:#cbd8cf}.highlight.red-loot{border-color:var(--red);color:#ffd7c4}.highlight.danger{border-color:var(--danger)}
+  .codex-panel{border:1px solid #31513a;background:#09120e;padding:18px;border-top:0}.codex-head{display:flex;justify-content:space-between;gap:12px;align-items:end;margin-bottom:12px}.codex-head h2{font-size:18px;margin:6px 0 0}.codex-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.codex-card{border:1px solid #21362a;background:#0d1913;padding:12px;min-height:116px}.codex-card strong{display:block;font-size:14px}.codex-card small{display:block;color:var(--muted);font:900 10px ui-monospace,monospace;letter-spacing:1px;margin:4px 0 10px}.badge-row{display:flex;flex-wrap:wrap;gap:6px}.badge{border:1px solid #2e4436;background:#07100d;color:#6f8275;padding:4px 6px;font-size:11px}.badge.seen{border-color:#5a875f;color:#d7eadb;background:#11231a}.badge.red.seen{border-color:var(--red);color:#ffd0d0;background:#2a1114}
+  @media(max-width:1120px){.maps,.talents{grid-template-columns:repeat(2,1fr)}.attr-list{grid-template-columns:1fr}.side.run-phase{grid-template-columns:1fr 1fr}.side.run-phase .panel:last-child{grid-column:1 / -1}.codex-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:1040px){.hero,.game-layout{grid-template-columns:1fr}nav{display:none}.brand{min-width:0}}@media(max-width:620px){.wrap{padding:0 18px}.hero-main{padding:28px 22px}.hero h1{font-size:38px}.stat-grid,.maps,.talents,.side.run-phase,.actions,.choice-grid,.end-stats,.codex-grid{grid-template-columns:1fr}.side.run-phase .panel:last-child{grid-column:auto}.terminal-head,.attr-head,.end-head,.codex-head{align-items:flex-start;flex-direction:column}.attr-row{grid-template-columns:1fr}.attr-quality{text-align:left}.meter{grid-template-columns:64px 1fr 48px}}
+</style>
+<link rel="stylesheet" href="shared/player-card.css">
+<script src="shared/player-card.js"></script>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a href="delta_force_wiki_home.html">首页</a><a class="active" href="mini_games.html">小游戏</a><a href="operations_fire.html">烽火地带</a><a href="delta_force_wiki_home.html#operators">干员档案</a><a href="community_forum.html">玩家交流</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="eyebrow">G.T.I. REMAKE TERMINAL // ASALA RUN SIMULATION</div>
+      <h1>阿萨拉摸金重开模拟器</h1>
+      <p>先选择地图，再十连抽天赋，挑 3 个装进本局，并把属性点分配到战斗、搜刮、潜行、战术、团队和机动。入局后默认手动点击下一段事件，也可以打开自动播放和 2 倍速。</p>
+    </div>
+    <aside class="status-card">
+      <div class="kicker">SIM CONFIG / 模拟参数</div>
+      <div class="stat-grid"><div class="stat"><strong>4</strong><span>MAPS</span></div><div class="stat"><strong>10</strong><span>TALENT DRAW</span></div><div class="stat"><strong>20</strong><span>STAT POINTS</span></div><div class="stat"><strong>14-24</strong><span>RUN LOGS</span></div></div>
+    </aside>
+  </section>
+
+  <section class="game-layout">
+    <div class="terminal">
+      <div class="terminal-head"><div><div class="kicker">REMAKE LOG / 本局记录</div><h2 id="terminalTitle">选择地图</h2></div><div class="run-id" id="runId">RUN // STANDBY</div></div>
+      <div class="maps" id="mapList"></div>
+      <div class="talents" id="talentList"></div>
+      <div class="attr-panel" id="attrPanel"><div class="attr-head"><p>把属性点投到你想要的摸金路线。数值会显示品质，越高越离谱。</p><div class="attr-tools"><button class="mini-btn" id="randomAttrBtn" type="button">随机加点</button><div class="points" id="pointsLeft">20<small>POINTS LEFT</small></div></div></div><div class="attr-list" id="attrList"></div></div>
+      <aside class="side setup-phase phase-standby">
+        <div class="panel actions">
+          <button class="btn primary" id="rollBtn" type="button" disabled>十连抽天赋</button>
+          <button class="btn" id="actionBtn" type="button" disabled>选择 3 个天赋</button>
+          <label class="auto-row"><input id="autoToggle" type="checkbox" /> 自动播放事件</label>
+          <label class="auto-row"><input id="speedToggle" type="checkbox" /> 2 倍速播放</label>
+          <button class="btn" id="resetBtn" type="button">清空终端</button>
+        </div>
+        <div class="panel">
+          <div class="kicker">STATUS / 实时状态</div>
+          <div class="meter-list">
+            <div class="meter"><span>生命</span><div class="track"><div class="fill" id="hpFill"></div></div><strong id="hpText">100</strong></div>
+            <div class="meter"><span>腿况</span><div class="track"><div class="fill" id="legFill"></div></div><strong id="legText">良好</strong></div>
+            <div class="meter"><span>背包</span><div class="track"><div class="fill" id="valueFill"></div></div><strong id="valueText">0</strong></div>
+            <div class="meter"><span>热度</span><div class="track"><div class="fill" id="heatFill"></div></div><strong id="heatText">低</strong></div>
+            <div class="meter"><span>时间</span><div class="track"><div class="fill" id="timeFill"></div></div><strong id="timeText">--</strong></div>
+          </div>
+        </div>
+        <div class="panel"><div class="kicker">ENDING / 本次评级</div><div class="result-title" id="resultTitle">尚未开始</div><p class="result-line" id="resultLine">终端还没有收到你的摸金样本。</p><div class="share" id="shareText">等待生成分享文案。</div></div>
+      </aside>
+      <div class="screen" id="screen"></div>
+      <section class="codex-panel" id="codexPanel"></section>
+    </div>
+  </section>
+</main>
+
+<script>
+  const mapDefs=[
+    {key:"dam",name:"零号大坝",tag:"行政楼 / 水泥厂 / 井盖",desc:"小图节奏快，路线短，水泥厂、军营、变电站和游客中心都能一口吃完再撤。",timeLimit:35,mod:{heat:1,luck:1,combat:1},routes:["水泥厂索降点 -> 二层电脑和航空箱 -> 河滩管道 -> 地下通道","军营索降点 -> 二楼办公桌 -> 小军营 -> 行政楼外围停车场","游客中心索降点 -> 三楼资料区 -> 主变电站技术室 -> 野外营地"],events:[
+      {kind:"loot",text:"你从水泥厂侧门贴进去，MP5枪口压着楼梯，二层电脑旁摸出一件硬货，背包终于不再像空文件夹。",weight:s=>1+s.luck+s.greed*.5,effect:s=>{s.value+=rand(130,280);s.heat+=1}},
+      {kind:"danger",text:"军营二楼办公桌刚翻到钥匙位，外面AKM短点射连着打墙，你吞了止痛片，从窗边硬挤出去。",weight:s=>2+s.heat-s.mobility*.25,effect:s=>{s.hp-=rand(10,26);s.leg-=1}},
+      {kind:"loot",text:"你钻进主变电站右侧井盖，鼠鼠路线突然通电，出来时手里多了电料，鞋底也多了泥。",weight:s=>1+s.tactics*.45+s.greed*.45,effect:s=>{s.value+=rand(150,300);s.extractChance+=1}},
+      {kind:"danger",text:"游客中心三楼资料区太安静，你刚把M4A1换成半自动，柜台方向就有人先开了灯。",weight:s=>2+s.heat-s.awareness*.25,effect:s=>{s.hp-=rand(12,30);s.bleed+=1}},
+      {kind:"danger",text:"行政楼外围停车场传来M249压制，队友标点让你别进，你还是贴着集装箱摸了一步，然后甲开始说疼。",weight:s=>2+s.heat+s.combat*.15,effect:s=>{s.hp-=rand(16,36);s.heat+=2}},
+      {kind:"extract",text:"行政楼已经打成回收站，你抱着小紫从地下通道绕走，路过河滩管道时连呼吸都放轻了。",weight:s=>1+s.tactics*.55+s.mobility*.35,effect:s=>{s.heat=Math.max(0,s.heat-2);s.extractChance+=2}}
+    ]},
+    {key:"valley",name:"长弓溪谷",tag:"雷达站 / 酒店 / 高坡狙",desc:"路线长、视野远，雷达站、钻石皇后酒店和高坡枪线会把贪心的人慢慢留下。",timeLimit:35,mod:{mobility:1,tactics:1,awareness:1},routes:["变电站索降点 -> 下坡贴石头 -> 钻石皇后酒店外圈 -> 溪谷撤离","超星车站 -> 滑索到雷达站 -> 山脊观察 -> 荒废村庄地窖","河谷边缘 -> 小资源点连吃 -> 绕开酒店正门 -> 撤离点外圈"],events:[
+      {kind:"danger",text:"你从变电站下坡贴着石头走，高坡M700响了一枪，子弹擦过头盔，队内标点瞬间把整条坡画成禁区。",weight:s=>3-s.awareness*.35,effect:s=>{s.hp-=rand(16,36);s.bleed+=1}},
+      {kind:"loot",text:"钻石皇后酒店主楼窗户碎了一地，你端着SG552贴墙上二楼，床头柜给了你一个很会发光的小惊喜。",weight:s=>1+s.luck+s.greed*.5,effect:s=>{s.value+=rand(150,310);s.heat+=2}},
+      {kind:"extract",text:"你从超星车站坐滑索去雷达站，落地前先看电梯井，落地后先吃止痛片，主打一个不信命但信药。",weight:s=>1+s.tactics*.5+s.awareness*.35,effect:s=>{s.extractChance+=2;s.hp+=rand(5,14);s.heat=Math.max(0,s.heat-1)}},
+      {kind:"loot",text:"荒废村庄密码地窖刚开门，旁边有人递小紫求放过。你没停留，只拿桌面小红，转身钻进树线。",weight:s=>1+s.tactics*.35+s.greed*.45,effect:s=>{s.value+=rand(110,240);s.extractChance+=1}},
+      {kind:"danger",text:"溪谷桥头被人架住，R93的枪声隔几秒响一次。你不敢过桥，只能沿河沟绕到撤离外圈。",weight:s=>2+s.heat-s.awareness*.35,effect:s=>{s.hp-=rand(12,30);s.minute+=1}},
+      {kind:"danger",text:"酒店外墙转角突然贴出一把Vector，你的甲像纸一样响，止痛片刚吃下去就开始后悔。",weight:s=>2+s.heat-s.combat*.25,effect:s=>{s.hp-=rand(18,38);s.leg-=1}}
+    ]},
+    {key:"space",name:"航天基地",tag:"蓝室 / 黑室 / 中控桥",desc:"跑线更像闯关：中控桥、发射桥、离心、黑市、蓝室黑室，每一步都可能有人堵。",timeLimit:35,mod:{heat:2,luck:2,combat:1,extractChance:-1},routes:["吊桥卡 -> 黑市 -> 总裁楼外侧 -> 锅炉房 -> 丢包撤","中控 -> 桥下绳索 -> 小米之家 -> 离心外圈 -> 丢包撤","发射区 -> 发射桥 -> 离心门口 -> 黑室或蓝室 -> 火箭撤"],events:[
+      {kind:"loot",text:"你刷到吊桥卡后直奔黑市，M7挂在胸前晃得很贵，两个航空箱吃完，背包重量开始劝你做人。",weight:s=>2+s.luck+s.greed*.55,effect:s=>{s.value+=rand(200,420);s.heat+=2}},
+      {kind:"danger",text:"中控桥被堵了，桥对面K416点射很稳，你把止痛片塞嘴里，贴着桥下绳索往小米之家挪。",weight:s=>3+s.heat-s.tactics*.3,effect:s=>{s.hp-=rand(18,40);s.leg-=1}},
+      {kind:"danger",text:"发射桥枪线亮起来时你才明白堵桥的含金量，M4A1一梭子从栏杆缝里扫过来，背包替你吃了半条命。",weight:s=>3+s.heat-s.awareness*.3,effect:s=>{s.hp-=rand(24,48);s.heat+=1}},
+      {kind:"danger",text:"宿舍区花盆后面蹲着人，你路过时他比花盆还安静，等你换弹才把Vector抬起来。",weight:s=>3+s.heat-s.stealth*.25,effect:s=>{s.hp-=rand(20,42);s.bleed+=1}},
+      {kind:"loot",text:"黑室机器旁摸出大金，你没有多看，直接把G18修脚枪换到手里，准备从锅炉房边线跑路。",weight:s=>1+s.luck+s.tactics*.35,effect:s=>{s.value+=rand(180,360);s.heat+=2}},
+      {kind:"loot",text:"蓝室门口箱子旁没人动，你蹲下开箱，听着离心方向的枪声越来越近，手速突然练出来了。",weight:s=>1+s.stealth*.35+s.greed*.45,effect:s=>{s.value+=rand(130,280);s.heat+=1}},
+      {kind:"extract",text:"丢背包撤离点前你犹豫半秒，旁边护航哥也犹豫半秒。你最后保住安全箱，放弃了那个很重的梦。",weight:s=>1+s.stealth*.45+s.tactics*.35,effect:s=>{s.extractChance+=1;s.heat+=1}}
+    ]},
+    {key:"bakshi",name:"巴克什",tag:"巴别塔 / 博物馆 / 浴场",desc:"巷子、楼梯、侧门和拉闸点把人切得很碎。小镇、旅馆、浴场、集市到博物馆都有故事。",timeLimit:35,mod:{stealth:1,combat:1,heat:1},routes:["樱桃小镇 -> 蓝汀旅馆 -> 西城民宅 -> 博物馆侧门 -> 浴场拉闸","集市索降点 -> 浴场一楼 -> 博物馆侧门 -> 巴别塔前拉闸","营地高点 -> 架集市进博物馆的路 -> 皇家博物馆 -> 通向溪谷的路"],events:[
+      {kind:"loot",text:"你从樱桃小镇先吃民宅，AK-12背在身后，桌面小物不值钱，但路线终于顺到蓝汀旅馆门口。",weight:s=>1+s.tactics*.45+s.greed*.35,effect:s=>{s.value+=rand(90,210);s.extractChance+=1}},
+      {kind:"danger",text:"蓝汀旅馆楼梯口有人卡着角，你刚抬M1014，对面先从扶手缝里给你上了一课。",weight:s=>2+s.heat-s.combat*.25,effect:s=>{s.hp-=rand(18,38);s.bleed+=1}},
+      {kind:"loot",text:"浴场餐厅玻璃后面亮了一下，你没有立刻冲，先吃止痛片，再从更衣区慢慢贴到密码门。",weight:s=>1+s.tactics*.5+s.greed*.35,effect:s=>{s.value+=rand(130,270);s.hp+=rand(4,12)}},
+      {kind:"danger",text:"集市转角刷新一位满配哥，你刚想后退，M7的声音已经把巷子填满，腿也替你交了学费。",weight:s=>2+s.heat-s.stealth*.25,effect:s=>{s.hp-=rand(15,34);s.leg-=1}},
+      {kind:"loot",text:"皇家博物馆侧门进得很干净，展柜刚开出好货，队友标点却突然钉在正门口。",weight:s=>1+s.luck+s.greed*.5,effect:s=>{s.value+=rand(160,330);s.heat+=1}},
+      {kind:"danger",text:"巴别塔下半区又刷了两队，你刚到门口就听见SG552和AKM互相打招呼，场面像小型总决赛。",weight:s=>3+s.heat-s.combat*.25,effect:s=>{s.hp-=rand(18,42);s.heat+=2}},
+      {kind:"extract",text:"拉闸、身份牌和博士任务全在地图上发光，你最后选了通向溪谷的路，丢包也比变盒好。",weight:s=>1+s.tactics*.5+s.team*.25,effect:s=>{s.heat=Math.max(0,s.heat-2);s.extractChance+=2}}
+    ]}
+  ];
+  const attributeDefs=[{key:"combat",label:"战斗",desc:"跳拉、反打、清楼"},{key:"greed",label:"搜刮",desc:"开箱、理包、价值嗅觉"},{key:"stealth",label:"潜行",desc:"静步、卡点、草丛适应"},{key:"tactics",label:"战术",desc:"路线、撤离、风险判断"},{key:"team",label:"团队",desc:"救援、分工、队友缘"},{key:"mobility",label:"机动",desc:"转点、跑路、腿部命运"}];
+  const talents=[
+    {name:"夺舍圣体",rarity:"RED",desc:"你不一定能打赢，但总有人会在你面前倒成升级包。",mod:{combat:4,survival:4,luck:3,value:260,extractChance:2,heat:2}},{name:"板板体验卡",rarity:"RED",desc:"开局像下了单，魔王护航队友会把门口打成你的私人通道。",mod:{escort:1,team:5,survival:4,value:220,heat:2,mobility:-1}},{name:"仓库权限拉满",rarity:"RED",desc:"安全箱像开了第二层，带出价值直接不讲道理。",mod:{capacity:6,greed:4,luck:4,value:360,heat:2}},{name:"不死鸟医疗包",rarity:"RED",desc:"腿能断，血能流，但这局就是很难把你留下。",mod:{survival:6,mobility:3,team:2,extractChance:2}},
+    {name:"疯疯火火",rarity:"SSR",desc:"看见红光就走不动路，包里没红就觉得这局白来。",mod:{luck:3,greed:1}},{name:"天生眼盲",rarity:"R",desc:"看不见敌人，但很擅长说刚才卡了。",mod:{combat:-2,awareness:-2,stealth:1}},{name:"轮椅精通",rarity:"SR",desc:"腿经常出事，但姿态极其稳定。",mod:{mobility:-2,survival:3}},{name:"听力头转世",rarity:"SR",desc:"三栋楼外的拉栓声都能听见。",mod:{awareness:3,tactics:1}},{name:"保险箱亲属",rarity:"SSR",desc:"路过保险箱时会被它主动搭话。",mod:{luck:2,value:80}},
+    {name:"队友召回器",rarity:"SR",desc:"队友倒了以后，你的烟雾弹会自己长出来。",mod:{team:3,survival:1}},{name:"金弹过敏",rarity:"N",desc:"带贵弹就会手抖，带破弹反而自信。",mod:{combat:-1,greed:2}},{name:"撤离点预言家",rarity:"SR",desc:"总能闻到哪个撤离点快变红。",mod:{tactics:3,awareness:1}},{name:"背包折叠术",rarity:"SR",desc:"两格包能塞出四格人的尊严。",mod:{capacity:3,greed:1}},{name:"草丛低语",rarity:"R",desc:"越靠近阴暗角落越安心。",mod:{stealth:3,combat:-1}},
+    {name:"战术板上头",rarity:"R",desc:"路线规划完美，执行时偶尔忘记看脚下。",mod:{tactics:2,awareness:-1}},{name:"老板雷达",rarity:"SSR",desc:"附近有满配特战干员时心跳会变贵。",mod:{greed:2,awareness:2,heat:1}},{name:"跳拉本能",rarity:"SR",desc:"看到门就想横着飞出去。",mod:{combat:3,heat:2}},{name:"仓鼠式理包",rarity:"R",desc:"垃圾桶里也许有未来。",mod:{capacity:2,greed:2,mobility:-1}},{name:"烟雾弹欠费",rarity:"N",desc:"需要掩护时，包里只有沉默。",mod:{team:-1,survival:-1}},
+    {name:"黑室祈福",rarity:"SR",desc:"每次出门前都觉得这把要还愿。",mod:{luck:2,survival:1}},{name:"野牛真爱粉",rarity:"SR",desc:"别人说它便宜又菜，你说这叫陪伴型武器。",mod:{mobility:1,team:1,greed:1,combat:-1}},{name:"UZI启蒙课",rarity:"R",desc:"新手第一把快乐喷泉，便宜、响亮、容易让人清醒。",mod:{mobility:2,combat:-1,heat:1}},{name:"跑刀传人",rarity:"R",desc:"成本低到系统都不好意思扣你钱。",mod:{mobility:2,greed:2,combat:-2}},{name:"满配幻觉",rarity:"N",desc:"总觉得自己穿的是六套，实际是勇气。",mod:{combat:1,survival:-2,heat:1}},{name:"架枪洁癖",rarity:"R",desc:"不把所有入口看住就浑身难受。",mod:{awareness:2,tactics:2,mobility:-1}},{name:"锦鲤队友",rarity:"SSR",desc:"队友一开箱，你的人生也被照亮了。",mod:{team:2,luck:3}},
+    {name:"路边包鉴定师",rarity:"R",desc:"一眼看出哪个包值得冒险。",mod:{greed:2,tactics:1}},{name:"断腿文学家",rarity:"N",desc:"每次骨折都能写出新的结算感想。",mod:{survival:1,mobility:-2}},{name:"静步宗师",rarity:"SR",desc:"你走过的地板都怀疑自己没被踩。",mod:{stealth:3,awareness:1}},{name:"红光收割欲",rarity:"SR",desc:"撤离点一红，你就觉得这是邀请函。",mod:{combat:2,heat:2,greed:1}},{name:"无声舔包",rarity:"R",desc:"别人还在清点战场，你已经把最贵的部分拿走了。",mod:{stealth:2,greed:2}},
+    {name:"战备破产",rarity:"N",desc:"局前就把命运花得差不多了。",mod:{value:-80,greed:1,survival:-1}},{name:"满编好运",rarity:"SR",desc:"队友全在，队内频道全开，连撤离点都显得亲切。",mod:{team:2,extractChance:1}},{name:"大红幻听",rarity:"N",desc:"每个箱子都像在叫你，但大多只是风声。",mod:{luck:-1,greed:3}},{name:"架点幽灵",rarity:"SR",desc:"你不一定开第一枪，但总在别人露头时已经准备好。",mod:{stealth:2,combat:1,awareness:1}},{name:"撤离黑名单",rarity:"N",desc:"撤离点看见你就想加班。",mod:{extractChance:-2,heat:1}}
+  ];
+  const eventPool=[
+    {kind:"extract",text:"你从直升机滑索落地，索降点离核心近得离谱，像系统在暗示这把别太稳。",effect:s=>{s.heat+=1;s.minute=1}},{kind:"extract",text:"你跟着队友清门，抱着M4A1和止痛片贴线走，终于知道护航为什么贵。",weight:s=>s.escort?1.2:.05,effect:s=>{s.hp+=rand(8,20);s.value+=rand(70,160);s.heat+=1}},{kind:"loot",text:"你摸开第一个保险箱，里面东西还行，但你已经开始幻想自己疯疯火火一把出红。",weight:s=>2+s.luck+s.greed*.4,effect:s=>{s.value+=rand(90,240);s.heat+=1}},{kind:"loot",text:"你在垃圾桶里翻出高价小物，开始重新理解城市生态。",weight:s=>2+s.greed*.8,effect:s=>{s.value+=rand(45,120)}},{kind:"danger",text:"远处密集交火，你刚想绕路，脚边就飞来一颗很有礼貌的破片。",weight:s=>3-s.awareness*.3+s.heat,effect:s=>{s.hp-=rand(12,28);s.heat+=1}},
+    {kind:"danger",text:"草丛里传来一句别打我是鼠鼠，下一秒你的腿先替你相信了他。",weight:s=>4-s.stealth*.45,effect:s=>{s.leg-=1;s.hp-=rand(8,20);s.bleed+=1}},{kind:"extract",text:"你听见脚步提前转点，刚才的位置下一秒被两队人夹成交通事故。",weight:s=>1+s.awareness*.45+s.tactics*.45,effect:s=>{s.heat=Math.max(0,s.heat-1)}},{kind:"loot",text:"你把便宜野牛抱得很稳，沿着边线吃小物资。伤害一般，但它陪你走过了三间没人要的房。",weight:s=>1+s.mobility*.35+s.greed*.35,effect:s=>{s.value+=rand(70,150);s.heat=Math.max(0,s.heat-1)}},{kind:"danger",text:"楼梯口突然撞脸，你的UZI先开口，子弹泼得很热闹，结论也很新手。",weight:s=>2+s.heat-s.combat*.25,effect:s=>{s.hp-=rand(10,26);s.heat+=1}},{kind:"danger",text:"你追着残血进楼，发现里面不止残血，还有他全家战术道具。",weight:s=>3+s.heat-s.combat*.35,effect:s=>{s.hp-=rand(18,38);s.bleed+=1}},
+    {kind:"extract",text:"队友封烟把你从空地里捞出来，你嘴上说稳住，手已经开始抖了。",weight:s=>1+s.team*.5,effect:s=>{s.hp+=rand(8,20);s.heat=Math.max(0,s.heat-1)}},{kind:"loot",text:"你舔包只拿最贵两件，转身就走，理智得像刚上过财务课。",weight:s=>1+s.tactics*.4+s.greed*.45,effect:s=>{s.value+=rand(120,260);s.heat=Math.max(0,s.heat-1)}},{kind:"danger",text:"你非要把包舔干净，远处枪线替你按下了结账按钮。",weight:s=>2+s.greed*.55+s.heat,effect:s=>{s.hp-=rand(20,45);s.bleed+=1}},{kind:"extract",text:"撤离点亮红，你没有硬冲，转身换点，像个真正想活着的人。",weight:s=>1+s.tactics*.6+s.mobility*.35,effect:s=>{s.extractChance+=2;s.heat=Math.max(0,s.heat-2)}},
+    {kind:"danger",text:"你看到红光就摸过去劝架，确实劝成了：他们决定先劝你下线。",weight:s=>2+s.combat*.35+s.heat,effect:s=>{s.hp-=rand(15,35);s.value+=rand(40,140);s.heat+=1}},{kind:"loot",text:"队友喊你来分物资，你短暂相信这是羁绊，直到他把大金放进安全箱。",weight:s=>1+s.team*.5,effect:s=>{s.value+=rand(80,180);s.extractChance+=1}},{kind:"danger",text:"背包太满，你跑起来像移动红包，路过的人都开始喊老板大气。",weight:s=>2+s.value/220-s.capacity*.55,effect:s=>{s.mobility-=1;s.heat+=1}},{kind:"extract",text:"你卡最后一秒拉闸成功，终端没有掌声，但仓库余额替你鼓了。",weight:s=>1+s.extractChance+s.tactics*.45,effect:s=>{s.extracted=true}}
+  ];
+  const mapContainers={
+    dam:["二层电脑桌","航空箱","白色工具箱","井盖边工具包","行政楼外侧抽屉","游客中心资料柜","变电站技术箱","河滩小保险","水泥厂铁皮柜","军营床头柜","小军营弹药箱","地下通道补给包","停车场车尾箱","行政楼档案柜"],
+    valley:["酒店床头柜","雷达站机柜","荒废村庄地窖箱","溪谷补给箱","车站储物柜","河沟边工具包","高坡观察箱","酒店前台抽屉","山脊弹药箱","村口医疗包","雷达站服务器","溪边旅行箱","车站售票柜","酒店二楼保险"],
+    space:["黑市航空箱","蓝室门口箱","黑室机器旁抽屉","离心机柜","锅炉房工具箱","中控桌面保险","发射区补给箱","小米之家储物柜","宿舍床底包","总裁楼文件柜","发射桥弹药箱","桥下工具袋","火箭撤离旁医疗包","黑市保险箱"],
+    bakshi:["民宅衣柜","旅馆前台抽屉","浴场更衣柜","博物馆展柜","集市杂物箱","巴别塔脚边包","西城民宅保险","蓝汀旅馆行李箱","浴场餐厅收银台","小镇厨房柜","博物馆文物箱","集市摊位木箱","皇家博物馆办公桌","拉闸点补给包"]
+  };
+  const routeItems={
+    common:[{name:"军用电台",value:[85,160],tier:"紫"},{name:"高性能处理器",value:[90,180],tier:"紫"},{name:"显卡",value:[95,190],tier:"紫"},{name:"高级燃料",value:[70,150],tier:"紫"},{name:"便携军用电池",value:[65,135],tier:"紫"},{name:"机密文件",value:[170,310],tier:"金"},{name:"卫星电话",value:[130,260],tier:"金"},{name:"实验药剂",value:[120,240],tier:"金"}],
+    dam:[{name:"变电站控制模块",value:[110,230],tier:"金"},{name:"水泥厂工程图纸",value:[80,170],tier:"紫"},{name:"行政楼钥匙卡",value:[130,250],tier:"金"},{name:"游客中心纪念金章",value:[90,180],tier:"紫"}],
+    valley:[{name:"酒店保险盒",value:[160,320],tier:"金"},{name:"雷达站加密硬盘",value:[150,300],tier:"金"},{name:"溪谷藏宝图",value:[100,210],tier:"紫"},{name:"高倍光学镜",value:[90,190],tier:"紫"}],
+    space:[{name:"黑室实验样本",value:[220,420],tier:"金"},{name:"蓝室权限卡",value:[180,360],tier:"金"},{name:"离心机数据盘",value:[140,280],tier:"金"}],
+    bakshi:[{name:"浴场老板账本",value:[120,260],tier:"金"},{name:"巴别塔身份牌",value:[100,230],tier:"紫"},{name:"集市古董怀表",value:[100,210],tier:"紫"}]
+  };
+  const routeWeapons=["M4A1","AK-12","K416","M7","SG552","MP5","野牛","UZI","G18修脚枪","Vector","M1014","M700","R93"];
+  const lootTemplates=[
+    d=>`前往${d.area}时，你把${d.weapon}压在胸口，摸了${d.container}，获得${d.item.name}。${d.flavor}${d.next}`,
+    d=>`${d.item.name}，是你在${d.area}的${d.container}里摸出来的。${d.weapon}还架着门口，你已经开始考虑这把要不要提前撤。${d.next}`,
+    d=>`到了${d.area}，先看的不是风景，是${d.container}。你一开盖就获得${d.item.name}，包里那点空格瞬间变得很有意义。${d.next}`,
+    d=>`${d.area}这段路没白走：${d.container}被你翻到底，${d.item.name}塞进包里，${d.weapon}也终于不用陪你穷跑。${d.next}`,
+    d=>`你蹲在${d.area}边缘，摸了${d.container}。获得${d.item.name}以后，脚步突然变轻，心跳突然变贵。${d.next}`,
+    d=>`摸完${d.container}才发现，${d.area}今天还算给面子：${d.item.name}安静躺在最底下。你端起${d.weapon}，准备继续贴线。${d.next}`
+  ];
+  const dangerTemplates=[
+    d=>`前往${d.area}，你刚摸完${d.container}拿到${d.item.name}，${d.threat}。${d.weapon}还没来得及抬稳，你先把止痛片塞进嘴里。`,
+    d=>`${d.container}里确实有${d.item.name}，但${d.area}也确实不惯着人：${d.threat}。你抱着${d.weapon}往掩体后退，背包开始像负债。`,
+    d=>`在${d.area}摸${d.container}这件事，结论是赚到了${d.item.name}，代价是${d.threat}。止血之前，你先确认安全箱还在。`,
+    d=>`${d.threat}，就在你摸开${d.area}的${d.container}之后。${d.item.name}还没捂热，你已经开始怀疑这条路线是不是被标记了。`,
+    d=>`你用${d.weapon}架着${d.nextArea||"转角"}，手却伸向${d.container}。获得${d.item.name}的下一秒，${d.threat}，这波叫有收入也有发票。`
+  ];
+  const extractTemplates=[
+    d=>`走到${d.area}，你最后摸了${d.container}，获得${d.item.name}。撤离灯在远处亮着，包已经很重，再贪就像替别人打工。`,
+    d=>`${d.item.name}塞进安全箱以后，你才从${d.area}抬头看撤离方向。${d.container}已经空了，命最好也别空在这里。`,
+    d=>`最后一段在${d.area}，${d.container}给了${d.item.name}。你把${d.weapon}收到胸前，开始用一种很想活的姿势往撤离点挪。`
+  ];
+  const lootFlavors=["红光没来，但仓库余额开始回魂。","这东西不一定最贵，但足够让你不想白给。","鼠鼠快乐就是这么朴素，没人抢就是大胜利。","你理包理了三秒，感觉自己像仓库管理员转世。","队友标点还在远处，你已经把这格财富锁死。"];
+  const routeThreats=["墙外突然扫来一串K416点射","楼梯口有人封烟贴近","远处M700响了一枪，子弹擦着头盔过去","拐角的Vector先开口了","桥口枪线亮起来，堵桥的人很懂礼貌","脚边滚来一颗破片，落点准得让人沉默","M7的声音把整条走廊填满了"];
+  const rareRedTreasureSpawns=[
+    {item:{name:"非洲之心",value:[420,760],tier:"红"},maps:["dam","valley","bakshi"],sites:{
+      dam:[{area:"行政楼深处",container:"行政楼档案柜"},{area:"游客中心三楼资料区",container:"锁住的资料柜"}],
+      valley:[{area:"钻石皇后酒店高价值房",container:"酒店二楼保险"},{area:"雷达站核心机房",container:"雷达站服务器暗格"}],
+      bakshi:[{area:"皇家博物馆展厅",container:"博物馆展柜"},{area:"蓝汀旅馆二楼套间",container:"旅馆行李箱暗层"}]
+    }},
+    {item:{name:"曼德尔砖",value:[360,660],tier:"红"},maps:["dam","space"],sites:{
+      dam:[{area:"主变电站技术室",container:"变电站技术箱"},{area:"行政楼保险位",container:"行政楼档案柜"}],
+      space:[{area:"黑市深处",container:"黑市保险箱"},{area:"蓝室门口",container:"蓝室门口箱"}]
+    }},
+    {item:{name:"刀片服务器",value:[420,720],tier:"红"},maps:["space","valley"],sites:{
+      space:[{area:"黑室机器旁",container:"黑室机器旁抽屉"},{area:"中控桌面保险",container:"中控桌面保险"}],
+      valley:[{area:"雷达站核心机房",container:"雷达站服务器"},{area:"高坡观察站",container:"高坡观察箱"}]
+    }},
+    {item:{name:"金条",value:[320,580],tier:"红"},maps:["dam","bakshi","valley"],sites:{
+      dam:[{area:"游客中心资料区",container:"游客中心资料柜"},{area:"水泥厂二层",container:"二层电脑桌"}],
+      bakshi:[{area:"皇家博物馆侧厅",container:"博物馆文物箱"},{area:"集市老摊位",container:"集市摊位木箱"}],
+      valley:[{area:"钻石皇后酒店套房",container:"酒店床头柜"},{area:"荒废村庄地窖",container:"荒废村庄地窖箱"}]
+    }},
+    {item:{name:"航天核心芯片",value:[460,820],tier:"红"},maps:["space"],sites:{
+      space:[{area:"离心机核心区",container:"离心机柜"},{area:"发射区控制台",container:"发射区补给箱"}]
+    }},
+    {item:{name:"博物馆金面具",value:[420,760],tier:"红"},maps:["bakshi"],sites:{
+      bakshi:[{area:"皇家博物馆展厅",container:"博物馆展柜"},{area:"博物馆侧门暗格",container:"博物馆文物箱"}]
+    }}
+  ];
+  const enemyBagTiers=[
+    {key:"knife",label:"跑刀空包",chance:22,value:[8,45],heat:0,items:["半卷绷带","一把小手枪","两个空弹匣","便宜止痛片","路边小紫都没舍得带"],tone:"你蹲下搜包，发现对面比你还穷，像是来地图里散步的。"},
+    {key:"budget",label:"卡战备包",chance:28,value:[45,130],heat:1,items:["野牛备用弹匣","UZI低配套","便宜甲片","蓝色小物","临时拼出来的听力头"],tone:"包里有东西，但每一格都写着精打细算，卡战备味道很冲。"},
+    {key:"normal",label:"正常背包",chance:31,value:[120,260],heat:1,items:["满耐久甲片","高级燃料","军用电台","一组紫弹","改过的MP5"],tone:"这包终于像个正常特战干员，搜起来有点回本的声音。"},
+    {key:"rich",label:"肥包",chance:15,value:[260,520],heat:2,items:["机密文件","卫星电话","满改K416","高价医疗包","老板同款弹挂"],tone:"你刚开包就沉默了，这不是背包，这是别人半局人生。"},
+    {key:"boss",label:"老板包",chance:4,value:[520,860],heat:3,items:["满改M7","金弹匣","大金小物","六套残件","老板的尊严"],tone:"包一打开，贵气先扑脸。你开始理解为什么大家都爱喊老板。"}
+  ];
+  const combatLootTemplates=[
+    d=>`你在${d.area}主动接了一架，${d.weapon}压住枪线，对面终于倒下。蹲下搜包，判定为${d.bag.label}：${d.item}。${d.tone}`,
+    d=>`${d.bag.label}，这是你赢下${d.area}这波交火后的战利品。${d.item}被你塞进包里，${d.weapon}枪口还烫着。${d.tone}`,
+    d=>`先是${d.weapon}打停脚步声，后来才有时间摸包。${d.area}地上那个包打开后露出${d.item}，终端判定：${d.bag.label}。${d.tone}`,
+    d=>`你没有绕，直接在${d.area}把对面架住。人倒了，包开了，里面是${d.item}。${d.bag.label}这四个字让心情上下浮动很大。`
+  ];
+  const redTreasureStories={
+    "非洲之心":[
+      d=>`你在${d.area}停下，${d.container}的开盖声轻得不像这张图。红光从缝里压出来，非洲之心安静躺着，贵到让${d.weapon}都显得像配饰。你没有说话，直接进安全箱。`,
+      d=>`非洲之心出现的时候，${d.area}的枪声像被人按了静音。你盯着那点红光看了半秒，背包还没动，手已经先把安全箱打开了。`,
+      d=>`${d.container}里不是物资，是命运给你递来的贵宾票。非洲之心入箱那一刻，你突然觉得撤离点不再是目标，是朝圣路线。`
+    ],
+    "曼德尔砖":[
+      d=>`曼德尔砖弹出来的一瞬间，终端像被红光点名。你站在${d.area}，手里握着一块会把贪婪广播出去的砖，下一秒整条路线都变得昂贵。`,
+      d=>`${d.weapon}还架着门，曼德尔砖已经在${d.container}里亮到不讲道理。拿，地图会记住你；不拿，你今晚会记住自己。你还是拿了。`,
+      d=>`不是你发现了曼德尔砖，是曼德尔砖选择让你在${d.area}发现它。红光一跳，热度一涨，撤离这两个字突然变得很远。`
+    ],
+    "航天核心芯片":[
+      d=>`${d.area}的设备还在低鸣，航天核心芯片从黑色托盘里亮出来。那不是普通红货，是基地把最贵的心脏短暂借给了你。`,
+      d=>`你刚碰到航天核心芯片，${d.container}旁的指示灯全都变红。${d.weapon}压在胸前，安全箱打开的一瞬间像完成了一次非法发射。`,
+      d=>`航天核心芯片入手，${d.area}的空气都像变薄了。你忽然意识到，这把不叫摸金，这把叫把航天基地拆一小块带走。`
+    ],
+    "博物馆金面具":[
+      d=>`博物馆金面具躺在展柜暗格里，红光贴着金边慢慢亮起。${d.area}这一秒不像战区，像专门给你开的私人拍卖厅。`,
+      d=>`你从${d.container}里捧出博物馆金面具，贵气先砸在脸上，危险才从门外跟进来。${d.weapon}都不好意思催你快跑。`,
+      d=>`博物馆金面具入箱的声音很轻，但尊贵感很重。你站在${d.area}，突然理解为什么有些东西不该摸，摸了就必须活着带出去。`
+    ],
+    "刀片服务器":[
+      d=>`${d.container}被你拉开时，红光不是亮出来的，是像机柜报警一样一层层扫出来。刀片服务器躺在里面，贵到你手里的${d.weapon}都突然像安保道具。哎呀，你很开心。`,
+      d=>`你在${d.area}摸到刀片服务器的那一秒，终端像卡了一下。不是因为延迟，是它也没想到你真能把这玩意儿从战区里抠出来。哎呀，你很开心。`,
+      d=>`刀片服务器入箱，背包估值像被人猛拉了一把。你没有庆祝，只是把止痛片咬碎，开始用一种很怕死的姿势往外撤。哎呀，你很开心。`
+    ],
+    "金条":[
+      d=>`${d.area}的${d.container}底层压着一截沉甸甸的金条，红光贴着边缘冒出来。你手指一碰，仓库余额已经开始在脑子里放烟花。哎呀，你很开心。`,
+      d=>`金条出现得很安静，但你的心跳一点都不安静。${d.weapon}还架着门口，你已经先把安全箱打开，动作熟得像排练过。哎呀，你很开心。`,
+      d=>`你本来只是顺手开${d.container}，结果金条把这局性质直接改了。现在撤离点不是撤离点，是回仓库的贵宾通道。哎呀，你很开心。`
+    ]
+  };
+  const tendencyEvents=[
+    {kind:"extract",trait:"stealth",text:"你在草丛边缘停了很久，连自己都快相信这里没人。两队从路口互相试探，你像一块安静的石头，等他们走远才贴着阴影继续转点。",weight:s=>Math.max(0,s.stealth-5)*1.4,effect:s=>{s.heat=Math.max(0,s.heat-2);s.extractChance+=1}},
+    {kind:"loot",trait:"stealth",text:"你没有进主楼，反而绕到侧门外的阴角，摸了一个没人看的杂物箱。东西不算惊天动地，但胜在全程没人知道你来过。",weight:s=>Math.max(0,s.stealth-4)*1.15,effect:s=>{s.value+=rand(90,180);s.heat=Math.max(0,s.heat-1);s.extractChance+=1}},
+    {kind:"extract",trait:"stealth",text:"撤离点外侧有脚步经过，你趴在草里一动不动，连背包都像懂事了一样不响。等灯光扫过去，你才慢慢挪到下一处掩体。",weight:s=>Math.max(0,s.stealth-6)*1.35,effect:s=>{s.heat=Math.max(0,s.heat-2);s.mobility+=1}},
+    {kind:"extract",trait:"team",text:"队友先卡门，你负责理包，第三个人盯撤离方向。分工一成立，整条路线突然不像逃命，更像一场小队护送任务。",weight:s=>Math.max(0,s.team-4)*1.35,effect:s=>{s.hp+=rand(8,18);s.extractChance+=2;s.heat=Math.max(0,s.heat-1)}},
+    {kind:"loot",trait:"team",text:"你刚摸到好货，队友没有抢包，反而把入口架住。你第一次觉得团队属性不是面板数字，是有人真的愿意替你看门。",weight:s=>Math.max(0,s.team-5)*1.25,effect:s=>{s.value+=rand(120,240);s.extractChance+=1;s.hp+=rand(4,10)}},
+    {kind:"extract",trait:"team",text:"你腿况开始不对，队友封烟过来接你。烟墙、标点、补甲一套接上，你被从白给边缘硬生生拖回行动路线。",weight:s=>Math.max(0,s.team+s.survival-7)*1.05,effect:s=>{s.hp+=rand(14,28);s.leg=Math.max(s.leg,2);s.bleed=Math.max(0,s.bleed-1);s.heat=Math.max(0,s.heat-1)}},
+    {kind:"extract",trait:"tactics",text:"你看了一眼时间和热度，放弃正门，改走侧线。半分钟后，原本的必经路口被两队架成筛子，战术板救了你一命。",weight:s=>Math.max(0,s.tactics-4)*1.55,effect:s=>{s.heat=Math.max(0,s.heat-3);s.extractChance+=2;s.minute+=1}},
+    {kind:"extract",trait:"tactics",text:"你没有追红光，也没有追残血，而是按撤离窗口重新规划路线。少赚一点，但少打一架，这波终端判定为成年人操作。",weight:s=>Math.max(0,s.tactics-5)*1.45,effect:s=>{s.heat=Math.max(0,s.heat-2);s.extractChance+=2}},
+    {kind:"loot",trait:"tactics",text:"你先清脚步、再看门缝、最后才开容器。流程慢得像教学片，但东西进包、人没出事，战术属性开始变现。",weight:s=>Math.max(0,s.tactics+s.awareness-8)*1.1,effect:s=>{s.value+=rand(100,220);s.extractChance+=1;s.heat=Math.max(0,s.heat-1)}},
+    {kind:"loot",trait:"greed",text:"你明知道时间不多，还是把路边小容器顺手吃完。包又重了一点，撤离压力也很诚实地重了一点。",weight:s=>Math.max(0,s.greed-5)*1.15,effect:s=>{s.value+=rand(130,260);s.heat+=1;s.minute+=1}}
+  ];
+  const specialTalentEvents=[
+    {talent:"夺舍圣体",kind:"loot",text:"你被压在掩体后只剩半条命，前面两队突然互换火力。等枪声停下，一个满配包刚好倒在你脚边，你吃止痛片、换M7、补甲，现场完成夺舍。",effect:s=>{s.value+=rand(560,820);s.hp+=rand(24,44);s.combat+=2;s.extractChance+=3;s.heat+=2}},
+    {talent:"仓库权限拉满",kind:"loot",text:"你整理背包时像开了隐藏仓库，两个大件被你硬塞出位置。队友看着你的包沉默三秒，只能承认这是红色天赋。",effect:s=>{s.value+=rand(460,700);s.capacity+=3;s.mobility+=1;s.heat+=1}},
+    {talent:"不死鸟医疗包",kind:"extract",text:"你被打到只剩一口气，腿也开始报警。不死鸟医疗包硬是把你从地上拽起来，止血、止痛、换弹，一套动作顺得不像这张图该发生的事。",effect:s=>{s.hp+=rand(36,58);s.bleed=0;s.leg=Math.max(s.leg,2);s.extractChance+=3;s.heat=Math.max(0,s.heat-1)}},
+    {talent:"板板体验卡",kind:"extract",text:"你的魔王队友顶到门口，K416先压楼梯，烟一封，雷一丢，连撤离路线都给你标好了。你只负责抱紧包贴墙走，第一次体验到板板视角。",effect:s=>{s.hp+=rand(28,48);s.bleed=0;s.heat=Math.max(0,s.heat-3);s.extractChance+=4;s.value+=rand(160,320)}},
+    {talent:"疯疯火火",kind:"loot",text:"你顺手摸了个不起眼的抽屉，红光从缝里漏出来。队友标点还没落下，你已经把红货塞进安全箱，整个人都开始发烫。",effect:s=>{s.value+=rand(320,560);s.heat+=2;s.luck+=1}},
+    {talent:"保险箱亲属",kind:"loot",text:"路过保险箱时你本来只想看一眼，箱门像认亲一样开得特别顺。里面不一定最贵，但每一格都像专门给你留的。",effect:s=>{s.value+=rand(220,420);s.extractChance+=1}},
+    {talent:"老板雷达",kind:"danger",text:"你刚贴到拐角，心跳突然变贵：前面那队护甲声音很沉。你没有硬吃，反手让队友绕侧，差点把老板包提前预定。",effect:s=>{s.awareness+=1;s.heat+=1;s.value+=rand(120,260);s.hp-=rand(4,14)}},
+    {talent:"锦鲤队友",kind:"loot",text:"队友开箱时你在旁边架枪，结果他摸出好货还真分你一口。你短暂相信了阿萨拉也有人情味。",effect:s=>{s.value+=rand(180,360);s.hp+=rand(6,16);s.extractChance+=1}}
+  ];
+  const decisionDeck=[
+    {key:"safe-loot",title:"保险读条到一半",prompt:"容器已经亮了，但撤离时间也在掉。你要怎么处理这口？",weight:s=>2+s.greed*.35,choices:[
+      {label:"继续摸到底",hint:"收益更高，但热度和时间都会上来。",kind:"loot",text:s=>`你硬把保险箱读完，摸出一件高价货。代价是多耗了一分钟，枪线也开始往你这边收。`,effect:s=>{s.value+=rand(210,430);s.heat+=2;s.minute+=1}},
+      {label:"只拿一格就走",hint:"少赚一点，保命味更足。",kind:"extract",text:s=>`你只抓了最顺手的一格物资就离开，背包没那么肥，但路线突然干净了很多。`,effect:s=>{s.value+=rand(80,170);s.extractChance+=2;s.heat=Math.max(0,s.heat-1)}}
+    ]},
+    {key:"bridge-block",title:"前方疑似堵桥",prompt:"桥口枪线已经露出来，绕路会慢，硬过很可能掉状态。",weight:s=>2+s.heat*.4+s.combat*.18,choices:[
+      {label:"封烟硬冲",hint:"战斗强会更赚，弱一点可能直接碎。",kind:"danger",text:s=>`你封烟硬冲桥口，${pickFresh(routeWeapons,"choice-bridge-weapon",5)}贴着烟边扫过去。你确实冲过了，但甲和腿都交了学费。`,effect:s=>{const block=Math.floor(s.combat*1.2+s.team*.6);s.hp-=Math.max(6,rand(24,48)-block);s.leg-=rand(1,100)>72?1:0;s.heat+=2;s.value+=rand(60,180)}},
+      {label:"贴边绕桥下",hint:"更吃战术和潜行，会损失时间。",kind:"extract",text:s=>`你没有给堵桥哥素材，贴着桥下阴影慢慢绕。止痛片吃得很朴素，但至少这条命还在自己手里。`,effect:s=>{s.minute+=2;s.heat=Math.max(0,s.heat-2);s.extractChance+=2;s.hp+=rand(3,10)}}
+    ]},
+    {key:"boss-bag",title:"老板包在眼前",prompt:"地上那个包很肥，但远处已经有人往这边靠。",weight:s=>1.4+s.greed*.45+s.tactics*.15,choices:[
+      {label:"舔干净",hint:"大收益，大风险。",kind:"loot",text:s=>`你决定把老板包舔干净，满改枪、金弹匣、高价医疗包轮流进包。等你起身时，整片区域都像知道你富了。`,effect:s=>{s.value+=rand(420,760);s.heat+=3;s.mobility-=1;s.minute+=1}},
+      {label:"只拿最贵两件",hint:"收益稳定，撤离更稳。",kind:"loot",text:s=>`你只抽走最贵两件，然后立刻转身。这个动作理智得不像摸金人，但仓库会喜欢。`,effect:s=>{s.value+=rand(230,410);s.extractChance+=2;s.heat+=1}},
+      {label:"架包等人",hint:"适合潜行高的阴影玩家。",kind:"danger",text:s=>`你没急着舔，退到阴影里架包。等来的人确实倒了一个，但第二个人的预瞄也很诚实。`,effect:s=>{s.value+=rand(160,360);s.hp-=Math.max(5,rand(22,42)-s.stealth*2);s.heat+=2}}
+    ]},
+    {key:"teammate-down",title:"队友倒在空地",prompt:"烟雾弹还有一颗，包里也刚好有货。救，还是走？",weight:s=>1.2+s.team*.35,choices:[
+      {label:"封烟救人",hint:"团队高会明显更稳。",kind:"extract",text:s=>`你把最后一颗烟丢出去，贴着烟边把队友拖回来。小队节奏乱了一下，但这局突然有了羁绊。`,effect:s=>{s.hp-=Math.max(0,rand(10,24)-s.team*2);s.team+=1;s.extractChance+=3;s.heat+=1}},
+      {label:"继承背包",hint:"很赚，也很缺德。",kind:"loot",text:s=>`你看了一眼空地，又看了一眼队友的三级包。终端没有评价你，只是默默把背包估值调高。`,effect:s=>{s.value+=rand(180,360);s.team-=2;s.heat+=1}},
+      {label:"拿他当诱饵",hint:"CS度拉满，但可能挨枪。",kind:"danger",text:s=>`你退到侧边，把倒地位置当成诱饵。确实有人来吃包，也确实有人反架了你的角。`,effect:s=>{s.value+=rand(140,300);s.hp-=Math.max(4,rand(18,36)-s.stealth*1.5);s.heat+=2}}
+    ]},
+    {key:"red-extract",title:"撤离点亮红",prompt:"有人先拉了。现在过去，可能是快递上门，也可能是你给别人送件。",weight:s=>1.5+s.combat*.22+s.tactics*.2,choices:[
+      {label:"包过去抢闸",hint:"战斗向选择，热度暴涨。",kind:"danger",text:s=>`你们从不同角度包过去，${pickFresh(routeWeapons,"choice-red-weapon",5)}先开口，撤离点被打成临时赛场。你抢到主动权，也把所有人都喊醒了。`,effect:s=>{s.value+=rand(180,360);s.hp-=Math.max(6,rand(26,52)-s.combat*2-s.team);s.heat+=3;s.extractChance+=1}},
+      {label:"立刻换点",hint:"战术收益高，少一点节目效果。",kind:"extract",text:s=>`你没有赌红灯，直接换点。路绕远了，但你把死亡概率从脸上擦掉了一层。`,effect:s=>{s.minute+=2;s.heat=Math.max(0,s.heat-3);s.extractChance+=4}},
+      {label:"蹲撤离路线",hint:"潜行收益高，适合老六玩法。",kind:"loot",text:s=>`你没有进点，反而蹲在撤离必经的盲区。对面满载出来时，你的准星已经等了很久。`,effect:s=>{s.value+=rand(260,520);s.heat+=2;s.extractChance+=s.stealth>=8?2:0}}
+    ]}
+  ];
+  const endingNames=["阿萨拉迷失人员","阿萨拉天选之子","仓库增值专家","稳健撤离员","高价快递盒","断腿文学大师","红光上头患者","赛博小丑","草丛观察员"];
+  const mapList=document.querySelector("#mapList"),talentList=document.querySelector("#talentList"),attrPanel=document.querySelector("#attrPanel"),attrList=document.querySelector("#attrList"),pointsLeft=document.querySelector("#pointsLeft"),randomAttrBtn=document.querySelector("#randomAttrBtn"),screen=document.querySelector("#screen"),codexPanel=document.querySelector("#codexPanel"),runId=document.querySelector("#runId"),terminalTitle=document.querySelector("#terminalTitle"),sidePanel=document.querySelector(".side"),rollBtn=document.querySelector("#rollBtn"),actionBtn=document.querySelector("#actionBtn"),autoToggle=document.querySelector("#autoToggle"),speedToggle=document.querySelector("#speedToggle"),resetBtn=document.querySelector("#resetBtn"),resultTitle=document.querySelector("#resultTitle"),resultLine=document.querySelector("#resultLine"),shareText=document.querySelector("#shareText"),hpFill=document.querySelector("#hpFill"),hpText=document.querySelector("#hpText"),legFill=document.querySelector("#legFill"),legText=document.querySelector("#legText"),valueFill=document.querySelector("#valueFill"),valueText=document.querySelector("#valueText"),heatFill=document.querySelector("#heatFill"),heatText=document.querySelector("#heatText"),timeFill=document.querySelector("#timeFill"),timeText=document.querySelector("#timeText");
+  let selectedMap=null,currentRoute=[],routeProgress=0,drawnTalents=[],selectedTalents=[],attributes={},state=createState(),phase="standby",minEvents=14,maxEvents=0,eventStep=0,timer=0;
+  const rarityWeights={RED:.35,SSR:3,SR:10,R:24,N:42};
+  function rand(min,max){return Math.floor(min+Math.random()*(max-min+1))}function escapeHtml(value){return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char]))}function createState(){return{minute:0,timeLimit:35,hp:100,leg:3,bleed:0,value:0,heat:0,luck:1,greed:1,stealth:1,combat:1,team:1,tactics:1,awareness:1,mobility:1,survival:1,capacity:1,extractChance:0,escort:0,extracted:false,dead:false,lost:false,choiceOpen:false,lastDecisionAt:-99,choices:0,bagsSearched:0,redLoots:0,events:[],highlights:[],specialSeen:{},recentPicks:{}}}function quality(value){if(value>=13)return"SS";if(value>=11)return"S";if(value>=9)return"A";if(value>=7)return"B";if(value>=5)return"C";if(value>=3)return"D";return"E"}function pointsUsed(){return Object.values(attributes).reduce((sum,value)=>sum+value,0)}function applyMod(target,mod){Object.entries(mod).forEach(([key,value])=>{target[key]=(target[key]||0)+value})}function hasTalent(name){return drawnTalents.some(talent=>talent.name===name)}function pickFresh(list,key,keep=4){if(!list.length)return null;const recent=state.recentPicks[key]||[];const pool=list.map((item,index)=>({item,index})).filter(entry=>!recent.includes(entry.index));const source=pool.length?pool:list.map((item,index)=>({item,index}));const chosen=source[rand(0,source.length-1)];recent.push(chosen.index);while(recent.length>Math.min(keep,Math.max(1,list.length-1)))recent.shift();state.recentPicks[key]=recent;return chosen.item}function drawWeightedTalent(pool){const total=pool.reduce((sum,talent)=>sum+(rarityWeights[talent.rarity]||1),0);let roll=Math.random()*total;for(let i=0;i<pool.length;i++){roll-=rarityWeights[pool[i].rarity]||1;if(roll<=0)return pool.splice(i,1)[0]}return pool.pop()}
+  const collectionDefs={maps:mapDefs.map(map=>map.name),reds:["曼德尔砖","非洲之心","刀片服务器","金条","航天核心芯片","博物馆金面具"],bags:enemyBagTiers.map(bag=>bag.label),talents:talents.filter(talent=>["RED","SSR"].includes(talent.rarity)).map(talent=>talent.name),endings:endingNames};
+  let collections=loadCollections();
+  function loadCollections(){const empty=Object.fromEntries(Object.keys(collectionDefs).map(key=>[key,[]]));try{return{...empty,...JSON.parse(localStorage.getItem("asalaRestartCollections")||"{}")}}catch(error){return empty}}
+  function saveCollections(){try{localStorage.setItem("asalaRestartCollections",JSON.stringify(collections))}catch(error){}}
+  function unlockCollection(type,name){if(!name||!collections[type]||!collectionDefs[type].includes(name))return;if(!collections[type].includes(name)){collections[type].push(name);saveCollections();renderCollection()}}
+  function collectionCount(type){return`${collections[type]?.length||0}/${collectionDefs[type].length}`}
+  function detectRedName(text){return collectionDefs.reds.find(name=>text.includes(name))}
+  function renderCollection(){if(!codexPanel)return;const groups=[["maps","行动地图"],["reds","尊贵红货"],["bags","敌方背包"],["talents","稀有天赋"],["endings","结局评级"]];codexPanel.innerHTML=`<div class="codex-head"><div><div class="kicker">COLLECTION / 图鉴与成就</div><h2>阿萨拉档案进度</h2></div><div class="run-id">红货 ${collectionCount("reds")} // 结局 ${collectionCount("endings")}</div></div><div class="codex-grid">${groups.map(([key,label])=>`<article class="codex-card"><strong>${label}</strong><small>${collectionCount(key)} UNLOCKED</small><div class="badge-row">${collectionDefs[key].map(name=>`<span class="badge ${collections[key]?.includes(name)?"seen":""} ${key==="reds"?"red":""}">${escapeHtml(collections[key]?.includes(name)?name:"??")}</span>`).join("")}</div></article>`).join("")}</div>`}
+  function renderEmpty(title,text){screen.innerHTML=`<div class="empty"><div><div class="kicker">TERMINAL / 待命</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></div></div>`}
+  function syncFlowLayout(){if(!sidePanel)return;const setup=phase!=="running"&&phase!=="done";sidePanel.classList.toggle("setup-phase",setup);sidePanel.classList.toggle("run-phase",!setup);["standby","talent","attr","running","done"].forEach(name=>sidePanel.classList.toggle(`phase-${name}`,phase===name))}
+  function renderMaps(){mapList.innerHTML=mapDefs.map(map=>`<button class="map-card ${selectedMap?.key===map.key?"selected":""}" type="button" data-map="${escapeHtml(map.key)}" ${phase!=="standby"?"disabled":""}><div class="kicker">${escapeHtml(map.tag)}</div><strong>${escapeHtml(map.name)}</strong><p>${escapeHtml(map.desc)}</p></button>`).join("");mapList.querySelectorAll("[data-map]").forEach(button=>button.addEventListener("click",()=>selectMap(button.dataset.map)))}
+  function selectMap(key){if(phase!=="standby")return;selectedMap=mapDefs.find(map=>map.key===key);renderMaps();rollBtn.disabled=!selectedMap;terminalTitle.textContent=`地图：${selectedMap.name}`;resultTitle.textContent="地图已锁定";resultLine.textContent=`本局行动区域：${selectedMap.name}。可以十连抽天赋了。`;shareText.textContent=`已选择地图：${selectedMap.name}`;renderEmpty(`${selectedMap.name} 已锁定。`,"现在十连抽天赋，看看这把命硬不硬。");syncFlowLayout()}
+  function rollTenTalents(){if(!selectedMap)return;PlayerCard.pending("restart");clearTimeout(timer);phase="talent";state=createState();attributes=Object.fromEntries(attributeDefs.map(attr=>[attr.key,0]));selectedTalents=[];const pool=[...talents];drawnTalents=[];while(drawnTalents.length<10&&pool.length)drawnTalents.push(drawWeightedTalent(pool));drawnTalents.forEach(talent=>unlockCollection("talents",talent.name));runId.textContent=`${selectedMap.name} // ${rand(1000,9999)}`;terminalTitle.textContent="十连抽天赋";attrPanel.classList.remove("active");renderMaps();renderTalents();renderEmpty("十连已出货。","从 10 个天赋里选择 3 个，凑出你的本局命运。红品质极难出现，但抽到基本就是改命。");actionBtn.textContent="选择 3 个天赋";actionBtn.disabled=true;rollBtn.disabled=false;resultTitle.textContent="等待选天赋";resultLine.textContent=`${selectedMap.name} 已接入，命运还没装配完成。`;shareText.textContent="十连抽已完成，等待选择天赋。";updateMeters();syncFlowLayout()}
+  function renderTalents(){talentList.innerHTML=drawnTalents.map((talent,index)=>{const selected=selectedTalents.includes(index),locked=selectedTalents.length>=3&&!selected;return`<button class="talent rarity-${escapeHtml(talent.rarity)} ${selected?"selected":""} ${locked?"locked":""}" type="button" data-talent="${index}"><div><span class="rarity rarity-${escapeHtml(talent.rarity)}">${escapeHtml(talent.rarity)} TALENT</span><strong>${escapeHtml(talent.name)}</strong><p>${escapeHtml(talent.desc)}</p></div></button>`}).join("");talentList.querySelectorAll("[data-talent]").forEach(button=>button.addEventListener("click",()=>toggleTalent(Number(button.dataset.talent))))}
+  function toggleTalent(index){if(phase!=="talent")return;if(selectedTalents.includes(index))selectedTalents=selectedTalents.filter(item=>item!==index);else if(selectedTalents.length<3)selectedTalents.push(index);renderTalents();actionBtn.disabled=selectedTalents.length!==3;actionBtn.textContent=selectedTalents.length===3?"确认天赋，进入加点":`已选择 ${selectedTalents.length} / 3`}
+  function confirmTalents(){phase="attr";terminalTitle.textContent="属性加点";attrPanel.classList.add("active");drawnTalents=selectedTalents.map(index=>drawnTalents[index]);selectedTalents=[0,1,2];renderTalents();renderAttributes();renderEmpty("天赋已确认。","分配 20 点属性，点完后就能进入阿萨拉。");actionBtn.textContent="分配完属性后进入阿萨拉";actionBtn.disabled=true;resultTitle.textContent="等待加点";resultLine.textContent="属性品质会影响事件权重，也会影响你死得是否体面。";syncFlowLayout()}
+  function renderAttributes(){const left=20-pointsUsed();pointsLeft.innerHTML=`${left}<small>POINTS LEFT</small>`;attrList.innerHTML=attributeDefs.map(attr=>{const value=attributes[attr.key]||0;return`<div class="attr-row"><div><b>${escapeHtml(attr.label)}</b><div class="kicker">${escapeHtml(attr.desc)}</div></div><div class="stepper"><button type="button" data-step="${escapeHtml(attr.key)}" data-dir="-1" ${value<=0?"disabled":""}>-</button><span>${value}</span><button type="button" data-step="${escapeHtml(attr.key)}" data-dir="1" ${left<=0?"disabled":""}>+</button></div><div class="attr-quality">品质 ${quality(value)}</div></div>`}).join("");attrList.querySelectorAll("[data-step]").forEach(button=>button.addEventListener("click",()=>changeAttribute(button.dataset.step,Number(button.dataset.dir))));actionBtn.disabled=left!==0;actionBtn.textContent=left===0?"进入阿萨拉":`剩余 ${left} 点`}
+  function changeAttribute(key,dir){if(phase!=="attr")return;const value=attributes[key]||0,left=20-pointsUsed();if(dir>0&&left<=0)return;if(dir<0&&value<=0)return;attributes[key]=value+dir;renderAttributes()}
+  function randomizeAttributes(){if(phase!=="attr")return;attributes=Object.fromEntries(attributeDefs.map(attr=>[attr.key,0]));for(let i=0;i<20;i++){const pick=attributeDefs[rand(0,attributeDefs.length-1)].key;attributes[pick]+=1}renderAttributes();resultTitle.textContent="已随机加点";resultLine.textContent="选择困难症已被终端暂时治愈。现在可以直接进阿萨拉。";shareText.textContent=`随机属性：${attributeDefs.map(attr=>`${attr.label}${attributes[attr.key]}(${quality(attributes[attr.key])})`).join(" ")}`}
+  function applyBuild(){state=createState();state.timeLimit=selectedMap?.timeLimit||35;if(selectedMap)applyMod(state,selectedMap.mod);selectedTalents.map(index=>drawnTalents[index]).forEach(talent=>applyMod(state,talent.mod));state.combat+=attributes.combat;state.greed+=attributes.greed;state.luck+=Math.floor(attributes.greed/3);state.capacity+=Math.floor(attributes.greed/4);state.stealth+=attributes.stealth;state.awareness+=Math.floor(attributes.stealth/3);state.tactics+=attributes.tactics;state.extractChance+=Math.floor(attributes.tactics/4);state.team+=attributes.team;state.survival+=Math.floor(attributes.team/3);state.mobility+=attributes.mobility;state.hp+=attributes.combat*2+attributes.team;state.leg+=Math.floor(attributes.mobility/5);state.events=[]}
+  function buildRouteEvent(){
+    const routeComplete=routeProgress>=currentRoute.length;
+    const area=routeComplete?pickFresh(currentRoute,`roam-${selectedMap?.key}`,Math.min(5,currentRoute.length)):currentRoute[Math.min(routeProgress,currentRoute.length-1)]||selectedMap?.name||"未知区域";
+    const nextArea=routeComplete?pickFresh(currentRoute.filter(point=>point!==area),`roam-next-${selectedMap?.key}`,Math.min(4,currentRoute.length-1)):currentRoute[Math.min(routeProgress+1,currentRoute.length-1)];
+    const containers=mapContainers[selectedMap?.key]||mapContainers.dam;
+    const items=[...routeItems.common,...(routeItems[selectedMap?.key]||[])];
+    const container=pickFresh(containers,`container-${selectedMap?.key}`,6);
+    const weapon=pickFresh(routeWeapons,"route-weapon",5);
+    const item=pickFresh(items,`item-${selectedMap?.key}`,8);
+    const itemValue=rand(item.value[0],item.value[1]);
+    const next=nextArea?`${routeComplete?"你又绕回":"下一步先往"}${nextArea}贴过去。`:"";
+    const payload={area,nextArea,container,weapon,item,next,flavor:pickFresh(lootFlavors,"loot-flavor",4),threat:pickFresh(routeThreats,"route-threat",5)};
+    const isExit=routeProgress>=currentRoute.length-1&&eventStep>=minEvents-3;
+    const dangerChance=Math.max(6,46+state.heat*5+state.greed*1.1-state.stealth*3.4-state.tactics*4.7-state.team*.8);
+    const tacticalRead=state.tactics>=8&&rand(1,100)<Math.min(72,22+state.tactics*4+state.awareness*2);
+    const dangerRoll=rand(1,100)<dangerChance;
+    if(!routeComplete)routeProgress+=1;
+    if(item.tier==="红")return buildRedTreasureEvent(payload,itemValue);
+    if(isExit){
+      const template=pickFresh(extractTemplates,"extract-template",3);
+      return{kind:"extract",text:template(payload),effect:s=>{s.value+=itemValue;s.extractChance+=2;s.heat=Math.max(0,s.heat+(item.tier==="红"?1:-1))}};
+    }
+    if(dangerRoll){
+      if(tacticalRead){
+        return{kind:"extract",text:`你本来要进${area}摸${container}，但战术板突然不对劲：${payload.threat}。你收起${weapon}，绕到${nextArea||"侧线"}，少摸一口，少撞一队。`,effect:s=>{s.heat=Math.max(0,s.heat-2);s.extractChance+=2;s.minute+=1}};
+      }
+      const template=pickFresh(dangerTemplates,"danger-template",4);
+      return{kind:"danger",text:template(payload),effect:s=>{s.value+=Math.floor(itemValue*.45);s.hp-=rand(8,24);s.heat+=item.tier==="红"?2:1;if(rand(1,100)>65)s.bleed+=1}};
+    }
+    const template=pickFresh(lootTemplates,"loot-template",5);
+    return{kind:"loot",text:template(payload),effect:s=>{s.value+=itemValue;s.extractChance+=1;if(item.tier==="红"||rand(1,100)>72)s.heat+=1}};
+  }
+  function buildRedTreasureEvent(payload,itemValue){
+    const stories=redTreasureStories[payload.item.name]||redTreasureStories["曼德尔砖"];
+    const story=pickFresh(stories,`red-story-${payload.item.name}`,Math.max(1,stories.length-1));
+    return{kind:"red-loot",text:story(payload),meta:{red:payload.item.name,value:itemValue},effect:s=>{s.value+=Math.max(itemValue,rand(420,760));s.heat+=3;s.extractChance+=2;s.luck+=1;s.redLoots+=1;if(rand(1,100)>62)s.hp+=rand(4,12)}};
+  }
+  function buildRareRedTreasureEvent(spawn){
+    const sites=spawn.sites[selectedMap?.key]||[];
+    const site=pickFresh(sites,`rare-red-site-${selectedMap?.key}-${spawn.item.name}`,Math.min(2,sites.length));
+    const weapon=pickFresh(routeWeapons,"rare-red-weapon",5);
+    const payload={...site,nextArea:"撤离侧线",weapon,item:spawn.item,next:"你没有多停留，开始往撤离侧线贴过去。",flavor:"",threat:""};
+    return buildRedTreasureEvent(payload,rand(spawn.item.value[0],spawn.item.value[1]));
+  }
+  function rareRedChance(){
+    const cap=hasTalent("疯疯火火")?2:1;
+    if(state.redLoots>=cap)return 0;
+    let chance=.45+state.luck*.22+state.greed*.08;
+    if(hasTalent("疯疯火火"))chance+=1.15;
+    if(hasTalent("保险箱亲属"))chance+=.35;
+    if(state.heat>=7)chance-=.35;
+    return Math.max(.15,Math.min(hasTalent("疯疯火火")?4.2:2.4,chance));
+  }
+  function pickEnemyBag(){
+    const combatBonus=Math.max(0,state.combat-7);
+    const tuned=enemyBagTiers.map(bag=>{
+      let chance=bag.chance;
+      if(bag.key==="knife")chance+=Math.max(0,6-state.heat)*1.2;
+      if(bag.key==="budget")chance+=Math.max(0,8-state.heat)*.7;
+      if(bag.key==="rich")chance+=combatBonus*.9+state.heat*.7+state.luck*.3;
+      if(bag.key==="boss")chance+=combatBonus*.35+state.heat*.25+state.luck*.2;
+      return{...bag,chance};
+    });
+    const total=tuned.reduce((sum,bag)=>sum+bag.chance,0);
+    let roll=Math.random()*total;
+    for(const bag of tuned){roll-=bag.chance;if(roll<=0)return bag}
+    return tuned[0];
+  }
+  function buildCombatLootEvent(){
+    const area=(currentRoute.length?pickFresh(currentRoute,`fight-area-${selectedMap?.key}`,Math.min(5,currentRoute.length)):selectedMap?.name)||"交火区";
+    const weapon=pickFresh(routeWeapons,"fight-weapon",5);
+    const bag=pickEnemyBag();
+    const item=pickFresh(bag.items,`enemy-bag-${bag.key}`,Math.min(4,bag.items.length));
+    const value=rand(bag.value[0],bag.value[1]);
+    const damage=Math.max(4,rand(14,31)-Math.floor(state.combat*1.35)-Math.floor(state.tactics*.65)-Math.floor(state.team*.35));
+    const template=pickFresh(combatLootTemplates,"combat-template",3);
+    return{kind:bag.key==="rich"||bag.key==="boss"?"loot":"system",trait:"combat",meta:{bag:bag.label,value},text:template({area,weapon,bag,item,tone:bag.tone}),weight:s=>Math.max(0,s.combat-5)*1.15+s.heat*.45,effect:s=>{s.value+=value;s.hp-=damage;s.heat+=bag.heat+1;s.bagsSearched+=1;if(bag.key==="boss")s.extractChance+=2;if(bag.key==="knife")s.minute+=1}};
+  }
+  function rememberEvent(text,kind,meta={}){
+    if(kind==="red-loot"){const red=meta.red||detectRedName(text);unlockCollection("reds",red);state.highlights.unshift({kind,text:`红货入箱：${red||"未知红货"}`})}
+    if(meta.bag){unlockCollection("bags",meta.bag);state.highlights.unshift({kind,text:`战斗搜包：${meta.bag}`})}
+    if(kind==="danger"&&state.highlights.length<5)state.highlights.push({kind,text:text.slice(0,46)})
+    if(kind==="extract"&&/撤离|绕|救|转点/.test(text))state.highlights.unshift({kind,text:text.slice(0,48)})
+    state.highlights=state.highlights.slice(0,6);
+  }
+  function maybeDecisionEvent(){
+    if(eventStep<3||eventStep-state.lastDecisionAt<4||state.choiceOpen)return null;
+    const chance=Math.min(58,22+state.greed*1.4+state.combat*.8+state.team*.7+state.tactics*.6);
+    if(rand(1,100)>chance)return null;
+    const candidates=decisionDeck.map(decision=>({decision,weight:Math.max(.1,decision.weight(state))}));
+    const total=candidates.reduce((sum,item)=>sum+item.weight,0);
+    let roll=Math.random()*total;
+    for(const item of candidates){roll-=item.weight;if(roll<=0)return item.decision}
+    return candidates[0].decision;
+  }
+  function renderDecision(decision){
+    const timeline=document.querySelector("#timeline");
+    state.choiceOpen=true;
+    state.lastDecisionAt=eventStep;
+    clearTimeout(timer);
+    actionBtn.disabled=true;
+    actionBtn.textContent="等待你的选择";
+    timeline?.insertAdjacentHTML("beforeend",`<article class="decision" data-decision="${escapeHtml(decision.key)}"><div class="kicker">TACTICAL CHOICE / 终端抉择</div><h3>${escapeHtml(decision.title)}</h3><p>${escapeHtml(decision.prompt)}</p><div class="choice-grid">${decision.choices.map((choice,index)=>`<button class="choice-btn" type="button" data-choice="${index}"><strong>${escapeHtml(choice.label)}</strong><span>${escapeHtml(choice.hint)}</span></button>`).join("")}</div></article>`);
+    const card=timeline?.lastElementChild;
+    card?.querySelectorAll("[data-choice]").forEach(button=>button.addEventListener("click",event=>{event.stopPropagation();resolveDecision(decision,Number(button.dataset.choice),card)}));
+    screen.scrollTop=screen.scrollHeight;
+  }
+  function resolveDecision(decision,index,card){
+    if(!state.choiceOpen||phase!=="running")return;
+    const choice=decision.choices[index];
+    card?.classList.add("resolved");
+    card?.querySelectorAll("button").forEach(button=>button.disabled=true);
+    state.choiceOpen=false;
+    state.choices+=1;
+    const text=typeof choice.text==="function"?choice.text(state):choice.text;
+    choice.effect(state);
+    state.hp=Math.min(140+state.survival*4,state.hp);
+    state.heat=Math.max(0,state.heat);
+    addEvent(text,choice.kind,{choice:choice.label});
+    updateMeters();
+    if(state.minute>=state.timeLimit&&!state.extracted)triggerLost();
+    else if(state.hp<=0||state.bleed>=4||(state.extracted&&eventStep>=minEvents)||eventStep>=maxEvents)finishByFinalCheck();
+    else{actionBtn.disabled=false;actionBtn.textContent="下一步";if(autoToggle.checked)scheduleAuto()}
+  }
+  function renderEndCard(title,line){
+    const timeline=document.querySelector("#timeline");
+    const tags=drawnTalents.map(talent=>talent.name).join(" / ");
+    const highlights=state.highlights.length?state.highlights.slice(0,3):[{kind:"system",text:"本局没有惊天操作，但你完整跑完了一次阿萨拉命运样本。"}];
+    timeline?.insertAdjacentHTML("beforeend",`<section class="end-card"><div class="end-head"><div><div class="kicker">AFTER ACTION REPORT / 战报结算</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(line)}</p></div><div class="end-rank">${state.extracted?"EXTRACTED":state.lost?"M.I.A.":"K.I.A."}</div></div><div class="end-stats"><div class="end-stat"><strong>${escapeHtml(selectedMap?.name||"未知")}</strong><span>地图</span></div><div class="end-stat"><strong>${Math.max(0,state.value)}万</strong><span>背包估值</span></div><div class="end-stat"><strong>${state.minute}分钟</strong><span>行动时长</span></div><div class="end-stat"><strong>${state.choices}</strong><span>关键抉择</span></div></div><div class="kicker">RUN HIGHLIGHTS / 本局高光</div><div class="highlight-list">${highlights.map(item=>`<div class="highlight ${escapeHtml(item.kind)}">${escapeHtml(item.text)}</div>`).join("")}</div><div class="share">天赋：${escapeHtml(tags)}\n红货：${state.redLoots} 件 // 搜包：${state.bagsSearched} 次 // 热度：${state.heat}</div></section>`);
+    screen.scrollTop=screen.scrollHeight;
+  }
+  function beginRun(){phase="running";applyBuild();unlockCollection("maps",selectedMap.name);drawnTalents.forEach(talent=>unlockCollection("talents",talent.name));terminalTitle.textContent=`${selectedMap.name} 行动推进`;attrPanel.classList.remove("active");renderMaps();minEvents=14;maxEvents=rand(minEvents,24);eventStep=0;currentRoute=selectedMap.routes[rand(0,selectedMap.routes.length-1)].split(" -> ");routeProgress=0;screen.classList.add("playing");screen.innerHTML=`<div class="timeline" id="timeline"></div>`;state.minute=1;addEvent(`第一分钟，你从直升机滑索降落到${selectedMap.name}外围，落点附近只露出一个临时标点。队友提醒先别急着进核心区，包空的时候命最贵。`,"system");actionBtn.disabled=false;actionBtn.textContent="下一步";rollBtn.disabled=true;resultTitle.textContent="行动中";resultLine.textContent="关键节点会让你自己选，自动播放遇到抉择会停下来等你拍板。";shareText.textContent="行动进行中...";updateMeters();syncFlowLayout();if(autoToggle.checked)scheduleAuto()}
+  function eventBias(event,baseWeight){
+    let weight=baseWeight;
+    if(event.kind==="danger")weight*=Math.max(.12,1+state.heat*.12+state.greed*.04-state.tactics*.11-state.stealth*.07-state.team*.035);
+    if(event.kind==="loot")weight*=Math.max(.45,1+state.greed*.08+state.luck*.1+state.stealth*.025-state.heat*.025);
+    if(event.kind==="extract")weight*=Math.max(.55,1+state.tactics*.09+state.team*.07+state.mobility*.045-state.heat*.04);
+    if(event.kind==="red-loot")weight*=Math.max(.8,1+state.luck*.12+state.greed*.08);
+    if(event.trait==="stealth")weight*=Math.max(.7,1+state.stealth*.18-state.combat*.025);
+    if(event.trait==="team")weight*=Math.max(.7,1+state.team*.18);
+    if(event.trait==="tactics")weight*=Math.max(.7,1+state.tactics*.2-state.heat*.035);
+    return weight;
+  }
+  function weightedEvent(){const specials=specialTalentEvents.filter(event=>hasTalent(event.talent)&&!state.specialSeen[event.talent]).map(event=>{const talent=drawnTalents.find(item=>item.name===event.talent);return{kind:event.kind,text:event.text,trait:talent?.mod?.stealth?"stealth":talent?.mod?.team?"team":talent?.mod?.tactics?"tactics":"special",meta:{talent:event.talent,rarity:talent?.rarity},weight:s=>(talent?.rarity==="RED"?7.2:3.4)+(event.talent==="板板体验卡"?s.escort*2:0),effect:s=>{event.effect(s);s.specialSeen[event.talent]=true}}});const redSpecials=specials.filter(event=>event.meta?.rarity==="RED");if(redSpecials.length&&(eventStep<=4||eventStep%3===0))return redSpecials[rand(0,redSpecials.length-1)];if(specials.length&&eventStep%4===0)return specials[rand(0,specials.length-1)];const rareRed=rareRedTreasureSpawns.filter(spawn=>spawn.maps.includes(selectedMap?.key)&&!state.specialSeen[`rare-${spawn.item.name}`]);if(rareRed.length&&Math.random()*100<rareRedChance()){const spawn=pickFresh(rareRed,`rare-red-${selectedMap?.key}`,Math.min(3,rareRed.length));state.specialSeen[`rare-${spawn.item.name}`]=true;return buildRareRedTreasureEvent(spawn)}const combatEvent=buildCombatLootEvent();const combatChance=Math.max(.05,Math.min(.42,(state.combat-4)*.035+state.heat*.018-state.stealth*.012));if(state.combat>=6&&Math.random()<combatChance)return combatEvent;const routeChance=Math.max(.18,Math.min(.68,.5+state.greed*.018-state.tactics*.025-state.stealth*.012-state.combat*.006));if(selectedMap&&currentRoute.length&&(eventStep%2===1||Math.random()<routeChance))return buildRouteEvent();const pool=selectedMap?[...eventPool,...selectedMap.events,...tendencyEvents,combatEvent,...specials]:[...eventPool,...tendencyEvents,combatEvent,...specials];const candidates=pool.map(event=>{const base=typeof event.weight==="function"?event.weight(state):1;return{event,weight:Math.max(.05,eventBias(event,base))}}),total=candidates.reduce((sum,item)=>sum+item.weight,0);let roll=Math.random()*total;for(const item of candidates){roll-=item.weight;if(roll<=0)return item.event}return candidates[0].event}
+  function addEvent(text,kind="",meta={}){const timeline=document.querySelector("#timeline");state.events.push({minute:state.minute,text,kind,meta});rememberEvent(text,kind,meta);const banner=kind==="red-loot"?`<div class="treasure-banner">哎呀，你很开心 // RED VALUE LOCKED</div>`:"";timeline?.insertAdjacentHTML("beforeend",`<article class="event ${escapeHtml(kind)}"><span class="event-time">第 ${state.minute} 分钟</span><strong>${escapeHtml(text.split("，")[0])}</strong><p>${escapeHtml(text)}</p>${banner}</article>`);if(kind==="red-loot"){screen.classList.remove("treasure-flash");void screen.offsetWidth;screen.classList.add("treasure-flash")}screen.scrollTop=screen.scrollHeight}
+  function triggerLost(){state.lost=true;state.dead=true;state.minute=state.timeLimit;addEvent(`倒计时归零，你还没完成撤离。终端把本局状态改成“迷失”，安全箱外的物资全部开始离你远去。`,"danger");updateMeters();finishRun()}
+  function nextEvent(){if(phase!=="running"||state.choiceOpen)return;clearTimeout(timer);if(state.minute>=state.timeLimit&&!state.extracted){triggerLost();return}if(state.hp<=0||state.bleed>=4||(state.extracted&&eventStep>=minEvents)||eventStep>=maxEvents){finishByFinalCheck();return}eventStep+=1;state.minute+=rand(1,3);if(state.minute>=state.timeLimit&&!state.extracted){triggerLost();return}const decision=maybeDecisionEvent();if(decision){renderDecision(decision);updateMeters();return}const event=weightedEvent();let text=event.text;event.effect(state);if(state.extracted&&eventStep<minEvents){state.extracted=false;state.extractChance+=2;text+=" 但撤离窗口还没稳，你只能继续贴边等下一轮机会。"}state.hp=Math.min(140+state.survival*4,state.hp);state.heat=Math.max(0,state.heat);if(eventStep<minEvents&&(state.hp<=0||state.bleed>=4)){state.hp=rand(8,22);state.bleed=Math.min(state.bleed,3);text+=" 你本来已经要碎了，硬灌一片止痛片又缠了圈绷带，继续往前挪。"}addEvent(text,event.kind,event.meta||{});if(state.leg<=0&&!state.dead){state.hp-=rand(10,24);addEvent("你试图继续移动，但腿部系统拒绝加班。","danger")}if(eventStep<minEvents&&(state.hp<=0||state.bleed>=4)){state.hp=rand(8,22);state.bleed=Math.min(state.bleed,3);addEvent("你靠在掩体后补了一片止痛片，告诉自己至少先把这条路线跑完。","extract")}updateMeters();if(state.minute>=state.timeLimit&&!state.extracted)triggerLost();else if(state.hp<=0||state.bleed>=4||(state.extracted&&eventStep>=minEvents)||eventStep>=maxEvents)finishByFinalCheck();else if(autoToggle.checked)scheduleAuto()}
+  function finishByFinalCheck(){if(phase!=="running")return;if(state.lost){finishRun();return}if(state.hp<=0||state.bleed>=4){state.dead=true;addEvent(`第${state.minute}分钟，你流血致死，背包里的东西替你活到了结算界面。`,"danger")}else if(!state.extracted){const chance=35+state.extractChance*12+state.tactics*5+state.mobility*4-state.heat*9;if(state.minute>=state.timeLimit){triggerLost();return}else if(rand(1,100)<=chance){state.extracted=true;state.minute=Math.min(state.timeLimit,state.minute+1);addEvent(`第${state.minute}分钟，你压秒撤离，仓库终于承认你这把不是白打。`,"extract")}else{state.dead=true;state.minute=Math.min(state.timeLimit,state.minute+1);addEvent(`第${state.minute}分钟，撤离点前最后十米，你被一串很冷静的子弹教育。`,"danger")}}finishRun()}
+  function scheduleAuto(){clearTimeout(timer);if(phase==="running")timer=setTimeout(nextEvent,speedToggle.checked?450:900)}
+  function rating(){if(state.lost)return["阿萨拉迷失人员","时间到了你还在图里，安全箱外的梦全部留给阿萨拉。"];if(state.extracted&&state.value>=900)return["阿萨拉天选之子","大红、撤离、尊严，你这把全都要到了。"];if(state.extracted&&state.value>=500)return["仓库增值专家","你不一定杀得最猛，但带回来的东西很会说话。"];if(state.extracted)return["稳健撤离员","活着出来就是胜利，包里少点也不丢人。"];if(state.value>=650)return["高价快递盒","你很富，但你的物资现在归别人富。"];if(state.leg<=0)return["断腿文学大师","本局最大贡献：为医疗系统提供研究样本。"];if(state.heat>=7)return["红光上头患者","你把全图注意力都拉满了，也把自己拉没了。"];if(state.value<=120)return["赛博小丑","来时两手空空，走时盒子空空。"];return["草丛观察员","你经历了很多，也基本没带走什么。"]}
+  function finishRun(){phase="done";state.choiceOpen=false;screen.classList.remove("playing");clearTimeout(timer);const[title,line]=rating();PlayerCard.offer("restart",{title,lines:[`地图：${selectedMap?.name}`,`天赋：${drawnTalents.map(t=>t.name).join(" / ")}`,`存活 ${state.minute} 分钟 · 背包 ${Math.max(0,state.value)} 万`,`红货 ${state.redLoots} 件 · 搜包 ${state.bagsSearched} 次`,line]});unlockCollection("endings",title);renderEndCard(title,line);rollBtn.disabled=false;actionBtn.disabled=false;actionBtn.textContent="再来一局";resultTitle.textContent=title;resultLine.textContent=line;shareText.textContent=`我的阿萨拉摸金重开结果：${title}\n地图：${selectedMap?.name || "未知区域"}\n天赋：${drawnTalents.map(t=>t.name).join(" / ")}\n属性：${attributeDefs.map(attr=>`${attr.label}${attributes[attr.key]}(${quality(attributes[attr.key])})`).join(" ")}\n存活：${state.minute} 分钟\n背包估值：${Math.max(0,state.value)} 万\n关键抉择：${state.choices} 次\n红货：${state.redLoots} 件\n搜包：${state.bagsSearched} 次\n结语：${line}`;updateMeters();syncFlowLayout();renderCollection()}
+  function updateMeters(){const hp=Math.max(0,Math.min(100,state.hp));hpFill.style.width=`${hp}%`;hpText.textContent=`${Math.round(hp)}`;const legPercent=Math.max(0,Math.min(100,state.leg/3*100));legFill.style.width=`${legPercent}%`;legText.textContent=state.leg>=3?"良好":state.leg===2?"微瘸":state.leg===1?"危险":"报废";const valuePercent=Math.max(0,Math.min(100,state.value/900*100));valueFill.style.width=`${valuePercent}%`;valueText.textContent=`${Math.max(0,state.value)}万`;const heatPercent=Math.max(0,Math.min(100,state.heat/9*100));heatFill.style.width=`${heatPercent}%`;heatText.textContent=state.heat>=7?"爆表":state.heat>=4?"危险":state.heat>=2?"升温":"低";const remaining=Math.max(0,state.timeLimit-state.minute);timeFill.style.width=`${Math.max(0,Math.min(100,remaining/state.timeLimit*100))}%`;timeText.textContent=state.lost?"迷失":phase==="standby"?"--":`${remaining}分`}
+  function resetAll(){PlayerCard.pending("restart");clearTimeout(timer);phase="standby";selectedMap=null;currentRoute=[];routeProgress=0;drawnTalents=[];selectedTalents=[];attributes=Object.fromEntries(attributeDefs.map(attr=>[attr.key,0]));state=createState();screen.classList.remove("playing");talentList.innerHTML="";attrPanel.classList.remove("active");renderMaps();renderEmpty("先选择地图，再十连抽。","不同地图有不同事件池。选好行动区域后，再抽 10 个天赋，选 3 个，分配属性点。图鉴会记录你见过的红货、稀有天赋、敌方背包和结局。");runId.textContent="RUN // STANDBY";terminalTitle.textContent="选择地图";rollBtn.disabled=true;actionBtn.disabled=true;actionBtn.textContent="选择 3 个天赋";resultTitle.textContent="尚未开始";resultLine.textContent="先选地图，终端才知道该把你丢到哪里。";shareText.textContent="等待生成分享文案。";updateMeters();syncFlowLayout();renderCollection()}
+  rollBtn.addEventListener("click",rollTenTalents);randomAttrBtn.addEventListener("click",randomizeAttributes);actionBtn.addEventListener("click",()=>{if(phase==="talent")confirmTalents();else if(phase==="attr")beginRun();else if(phase==="running"&&!state.choiceOpen)nextEvent();else if(phase==="done")rollTenTalents()});screen.addEventListener("click",event=>{if(event.target.closest(".choice-btn"))return;if(phase==="running"&&!state.choiceOpen)nextEvent()});autoToggle.addEventListener("change",()=>{clearTimeout(timer);if(autoToggle.checked&&phase==="running"&&!state.choiceOpen)scheduleAuto()});speedToggle.addEventListener("change",()=>{if(autoToggle.checked&&phase==="running"&&!state.choiceOpen)scheduleAuto()});resetBtn.addEventListener("click",resetAll);resetAll();
+</script>
+</body>
+</html>

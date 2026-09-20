@@ -1,0 +1,10 @@
+/* Preserve the portrait camera, but let its environment be the actual moving board. */
+#battlefield .hur-cut[data-board-space="true"]{background:linear-gradient(90deg,#030811aa 0%,#03081135 48%,#03081165 100%)}
+#battlefield .hur-cut[data-board-space="true"]:before{opacity:.08}
+#battlefield .hur-cut[data-board-space="true"] .hur-art,
+#battlefield .hur-cut[data-board-space="true"] .hsc-device,
+#battlefield .hur-cut[data-board-space="true"] .hsc-charge,
+#battlefield .hur-cut[data-board-space="true"] .hu-slash{display:none}
+#battlefield .hur-cut[data-board-space="true"] .hsc-frame{opacity:.18}
+#battlefield .hur-cut[data-board-space="true"] .hu-copy{text-shadow:0 2px 8px #000,0 0 22px #000}
+#battlefield .hur-cut[data-board-space="true"] .hur-noise{opacity:.1}

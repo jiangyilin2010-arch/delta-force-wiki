@@ -1,0 +1,721 @@
+{
+  "checkedAt": "2026-09-14",
+  "dataSource": "https://github.com/jiansenc/DeltaForceData/blob/main/public/json/props/collection.json",
+  "dataSha256": "c36303d82531e8f0ea52a627291a5373473ecdf7c00a032cddadcbc624ae9056",
+  "rights": "Official Delta Force item artwork, rights retained by the respective owners. No license to redistribute commercially is claimed.",
+  "entries": [
+    {
+      "key": "ocean",
+      "name": "海洋之泪",
+      "objectId": 15080050142,
+      "grade": 6,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/ocean.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050142.png",
+      "imageIndex": "https://cai-hong-tu-blog.pages.dev/sjzdh/",
+      "footprintSource": "https://github.com/yangtaoytt/DropDeltaServer/blob/master/public.sql",
+      "sha256": "1e78899e3f9acc262b513f73c99ca143f99a774d189246c365bfbb80a5a78385"
+    },
+    {
+      "key": "binoculars",
+      "name": "镜头",
+      "objectId": 15030040001,
+      "grade": 5,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/binoculars.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030040001.png",
+      "sha256": "c0bee53bbdcd1e388baa79fb4fe56f4f79845ad27978f1107130fdcf4c44e9f4"
+    },
+    {
+      "key": "radio",
+      "name": "电子干扰器",
+      "objectId": 15030040014,
+      "grade": 4,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/radio.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030040014.png",
+      "sha256": "d834985805b61aaa02c9cac5f1e20ae4fe38d172efc6c99bf72e870537be0c61"
+    },
+    {
+      "key": "watch",
+      "name": "赛伊德的怀表",
+      "objectId": 15080050014,
+      "grade": 6,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/watch.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050014.png",
+      "sha256": "d49f494973751ccbf955984c323cf8ec6e11cd6f2dae5c5dc7a756e69146f728"
+    },
+    {
+      "key": "heart",
+      "name": "非洲之心",
+      "objectId": 15080050006,
+      "grade": 6,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/heart.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050006.png",
+      "sha256": "2741a5cf3f1746ff226f5a4203ba5b287139388ffd6049771a89945e224f8338"
+    },
+    {
+      "key": "rotor",
+      "name": "咖啡",
+      "objectId": 15060080014,
+      "grade": 5,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/rotor.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15060080014.png",
+      "sha256": "d7b074f1527b830ed6ea4bae09d342d78e1230063cdf3bf14c75b28537025ee9"
+    },
+    {
+      "key": "tally",
+      "name": "内存条",
+      "objectId": 15030040006,
+      "grade": 4,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/tally.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030040006.png",
+      "sha256": "e93e15759239f493cec83b0adfe94132a50de6d10803aa814d83e178918d3408"
+    },
+    {
+      "key": "pulseCore",
+      "name": "可编程处理器",
+      "objectId": 15030050003,
+      "grade": 5,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/pulseCore.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050003.png",
+      "sha256": "b392237fce1144eda585433e12d28d480b8cc90df79591bf1f11b838befe943d"
+    },
+    {
+      "key": "filter",
+      "name": "E型滤毒罐",
+      "objectId": 15040010019,
+      "grade": 5,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/filter.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15040010019.png",
+      "sha256": "af0588832fa8b26412c435b9f7c8ef1367db3f6709f2ec42051abeabc591025d"
+    },
+    {
+      "key": "experiment",
+      "name": "实验数据",
+      "objectId": 15070040003,
+      "grade": 6,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/experiment.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15070040003.png",
+      "sha256": "a8b9d4877ecb32eacc968b78f5bc2e8978d2ac1eca9201cfad96dfe2ebfbad30"
+    },
+    {
+      "key": "quantum",
+      "name": "量子存储",
+      "objectId": 15070050001,
+      "grade": 6,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/quantum.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15070050001.png",
+      "sha256": "f6e9dc1352c3211b9f11ddc7acca065be5c906978f09f53307f53f3c259b56e3"
+    },
+    {
+      "key": "mechanical",
+      "name": "名贵机械表",
+      "objectId": 15080050042,
+      "grade": 6,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/mechanical.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050042.png",
+      "sha256": "7f273e9eef2d387f13d94037eb0f1add43ac5ae415850fe2d45c808d128afc1e"
+    },
+    {
+      "key": "lighter",
+      "name": "纯金打火机",
+      "objectId": 15080050002,
+      "grade": 5,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/lighter.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050002.png"
+    },
+    {
+      "key": "tea",
+      "name": "生津柠檬茶",
+      "objectId": 15060080005,
+      "grade": 4,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/tea.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15060080005.png"
+    },
+    {
+      "key": "vein",
+      "name": "静脉定位器",
+      "objectId": 15060040001,
+      "grade": 5,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/vein.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15060040001.png"
+    },
+    {
+      "key": "caviar",
+      "name": "“钻石”鱼子酱",
+      "objectId": 15080050131,
+      "grade": 6,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/caviar.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050131.png",
+      "imageIndex": "https://cai-hong-tu-blog.pages.dev/sjzdh/",
+      "footprintSource": "https://github.com/yangtaoytt/DropDeltaServer/blob/master/public.sql"
+    },
+    {
+      "key": "scalpel",
+      "name": "超声波切割刀",
+      "objectId": 15080050178,
+      "grade": 6,
+      "length": 1,
+      "width": 1,
+      "image": "assets/haff-war/relics/scalpel.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050178.png",
+      "imageIndex": "https://db.18183.com/sjzmm/loadout-data.js",
+      "footprintSource": "https://ol.3dmgame.com/gl/323343.html"
+    },
+    {
+      "key": "carbonPlate",
+      "name": "强化碳纤维板",
+      "objectId": 15020010031,
+      "grade": 6,
+      "length": 3,
+      "width": 3,
+      "image": "assets/haff-war/relics/carbonPlate.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15020010031.png",
+      "sha256": "fcf9a9d26e720cd1ef2ec6156bf5907a4777595c904678c39ed4a0ea406b483d"
+    },
+    {
+      "key": "rocketFuel",
+      "name": "火箭燃料",
+      "objectId": 15020010033,
+      "grade": 6,
+      "length": 3,
+      "width": 4,
+      "image": "assets/haff-war/relics/rocketFuel.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15020010033.png",
+      "sha256": "96f80942bea654827e9687817235a58cc357961f96e2bb88df1c6904c6f36c0f"
+    },
+    {
+      "key": "cinemaCamera",
+      "name": "摄影机",
+      "objectId": 15030010012,
+      "grade": 6,
+      "length": 2,
+      "width": 2,
+      "image": "assets/haff-war/relics/cinemaCamera.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030010012.png",
+      "sha256": "f3ef3e40628b19f7d5596732c12bf5418aa8bc4fbbca5a66d7450f27124be0c3"
+    },
+    {
+      "key": "graphicsCard",
+      "name": "显卡",
+      "objectId": 15030050001,
+      "grade": 6,
+      "length": 2,
+      "width": 1,
+      "image": "assets/haff-war/relics/graphicsCard.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050001.png",
+      "sha256": "a27e8de675d30d33d585b9bc3e8e8e5d14c50251daaf10eadd0d3c423f570f6d"
+    },
+    {
+      "key": "milDrone",
+      "name": "军用无人机",
+      "objectId": 15030050002,
+      "grade": 6,
+      "length": 2,
+      "width": 2,
+      "image": "assets/haff-war/relics/milDrone.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050002.png",
+      "sha256": "468d1dad74f0c19996fcf36f6acf0ce50012f5e84b54ebe297586cf4872d261d"
+    },
+    {
+      "key": "milRadio",
+      "name": "军用电台",
+      "objectId": 15030050004,
+      "grade": 6,
+      "length": 2,
+      "width": 2,
+      "image": "assets/haff-war/relics/milRadio.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050004.png",
+      "sha256": "e65d20e226db0d09dc1f57065b83f2d82eb851fad4f5c93d02762a672d7bf30a"
+    },
+    {
+      "key": "laptop",
+      "name": "笔记本电脑",
+      "objectId": 15030050007,
+      "grade": 6,
+      "length": 3,
+      "width": 2,
+      "image": "assets/haff-war/relics/laptop.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050007.png",
+      "sha256": "37cbc0c61806697f0755d25c48abf1618d4635d89360d2ee35362631b5c49d6a"
+    },
+    {
+      "key": "bladeServer",
+      "name": "刀片服务器",
+      "objectId": 15030050008,
+      "grade": 6,
+      "length": 3,
+      "width": 4,
+      "image": "assets/haff-war/relics/bladeServer.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050008.png",
+      "sha256": "b3257a0aff0c105a503c1d4b30e30ff04be25833bcca70fccd43241437a3c25a"
+    },
+    {
+      "key": "gtiAntenna",
+      "name": "G.T.I卫星通信天线",
+      "objectId": 15030050013,
+      "grade": 6,
+      "length": 2,
+      "width": 2,
+      "image": "assets/haff-war/relics/gtiAntenna.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050013.png",
+      "sha256": "569a5cae9dbdde2d48fbabfe868e7bec6b8790a2573b16865e865b39baf80e24"
+    },
+    {
+      "key": "milShell",
+      "name": "军用炮弹",
+      "objectId": 15030050017,
+      "grade": 6,
+      "length": 3,
+      "width": 2,
+      "image": "assets/haff-war/relics/milShell.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050017.png",
+      "sha256": "4fa7f9ede5cb333e6e725ff5fe883c742ccbc6c42987143227a41c47a31f51e7"
+    },
+    {
+      "key": "claudiusBust",
+      "name": "克劳迪乌斯半身像",
+      "objectId": 15040050002,
+      "grade": 6,
+      "length": 2,
+      "width": 3,
+      "image": "assets/haff-war/relics/claudiusBust.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15040050002.png",
+      "sha256": "1acc3c9c55fdbec9bc1be85f5872ec378ff09e527238ece93f1bf296ca3ac6a6"
+    },
+    {
+      "key": "spinoClaw",
+      "name": "棘龙爪化石",
+      "objectId": 15080040001,
+      "grade": 6,
+      "length": 2,
+      "width": 1,
+      "image": "assets/haff-war/relics/spinoClaw.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080040001.png",
+      "sha256": "411c6f8ab7e2c18b46517cb0c020fa5e3203fe9e2b251809434a2fd11bcc181a"
+    },
+    {
+      "key": "mandelUnit",
+      "name": "曼德尔超算单元",
+      "objectId": 15080050030,
+      "grade": 6,
+      "length": 3,
+      "width": 3,
+      "image": "assets/haff-war/relics/mandelUnit.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050030.png",
+      "sha256": "cdee4c72ddfccd62dd11ff944320ffbbbb88eb4e6235541b47793817fd51fdcd"
+    },
+    {
+      "key": "defibrillator",
+      "name": "自动体外除颤器",
+      "objectId": 15080050058,
+      "grade": 6,
+      "length": 2,
+      "width": 3,
+      "image": "assets/haff-war/relics/defibrillator.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050058.png",
+      "sha256": "23f7a736b43d3b82ae8e5260874e982337be038b11d33394e16230f1985f8034"
+    },
+    {
+      "key": "robotVacuum",
+      "name": "扫拖一体机器人",
+      "objectId": 15080050066,
+      "grade": 6,
+      "length": 3,
+      "width": 3,
+      "image": "assets/haff-war/relics/robotVacuum.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050066.png",
+      "sha256": "37cc1f0c018ae4fd8655b606a5bed9fb27cd23042685606a4465722c7b90eed9"
+    },
+    {
+      "key": "workerBee",
+      "name": "机械工蜂模型",
+      "objectId": 15090010040,
+      "grade": 6,
+      "length": 3,
+      "width": 2,
+      "image": "assets/haff-war/relics/workerBee.png",
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15090010040.png",
+      "sha256": "84aa14bad2b49761bedb8bf32dc1f12a16f84d9d0eb1ff7d152a0ddfb418b5ba"
+    }
+  ],
+  "retired": [
+    {
+      "key": "fuel",
+      "name": "高级燃料",
+      "reason": "Removed per user correction; legacy possessions migrate to lighter with identical combat stats and sale value."
+    },
+    {
+      "key": "silver",
+      "name": "聚乙烯纤维",
+      "objectId": 15020050003,
+      "grade": 4,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15020050003.png",
+      "replacement": "tea",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "telescope",
+      "name": "间谍笔",
+      "objectId": 15040010015,
+      "grade": 4,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15040010015.png",
+      "replacement": "radio",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "governor",
+      "name": "CPU",
+      "objectId": 15030040003,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030040003.png",
+      "replacement": "rotor",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "dogtags",
+      "name": "海盗弯刀",
+      "objectId": 15080040002,
+      "grade": 4,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080040002.png",
+      "replacement": "tally",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "thermal",
+      "name": "已损坏的热像仪",
+      "objectId": 15040050003,
+      "grade": 4,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15040050003.png",
+      "replacement": "radio",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "medal",
+      "name": "功绩勋章",
+      "objectId": 15080050004,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050004.png",
+      "replacement": "pulseCore",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "gel",
+      "name": "清新橘味能量凝胶",
+      "objectId": 15060080008,
+      "grade": 4,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15060080008.png",
+      "replacement": "tea",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "oximeter",
+      "name": "血氧仪",
+      "objectId": 15060040003,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15060040003.png",
+      "replacement": "vein",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "phone",
+      "name": "手机",
+      "objectId": 15030040013,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030040013.png",
+      "replacement": "binoculars",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "camera",
+      "name": "数码相机",
+      "objectId": 15030050006,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050006.png",
+      "replacement": "binoculars",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "blueprint",
+      "name": "资料：设计图纸",
+      "objectId": 15070040001,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15070040001.png",
+      "replacement": "filter",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "pirateCoin",
+      "name": "亮闪闪的海盗金币",
+      "objectId": 15080050009,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050009.png",
+      "replacement": "rotor",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "goblet",
+      "name": "阿萨拉特色酒杯",
+      "objectId": 15080050015,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050015.png",
+      "replacement": "filter",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "ssd",
+      "name": "高速固态硬盘",
+      "objectId": 15080050090,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050090.png",
+      "replacement": "rotor",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "guardRing",
+      "name": "卫队金扳指",
+      "objectId": 15080050092,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050092.png",
+      "replacement": "filter",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "employeeTrophy",
+      "name": "优秀雇员奖杯",
+      "objectId": 15080050093,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050093.png",
+      "replacement": "pulseCore",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "neuralTerminal",
+      "name": "脑机控制端子",
+      "objectId": 15080050095,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050095.png",
+      "replacement": "pulseCore",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "titanium",
+      "name": "钛合金",
+      "objectId": 15020050006,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15020050006.png",
+      "replacement": "filter",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "milExplosives",
+      "name": "军用炸药",
+      "objectId": 15030050019,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050019.png",
+      "replacement": "lighter",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "ballisticComputer",
+      "name": "军用弹道计算机",
+      "objectId": 15080050089,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050089.png",
+      "replacement": "rotor",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "satcom",
+      "name": "军用卫星通讯仪",
+      "objectId": 15080050033,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050033.png",
+      "replacement": "binoculars",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "dripCoffee",
+      "name": "盒装挂耳咖啡",
+      "objectId": 15080050071,
+      "grade": 5,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050071.png",
+      "replacement": "rotor",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "goldenGazelle",
+      "name": "黄金瞪羚",
+      "objectId": 15010050001,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15010050001.png",
+      "replacement": "graphicsCard",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "diskArray",
+      "name": "高速磁盘阵列",
+      "objectId": 15030050012,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050012.png",
+      "replacement": "mandelUnit",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "flightRecorder",
+      "name": "飞行记录仪",
+      "objectId": 15030050014,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050014.png",
+      "replacement": "mechanical",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "milTerminal",
+      "name": "军用控制终端",
+      "objectId": 15030050018,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15030050018.png",
+      "replacement": "cinemaCamera",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "ventilator",
+      "name": "呼吸机",
+      "objectId": 15060040004,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15060040004.png",
+      "replacement": "defibrillator",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "champagne",
+      "name": "奥莉薇娅香槟",
+      "objectId": 15060080015,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15060080015.png",
+      "replacement": "milRadio",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "flintlock",
+      "name": "滑膛枪展品",
+      "objectId": 15080050003,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050003.png",
+      "replacement": "graphicsCard",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "goldBar",
+      "name": "万足金条",
+      "objectId": 15080050010,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050010.png",
+      "replacement": "spinoClaw",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "portableRadar",
+      "name": "便携军用雷达",
+      "objectId": 15080050031,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050031.png",
+      "replacement": "claudiusBust",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "milInfo",
+      "name": "军用信息终端",
+      "objectId": 15080050032,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050032.png",
+      "replacement": "quantum",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "tankModel",
+      "name": "主战坦克模型",
+      "objectId": 15080050040,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050040.png",
+      "replacement": "carbonPlate",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "ifvModel",
+      "name": "步战车模型",
+      "objectId": 15080050041,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050041.png",
+      "replacement": "carbonPlate",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "classifiedServer",
+      "name": "绝密服务器",
+      "objectId": 15080050044,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050044.png",
+      "replacement": "laptop",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "cloudArray",
+      "name": "云存储阵列",
+      "objectId": 15080050061,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050061.png",
+      "replacement": "scalpel",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "vacuum",
+      "name": "强力吸尘器",
+      "objectId": 15080050067,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050067.png",
+      "replacement": "milDrone",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    },
+    {
+      "key": "resuscitator",
+      "name": "复苏呼吸机",
+      "objectId": 15080050097,
+      "grade": 6,
+      "source": "https://playerhub.df.qq.com/playerhub/60004/object/15080050097.png",
+      "replacement": "caviar",
+      "reason": "Removed from the active 3/6/21 fusion pool; existing copies migrate at the same quality."
+    }
+  ]
+}

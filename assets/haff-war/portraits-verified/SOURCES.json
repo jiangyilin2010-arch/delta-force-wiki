@@ -1,0 +1,53 @@
+{
+  "verifiedOn": "2026-09-11",
+  "portraits": [
+    {
+      "operator": "sineva",
+      "name": "深蓝",
+      "file": "sineva-official-v1.png",
+      "source": "https://web.df.garena.com/02_h5/240923_official_website/zh_tw/pc/operator_list_08.jpg",
+      "size": [
+        445,
+        206
+      ],
+      "sha256": "27c4a6831430b02f278ed852604baa0db2f3890a0ffc51a770d919d249c9668b",
+      "note": "Original downloaded image, unmodified; identity matched to local operator archive and visually inspected."
+    },
+    {
+      "operator": "toxik",
+      "name": "蛊",
+      "file": "toxik-official-v1.jpg",
+      "source": "https://web.df.garena.com/02_h5/240923_official_website/zh_tw/pc/operator_list_09.jpg",
+      "size": [
+        445,
+        206
+      ],
+      "sha256": "8961d29a70d4acbe6182c93fc7705f4a20223cc8a3147af7ed0e8203e6344fda",
+      "note": "Original downloaded image, unmodified; identity matched to local operator archive and visually inspected."
+    },
+    {
+      "operator": "nitro",
+      "name": "液氮",
+      "file": "nitro-official-v1.jpg",
+      "source": "https://web.df.garena.com/02_h5/240923_official_website/zh_tw/pc/operator_list_016.jpg",
+      "size": [
+        445,
+        206
+      ],
+      "sha256": "c2a2d4f8a49b5bac151cf781b4b35e7b79a87ce7c4d5578d8d5250a6277ef618",
+      "note": "Original downloaded image, unmodified; identity matched to local operator archive and visually inspected."
+    },
+    {
+      "operator": "echo",
+      "name": "回响",
+      "file": "echo-official-v1.jpg",
+      "source": "https://web.df.garena.com/02_h5/240923_official_website/zh_tw/pc/operator_list_015.jpg",
+      "size": [
+        445,
+        206
+      ],
+      "sha256": "248fe1ac1a9da48464daea1c0791b9629ce2edf93fc9b207a27fb4f9a0a90c96",
+      "note": "Original downloaded image, unmodified; identity matched to local operator archive and visually inspected."
+    }
+  ]
+}

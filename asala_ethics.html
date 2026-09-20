@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="队友和非洲之心先救谁？失控列车要不要改道？签下十个阿萨拉两难决定，领取你的专属伦理判词。">
+  <meta name="theme-color" content="#101412">
+  <title>阿萨拉伦理委员会｜三角洲行动小游戏</title>
+  <link rel="stylesheet" href="shared/asala-ethics.css">
+  <script src="shared/asala-ethics-data.js" defer></script>
+  <script src="shared/asala-ethics.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="delta_force_wiki_home.html">三角洲行动 <span>WIKI</span></a>
+    <a class="lobby-link" href="mini_games.html">返回小游戏大厅</a>
+  </div></header>
+  <main class="wrap">
+    <div class="masthead">
+      <div><p class="eyebrow">G.T.I. / ETHICS COMMITTEE</p><h1>阿萨拉伦理委员会</h1><p class="intro">枪法可以练。这份口供，你自己签。</p></div>
+      <span class="file-mark" aria-hidden="true">内部审议<br><b>EC / 026</b></span>
+    </div>
+    <div class="session-bar">
+      <span id="session-status">审议进行中</span>
+      <label for="progress">已签字 <b id="progress-count">0 / 10</b></label>
+      <progress id="progress" max="10" value="0">0 / 10</progress>
+    </div>
+    <section id="game" aria-labelledby="case-title">
+      <div class="case-layout">
+        <div class="case-main">
+          <div class="case-meta"><span id="case-type">落水难题</span><span id="case-place">零号大坝 · 河道边</span></div>
+          <div class="case-heading"><span id="case-number" aria-hidden="true">01</span><h2 id="case-title" tabindex="-1">兄弟和红，先捞哪个？</h2></div>
+          <div class="story" id="case-story"><p>过河时，队友连人带包滑进了深水。他刚摸到的非洲之心从包里掉出来，正顺着水流往下沉。</p><p>你只来得及潜下去一次。救人就得放弃红货；捞心就赶不上救人。</p></div>
+          <p class="constraint" id="case-constraint">假设现场无法丢绳、喊人或两头兼顾；只能保住一个。</p>
+          <div class="choice-list" id="choice-list" role="group" aria-label="签下你的决定"></div>
+          <noscript><p class="constraint">请启用 JavaScript 后参与审议。</p></noscript>
+          <div class="feedback" id="feedback" tabindex="-1" hidden>
+            <div class="feedback-top"><span>现场后续</span><span class="signed-stamp">已签字</span></div>
+            <p id="aftermath"></p>
+            <div class="committee-note"><b>委员会批注</b><p id="committee-comment"></p></div>
+          </div>
+          <div class="case-footer">
+            <div class="decision-status"><span id="signature-status" role="status">本案尚未签字</span><span id="revision-status">撤回机会 1 / 1</span></div>
+            <div class="decision-actions">
+              <button class="button withdraw-button" id="withdraw" type="button" hidden>撤回签字（本局仅 1 次）</button>
+              <button class="button primary" id="confirm" type="button" disabled>签字确认</button>
+              <button class="button primary" id="next" type="button" hidden disabled>下一案</button>
+            </div>
+          </div>
+        </div>
+        <aside class="case-aside" aria-label="案件档案">
+          <img class="dossier-image" src="assets/mini-cover-ethics.jpg" alt="同人插画：干员站在轨道分岔处，面前是待救的小队和红色宝石" width="960" height="640">
+          <div class="aside-heading"><span>本案卷宗</span><span aria-hidden="true">//</span></div>
+          <div class="evidence" id="evidence"></div>
+          <p class="aside-note">“背包里装什么，<br>有时候取决于你放下了谁。”</p>
+          <div class="seal" aria-hidden="true">待审议</div>
+        </aside>
+      </div>
+    </section>
+    <section id="results" aria-labelledby="verdict-title" hidden>
+      <div class="verdict-heading"><p class="eyebrow">审议完毕 / FINAL VERDICT</p><span class="verdict-stamp">准予归档</span></div>
+      <h2 id="verdict-title" tabindex="-1"></h2>
+      <p class="verdict-quote" id="verdict-quote"></p>
+      <p class="verdict-text" id="verdict-text"></p>
+      <div class="result-section-heading"><h3>你更愿意保住什么</h3><span>本轮选择倾向</span></div>
+      <div class="tendencies" id="tendencies"></div>
+      <p class="result-note">比例来自本轮取舍，不是善恶分数，也不是真实人格鉴定。</p>
+      <div class="result-section-heading"><h3>判词依据</h3><span id="record-count"></span></div>
+      <div class="records" id="records"></div>
+      <div class="result-actions"><button class="button primary" id="replay" type="button">换一组案卷，再审一次</button><a class="button" href="mini_games.html">返回小游戏大厅</a></div>
+    </section>
+    <footer class="page-footer"><span>阿萨拉伦理委员会 · 非官方同人小游戏</span><span>情境为虚构演绎，含假想规则。</span></footer>
+  </main>
+</body>
+</html>

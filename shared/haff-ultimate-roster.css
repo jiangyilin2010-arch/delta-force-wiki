@@ -1,0 +1,34 @@
+/* All movement follows the battle presentation clock, including pause and 1.5x ultimates. */
+#battlefield .hur-cut{z-index:7;isolation:isolate}
+#battlefield .hur-art{position:absolute;inset:0;color:var(--hu-color);transform-origin:50% 50%;will-change:transform,opacity;filter:drop-shadow(0 0 12px color-mix(in srgb,var(--hu-color) 45%,transparent))}
+#battlefield .hur-art svg{width:100%;height:100%;overflow:visible}
+#battlefield .hur-cut .hu-portrait{z-index:1}
+#battlefield .hur-cut .hu-letterbox{z-index:5}
+#battlefield .hur-cut .hu-cue{z-index:4}
+#battlefield .hur-scan{position:absolute;left:0;right:0;top:0;height:12%;z-index:2;background:linear-gradient(transparent,color-mix(in srgb,var(--hu-color) 14%,transparent),transparent);border-bottom:1px solid color-mix(in srgb,var(--hu-color) 45%,transparent);pointer-events:none}
+#battlefield .hur-status{position:absolute;left:5%;top:10%;font:11px/1.4 monospace;letter-spacing:4px;color:var(--hu-color);z-index:4;padding-left:13px;border-left:3px solid currentColor}
+#battlefield .hur-cut[data-rank="3"] .hur-art{filter:drop-shadow(0 0 10px var(--hu-color)) drop-shadow(0 0 22px color-mix(in srgb,var(--hu-color) 30%,transparent))}
+#battlefield .hur-cut[data-theme="interference"]{background:linear-gradient(120deg,#040810f5,#0c0824e8 55%,#070b1ac9)}
+#battlefield .hur-cut[data-theme="interference"] .hu-copy{text-shadow:var(--hur-shift,3px) 0 #72efff66,calc(-1 * var(--hur-shift,3px)) 0 #eb76ff77,0 3px 20px #000}
+#battlefield .hur-cut[data-theme="interference"] .hur-ghost{z-index:2;mix-blend-mode:screen;pointer-events:none;clip-path:polygon(0 var(--hur-band,25%),100% var(--hur-band,25%),100% calc(var(--hur-band,25%) + 8%),0 calc(var(--hur-band,25%) + 8%),0 calc(var(--hur-band,25%) + 16%),100% calc(var(--hur-band,25%) + 16%),100% calc(var(--hur-band,25%) + 22%),0 calc(var(--hur-band,25%) + 22%))}
+#battlefield .hur-cyan{filter:grayscale(1) sepia(1) saturate(4) hue-rotate(125deg)}
+#battlefield .hur-magenta{filter:grayscale(1) sepia(1) saturate(4) hue-rotate(240deg)}
+#battlefield .hur-noise{position:absolute;inset:0;z-index:2;opacity:.25;background-image:repeating-linear-gradient(0deg,transparent 0 3px,#a9cbef30 3px 4px),repeating-linear-gradient(91deg,transparent 0 51px,#beaaff35 52px 53px,transparent 54px 127px);mask-image:linear-gradient(100deg,transparent,#000 35%,#000 85%,transparent);transform:translateX(var(--hur-shift,0));pointer-events:none}
+#battlefield .hur-cut[data-theme="overdrive"]{background:radial-gradient(ellipse at 35% 65%,#713020a6,transparent 60%),linear-gradient(115deg,#100707f5,#170d0af0)}
+#battlefield .hur-cut[data-theme="missile"]{background:linear-gradient(140deg,#0b1016f5,#15262ae8 60%,#2d1d11e0)}
+#battlefield .hur-cut[data-theme="medical"],#battlefield .hur-cut[data-theme="swarm"]{background:radial-gradient(ellipse at 45% 65%,#154237d9,transparent 65%),linear-gradient(120deg,#040e10fa,#091d20e8)}
+#battlefield .hur-cut[data-theme="anchor"]{background:radial-gradient(ellipse at 50% 45%,#1f4b7390,transparent 60%),linear-gradient(120deg,#040b19f5,#091523f0)}
+#battlefield .hur-cut[data-theme="stealth"]{background:linear-gradient(120deg,#020408fa,#131a2af2);}
+#battlefield .hur-cut[data-theme="stealth"] .hu-portrait{mask-image:repeating-linear-gradient(170deg,#000 0 80px,#0008 81px 100px)}
+#battlefield .hur-cut[data-theme="anchor"] .hu-slash{border-radius:50%;height:80%;width:38%;top:10%;left:50%;background:none;border:2px solid var(--hu-color);transform:rotate(-25deg);box-shadow:0 0 30px #86cbff55}
+#battle-view .controls .hur-animation-toggle{width:34px;min-width:30px;padding:5px;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#b6ef7b;border-color:#829f65}
+.hur-animation-toggle svg{width:20px;height:20px;display:block}
+.hur-animation-toggle[aria-pressed="true"] .hur-off{display:none}
+#battle-view .controls .hur-animation-toggle[aria-pressed="false"]{color:#a6b2a8;border-color:#536258}
+.hur-animation-toggle:focus-visible{outline:2px solid #e7ffc3;outline-offset:3px}
+@media(max-width:700px){#battle-view .controls .hur-animation-toggle{width:28px;min-width:28px;padding:3px}.hur-animation-toggle svg{width:18px;height:18px}#battlefield .hur-art{inset:0 -30%;}#battlefield .hur-status{top:9%;font-size:9px;letter-spacing:2px}#battlefield .hur-cut .hu-cue{font-size:10px;letter-spacing:1px;bottom:10%}#battlefield .hur-cut .hu-copy small{font-size:9px;letter-spacing:2px}#battlefield .hur-cut .hu-copy b{font-size:clamp(22px,7vw,36px)}}
+
+#battlefield .hur-cut[data-theme="riot"]{background:linear-gradient(125deg,#080e17f5,#142f49ed);}
+#battlefield .hur-cut[data-theme="cryo"]{background:radial-gradient(ellipse at 45% 55%,#205368ab,transparent 68%),linear-gradient(120deg,#07151bf5,#102736ed);}
+#battlefield .hur-cut[data-theme="firefly"]{background:radial-gradient(ellipse at 55% 55%,#4b5d20aa,transparent 60%),linear-gradient(120deg,#091208f5,#172518ed);}
+#battlefield .hur-cut[data-theme="sonar"]{background:radial-gradient(ellipse at 50% 50%,#125042aa,transparent 65%),linear-gradient(120deg,#050e10f5,#0e2926ed);}

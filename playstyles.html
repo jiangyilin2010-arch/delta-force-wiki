@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>打法流派库｜三角洲行动 Wiki</title>
+<style>
+  :root{--bg:#07100d;--panel:#0c1712;--panel2:#0f1d16;--line:#24382d;--green:#9fe870;--gold:#d9c272;--text:#e8f2ea;--muted:#8fa395;--red:#d07a63;--shadow:0 18px 45px rgba(0,0,0,.35)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),radial-gradient(circle at 82% 6%,rgba(159,232,112,.13),transparent 28%),var(--bg);background-size:32px 32px,32px 32px,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}.wrap{max-width:1440px;margin:auto;padding:0 28px}.topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 38%,var(--gold) 68%,transparent 96%)}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}.mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}.brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover,nav a.active{border-color:#77ae68;background:#0d1813;color:var(--green)}.back{height:40px;border:1px solid var(--line);background:#08110d;display:flex;align-items:center;padding:0 12px;color:var(--muted);white-space:nowrap}
+  .hero{padding:58px 0 28px;display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.hero-main{min-height:420px;border:1px solid #2c4235;background:linear-gradient(90deg,rgba(4,9,7,.98),rgba(6,12,9,.78) 58%,rgba(27,25,10,.36)),radial-gradient(circle at 82% 50%,rgba(159,232,112,.12),transparent 34%);box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-main:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(118deg,transparent 0 38px,rgba(159,232,112,.04) 39px 40px)}.hero-main:after{content:"TACTICS";position:absolute;right:-26px;bottom:-44px;color:rgba(217,194,114,.07);font-size:118px;font-weight:900;letter-spacing:-7px;transform:rotate(-7deg)}.hero-copy{position:relative;z-index:1;max-width:720px;padding:48px}.eyebrow,.kicker{color:var(--green);font:800 10px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:2.4px}h1{font-size:68px;line-height:.94;margin:18px 0 14px;letter-spacing:-3px}.lead{max-width:700px;color:#b5c5b8;font-size:15px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.btn{padding:12px 17px;border:1px solid #477052;background:#11261a;font-weight:800}.btn.primary{background:var(--green);color:#07100d;border-color:var(--green)}
+  .chooser{border:1px solid var(--line);background:linear-gradient(180deg,#111d15,#09120e);box-shadow:var(--shadow);min-height:420px;padding:24px;display:grid;align-content:center;gap:14px;position:relative;overflow:hidden}.chooser:after{content:"CHOOSE";position:absolute;right:-12px;bottom:-18px;color:rgba(159,232,112,.045);font-size:82px;font-weight:900;letter-spacing:-4px}.question{position:relative;z-index:1;border:1px solid #21362a;background:#0d1913;padding:14px}.question b{display:block;font-size:18px;color:var(--gold);margin-bottom:6px}.question span{color:var(--muted);font-size:12px}.chips{position:relative;z-index:1;display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid #2d4536;background:#0c1712;color:#c4d3c7;padding:8px 10px;font:800 10px ui-monospace,monospace;cursor:pointer}.chip:hover,.chip.active{border-color:#77ae68;color:#07100d;background:var(--green)}
+  .section{padding:24px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:15px}.section h2{font-size:20px;margin:0;letter-spacing:.5px}.section h2:before{content:"// ";color:var(--green)}.section-head span{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1.2px}.toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}.search{height:40px;border:1px solid var(--line);background:#08110d;display:flex;align-items:center;padding:0 12px;color:var(--muted);gap:9px;min-width:280px}.search input{flex:1;background:none;border:0;outline:0;color:var(--text)}
+  .playstyle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.style-card{border:1px solid #21362a;background:linear-gradient(155deg,#11231a,#0a130f 68%);min-height:420px;padding:18px;display:flex;flex-direction:column;gap:14px;transition:.18s}.style-card:hover{transform:translateY(-3px);border-color:#6d8753;background:#102019}.style-head{display:flex;justify-content:space-between;gap:14px}.style-head h3{font-size:24px;line-height:1.05;margin:0}.rank{font:900 13px ui-monospace,monospace;color:var(--green);border:1px solid #3b5b43;padding:4px 8px;height:max-content;white-space:nowrap}.meta{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.meta div{border:1px solid #203529;background:#0a140f;padding:9px}.meta small{display:block;color:var(--muted);font:800 9px ui-monospace,monospace;letter-spacing:.8px}.meta b{font-size:12px}.tag-row{display:flex;gap:7px;flex-wrap:wrap}.tag{font-size:10px;padding:3px 7px;border:1px solid #3b5b43;color:#abc7ae}.summary{margin:0;color:#b5c5b8;font-size:13px}.steps{display:grid;gap:8px}.step{display:grid;grid-template-columns:42px 1fr;gap:10px;border-top:1px solid #17271e;padding-top:8px}.step code{font:900 10px ui-monospace,monospace;color:var(--green);background:#08110d;border:1px solid #24402f;padding:4px 0;text-align:center;height:max-content}.step strong{display:block;font-size:12px}.step span{display:block;color:#aabaae;font-size:12px}.danger{margin-top:auto;border-left:3px solid var(--red);padding:8px 0 8px 10px;color:#d9b0a4;font-size:12px;background:rgba(208,122,99,.05)}
+  .matrix{border:1px solid var(--line);background:#0a140f;padding:18px;overflow:auto}.matrix table{width:100%;border-collapse:collapse;min-width:880px}.matrix th,.matrix td{border-bottom:1px solid #1d3025;text-align:left;padding:11px;color:#c7d6cb}.matrix th{color:var(--green);font:900 10px ui-monospace,monospace;letter-spacing:1px}.matrix td{font-size:12px}.source-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.source{border:1px solid #21362a;background:#0d1913;padding:14px}.source strong{display:block;font-size:12px;margin-bottom:5px}.source span{display:block;color:var(--muted);font-size:11px}.footer{margin-top:36px;border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}.warning{color:#a9b7ac;max-width:900px}
+  @media(max-width:1120px){.hero{grid-template-columns:1fr}.playstyle-grid{grid-template-columns:repeat(2,1fr)}.source-grid{grid-template-columns:repeat(2,1fr)}nav{display:none}.brand{min-width:0}}
+  @media(max-width:720px){.wrap{padding:0 18px}.hero-copy{padding:34px 24px}h1{font-size:42px}.playstyle-grid,.source-grid{grid-template-columns:1fr}.toolbar{align-items:flex-start;flex-direction:column}.search{width:100%;min-width:0}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a class="active" href="playstyles.html">打法流派</a><a href="operations_fire.html">烽火地带</a><a href="streamers.html">主播名片</a><a href="esports.html">赛事板块</a><a href="delta_force_wiki_home.html#database">资料库</a></nav>
+  <a class="back" href="delta_force_wiki_home.html">返回首页</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <div class="eyebrow">PLAYSTYLE LIBRARY // DOUYIN FIELD NOTES</div>
+        <h1>打法流派库</h1>
+        <p class="lead">根据抖音和 B 站玩家常见的装糖/装唐、输四保一、粑粑流无名、跑刀、摸金、钓鱼、极星守望、钥匙房、架枪控图和全面战场教学整理。这里不做长视频复读，而是把社区黑话拆成能看懂、能执行、知道风险的战术卡。</p>
+        <div class="actions"><a class="btn primary" href="#styles">选择流派</a><a class="btn" href="avoid_blackroom.html">避黑屋指南</a><a class="btn" href="#matrix">快速对比</a><a class="btn" href="#sources">查看来源</a></div>
+      </div>
+    </div>
+    <aside class="chooser">
+      <div class="question"><b>今天你想怎么打？</b><span>点下面目标，页面会筛出更适合的打法。</span></div>
+      <div class="chips" id="goalChips">
+        <button class="chip active" type="button" data-filter="全部">全部</button>
+        <button class="chip" type="button" data-filter="赚钱">我想赚钱</button>
+        <button class="chip" type="button" data-filter="新手">我是新手</button>
+        <button class="chip" type="button" data-filter="单排">我要单排</button>
+        <button class="chip" type="button" data-filter="三排">我要三排</button>
+        <button class="chip" type="button" data-filter="打架">我想打架</button>
+        <button class="chip" type="button" data-filter="养号">养号/低压</button>
+        <button class="chip" type="button" data-filter="整活">整活流派</button>
+        <button class="chip" type="button" data-filter="夺舍">夺舍</button>
+        <button class="chip" type="button" data-filter="堵桥">堵桥</button>
+        <button class="chip" type="button" data-filter="钓鱼">钓鱼</button>
+        <button class="chip" type="button" data-filter="练枪">练枪</button>
+        <button class="chip" type="button" data-filter="战场">全面战场</button>
+      </div>
+      <div class="question"><b id="matchCount">22</b><span>套流派已整理，后续可以继续补地图专属版本。</span></div>
+    </aside>
+  </section>
+
+  <section class="section" id="styles">
+    <div class="section-head"><h2>流派教程</h2><span>可筛选 · 可抄作业 · 按真实玩家说法整理</span></div>
+    <div class="toolbar">
+      <label class="search">⌕ <input id="searchInput" placeholder="搜索：跑刀、钥匙房、蜂医、工程、曼德尔砖…" /></label>
+      <div class="chips" id="modeChips">
+        <button class="chip active" type="button" data-filter="全部">全部</button>
+        <button class="chip" type="button" data-filter="烽火">烽火地带</button>
+        <button class="chip" type="button" data-filter="战场">全面战场</button>
+      </div>
+    </div>
+
+    <div class="playstyle-grid" id="styleGrid">
+      <article class="style-card" data-tags="烽火 赚钱 新手 单排 养号 装糖 装唐 糖人号 低压">
+        <div class="style-head"><h3>装糖流 / 装唐流</h3><div class="rank">LOW PRESS</div></div>
+        <p class="summary">抖音里常说的“糖人号/装唐”核心是把账号打回低压节奏，让对局不那么卷。这里整理成正常玩法版：低成本练图、少恋战、多搜容器、稳定撤离，不做挂机和恶意送头。</p>
+        <div class="meta"><div><small>地图</small><b>普通/机密低压图</b></div><div><small>预算</small><b>0-10 万</b></div><div><small>干员</small><b>蜂医 / 威龙</b></div><div><small>胜利条件</small><b>降压恢复</b></div></div>
+        <div class="tag-row"><span class="tag">装糖</span><span class="tag">糖人号</span><span class="tag">低压局</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>先把目标从“爆大红”改成“恢复手感”</strong><span>连续亏损后别马上上高配。用低价套装进图，先熟路线、听脚步、练撤离。</span></div></div>
+          <div class="step"><code>02</code><div><strong>多搜容器，少追击杀</strong><span>短视频说法里很看重容器搜索和对局时长；正常玩法里就理解成多搜、多判断、少无意义接架。</span></div></div>
+          <div class="step"><code>03</code><div><strong>别挂机，别开局白给</strong><span>有些教程会提“拉长时间”，但实战建议正常移动、正常搜图、正常撤离，避免被系统判定消极。</span></div></div>
+          <div class="step"><code>04</code><div><strong>带出低中价值物资即可</strong><span>不要一把强求满包。小赚、活撤、把节奏拉回来，才是装糖流的可持续版本。</span></div></div>
+        </div>
+        <div class="danger">风险：养号、控数据、故意输都可能影响账号体验；本站只建议用低成本正常练图替代。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 赚钱 单排 三排 养号 输四保一 低压">
+        <div class="style-head"><h3>输四保一恢复流</h3><div class="rank">RESET</div></div>
+        <p class="summary">社区说法里“输四保一”常和养唐人号、低压高爆局绑定。我们把它改成不恶意摆烂的版本：四局低成本试错，一局认真执行高价值路线。</p>
+        <div class="meta"><div><small>地图</small><b>大坝 / 航天 / 监狱</b></div><div><small>预算</small><b>低配循环</b></div><div><small>干员</small><b>生存优先</b></div><div><small>胜利条件</small><b>控制连亏</b></div></div>
+        <div class="tag-row"><span class="tag">输四保一</span><span class="tag">恢复心态</span><span class="tag">低成本</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>前四局只做一件事</strong><span>每局只练一个目标：熟出生点、摸一条路线、试一个撤离、完成一个任务，不带贵装备。</span></div></div>
+          <div class="step"><code>02</code><div><strong>失败也要拿到信息</strong><span>死了就记录：从哪来人、哪个点被卡、撤离前哪里暴露。输局要换成地图经验。</span></div></div>
+          <div class="step"><code>03</code><div><strong>第五局才执行主线</strong><span>等路线和敌人分布有手感后，再带中配去打钥匙房、跑刀速撤或摸泪路线。</span></div></div>
+          <div class="step"><code>04</code><div><strong>赢一把就收，不连上头</strong><span>“保一”的核心是止损。带出收益后先整理仓库和任务，再决定下一轮。</span></div></div>
+        </div>
+        <div class="danger">风险：不要故意送、不要消极游戏；把它当“低成本复盘循环”，不要当系统漏洞教程。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 打架 单排 三排 整活 粑粑流 无名 女鬼流 近战">
+        <div class="style-head"><h3>粑粑流无名</h3><div class="rank">ASSASSIN</div></div>
+        <p class="summary">安澜带火的社区流派，主打无名近距离偷袭、绕后、拐角伏击和心理压制。打法很有节目效果，但对地图、时机和撤退判断要求很高。</p>
+        <div class="meta"><div><small>地图</small><b>大坝 / 航天 / 巴克什</b></div><div><small>预算</small><b>11-25 万</b></div><div><small>干员</small><b>无名</b></div><div><small>胜利条件</small><b>偷袭收割</b></div></div>
+        <div class="tag-row"><span class="tag">粑粑流</span><span class="tag">无名</span><span class="tag">刺客型</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>装备别堆太贵</strong><span>社区常见是中低价高射速近战枪，P90、SMG-45、SR-3M、龙息喷一类思路都有人玩。</span></div></div>
+          <div class="step"><code>02</code><div><strong>只打近距离和背身</strong><span>不要和长枪正面对线。等敌人进楼、搜包、救人、转身时，从拐角或侧后方开打。</span></div></div>
+          <div class="step"><code>03</code><div><strong>打一波就换洞</strong><span>击倒后别站原地舔包。先换楼层、换门、换窗口，让对面报点失效。</span></div></div>
+          <div class="step"><code>04</code><div><strong>队友负责制造混乱</strong><span>三排时一人吸引枪线，一人封烟/丢道具，无名绕后收残血；单排则只抓落单。</span></div></div>
+        </div>
+        <div class="danger">最怕：远距离对枪、打完贪包、无名技能没冷却还硬冲。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 赚钱 打架 单排 整活 夺舍 红狼 大坝 零号大坝">
+        <div class="style-head"><h3>红狼夺舍流</h3><div class="rank">HIJACK</div></div>
+        <p class="summary">社区里很经典的“低成本以小博大”打法：红狼利用机动、烟和爆发，在大坝小房间、洞口、撤离线伏击高价值目标，击杀后快速换装撤离。</p>
+        <div class="meta"><div><small>地图</small><b>零号大坝</b></div><div><small>预算</small><b>低-中</b></div><div><small>干员</small><b>红狼</b></div><div><small>胜利条件</small><b>偷套撤离</b></div></div>
+        <div class="tag-row"><span class="tag">夺舍</span><span class="tag">红狼</span><span class="tag">大坝</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>开局先判断刷人方向</strong><span>看水泥厂、洞口、人机和枪声，确认对面会不会经过你的伏击点，不要盲目蹲死点。</span></div></div>
+          <div class="step"><code>02</code><div><strong>卡小房间和必经路</strong><span>优先选门后、桌后、箱体夹角、撤离线附近这种对手搜东西会放松的位置。</span></div></div>
+          <div class="step"><code>03</code><div><strong>只打确定能秒的目标</strong><span>听脚步判断人数。单人直接吃，多人偷最后一个或残血，不要硬接满编正面。</span></div></div>
+          <div class="step"><code>04</code><div><strong>封烟夺舍后立刻撤</strong><span>击杀后先关门/封烟/换角度，拿甲、枪、弹、药和高价值物资，别在原地慢慢理包。</span></div></div>
+        </div>
+        <div class="danger">最怕：没耐心乱动、脚步判断错、偷完还贪第二队。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 打架 三排 整活 堵桥 乌鲁鲁 航天基地">
+        <div class="style-head"><h3>乌鲁鲁堵桥流</h3><div class="rank">BRIDGE</div></div>
+        <p class="summary">航天基地最出圈的折磨系打法之一：乌鲁鲁依靠远点火力、技能压制和桥位视野，把飞升/直升机撤离路线变成高压区。</p>
+        <div class="meta"><div><small>地图</small><b>航天基地</b></div><div><small>预算</small><b>中-高</b></div><div><small>干员</small><b>乌鲁鲁 + 侦察/支援</b></div><div><small>胜利条件</small><b>控桥收人</b></div></div>
+        <div class="tag-row"><span class="tag">堵桥</span><span class="tag">乌鲁鲁</span><span class="tag">航天</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>队伍先分工</strong><span>一个人看桥面，一个人看鼠道/侧翼，一个人盯撤离触发和远点动静，别三个人都架同一条线。</span></div></div>
+          <div class="step"><code>02</code><div><strong>用连狙打压制</strong><span>SR-25、PSG-1、SVD 这类中远距离连狙更适合持续压血和逼退，不要全靠单发狙赌一枪。</span></div></div>
+          <div class="step"><code>03</code><div><strong>技能留给过桥和救人</strong><span>巡飞/爆炸压住敌方上桥、救人、进烟和换位时机，别刚看到影子就把技能全交光。</span></div></div>
+          <div class="step"><code>04</code><div><strong>提前规划自己的撤离</strong><span>堵桥不是堵到迷失。看到战局被反包、侧翼失守或时间不够，就该收枪转撤。</span></div></div>
+        </div>
+        <div class="danger">最怕：鼠道没人看、被蜂医长烟贴近、对面拿到信息后包夹。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 打架 三排 整活 比特 三比特 航天基地 总裁 工程">
+        <div class="style-head"><h3>航天三比特</h3><div class="rank">TRIPLE BIT</div></div>
+        <p class="summary">“三工程/三比特”属于航天室内控场流，常围绕总裁、蓝室、狭窄走廊和楼梯口打道具压制。版本改动会影响强度，但它仍是社区讨论度很高的流派。</p>
+        <div class="meta"><div><small>地图</small><b>航天基地</b></div><div><small>预算</small><b>中</b></div><div><small>干员</small><b>比特 × 3</b></div><div><small>胜利条件</small><b>室内封锁</b></div></div>
+        <div class="tag-row"><span class="tag">三比特</span><span class="tag">工程</span><span class="tag">室内控场</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>只选室内强点</strong><span>总裁、蓝室、楼梯、窄门、转角才是三比特优势区；开阔地和远点对枪会很亏。</span></div></div>
+          <div class="step"><code>02</code><div><strong>三个技能错开放</strong><span>不要同一秒把道具全交掉。第一人逼位，第二人封退路，第三人等对面进点或救人再补。</span></div></div>
+          <div class="step"><code>03</code><div><strong>枪线跟着道具推进</strong><span>道具只是把敌人赶出舒服位置，真正收割要靠两侧交叉枪线和补枪。</span></div></div>
+          <div class="step"><code>04</code><div><strong>被反制就换楼层</strong><span>遇到露娜电箭、银翼电磁、烟雾强冲或远点架枪，不要硬守原门，立刻换层重新卡口。</span></div></div>
+        </div>
+        <div class="danger">最怕：在室外打、技能同时空掉、被电磁/侦察信息反制。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 赚钱 新手 单排 跑刀 低成本 零号大坝">
+        <div class="style-head"><h3>普坝低成本跑刀流</h3><div class="rank">LOW RISK</div></div>
+        <p class="summary">适合刚破产、保险箱小、想练地图的人。目标不是杀人，是用最低成本把小金小紫和任务物品稳定带出。</p>
+        <div class="meta"><div><small>地图</small><b>零号大坝 / 普通</b></div><div><small>预算</small><b>0-5 万</b></div><div><small>干员</small><b>威龙 / 蜂医</b></div><div><small>胜利条件</small><b>活着撤离</b></div></div>
+        <div class="tag-row"><span class="tag">新手</span><span class="tag">赚钱</span><span class="tag">单排</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>开局只认近点资源</strong><span>出生后先判断离水泥厂、东楼、行政区还是外围更近，不横穿大图抢高价值点。</span></div></div>
+          <div class="step"><code>02</code><div><strong>背包只装高密度物资</strong><span>红金必拿，紫色看格子价值，低价大件少拿；保险箱优先塞任务品、钥匙、贵重小件。</span></div></div>
+          <div class="step"><code>03</code><div><strong>听到枪声绕半圈</strong><span>不要去第三方劝架。跑刀的优势是时间差，枪声等于给你标出危险区。</span></div></div>
+          <div class="step"><code>04</code><div><strong>7-9 分钟开始撤</strong><span>有收益就走，别贪最后一个箱子；靠边线移动，进撤离点前停 5 秒听脚步。</span></div></div>
+        </div>
+        <div class="danger">最怕：同行、全装队清图、贪保险箱外最后一个大件。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 赚钱 单排 跑刀 航天基地 速撤">
+        <div class="style-head"><h3>航天基地速撤跑刀流</h3><div class="rank">FAST LOOT</div></div>
+        <p class="summary">抖音跑刀教学里最常见的高收益路线之一。核心是熟出生点、抢第一轮资源，然后用丢包撤或任务撤离保收益。</p>
+        <div class="meta"><div><small>地图</small><b>航天基地</b></div><div><small>预算</small><b>0-10 万</b></div><div><small>干员</small><b>蜂医 / 威龙</b></div><div><small>胜利条件</small><b>快搜快撤</b></div></div>
+        <div class="tag-row"><span class="tag">跑刀</span><span class="tag">航天</span><span class="tag">收益</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>先背出生点公式</strong><span>西大、宿舍、中控、牢区等出生位对应不同第一落点，先打离自己最近的资源，不硬抢核心。</span></div></div>
+          <div class="step"><code>02</code><div><strong>优先吃小保险和核心边缘</strong><span>先拿金币、酒壶、钥匙等高价值小件；低价大件让位给保险物资。</span></div></div>
+          <div class="step"><code>03</code><div><strong>撤离优先级提前定</strong><span>能丢包撤就别恋战；飞升任务撤离难度更高，适合熟图后再尝试。</span></div></div>
+          <div class="step"><code>04</code><div><strong>被架就换路线</strong><span>航天核心区枪线复杂，被露娜标点或听到近脚步就转外围，不和全装队拼正面。</span></div></div>
+        </div>
+        <div class="danger">最怕：不熟图硬进核心、中控桥被卡、背包太贪导致撤离慢。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 赚钱 单排 潮汐监狱 摸泪 海洋之泪">
+        <div class="style-head"><h3>潮汐监狱摸泪流</h3><div class="rank">RARE HUNT</div></div>
+        <p class="summary">围绕海洋之泪等稀有物资的长期刷取打法。它不是稳定赚钱，而是用大量熟练度换高价值爆点。</p>
+        <div class="meta"><div><small>地图</small><b>潮汐监狱</b></div><div><small>预算</small><b>低-中</b></div><div><small>干员</small><b>蜂医</b></div><div><small>胜利条件</small><b>摸点 + 活撤</b></div></div>
+        <div class="tag-row"><span class="tag">摸泪</span><span class="tag">稀有物资</span><span class="tag">耐心流</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>先在低压局练路线</strong><span>先熟悉贝壳点、室内外连通路线和最快撤离路径，再进高风险局刷。</span></div></div>
+          <div class="step"><code>02</code><div><strong>固定顺序摸点</strong><span>按“近点贝壳/刷泪点 - 周边补搜 - 观察撤离线”循环，不要临时乱逛。</span></div></div>
+          <div class="step"><code>03</code><div><strong>遇同行先让线</strong><span>摸泪流收益来自次数，不来自击杀。被抢点就换下一个点，保命优先。</span></div></div>
+          <div class="step"><code>04</code><div><strong>没有出货也要撤</strong><span>连续不出很正常，别用一局情绪决定打法；撤离率才是长期收益底盘。</span></div></div>
+        </div>
+        <div class="danger">最怕：把玄学当必出、越亏越上头、为一个点反复送。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 赚钱 打架 三排 钥匙房 巴克什 零号大坝">
+        <div class="style-head"><h3>钥匙房爆金流</h3><div class="rank">HIGH RISK</div></div>
+        <p class="summary">带钥匙/房卡冲高价值房间，适合有本金、有队友、愿意接架的人。收益上限高，但一死就很疼。</p>
+        <div class="meta"><div><small>地图</small><b>巴克什 / 大坝 / 医疗区</b></div><div><small>预算</small><b>中-高</b></div><div><small>干员</small><b>侦察 + 突击 + 支援</b></div><div><small>胜利条件</small><b>开房带走</b></div></div>
+        <div class="tag-row"><span class="tag">房卡</span><span class="tag">高收益</span><span class="tag">三排</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>入局前定开门顺序</strong><span>不要“看到门就开”。先定主房、备选房和撤离方向，避免开完房被堵死。</span></div></div>
+          <div class="step"><code>02</code><div><strong>一人看门两人搜</strong><span>开房时最容易被尾随，队伍要分工：门口卡枪线、房内快速拿高价值、第三人听脚步。</span></div></div>
+          <div class="step"><code>03</code><div><strong>搜完立刻换区</strong><span>钥匙房枪声和开门路线会暴露意图，拿到收益后不要在原楼层继续磨。</span></div></div>
+          <div class="step"><code>04</code><div><strong>保险箱只放最贵小件</strong><span>红金、小体积高价值、任务品优先；大件除非确定能活撤，否则别牺牲机动性。</span></div></div>
+        </div>
+        <div class="danger">最怕：单人带贵卡硬开、开门后没人架枪、搜太慢被包夹。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 赚钱 新手 单排 稳健 摸金">
+        <div class="style-head"><h3>稳健摸金保本流</h3><div class="rank">STABLE</div></div>
+        <p class="summary">最适合普通玩家长期玩的底层流派：不赌大红，不追空投，不主动打架，用稳定撤离把仓库慢慢养起来。</p>
+        <div class="meta"><div><small>地图</small><b>全地图低压区</b></div><div><small>预算</small><b>5-15 万</b></div><div><small>干员</small><b>蜂医 / 侦察</b></div><div><small>胜利条件</small><b>撤离率 60%+</b></div></div>
+        <div class="tag-row"><span class="tag">保本</span><span class="tag">任务党</span><span class="tag">小仓库</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>只打自己能赢的架</strong><span>先看护甲、子弹、位置优势。没有优势就绕，稳健流不是怂，是算账。</span></div></div>
+          <div class="step"><code>02</code><div><strong>路线绕开主战区</strong><span>用边缘资源、二级资源点和别人搜过后的漏货养经济，不和高配队争第一波。</span></div></div>
+          <div class="step"><code>03</code><div><strong>背包七成满就规划撤离</strong><span>不要等满包才撤。七成收益加高撤离率，长期比满包暴毙更赚钱。</span></div></div>
+          <div class="step"><code>04</code><div><strong>每局只完成一个主目标</strong><span>跑任务就跑任务，赚钱就赚钱，别一局里又想打架又想开卡又想摸空投。</span></div></div>
+        </div>
+        <div class="danger">最怕：临时起贪念、跟枪声走、把别人的高光打法当日常打法。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 打架 三排 控图 架枪 曼德尔砖">
+        <div class="style-head"><h3>架枪控图吃路过流</h3><div class="rank">CONTROL</div></div>
+        <p class="summary">提前占据通道、撤离线、钥匙房外侧或曼德尔砖路线，靠信息和枪线吃对手失误。</p>
+        <div class="meta"><div><small>地图</small><b>大坝 / 航天 / 巴克什</b></div><div><small>预算</small><b>中-高</b></div><div><small>干员</small><b>侦察 + 突击</b></div><div><small>胜利条件</small><b>控线击杀</b></div></div>
+        <div class="tag-row"><span class="tag">打架</span><span class="tag">控图</span><span class="tag">三排</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>选点先看退路</strong><span>好架点不是只有视野，还要能撤、能换层、能被队友补枪。</span></div></div>
+          <div class="step"><code>02</code><div><strong>一人听线一人卡线</strong><span>侦察给信息，突击负责第一波爆发，支援留烟和治疗保退路。</span></div></div>
+          <div class="step"><code>03</code><div><strong>不开无意义远枪</strong><span>没把握击倒就别暴露。控图流靠突然性，不靠远距离互相刮痧。</span></div></div>
+          <div class="step"><code>04</code><div><strong>击倒后立刻换角度</strong><span>对手会报点，原地补人很容易被反清。换一条枪线再吃救援位。</span></div></div>
+        </div>
+        <div class="danger">最怕：三个人挤同一个窗口、开枪后不换点、被烟雾强冲。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 三排 打架 曼德尔砖 护航">
+        <div class="style-head"><h3>曼德尔砖护航流</h3><div class="rank">SQUAD</div></div>
+        <p class="summary">围绕曼德尔砖这种会暴露位置的高价值目标打。重点不是谁拿砖，而是全队如何护送、转点和撤离。</p>
+        <div class="meta"><div><small>地图</small><b>刷砖地图</b></div><div><small>预算</small><b>中-高</b></div><div><small>干员</small><b>突击 + 支援 + 侦察</b></div><div><small>胜利条件</small><b>带砖撤离</b></div></div>
+        <div class="tag-row"><span class="tag">三排</span><span class="tag">高价值</span><span class="tag">护航</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>拿砖前先清退路</strong><span>曼德尔砖会让队伍变成地图焦点，拿之前先确认最近撤离线和备选路线。</span></div></div>
+          <div class="step"><code>02</code><div><strong>持砖人不打第一枪</strong><span>持砖人负责移动和保命，队友负责前点探路、后点断追兵。</span></div></div>
+          <div class="step"><code>03</code><div><strong>烟雾用于转场，不是原地蹲</strong><span>烟起就走，别在烟里等对手摸进来。支援技能要为过路口服务。</span></div></div>
+          <div class="step"><code>04</code><div><strong>撤离点外先反蹲</strong><span>到撤离点前不要直冲，先清外围脚步和枪线，再进圈读秒。</span></div></div>
+        </div>
+        <div class="danger">最怕：拿砖后路线临时乱改、全队跟持砖人贴太近、没有人断后。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 赚钱 新手 单排 休闲 钓鱼 长弓溪谷 群星 S11">
+        <div class="style-head"><h3>长弓钓鱼休闲流</h3><div class="rank">FISHING</div></div>
+        <p class="summary">从长弓接取钓鱼任务，搭配水路探索和副线搜集。钓鱼仍发生在有敌人的烽火对局；以下是本站路线建议，“休闲流”不代表地图安全或保本。</p>
+        <div class="meta"><div><small>地图</small><b>长弓溪谷 2.0</b></div><div><small>预算</small><b>低-中</b></div><div><small>干员</small><b>蜂医 / 旅人</b></div><div><small>胜利条件</small><b>任务 + 活撤</b></div></div>
+        <div class="tag-row"><span class="tag">钓鱼</span><span class="tag">长弓</span><span class="tag">休闲流</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>找老乔完成解锁</strong><span>Garena 公告要求行动等级 17 级，在常规长弓寻找乔·里德；国服按当前任务提示核对。老乔并非各点必刷，避免攻击 NPC。</span></div></div>
+          <div class="step"><code>02</code><div><strong>装好鱼竿再挑安全水域</strong><span>通过 EDC 工具包配备鱼竿与鱼饵，先观察岸边枪线、队友位置和撤离路线，再开始垂钓。</span></div></div>
+          <div class="step"><code>03</code><div><strong>按竿型判断提竿</strong><span>台钓等浮漂完全下沉再提竿；路亚注意鱼线张力，适时放线避免断线。等级够后找老乔完成晋升考核。</span></div></div>
+          <div class="step"><code>04</code><div><strong>有任务物资就提前撤</strong><span>S11 新区初期人会很多，拿到阶段目标后优先活撤，后续再补高风险路线。</span></div></div>
+        </div>
+        <div class="danger">最怕：岸边停留过久、横穿枪线。9/10 台服修复了鱼线耐久、任务要求与唐吉互动，并减少唐吉一阶段次数；遇到旧教程不符，先核对当前任务提示。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 打架 新手 单排 练枪 单挑 咱俩练练 1v1 群星 S11">
+        <div class="style-head"><h3>咱俩练练：1v1 练枪</h3><div class="rank">DUEL</div></div>
+        <p class="summary">国服 9/10 官方活动公告已确认“咱俩练练”上线，可与好友练对枪。训练时先统一配装和目标，再比较预瞄、身位与道具使用。纵横巅峰赛是另一项活动；Garena 的季中日程另行核对。</p>
+        <div class="meta"><div><small>模式</small><b>咱俩练练 / 单挑</b></div><div><small>预算</small><b>零战备消耗</b></div><div><small>干员</small><b>突击 / 侦察</b></div><div><small>胜利条件</small><b>稳定赢对枪</b></div></div>
+        <div class="tag-row"><span class="tag">国服已上线</span><span class="tag">练枪</span><span class="tag">1v1</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>一局只练一个问题</strong><span>今天练架点就不练绕后，练压枪就别换三把枪，避免把复盘变成情绪。</span></div></div>
+          <div class="step"><code>02</code><div><strong>固定开局身位</strong><span>反复练同一条中门、侧门或掩体 peek，把拉出、急停、开镜和回撤做成肌肉记忆。</span></div></div>
+          <div class="step"><code>03</code><div><strong>失败后看首枪原因</strong><span>输掉对枪先判断是预瞄低、提前暴露、节奏慢，还是换弹和道具时机错。</span></div></div>
+          <div class="step"><code>04</code><div><strong>练完再回烽火实战</strong><span>用单挑修单点能力，再回烽火练信息、路线和撤离判断；活动未开放时可先在靶场练压枪。</span></div></div>
+        </div>
+        <div class="danger">最怕：输一局就换灵敏度、只追求高光、不把练枪结果带回真实撤离局。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 打架 三排 整活 极星守望 德穆兰 航天基地 AZ3 群星 S11">
+        <div class="style-head"><h3>极星守望总监流</h3><div class="rank">BOSS OPS</div></div>
+        <p class="summary">德穆兰与副官的协同玩法预习：先获取信息，再推进和安排撤离。Garena 公告预计 10 月 16 日开放，国服需另看活动日历；体验服视频不代表正式服已能游玩。</p>
+        <div class="meta"><div><small>地图</small><b>航天基地 / AZ-3</b></div><div><small>预算</small><b>工卡 + 制式券</b></div><div><small>干员</small><b>德穆兰 + 副官</b></div><div><small>胜利条件</small><b>绩效点数</b></div></div>
+        <div class="tag-row"><span class="tag">极星守望</span><span class="tag">德穆兰</span><span class="tag">总监</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>先确认身份和工卡</strong><span>德穆兰需要前置档案和工卡，副官要跟随总监入局，别到开局才发现条件不够。</span></div></div>
+          <div class="step"><code>02</code><div><strong>战车先控信息再压人</strong><span>脑机战车不是单纯冲脸，用显像、爆破车和副官照明先拿信息，再压关键入口。</span></div></div>
+          <div class="step"><code>03</code><div><strong>副官围绕总监打联动</strong><span>烟雾、照明、空爆和遥控炸弹要服务总监和战车推进，别三个人各玩各的。</span></div></div>
+          <div class="step"><code>04</code><div><strong>别忽略反猎风险</strong><span>G.T.I. 击败德穆兰也有收益，越强势越会被盯，撤离和特殊通路要提前规划。</span></div></div>
+        </div>
+        <div class="danger">最怕：把 Boss 身份当无敌、战车离队太远、专属撤离权限被对手反拿。</div>
+      </article>
+
+      <article class="style-card" data-tags="烽火 打架 单排 三排 腰射 汤姆逊 冲锋枪 室内 群星 S11">
+        <div class="style-head"><h3>汤姆逊腰射流</h3><div class="rank">HIP FIRE</div></div>
+        <p class="summary">抖音玩家已在分享汤姆逊腰射、开镜与混合改法。本卡整理为近距离打法建议：用掩体缩短交战距离，跟随队友补枪，避免拿腰射配装硬接远点。</p>
+        <div class="meta"><div><small>地图</small><b>大坝 / 长弓室内</b></div><div><small>预算</small><b>按实时改装价</b></div><div><small>干员</small><b>熟练突击位</b></div><div><small>胜利条件</small><b>近点补枪后撤离</b></div></div>
+        <div class="tag-row"><span class="tag">汤姆逊</span><span class="tag">腰射</span><span class="tag">玩家配装</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>先选腰射还是混合配置</strong><span>以当前改枪面板和靶场散布测试为准。统计整枪、弹药、护甲的总投入，别直接把旧码当最低价答案。</span></div></div>
+          <div class="step"><code>02</code><div><strong>从近距离掩体推进</strong><span>先确认门后、楼梯与侧翼，借队友信息缩短距离。出门就是长枪线时停下换路，别依赖腰射赌散布。</span></div></div>
+          <div class="step"><code>03</code><div><strong>打一轮就回掩体补状态</strong><span>与队友错开探头和换弹时间；对手离开近点时先追踪信息，避免跨空地追残血。</span></div></div>
+          <div class="step"><code>04</code><div><strong>对照战报调整配装</strong><span>分清失败来自距离、弹药还是走位，每次只改一个因素。没有稳定效果前保持能承受的预算。</span></div></div>
+        </div>
+        <div class="danger">风险：中远距离散布、持续交火弹药消耗和高价改装。本卡不承诺版本最强或稳定赚钱；来源为抖音乘希电竞汤姆逊八种改法，9/14 检索，地图选择为本站建议。</div>
+      </article>
+
+      <article class="style-card" data-tags="战场 打架 突击 全面战场 破点">
+        <div class="style-head"><h3>全面战场突击破点流</h3><div class="rank">BREACH</div></div>
+        <p class="summary">适合喜欢正面推进的人。目标是跟随队伍压到关键点，而不是一个人绕远刷击杀。</p>
+        <div class="meta"><div><small>模式</small><b>全面战场</b></div><div><small>位置</small><b>进攻前排</b></div><div><small>干员</small><b>突击位</b></div><div><small>胜利条件</small><b>打开缺口</b></div></div>
+        <div class="tag-row"><span class="tag">突击</span><span class="tag">破点</span><span class="tag">打架</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>别离复活点太远</strong><span>全面战场赢的是区域推进，突击位要站在队伍能补上的距离。</span></div></div>
+          <div class="step"><code>02</code><div><strong>先清火力点再进圈</strong><span>进点前看窗口、二楼、侧翼和载具火线，清掉压制点再冲。</span></div></div>
+          <div class="step"><code>03</code><div><strong>烟雾/爆炸后跟进</strong><span>等队友支援和载具压制出现后进，不要第一个裸跑过空地。</span></div></div>
+          <div class="step"><code>04</code><div><strong>占点后立刻转防守角度</strong><span>破点成功后别继续往前飘，先卡反扑路线，保住刚拿下的区域。</span></div></div>
+        </div>
+        <div class="danger">最怕：脱离队伍单冲、只看击杀不看点位、被载具火力白送。</div>
+      </article>
+
+      <article class="style-card" data-tags="战场 新手 支援 医疗 蜂医 全面战场">
+        <div class="style-head"><h3>医疗支援续航流</h3><div class="rank">SUPPORT</div></div>
+        <p class="summary">适合枪法一般但想稳定贡献的人。救人、补给、烟雾和阵线续航，比盲目冲锋更容易影响胜负。</p>
+        <div class="meta"><div><small>模式</small><b>全面战场</b></div><div><small>位置</small><b>队伍中后排</b></div><div><small>干员</small><b>蜂医 / 支援位</b></div><div><small>胜利条件</small><b>保住兵力</b></div></div>
+        <div class="tag-row"><span class="tag">新手友好</span><span class="tag">救人</span><span class="tag">续航</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>跟主力团，不跟独狼</strong><span>支援价值来自密集队友，跟着进攻波或防守核心点移动。</span></div></div>
+          <div class="step"><code>02</code><div><strong>先封枪线再救人</strong><span>倒地队友在空地时，先用烟或掩体切断敌方视野，再救。</span></div></div>
+          <div class="step"><code>03</code><div><strong>补给放在掩体后</strong><span>不要把补给放到路中央。好补给点应该能让队友打一枪、缩回来、再补状态。</span></div></div>
+          <div class="step"><code>04</code><div><strong>把命留给下一波</strong><span>支援位死太快会让整条线断续航。救不了就放弃，等下一波队友。</span></div></div>
+        </div>
+        <div class="danger">最怕：空地硬救、补给乱丢、离队友太远导致技能没人吃。</div>
+      </article>
+
+      <article class="style-card" data-tags="战场 新手 任务 阵地支援 全面战场">
+        <div class="style-head"><h3>阵地支援任务流</h3><div class="rank">MISSION</div></div>
+        <p class="summary">抖音里很多新手会把“阵地支援”误解成救人。真实做法是进入全面战场占领类玩法，攒支援后部署技能。</p>
+        <div class="meta"><div><small>模式</small><b>全面战场 / 占领</b></div><div><small>目标</small><b>完成任务</b></div><div><small>干员</small><b>有支援技能优先</b></div><div><small>胜利条件</small><b>多次部署</b></div></div>
+        <div class="tag-row"><span class="tag">任务党</span><span class="tag">新手</span><span class="tag">支援系统</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>选占领模式</strong><span>优先进入全面战场的占领类玩法，跟大部队打点位，别只在后方挂机。</span></div></div>
+          <div class="step"><code>02</code><div><strong>攒出支援就用</strong><span>界面可部署时立刻找有效区域释放，导弹、烟雾、补给、区域支援都要服务点位。</span></div></div>
+          <div class="step"><code>03</code><div><strong>部署到交战区</strong><span>别往没人去的地方丢。支援落在敌方火力点、己方推进线、争夺点附近更容易计入有效贡献。</span></div></div>
+          <div class="step"><code>04</code><div><strong>打一段就看支援槽</strong><span>每次复活后都检查一次，避免攒满不用，白白拖慢任务进度。</span></div></div>
+        </div>
+        <div class="danger">最怕：把救人当阵地支援、攒满不放、把技能扔到无效区域。</div>
+      </article>
+
+      <article class="style-card" data-tags="战场 打架 侦察 狙击 精确射手 全面战场">
+        <div class="style-head"><h3>侦察标点精确射手流</h3><div class="rank">VISION</div></div>
+        <p class="summary">不是纯蹲狙，而是给队伍视野、点掉关键火力、压制机枪/火箭筒/侧翼绕后位。</p>
+        <div class="meta"><div><small>模式</small><b>全面战场</b></div><div><small>位置</small><b>中远距离</b></div><div><small>干员</small><b>侦察位</b></div><div><small>胜利条件</small><b>信息 + 点杀</b></div></div>
+        <div class="tag-row"><span class="tag">侦察</span><span class="tag">精确射手</span><span class="tag">控线</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>站在能看点的位置</strong><span>别站离战场太远。你的视野要覆盖队友正在抢的点，而不是地图边缘。</span></div></div>
+          <div class="step"><code>02</code><div><strong>优先打关键目标</strong><span>机枪位、火箭筒、医疗兵、架枪窗口优先，普通跑动目标不用每个都追。</span></div></div>
+          <div class="step"><code>03</code><div><strong>开枪后换半个身位</strong><span>打两三枪就换掩体边缘，避免被反狙和载具点名。</span></div></div>
+          <div class="step"><code>04</code><div><strong>队友推进就前移</strong><span>点位推进后，侦察线也要跟着前移，否则你会从支援变成旁观。</span></div></div>
+        </div>
+        <div class="danger">最怕：全局趴同一个山头、只刷人头不标点、被侧翼摸掉。</div>
+      </article>
+
+      <article class="style-card" data-tags="战场 三排 工程 反载具 载具 全面战场">
+        <div class="style-head"><h3>工程反载具流</h3><div class="rank">ANTI VEH</div></div>
+        <p class="summary">全面战场里载具能决定推进节奏。工程位的任务是让对面坦克、直升机、装甲车不敢舒服输出。</p>
+        <div class="meta"><div><small>模式</small><b>全面战场</b></div><div><small>位置</small><b>侧翼 / 掩体后</b></div><div><small>干员</small><b>工程位</b></div><div><small>胜利条件</small><b>压制载具</b></div></div>
+        <div class="tag-row"><span class="tag">工程</span><span class="tag">反载具</span><span class="tag">团队价值</span></div>
+        <div class="steps">
+          <div class="step"><code>01</code><div><strong>先报载具位置</strong><span>看到载具别急着单打，先给队友标方向和类型，让步兵避开正面火线。</span></div></div>
+          <div class="step"><code>02</code><div><strong>从侧后方处理</strong><span>正面硬打通常亏。绕到侧面、利用建筑和地形，让载具炮口转不过来。</span></div></div>
+          <div class="step"><code>03</code><div><strong>打完一轮立刻缩</strong><span>反载具不是站桩输出，发射/投掷后马上回掩体，等装填和队友补伤害。</span></div></div>
+          <div class="step"><code>04</code><div><strong>载具残血时压撤退路</strong><span>别只打车身，观察它往哪里退，提前卡维修点或转角。</span></div></div>
+        </div>
+        <div class="danger">最怕：正面追车、忽略步兵。9/10 台服摩格护送车队降低了地雷、制导飞弹与炮兵齐射的对车伤害；本站建议把清护卫、争夺检查点与反载具火力配合使用，别照旧版本估算一轮伤害。</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="matrix">
+    <div class="section-head"><h2>快速对比</h2><span>不知道选哪套时先看这里</span></div>
+    <div class="matrix">
+      <table>
+        <thead><tr><th>流派</th><th>最适合</th><th>主要收益</th><th>风险</th><th>一句话打法</th></tr></thead>
+        <tbody>
+          <tr><td>普坝低成本跑刀</td><td>新手 / 破产 / 单排</td><td>稳定小钱、熟图</td><td>低</td><td>只吃近点资源，七八分钟见好就收。</td></tr>
+          <tr><td>装糖流 / 装唐流</td><td>连亏玩家 / 想降压</td><td>恢复手感、低压练图</td><td>中</td><td>低成本正常搜图，别挂机别恶意送。</td></tr>
+          <tr><td>输四保一恢复流</td><td>容易上头的玩家</td><td>止损、复盘、保一局收益</td><td>中</td><td>四局练路线，一局认真执行主线。</td></tr>
+          <tr><td>粑粑流无名</td><td>喜欢整活和近战偷袭</td><td>击杀收益、节目效果</td><td>高</td><td>无名绕后打近战，打一波马上换点。</td></tr>
+          <tr><td>红狼夺舍流</td><td>低成本偷套 / 单排整活</td><td>装备置换、击杀收益</td><td>高</td><td>卡大坝必经路，偷到装备后封烟转撤。</td></tr>
+          <tr><td>乌鲁鲁堵桥流</td><td>航天三排 / 控撤离线</td><td>击杀收益、压制飞升线</td><td>高</td><td>乌鲁鲁连狙控桥，队友防鼠道和侧翼。</td></tr>
+          <tr><td>航天三比特</td><td>工程队 / 室内控场</td><td>道具压制、总裁室封锁</td><td>中高</td><td>三人技能错开放，只打室内窄门和楼梯。</td></tr>
+          <tr><td>航天基地速撤跑刀</td><td>熟图单排 / 想提收益</td><td>高价值小件、任务品</td><td>中</td><td>按出生点公式抢第一波，然后提前撤。</td></tr>
+          <tr><td>潮汐监狱摸泪</td><td>耐心玩家 / 稀有物资猎人</td><td>海洋之泪等稀有物资</td><td>中高</td><td>固定摸点顺序，用次数换出货。</td></tr>
+          <tr><td>钥匙房爆金</td><td>有本金三排</td><td>红金、钥匙房高价值</td><td>高</td><td>开门前先架枪，搜完马上换区。</td></tr>
+          <tr><td>架枪控图</td><td>枪法队 / 三排</td><td>击杀收益、控撤离线</td><td>高</td><td>占好角度，开枪后立刻换线。</td></tr>
+          <tr><td>长弓钓鱼休闲流</td><td>S11 新区探索 / 低压玩家</td><td>任务、钓鱼、副线资源</td><td>中</td><td>观察岸边枪线；台服 9/10 修复鱼线和任务，次数看当前提示。</td></tr>
+          <tr><td>咱俩练练：1v1 练枪</td><td>想练对枪的玩家</td><td>零战备消耗、修基本功</td><td>低</td><td>国服 9/10 已确认上线；与纵横巅峰赛、Garena 日程分别核对。</td></tr>
+          <tr><td>极星守望总监流</td><td>组队事件玩法预习</td><td>绩效点数、专属奖励</td><td>高</td><td>围绕总监协同；Garena 预计 10/16，国服另查活动页。</td></tr>
+          <tr><td>医疗支援</td><td>全面战场新手</td><td>团队推进、保兵力</td><td>低中</td><td>跟团、封烟、救人、补给。</td></tr>
+          <tr><td>工程反载具</td><td>团队玩家</td><td>压制载具、打开推进线</td><td>中</td><td>台服摩格对车伤害调整，配合清护卫与控检查点。</td></tr>
+          <tr><td>汤姆逊腰射流</td><td>近距离补枪 / 室内交战</td><td>低暴露推进、击杀后撤离</td><td>中高</td><td>先测散布与总预算，借掩体拉近距离，避免追进长枪线。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="sources">
+    <div class="section-head"><h2>抖音与官方核验来源</h2><span>短视频打法 + 官方机制底座</span></div>
+    <div class="source-grid">
+      <a class="source" href="https://deltaforce.garena.com/zh_tw/news/system/QREXDC" target="_blank" rel="noreferrer"><strong>本周机制调整 · Garena 9/9</strong><span>9/10 台服生效：AZ3 常驻、摩格护送车队与钓鱼任务修复。</span></a>
+      <a class="source" href="https://www.taptap.cn/moment/847110454814706018?group_id=531928" target="_blank" rel="noreferrer"><strong>国服本周活动 · TapTap 9/10</strong><span>官方确认咱俩练练、护送车队与 LSV 上线。</span></a>
+      <a class="source" href="https://www.douyin.com/user/MS4wLjABAAAARojZfCOdF8ozXasGHikX_Ogi5F4hMH-wABNncLLQQVodb-dG41fL9v9DlLs7XwbW" target="_blank" rel="noreferrer"><strong>汤姆逊八种改法 · 抖音乘希电竞</strong><span>9/14 检索：作品条目显示 4587 赞，含腰射与开镜配置；仅参考公开玩法内容。</span></a>
+      <a class="source" href="https://www.douyin.com/video/7524905917574384932" target="_blank" rel="noreferrer"><strong>潮汐监狱跑刀教学</strong><span>跑刀、路线、低成本玩法参考。</span></a>
+      <a class="source" href="https://www.douyin.com/shipin/7509305243793229876" target="_blank" rel="noreferrer"><strong>装唐 2.0 全流程</strong><span>糖人号、低压局、养号争议与风险提示参考。</span></a>
+      <a class="source" href="https://www.douyin.com/video/7523920364007623946?source=Googlebot-sdc" target="_blank" rel="noreferrer"><strong>糖人号行动教学篇</strong><span>装糖/糖人号社区说法与低压匹配讨论参考。</span></a>
+      <a class="source" href="https://www.douyin.com/video/7603604911095319808" target="_blank" rel="noreferrer"><strong>粑粑流无名教学</strong><span>无名、近战刺客打法和社区热梗参考。</span></a>
+      <a class="source" href="https://www.douyin.com/video/7539373143148776743?source=Googlebot" target="_blank" rel="noreferrer"><strong>安澜粑粑流无名</strong><span>龙息喷、P90 等社区配装思路参考。</span></a>
+      <a class="source" href="https://gl.ali213.net/html/2025-11/1714787.html" target="_blank" rel="noreferrer"><strong>红狼夺舍流教学</strong><span>大坝夺舍、洞口判断、封烟撤离和低成本偷套参考。</span></a>
+      <a class="source" href="https://www.taptap.cn/moment/667786583704866292" target="_blank" rel="noreferrer"><strong>TapTap 红狼夺舍讨论</strong><span>卡战备、老六点、红狼技能撤离等社区讨论参考。</span></a>
+      <a class="source" href="https://www.douyin.com/video/7617066507542074853" target="_blank" rel="noreferrer"><strong>乌鲁鲁堵桥教学</strong><span>航天 2.0 堵桥、桥位压制和撤离线控制参考。</span></a>
+      <a class="source" href="https://www.bilibili.com/video/BV1yYKWzzER7/" target="_blank" rel="noreferrer"><strong>B站乌鲁鲁堵桥教学</strong><span>高播放堵桥视频，用于核验该流派热度和基本打法。</span></a>
+      <a class="source" href="https://www.bilibili.com/video/BV1cU8M6qE2A/" target="_blank" rel="noreferrer"><strong>航天三比特版本变化</strong><span>航天撤离机制调整后，三比特堵闸强度变化参考。</span></a>
+      <a class="source" href="https://news.17173.com/content/05232026/161549883.shtml" target="_blank" rel="noreferrer"><strong>航天奇葩流派整理</strong><span>三比特蹲总裁、三红狼、三银翼等社区整活流派参考。</span></a>
+      <a class="source" href="https://steamcommunity.com/app/2507950/announcements/?l=schinese" target="_blank" rel="noreferrer"><strong>S11 群星更新公告</strong><span>长弓溪谷焕新、钓鱼、纵横巅峰赛、极星守望和新干员机制底座。</span></a>
+      <a class="source" href="https://www.bilibili.com/video/BV171ty6tENu/" target="_blank" rel="noreferrer"><strong>S11 活动开放时间盘点</strong><span>1v1、纵横巅峰赛、极星守望等活动节奏参考。</span></a>
+      <a class="source" href="https://www.bilibili.com/video/BV1HK866xEPW/" target="_blank" rel="noreferrer"><strong>S11 钓鱼活动热度</strong><span>钓鱼玩法、角色语音和长弓休闲玩法热度参考。</span></a>
+      <a class="source" href="https://deltaforce.garena.com/zh_tw/news/all/KX539B" target="_blank" rel="noreferrer"><strong>Garena 台服群星公告 · 9/6</strong><span>钓鱼解锁与操作、单挑季中开放、极星守望预计 10/16；时间仅适用于公告对应服务器。</span></a>
+      <a class="source" href="https://www.18183.com/gonglue/202609/0qgrg4sm.html" target="_blank" rel="noreferrer"><strong>国服钓鱼入门 · 9/4</strong><span>老乔刷新、领竿和渔具入门；配合当前任务提示使用。</span></a>
+      <a class="source" href="https://www.bilibili.com/video/BV1vt8A61EN6/" target="_blank" rel="noreferrer"><strong>纵横巅峰赛规则前瞻 · 8/21</strong><span>玩家前瞻参考，与 1v1 单挑分别核验；最终入场和结算规则以正式活动为准。</span></a>
+      <a class="source" href="https://www.douyin.com/video/7554636681283259686?source=Googlebot" target="_blank" rel="noreferrer"><strong>航天基地跑刀思路</strong><span>出生点、撤离方式、蜂医跑刀思路参考。</span></a>
+      <a class="source" href="https://www.douyin.com/video/7602114465823247654" target="_blank" rel="noreferrer"><strong>机密大坝极速跑刀</strong><span>大坝跑刀路线与评论区风险反馈参考。</span></a>
+      <a class="source" href="https://www.douyin.com/video/7599767284642499883" target="_blank" rel="noreferrer"><strong>潮汐监狱摸泪教学</strong><span>海洋之泪、贝壳路线和长期刷取心态参考。</span></a>
+      <a class="source" href="https://www.douyin.com/video/7419984412177141003" target="_blank" rel="noreferrer"><strong>巴克什钥匙房位置</strong><span>钥匙房、房卡和高价值区域思路参考。</span></a>
+      <a class="source" href="https://www.douyin.com/video/7643008290338835946" target="_blank" rel="noreferrer"><strong>阵地支援任务说明</strong><span>全面战场占领模式与阵地支援任务误区参考。</span></a>
+      <a class="source" href="https://www.douyin.com/video/7526504036783754555" target="_blank" rel="noreferrer"><strong>全面战场露娜武器推荐</strong><span>侦察位、精确射手和中远距离枪械讨论参考。</span></a>
+      <a class="source" href="https://deltaforce.garena.com/en/news/system/RMDWVM" target="_blank" rel="noreferrer"><strong>Garena Operations 101</strong><span>撤离、物资、护甲弹药、声音和撤离点机制。</span></a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="warning">资料说明：本页不是官方结论，而是把抖音常见打法教学和官方玩法机制整理成可执行清单。具体点位、枪械强度和收益会随赛季变化，建议按周维护。</div><div>PLAYSTYLE LIBRARY // 2026-09-14</div></footer>
+</main>
+
+<script>
+  const cards = [...document.querySelectorAll(".style-card")];
+  const matchCount = document.querySelector("#matchCount");
+  const searchInput = document.querySelector("#searchInput");
+  let activeGoal = "全部";
+  let activeMode = "全部";
+
+  function applyFilters(){
+    const query = searchInput.value.trim().toLowerCase();
+    let visible = 0;
+    cards.forEach((card)=>{
+      const text = card.textContent.toLowerCase();
+      const tags = card.dataset.tags;
+      const passGoal = activeGoal === "全部" || tags.includes(activeGoal);
+      const passMode = activeMode === "全部" || tags.includes(activeMode);
+      const passQuery = !query || text.includes(query);
+      const show = passGoal && passMode && passQuery;
+      card.style.display = show ? "" : "none";
+      if(show) visible++;
+    });
+    matchCount.textContent = visible;
+  }
+
+  document.querySelectorAll("#goalChips .chip").forEach((button)=>{
+    button.addEventListener("click",()=>{
+      document.querySelectorAll("#goalChips .chip").forEach((item)=>item.classList.remove("active"));
+      button.classList.add("active");
+      activeGoal = button.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  document.querySelectorAll("#modeChips .chip").forEach((button)=>{
+    button.addEventListener("click",()=>{
+      document.querySelectorAll("#modeChips .chip").forEach((item)=>item.classList.remove("active"));
+      button.classList.add("active");
+      activeMode = button.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener("input", applyFilters);
+</script>
+</body>
+</html>

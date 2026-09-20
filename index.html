@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>三角洲行动 Wiki｜战术资料终端</title>
+<style>
+  :root{
+    --bg:#07100d;--panel:#0c1712;--panel2:#111f18;--line:#24382d;--green:#9fe870;--green2:#5eae62;
+    --text:#e8f2ea;--muted:#8fa395;--warn:#d9c272;--black:#030806;--shadow:0 18px 45px rgba(0,0,0,.35)
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;background:
+    linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),
+    radial-gradient(circle at 84% 5%,rgba(77,131,79,.15),transparent 28%),var(--bg);
+    background-size:32px 32px,32px 32px,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}.wrap{max-width:1440px;margin:auto;padding:0 28px}
+  .topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 40%,var(--green2) 70%,transparent 96%);opacity:.8}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}
+  .mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}
+  .brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}
+  nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover{border-color:var(--line);background:#0d1813;color:var(--green)}
+  .search{width:300px;height:40px;border:1px solid var(--line);background:#08110d;display:flex;align-items:center;padding:0 12px;color:var(--muted);gap:9px}.search input{flex:1;background:none;border:0;outline:0;color:var(--text)}
+  .hero{padding:58px 0 30px;display:grid;grid-template-columns:1.45fr .8fr;gap:22px}.hero-main{position:relative;min-height:390px;border:1px solid #2c4235;background:linear-gradient(90deg,rgba(4,9,7,.98),rgba(6,12,9,.74) 58%,rgba(9,17,13,.35)),radial-gradient(circle at 79% 50%,#24432c 0,#112018 18%,#07100d 52%);box-shadow:var(--shadow);overflow:hidden}
+  .hero-main:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 38px,rgba(159,232,112,.03) 39px 40px);pointer-events:none}
+  .hero-main:after{content:"DF // WIKI";position:absolute;right:-30px;bottom:-46px;font-size:108px;font-weight:900;color:rgba(159,232,112,.035);letter-spacing:-5px;transform:rotate(-7deg)}
+  .hero-copy{position:relative;z-index:2;padding:48px 48px;max-width:680px}.eyebrow{color:var(--green);font:700 11px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:3px}.hero h1{font-size:58px;line-height:.96;margin:18px 0 18px;letter-spacing:-3px}.hero h1 span{display:block;color:var(--green);font-size:21px;letter-spacing:6px;margin-top:18px}.lead{max-width:590px;color:#aebdb1;font-size:15px}.cta{margin-top:30px;display:flex;gap:10px}.btn{padding:12px 17px;border:1px solid #477052;background:#11261a;font-weight:700}.btn.primary{background:var(--green);color:#0a110d;border-color:var(--green)}
+  .hero-side{display:grid;grid-template-rows:1fr 1fr;gap:22px}.status-card,.news-card{border:1px solid var(--line);background:linear-gradient(180deg,#0e1a14,#09120e);padding:24px;position:relative;overflow:hidden}.status-card:after,.news-card:after{content:"";position:absolute;width:100px;height:100px;border:1px solid rgba(159,232,112,.08);right:-35px;top:-35px;transform:rotate(45deg)}
+  .kicker{font:700 10px ui-monospace,monospace;letter-spacing:2px;color:var(--muted)}.big-status{font-size:29px;font-weight:800;margin:12px 0}.dot{display:inline-block;width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green);margin-right:8px}.tiny{font-size:12px;color:var(--muted)}
+  .section{padding:24px 0}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:15px}.section h2{font-size:20px;margin:0;letter-spacing:.5px}.section h2:before{content:"// ";color:var(--green)}.section-head a{color:var(--green);font-size:12px}
+  .mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.mode{min-height:180px;border:1px solid var(--line);background:linear-gradient(155deg,#11231a,#0a130f 65%);padding:24px;position:relative;overflow:hidden;transition:.18s}.mode:hover{transform:translateY(-3px);border-color:#4e7558}.mode .num{position:absolute;right:15px;top:4px;font-size:72px;font-weight:900;color:rgba(159,232,112,.055)}.mode b{font-size:21px;display:block;margin:30px 0 8px}.tag{display:inline-block;font-size:10px;padding:3px 7px;border:1px solid #3b5b43;color:#abc7ae;margin-right:5px}.mode p{color:var(--muted);font-size:12px;max-width:320px}
+  .dashboard{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.panel{border:1px solid var(--line);background:#0a140f;padding:22px}.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.quick{height:116px;border:1px solid #21362a;background:#0d1913;padding:16px;display:flex;flex-direction:column;justify-content:space-between}.quick:hover{border-color:#557d5e;background:#102019}.quick .icon{font-size:22px;color:var(--green)}.quick strong{font-size:13px}.quick small{color:var(--muted);font-size:10px}
+  .list{display:grid;gap:8px}.row{display:grid;grid-template-columns:50px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #17271e}.row:last-child{border-bottom:0}.badge{font:700 10px ui-monospace,monospace;color:var(--green)}.row strong{font-size:13px}.row span{color:var(--muted);font-size:11px}
+  .operator-tools{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}.role-tabs{display:flex;gap:8px;flex-wrap:wrap}.role-tab{border:1px solid #2d4536;background:#0c1712;color:#c4d3c7;padding:8px 11px;font:700 11px ui-monospace,monospace;letter-spacing:.8px;cursor:pointer}.role-tab:hover,.role-tab.active{border-color:#77ae68;color:#07100d;background:var(--green)}.operator-meta{color:var(--muted);font-size:12px}
+  .operator-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.operator-card{border:1px solid #22382b;background:linear-gradient(160deg,#0f1d16,#09130e 70%);min-height:390px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;transition:.18s}.operator-card:hover{transform:translateY(-3px);border-color:#6fa462}.operator-card:before{content:attr(data-code);position:absolute;right:10px;top:4px;color:rgba(159,232,112,.08);font-size:42px;font-weight:900;letter-spacing:-2px;z-index:1}.operator-thumb{height:190px;background:#132018 center/cover no-repeat;border-bottom:1px solid #22382b}.operator-body{padding:15px;display:flex;flex:1;flex-direction:column;gap:12px}.operator-top{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.operator-name b{display:block;font-size:19px;line-height:1.1}.operator-name small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.role-pill{border:1px solid #446b4c;color:var(--green);font:800 10px ui-monospace,monospace;padding:3px 7px;white-space:nowrap}.operator-card p{position:relative;z-index:1;margin:0;color:#b4c5b8;font-size:12px;line-height:1.65}.skill-list{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}.skill-list span{border:1px solid #2a4332;background:#0a130f;color:#cbd8ce;font-size:10px;padding:3px 7px}.operator-empty{display:none;border:1px dashed #34523c;color:var(--muted);padding:22px;text-align:center;background:#0a140f}.detail-shell{display:none;padding:24px 0}.detail-shell.active{display:block}.detail-hero{min-height:430px;border:1px solid #2c4235;background:#07100d center right/cover no-repeat;position:relative;overflow:hidden;box-shadow:var(--shadow)}.detail-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,9,7,.98),rgba(4,9,7,.74) 46%,rgba(4,9,7,.18) 82%),linear-gradient(0deg,rgba(4,9,7,.95),transparent 45%)}.detail-copy{position:relative;z-index:1;max-width:650px;padding:36px}.back-link{display:inline-flex;color:var(--green);font:800 11px ui-monospace,monospace;letter-spacing:1.2px;margin-bottom:32px}.detail-title{font-size:56px;line-height:1;margin:0 0 10px;letter-spacing:-2px}.detail-real{font-size:15px;color:#c3d0c6;margin-bottom:16px}.detail-summary{max-width:560px;color:#b5c5b8;margin:16px 0 0}.detail-tags{display:flex;gap:8px;flex-wrap:wrap}.detail-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:16px;margin-top:16px}.stat-panel,.skills-panel{border:1px solid var(--line);background:#0a140f;padding:22px}.stat-list{display:grid;gap:12px}.stat-list div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #182a20;padding-bottom:10px}.stat-list div:last-child{border-bottom:0}.stat-list span{color:var(--muted);font-size:12px}.stat-list strong{text-align:right}.skill-detail-list{display:grid;gap:12px}.skill-detail{border:1px solid #22382b;background:#0d1913;padding:15px}.skill-detail header{position:static;background:none;border:0;backdrop-filter:none;display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}.skill-detail b{font-size:15px}.skill-detail small{color:var(--green);font:800 10px ui-monospace,monospace;white-space:nowrap}.skill-detail p{margin:0;color:#b9c8bc;font-size:12px;line-height:1.7}.detail-note{margin-top:14px;color:var(--muted);font-size:11px}
+  .intel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.intel-card{min-height:168px;border:1px solid #21362a;background:linear-gradient(155deg,#11231a,#0a130f 68%);padding:16px;display:flex;flex-direction:column;justify-content:space-between;transition:.18s}.intel-card:hover{transform:translateY(-3px);border-color:#557d5e;background:#102019}.intel-card b{font-size:15px;line-height:1.35}.intel-card p{margin:10px 0;color:#aebdb1;font-size:12px}.intel-meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:.7px}.intel-card.official{border-color:#3d6747}
+  .radar-panel{border:1px solid #31513a;background:linear-gradient(135deg,#0f2118,#08110d 64%);box-shadow:var(--shadow);display:grid;grid-template-columns:minmax(360px,.9fr) 1.1fr;gap:0;overflow:hidden;position:relative}.radar-panel:before{content:"PROFILE MAP";position:absolute;right:-18px;top:-20px;color:rgba(159,232,112,.04);font-size:78px;font-weight:900;letter-spacing:-4px;pointer-events:none}.radar-visual,.radar-controls{position:relative;z-index:1;padding:24px}.radar-visual{border-right:1px solid #1e3327;display:grid;align-content:center;gap:14px}.radar-title{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.radar-title h3{font-size:32px;line-height:1.08;margin:10px 0 0;letter-spacing:-1px}.radar-archetype{border:1px solid #446b4c;color:var(--green);font:900 11px ui-monospace,monospace;letter-spacing:1px;padding:6px 9px;white-space:nowrap}.radar-chart-wrap{min-height:390px;display:grid;place-items:center}.radar-chart{width:min(100%,420px);height:auto;overflow:visible}.radar-chart text{fill:#c7d6cb;font:800 11px ui-monospace,monospace;letter-spacing:.4px}.radar-grid{fill:none;stroke:rgba(159,232,112,.18);stroke-width:1}.radar-axis{stroke:rgba(159,232,112,.16);stroke-width:1}.radar-shape{fill:rgba(159,232,112,.22);stroke:var(--green);stroke-width:3;filter:drop-shadow(0 0 12px rgba(159,232,112,.2))}.radar-point{fill:#07100d;stroke:var(--green);stroke-width:3}.radar-note{color:var(--muted);font-size:12px}.radar-controls{background:linear-gradient(180deg,rgba(159,232,112,.035),transparent)}.radar-controls-head{display:flex;justify-content:space-between;gap:16px;margin-bottom:14px}.radar-controls-head p{margin:0;color:#acbdb1;max-width:560px}.radar-total{font-size:34px;line-height:1;font-weight:900;color:var(--green);text-align:right}.radar-total small{display:block;color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1.2px;margin-top:6px}.trait-list{display:grid;gap:10px}.trait-row{border:1px solid #21362a;background:#0d1913;padding:12px;display:grid;grid-template-columns:112px 1fr 40px;gap:12px;align-items:center}.trait-name strong{display:block;font-size:13px}.trait-name small{display:block;color:var(--muted);font:800 9px ui-monospace,monospace;letter-spacing:.8px;margin-top:2px}.trait-row input{width:100%;accent-color:var(--green)}.trait-value{font:900 18px ui-monospace,monospace;color:var(--green);text-align:right}.radar-presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.radar-presets button{border:1px solid #2d4536;background:#0c1712;color:#c4d3c7;padding:8px 10px;font:800 10px ui-monospace,monospace;cursor:pointer}.radar-presets button:hover{border-color:#77ae68;color:var(--green)}
+  .odds-game{border:1px solid #31513a;background:linear-gradient(135deg,#0f2118,#08110d 62%);box-shadow:var(--shadow);display:grid;grid-template-columns:.92fr 1.08fr;gap:0;overflow:hidden;position:relative}.odds-game:before{content:"DROP RATE";position:absolute;right:-22px;top:-18px;color:rgba(159,232,112,.04);font-size:86px;font-weight:900;letter-spacing:-4px;pointer-events:none}.odds-copy,.odds-console{position:relative;z-index:1;padding:24px}.odds-copy{border-right:1px solid #1e3327}.odds-copy h3{font-size:34px;line-height:1.05;margin:12px 0 12px;letter-spacing:-1px}.odds-copy p{color:#acbdb1;margin:0;max-width:520px}.odds-form{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:18px}.odds-form input{min-width:0;border:1px solid #2b4535;background:#07100d;color:var(--text);padding:12px 13px;outline:0}.odds-form input:focus{border-color:#75af66;box-shadow:0 0 0 2px rgba(159,232,112,.12)}.odds-form button{border:1px solid var(--green);background:var(--green);color:#07100d;font-weight:900;padding:0 16px;cursor:pointer}.odds-form button:hover{filter:brightness(1.06)}.odds-hints{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.odds-hints button{border:1px solid #2d4536;background:#0c1712;color:#c4d3c7;padding:7px 10px;font:800 10px ui-monospace,monospace;cursor:pointer}.odds-hints button:hover{border-color:#77ae68;color:var(--green)}.odds-console{display:grid;grid-template-columns:160px 1fr;gap:18px;align-items:center;background:linear-gradient(180deg,rgba(159,232,112,.035),transparent)}.odds-meter{height:160px;border:1px solid #2b4535;background:#07100d;display:grid;place-items:center;position:relative;overflow:hidden}.odds-meter:before{content:"";position:absolute;inset:14px;border:1px solid rgba(159,232,112,.15);transform:rotate(45deg)}.odds-score{position:relative;z-index:1;font-size:46px;font-weight:900;color:var(--green);line-height:1}.odds-score small{display:block;color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1.5px;text-align:center;margin-top:8px}.odds-result{min-height:160px;border-left:3px solid var(--green);padding-left:18px;display:flex;flex-direction:column;justify-content:center}.odds-verdict{font-size:28px;font-weight:900;line-height:1.1}.odds-verdict.high{color:var(--green)}.odds-verdict.low{color:#d9c272}.odds-line{color:#c2d0c6;margin:10px 0 0}.odds-log{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1px;margin-top:13px}
+  .odds-form button:disabled{cursor:wait;filter:saturate(.75) brightness(.85)}.odds-progress{margin-top:14px}.odds-progress-head{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1px}.odds-progress-head strong{color:var(--green);font-size:12px}.odds-progress-track{height:11px;border:1px solid #2b4535;background:#06100c;margin-top:7px;overflow:hidden;position:relative}.odds-progress-track:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 13px,rgba(159,232,112,.08) 14px 15px);pointer-events:none}.odds-progress-fill{display:block;width:0;height:100%;background:linear-gradient(90deg,#4f8c50,var(--green));box-shadow:0 0 14px rgba(159,232,112,.35);transition:width .12s ease}
+  .odds-console{overflow:hidden}.odds-console:before,.odds-console:after{content:"";position:absolute;inset:0;opacity:0;pointer-events:none;z-index:0}.odds-console:before{background-image:linear-gradient(rgba(159,232,112,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.14) 1px,transparent 1px);background-size:18px 18px;mix-blend-mode:screen}.odds-console:after{height:46%;background:linear-gradient(180deg,transparent 0,rgba(159,232,112,.06) 20%,rgba(159,232,112,.28) 48%,rgba(255,255,255,.18) 50%,rgba(159,232,112,.11) 56%,transparent 100%);box-shadow:0 0 28px rgba(159,232,112,.28);transform:translateY(-120%)}.odds-console.scanning:before{opacity:.42;animation:oddsGridScan .7s linear infinite}.odds-console.scanning:after{opacity:1;animation:oddsSweep 1.25s ease-in-out infinite}.odds-console.scanning .odds-meter,.odds-console.scanning .odds-result{position:relative;z-index:1}.odds-console.scanning .odds-progress-track{box-shadow:0 0 18px rgba(159,232,112,.18)}@keyframes oddsGridScan{from{background-position:0 0,0 0}to{background-position:18px 36px,18px 36px}}@keyframes oddsSweep{0%{transform:translateY(-120%)}70%,100%{transform:translateY(230%)}}
+  .source-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.source{border:1px solid #21362a;background:#0d1913;padding:14px}.source strong{display:block;font-size:12px;margin-bottom:5px}.source span{display:block;color:var(--muted);font-size:11px}
+  .footer{margin-top:36px;border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}.warning{color:#a9b7ac;max-width:780px}
+  @media(max-width:1180px){.search{width:220px}.operator-grid{grid-template-columns:repeat(3,1fr)}.intel-grid,.source-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:1080px){.search{display:none}}
+  @media(max-width:950px){.hero{grid-template-columns:1fr}.hero h1{font-size:46px}.hero-side{grid-template-columns:1fr 1fr;grid-template-rows:auto}.mode-grid{grid-template-columns:1fr}.dashboard,.radar-panel,.odds-game{grid-template-columns:1fr}.quick-grid{grid-template-columns:repeat(2,1fr)}.operator-grid{grid-template-columns:repeat(2,1fr)}.operator-tools{align-items:flex-start;flex-direction:column}.radar-visual,.odds-copy{border-right:0;border-bottom:1px solid #1e3327}.detail-layout{grid-template-columns:1fr}.detail-title{font-size:44px}nav{display:none}.brand{min-width:0}}
+  @media(max-width:620px){.wrap{padding:0 18px}.hero-copy{padding:36px 26px}.hero h1{font-size:38px}.hero-side{grid-template-columns:1fr}.operator-grid,.intel-grid,.source-grid{grid-template-columns:1fr}.radar-title,.radar-controls-head{flex-direction:column}.radar-chart-wrap{min-height:320px}.trait-row{grid-template-columns:1fr 1fr;gap:8px}.trait-row input{grid-column:1 / -1;grid-row:2}.odds-form,.odds-console{grid-template-columns:1fr}.odds-meter{height:132px}.odds-copy h3{font-size:28px}.detail-copy{padding:28px 22px}.detail-hero{min-height:500px;background-position:62% center}.detail-title{font-size:38px}.footer{flex-direction:column}}
+</style>
+<link rel="stylesheet" href="shared/player-card.css">
+<link rel="stylesheet" href="shared/station.css">
+<script src="shared/player-card.js"></script>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="#"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a href="play_challenges.html">玩法挑战</a><a href="playstyles.html">打法流派</a><a href="operations_fire.html">烽火地带</a><a href="#operators">干员档案</a><a href="#database">资料库</a><a href="esports.html">赛事板块</a><a href="streamers.html">主播名片</a><a href="mini_games.html">小游戏</a><a href="community_forum.html">玩家交流</a></nav>
+  <label class="search">⌕ <input placeholder="搜索干员、地图、物资、机制…" /></label>
+</div></header>
+
+<main class="wrap">
+<section class="hero">
+  <div class="hero-main">
+    <div class="hero-copy">
+      <div class="eyebrow">G.T.I. INTELLIGENCE TERMINAL // ACCESS GRANTED</div>
+      <h1>战场不会解释自己。<span>所以我们把它全部记录下来。</span></h1>
+      <p class="lead">面向《三角洲行动》玩家的非官方小站。查查资料，试试新打法，再玩一局脑洞小游戏。把阿萨拉的情报和快乐，一起带回这里。</p>
+      <div class="cta"><a class="btn primary" href="#player-card">制作玩家身份卡</a><a class="btn" href="#database">进入资料库</a><a class="btn" href="#modes">查看模式档案</a></div>
+    </div>
+  </div>
+  <div class="hero-side">
+    <aside class="station-home" aria-labelledby="station-home-title">
+      <span class="station-eyebrow">站长的小角落</span>
+      <div class="station-home-name"><span class="station-monogram" aria-hidden="true">琳</span><h2 id="station-home-title">是琳站长呀～</h2></div>
+      <p>野牛爱好者，脑洞施工中。<br>希望你来查资料，也能顺手带走一点快乐。</p>
+      <a class="station-link" href="join_us.html">加入我们 <span aria-hidden="true">↗</span></a>
+    </aside>
+    <a class="news-card" href="operations_fire.html"><div class="kicker">MODE FILE / 模式档案</div><div class="big-status">烽火地带</div><div class="tiny">先接入 Operations：搜刮、曼德尔砖、撤离、地图入口和后续补录队列。</div></a>
+  </div>
+</section>
+
+<section class="section" id="play-challenges">
+  <div class="section-head"><h2>玩法挑战 · 带进游戏里玩</h2><a href="play_challenges.html">查看全部 6 个挑战 →</a></div>
+  <div class="mode-grid">
+    <a class="mode" href="play_challenges.html#gourmet"><span class="num">01</span><span class="tag">站长原创</span><span class="tag">双人开黑</span><b>普坝美食家</b><p>一人当厨师，一人当食客。搜集食材、摆盘品鉴，看这局能开出三星餐厅，还是后厨爆炸。</p></a>
+    <a class="mode" href="play_challenges.html#tour"><span class="num">02</span><span class="tag">2～3 人</span><b>阿萨拉黑心旅行团</b><p>三站讲解，一路警戒。导游讲得头头是道，游客听完只想退款。</p></a>
+    <a class="mode" href="play_challenges.html#startup"><span class="num">03</span><span class="tag">1～3 人</span><b>十万块创业公司</b><p>低预算开公司，带着物资交财报。谁在认真赚钱，谁只会画饼？</p></a>
+  </div>
+</section>
+<section class="pc-home" id="player-card" aria-labelledby="pc-title">
+  <div class="pc-heading"><div><span class="pc-eyebrow">PLAYER ARCHIVE / 自选档案</span><h2 id="pc-title">我的玩家身份卡</h2><p>玩出喜欢的结果，点保存。在这里拼成一张完整身份卡。</p></div><span id="pc-progress" role="status">0 / 12 板块已保存</span></div>
+  <div class="pc-layout">
+    <div><label class="pc-name-label" for="pc-name">你的呼号</label><input id="pc-name" maxlength="24" placeholder="无名摸金人" autocomplete="nickname"><p class="pc-note">每个板块保留你最后一次主动保存的结果，重玩不会覆盖。收藏保存在当前浏览器，换设备不会同步。</p><div id="pc-collection" class="pc-collection"></div></div>
+    <div class="pc-preview"><canvas id="pc-canvas" role="img" aria-label="玩家身份卡预览"></canvas><button id="pc-download" type="button" disabled>生成并下载完整图片</button><p id="pc-message" role="status">保存任意一个结果即可生成；未完成的板块会保留为“待解锁”。</p><img id="pc-image" alt="完整玩家身份卡，可长按保存" hidden></div>
+  </div>
+</section>
+<section class="section" id="modes">
+  <div class="section-head"><h2>核心模式：烽火地带</h2><a href="operations_fire.html">进入烽火档案 →</a></div>
+  <div class="mode-grid">
+    <a class="mode" href="operations_fire.html"><span class="num">01</span><span class="tag">PVPVE</span><span class="tag">EXTRACTION</span><b>烽火地带 / Operations</b><p>三人小队入局搜刮、完成任务、争夺高价值目标，并在时限内把物资安全带出。</p></a>
+    <a class="mode" href="operations_fire.html#loop"><span class="num">02</span><span class="tag">LOOT</span><span class="tag">MISSION</span><b>行动循环</b><p>先把入局准备、搜刮路线、任务目标、风险收益和失败损失整理成可持续扩展的基础框架。</p></a>
+    <a class="mode" href="operations_fire.html#mandelbrick"><span class="num">03</span><span class="tag">HIGH VALUE</span><span class="tag">EXPOSED</span><b>曼德尔砖与撤离</b><p>曼德尔砖会带来高价值奖励，也会暴露位置；撤离成功才算真正把战果带回仓库。</p></a>
+  </div>
+</section>
+
+<section class="section" id="operators">
+  <div class="section-head"><h2>干员档案</h2><a href="operators_assault.html">进入定位页 →</a></div>
+  <div class="operator-tools">
+    <div class="role-tabs" aria-label="按兵种筛选干员">
+      <button class="role-tab active" type="button" data-role="突击">突击</button>
+      <button class="role-tab" type="button" data-role="支援">支援</button>
+      <button class="role-tab" type="button" data-role="工程">工程</button>
+      <button class="role-tab" type="button" data-role="侦察">侦察</button>
+    </div>
+    <div class="operator-meta" id="operatorCount">17 名已上线干员按 4 个定位页集中展示</div>
+  </div>
+  <div class="operator-grid" id="operatorGrid"></div>
+  <div class="operator-empty" id="operatorEmpty">未找到匹配的干员档案</div>
+</section>
+
+<section class="section" id="upcoming-operators">
+  <div class="section-head"><h2>即将上线干员</h2><a href="#sources">查看官方来源 →</a></div>
+  <div class="intel-grid" id="upcomingGrid"></div>
+</section>
+
+<section class="detail-shell" id="operatorDetail" aria-live="polite"></section>
+
+<section class="section" id="database">
+  <div class="section-head"><h2>快速资料库</h2><a href="#guides">查看热门档案 →</a></div>
+  <div class="dashboard">
+    <div class="panel">
+      <div class="quick-grid">
+        <a class="quick" href="#operators"><span class="icon">◈</span><div><strong>干员档案</strong><small>OPERATORS</small></div></a>
+        <a class="quick" href="operations_fire.html#maps"><span class="icon">⌖</span><div><strong>烽火地图</strong><small>OPERATIONS MAPS</small></div></a>
+        <a class="quick" href="map_easter_eggs.html"><span class="icon">▦</span><div><strong>地图彩蛋</strong><small>EASTER EGGS</small></div></a>
+        <a class="quick" href="play_challenges.html"><span class="icon">✦</span><div><strong>玩法挑战</strong><small>SQUAD CHALLENGES</small></div></a>
+        <a class="quick" href="mini_games.html"><span class="icon">⬡</span><div><strong>小游戏大厅</strong><small>PLAY ZONE</small></div></a>
+        <a class="quick" href="parking_prep.html"><span class="icon">▥</span><div><strong>停车场摸金</strong><small>PARKING RUN</small></div></a>
+        <a class="quick" href="playstyles.html"><span class="icon">◎</span><div><strong>打法流派</strong><small>PLAYSTYLES</small></div></a>
+        <a class="quick" href="avoid_blackroom.html"><span class="icon">▣</span><div><strong>避黑屋指南</strong><small>SAFE PLAY</small></div></a>
+        <a class="quick" href="streamers.html"><span class="icon">▱</span><div><strong>主播名片</strong><small>CREATORS</small></div></a>
+        <a class="quick" href="esports.html"><span class="icon">⌁</span><div><strong>赛事板块</strong><small>ESPORTS</small></div></a>
+        <a class="quick" href="community_forum.html"><span class="icon">▤</span><div><strong>邮箱广场</strong><small>COMMUNITY</small></div></a>
+      </div>
+    </div>
+    <div class="panel" id="guides">
+      <div class="kicker">TRENDING FILES / 热门档案</div>
+      <div class="list">
+        <a class="row" href="operations_fire.html#maps"><div class="badge">MAP-01</div><strong>零号大坝区域索引</strong><span>烽火</span></a>
+        <a class="row" href="playstyles.html"><div class="badge">TACTIC</div><strong>打法流派库：跑刀、摸金、控图、全面战场</strong><span>打法</span></a>
+        <a class="row" href="avoid_blackroom.html"><div class="badge">SAFE</div><strong>避黑屋指南：异常行为、低成本恢复与申诉</strong><span>账号</span></a>
+        <a class="row" href="map_easter_eggs.html"><div class="badge">EGG-01</div><strong>地图彩蛋与协议箱攻略</strong><span>烽火</span></a>
+        <a class="row" href="parking_prep.html"><div class="badge">GAME</div><strong>G.T.I.停车场行动区：备战、搜索、装包、撤离</strong><span>小游戏</span></a>
+        <a class="row" href="#operators"><div class="badge">OPS-04</div><strong>干员职业与定位索引</strong><span>干员</span></a>
+        <a class="row" href="streamers.html"><div class="badge">COM-01</div><strong>主播名片与直播入口</strong><span>社区</span></a>
+        <a class="row" href="community_forum.html"><div class="badge">COM-02</div><strong>邮箱登录与玩家广场</strong><span>社区</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="six-radar">
+  <div class="section-head"><h2>测试结果六维图</h2><a href="mini_games.html">进入小游戏大厅 →</a></div>
+  <div class="radar-panel">
+    <div class="radar-visual">
+      <div class="radar-title">
+        <div>
+          <div class="kicker">PLAYER PROFILE / 行为画像</div>
+          <h3>六维战术人格图</h3>
+        </div>
+        <div class="radar-archetype" id="radarArchetype">突入型摸金手</div>
+      </div>
+      <div class="radar-chart-wrap">
+        <svg class="radar-chart" viewBox="0 0 420 420" role="img" aria-label="六维测试结果雷达图">
+          <g id="radarGrid"></g>
+          <polygon class="radar-shape" id="radarShape" points=""></polygon>
+          <g id="radarPoints"></g>
+          <g id="radarLabels"></g>
+        </svg>
+      </div>
+      <div class="radar-note">维度：激进、贪婪、CS度、团队、战术、豪。</div>
+    </div>
+    <div class="radar-controls">
+      <div class="radar-controls-head">
+        <p>行动档案样本已接入，当前曲线显示一名高压摸金手的倾向分布。</p>
+        <div class="radar-total" id="radarTotal">000<small>TOTAL SCORE</small></div>
+      </div>
+      <div class="trait-list" id="traitList"></div>
+      <div class="radar-presets" aria-label="六维预设">
+        <button type="button" data-radar-preset="raider">莽夫撤离</button>
+        <button type="button" data-radar-preset="rat">阴影摸金</button>
+        <button type="button" data-radar-preset="captain">小队指挥</button>
+        <button type="button" data-radar-preset="luxury">豪气排面</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="drop-game">
+  <div class="section-head"><h2>爆率检测小游戏</h2><a href="mini_games.html">返回小游戏大厅 ↑</a></div>
+  <div class="odds-game">
+    <div class="odds-copy">
+      <div class="kicker">LUCK TERMINAL / 玄学模块</div>
+      <h3>输入你的爆率描述，终端给你判个高低。</h3>
+      <p>比如“今天三把出红”“我已经十连空了”“仓库只剩一把烂枪”。结果只负责好玩，不负责欧气售后。</p>
+      <form class="odds-form" id="oddsForm">
+        <input id="oddsInput" maxlength="80" autocomplete="off" placeholder="输入一句你的爆率描述…" />
+        <button type="submit">开始检测</button>
+      </form>
+      <div class="odds-hints" aria-label="示例描述">
+        <button type="button" data-odds-example="今天三把出红，感觉要起飞了">三把出红</button>
+        <button type="button" data-odds-example="十连空仓库还漏风">十连空</button>
+        <button type="button" data-odds-example="队友全撤了我还在摸保险">队友先撤</button>
+      </div>
+    </div>
+    <div class="odds-console" aria-live="polite">
+      <div class="odds-meter"><div class="odds-score" id="oddsScore">--<small>LUCK INDEX</small></div></div>
+      <div class="odds-result">
+        <div class="odds-verdict" id="oddsVerdict">等待描述接入</div>
+        <p class="odds-line" id="oddsLine">写一句你最近的爆率故事，然后交给终端认真胡说。</p>
+        <div class="odds-progress" aria-label="爆率检测进度">
+          <div class="odds-progress-head"><span id="oddsProgressText">等待检测指令</span><strong id="oddsProgressValue">0%</strong></div>
+          <div class="odds-progress-track" aria-hidden="true"><span class="odds-progress-fill" id="oddsProgressFill"></span></div>
+        </div>
+        <div class="odds-log" id="oddsLog">SYSTEM IDLE // NO SAMPLE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="intel">
+  <div class="section-head"><h2>情报追踪</h2><a href="#sources">查看核验来源 →</a></div>
+  <div class="intel-grid">
+    <a class="intel-card official" href="https://deltaforce.garena.com/zh_tw/news/system/QREXDC" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>GARENA 台服</span><span>2026/09/09</span></div><b>9 月 10 日更新：AZ3 常驻、摩格与任务修复</b><p>AZ3 机密常驻开放；摩格护送车队平衡调整，同时修复钓鱼和长弓 NPC 任务。服务器差异以各自公告为准。</p></div><span class="tiny">官方更新</span></a>
+    <a class="intel-card official" href="https://www.taptap.cn/moment/847110454814706018?group_id=531928" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>TAPTAP 国服</span><span>2026/09/10</span></div><b>本周活动：好友单挑与护送车队上线</b><p>官方确认咱俩练练、摩格护送车队与 LSV 两栖车上线，并开启耀斑特遣队挑战及彦祖回归福利。</p></div><span class="tiny">官方活动</span></a>
+    <a class="intel-card official" href="https://deltaforce.garena.com/en/news/announcement/NDH3YX" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>GARENA 国际版</span><span>2026/09/08</span></div><b>Reorientation 开季：留意 9 月 17 日任务节点</b><p>登录礼、周补给及指定武器任务列至 9/17；长弓、新武器等任务另有截止日，请按公告对应服务器领取。</p></div><span class="tiny">官方活动日历</span></a>
+    <a class="intel-card official" href="https://deltaforce.garena.com/zh_tw/news/all" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>GARENA 台服</span><span>2026/09/10</span></div><b>安全周报：9 月 3 日至 9 日封禁报告</b><p>公告列表已收录本期安全报告。进入列表选择对应日期，核对官方处罚说明；不把玩家猜测写成匹配机制结论。</p></div><span class="tiny">官方公告列表</span></a>
+    <a class="intel-card" href="https://www.18183.com/gonglue/202609/0qgrg4sm.html" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>18183</span><span>2026/09/04</span></div><b>钓鱼入门攻略：老乔与鱼竿获取</b><p>保留基础路线参考；本周鱼线、任务条件已有修复，配合最新公告与游戏内任务提示使用。</p></div><span class="tiny">基础攻略 · 保留</span></a>
+    <a class="intel-card official" href="https://deltaforce.garena.com/zh_tw/news/all/KX539B" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>GARENA 台服</span><span>2026/09/06</span></div><b>群星机制手册：地图、钓鱼与后续模式</b><p>保留完整版本机制入口；台服单挑和极星守望日程不可套用到已经开放单挑的国服。</p></div><span class="tiny">机制档案 · 保留</span></a>
+  </div>
+  <div class="section-head" style="margin-top:22px"><h2>视频热点</h2><a href="#sources">文章与视频分开核验</a></div>
+  <div class="intel-grid">
+    <a class="intel-card" href="https://www.bilibili.com/video/BV16Dtz6UEnJ/" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>BILIBILI</span><span>28.4万 · 检索快照</span></div><b>S11 金枪客 1—7：提交方案与改枪参考</b><p>本轮检索到的任务攻略，涵盖 MDR、汤姆逊和 QJB201。先核对当前任务要求与配件价格，再考虑照抄方案。</p></div><span class="tiny">任务视频 · 发布日期待核实</span></a>
+    <a class="intel-card" href="https://www.bilibili.com/video/BV1SSbd67EDo/" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>BILIBILI</span><span>159.1万 · 检索快照</span></div><b>六式zy：S11 新配件与汤姆逊、MDR 一览</b><p>高播放机制前瞻保留作背景资料；涉及全自动 M700 等改装时，需复核正式服属性，不把预览数据当最终数值。</p></div><span class="tiny">高播放旧作 · 非本周新发布</span></a>
+    <a class="intel-card official" href="https://www.bilibili.com/list/482317581?bvid=BV15STx6nEf3&oid=116856329411126" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>BILIBILI</span><span>314.2万 · 上期快照</span></div><b>成成大王：巅峰赛我来了</b><p>成成大王_三角洲高播放代表作继续保留；同合集内职业联赛一穿五、航天整活等入口也适合延伸观看。</p></div><span class="tiny">固定偏好 · 非本周新作</span></a>
+    <a class="intel-card" href="https://www.douyin.com/user/MS4wLjABAAAARojZfCOdF8ozXasGHikX_Ogi5F4hMH-wABNncLLQQVodb-dG41fL9v9DlLs7XwbW" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>DOUYIN</span><span>4587 赞 · 检索快照</span></div><b>乘希电竞：汤姆逊八种改法</b><p>账号最新作品时间显示 9/11；汤姆逊教程列出腰射、开镜和混合配装。进入账号按标题找视频，仅作玩法参考。</p></div><span class="tiny">作者作品入口</span></a>
+    <a class="intel-card" href="https://www.kuaishou.com/search/video?searchKey=%E4%B8%89%E8%A7%92%E6%B4%B2%E8%A1%8C%E5%8A%A8%20S11%20%E6%B1%A4%E5%A7%86%E9%80%8A%20%E5%8D%95%E6%8C%91" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>KUAISHOU</span><span>热度待核实</span></div><b>快手：汤姆逊 / 单挑 / S11 实战</b><p>按本周版本与改枪主题补充查找；本轮未取得可靠单条视频播放量或互动数，保留主题搜索。</p></div><span class="tiny">主题入口 · 非热榜排名</span></a>
+    <a class="intel-card" href="https://www.youtube.com/results?search_query=Delta+Force+Reorientation+The+Mog+Rover+guide" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>YOUTUBE</span><span>热度待核实</span></div><b>YouTube：Reorientation 实战与 The Mog 教学</b><p>查询开季后的 Rover、摩格旧城区与新版本攻略；本轮未取得可核验的单条热度数据。</p></div><span class="tiny">主题入口 · 非热榜排名</span></a>
+    <a class="intel-card" href="https://search.bilibili.com/all?keyword=Key725%20%E9%92%93%E9%B1%BC%E6%B5%81%E7%A8%8B%E8%BF%9B%E9%98%B6%E6%94%BB%E7%95%A5" target="_blank" rel="noreferrer"><div><div class="intel-meta"><span>BILIBILI · Key725</span><span>7.8万 · 9/7 快照</span></div><b>钓鱼进阶：晋升、材料和任务提交</b><p>保留已收录教程搜索入口；本周未刷新播放数，任务次数和修复情况应同时核对 9 月 10 日公告。</p></div><span class="tiny">教程入口 · 保留</span></a>
+  </div>
+  <p class="tiny">本周核验：2026/09/14（新西兰时间）。播放与互动数为检索快照；旧快照单独标注，主题搜索不代表平台热榜。赛事与购票请进入赛事页面。</p>
+</section>
+
+<section class="section" id="sources">
+  <div class="section-head"><h2>资料来源</h2><a href="#operators">返回干员档案 ↑</a></div>
+  <div class="source-grid">
+    <a class="source" href="https://deltaforce.garena.com/zh_tw/?redirect=0" target="_blank" rel="noreferrer"><strong>Garena 官方资料页</strong><span>核对已上线探员列表、官方立绘与公开技能条目。</span></a>
+    <a class="source" href="https://deltaforce.garena.com/zh_tw/news/all/KX539B" target="_blank" rel="noreferrer"><strong>Garena S11 群星公告</strong><span>核对 9 月 8 日旅人上线与正式技能说明。</span></a>
+    <a class="source" href="https://df.qq.com/cp/a20260901ma4season/" target="_blank" rel="noreferrer"><strong>国服群星赛季专题</strong><span>核对国服 9 月 4 日群星赛季专题与旅人技能。</span></a>
+    <a class="source" href="https://deltaforce.garena.com/zh_tw/news/system/Y264JG" target="_blank" rel="noreferrer"><strong>Garena 烽火新训中心</strong><span>核对烽火地带三人小队、搜刮、撤离、失败掉落和曼德尔砖风险。</span></a>
+    <a class="source" href="https://www.taptap.cn/app/330259/topic?group_label_id=1913959&type=group_label" target="_blank" rel="noreferrer"><strong>TapTap 官方干员档案</strong><span>核对液氮、回响、蝶、深蓝、蛊、乌鲁鲁、骇爪、威龙、牧羊人等官方简介。</span></a>
+    <a class="source" href="https://wiki.biligame.com/deltaoperation2024/%E5%B9%B2%E5%91%98%E5%9B%BE%E9%89%B4" target="_blank" rel="noreferrer"><strong>BWIKI 干员图鉴</strong><span>核对简体中文图鉴索引与近期更新时间。</span></a>
+    <a class="source" href="https://deltaforcedb.com/wiki/operators" target="_blank" rel="noreferrer"><strong>Delta Force Database</strong><span>辅助核对国际服 Operator 条目。</span></a>
+  </div>
+</section>
+
+<footer class="footer"><div class="warning">非官方玩家 Wiki 概念首页。干员档案采用 Garena 官方公开名片/海报图与公开资料摘要；烽火地带先接入基础档案，具体数值以游戏内当前版本为准。</div><div>TERMINAL BUILD 0.1 // 2026</div></footer>
+</main>
+<script src="assets/wiki-data.js"></script>
+<script>
+  const wikiData = window.DELTA_WIKI_DATA || { operators: [], sources: [], fireMode: {} };
+  const operators = wikiData.operators.filter((operator)=>operator.status === "live");
+  const rolePages = {"突击":"operators_assault.html","支援":"operators_support.html","工程":"operators_engineer.html","侦察":"operators_recon.html"};
+  const upcomingOperators = wikiData.operators.filter((operator)=>operator.status === "upcoming");
+
+  const operatorGrid = document.querySelector("#operatorGrid");
+  const operatorCount = document.querySelector("#operatorCount");
+  const operatorEmpty = document.querySelector("#operatorEmpty");
+  const operatorDetail = document.querySelector("#operatorDetail");
+  const upcomingGrid = document.querySelector("#upcomingGrid");
+  const searchInput = document.querySelector(".search input");
+  const oddsForm = document.querySelector("#oddsForm");
+  const oddsInput = document.querySelector("#oddsInput");
+  const oddsConsole = document.querySelector(".odds-console");
+  const oddsScore = document.querySelector("#oddsScore");
+  const oddsVerdict = document.querySelector("#oddsVerdict");
+  const oddsLine = document.querySelector("#oddsLine");
+  const oddsLog = document.querySelector("#oddsLog");
+  const oddsButton = oddsForm?.querySelector("button");
+  const oddsProgressText = document.querySelector("#oddsProgressText");
+  const oddsProgressValue = document.querySelector("#oddsProgressValue");
+  const oddsProgressFill = document.querySelector("#oddsProgressFill");
+  const radarGrid = document.querySelector("#radarGrid");
+  const radarShape = document.querySelector("#radarShape");
+  const radarPoints = document.querySelector("#radarPoints");
+  const radarLabels = document.querySelector("#radarLabels");
+  const radarArchetype = document.querySelector("#radarArchetype");
+  const radarTotal = document.querySelector("#radarTotal");
+  const traitList = document.querySelector("#traitList");
+  let activeRole = "突击";
+
+  const radarTraits = [
+    {key:"aggression", label:"激进", english:"Aggression", value:76},
+    {key:"greed", label:"贪婪", english:"Greed", value:68},
+    {key:"stealth", label:"CS度", english:"Stealth", value:42},
+    {key:"teamwork", label:"团队", english:"Teamwork", value:57},
+    {key:"tactics", label:"战术", english:"Tactics", value:71},
+    {key:"luxury", label:"豪", english:"Luxury", value:63}
+  ];
+
+  const radarPresets = {
+    raider: [92, 78, 28, 46, 61, 52],
+    rat: [24, 88, 96, 31, 73, 35],
+    captain: [54, 42, 48, 88, 91, 72],
+    luxury: [62, 69, 44, 76, 58, 96]
+  };
+
+  const highLuckLines = [
+    "终端判定：今天手感发烫，撤离前建议再摸一个箱。",
+    "样本显示欧气外溢，保险箱听见你的脚步声会自己紧张。",
+    "爆率雷达抬头了，这句描述里有明显的红光反射。",
+    "建议保持当前玄学动作，不要换坐姿，不要换歌。"
+  ];
+
+  const lowLuckLines = [
+    "终端判定：低气压区域，建议先喝水再进图。",
+    "样本显示箱子正在装睡，今天适合稳撤不适合上头。",
+    "爆率雷达趴下了，但至少坏消息来得很有礼貌。",
+    "建议停止和队友互相甩锅，先把下一把当热身。"
+  ];
+
+  function escapeHtml(value){
+    return String(value).replace(/[&<>"']/g,(char)=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char]));
+  }
+
+  function hashText(text){
+    let hash = 0;
+    for(let index = 0; index < text.length; index += 1){
+      hash = (hash * 31 + text.charCodeAt(index)) >>> 0;
+    }
+    return hash;
+  }
+
+  let oddsDetectionTimer = null;
+
+  function setOddsProgress(value, label){
+    const normalized = Math.min(100, Math.max(0, Math.round(value)));
+    if(oddsProgressFill) oddsProgressFill.style.width = `${normalized}%`;
+    if(oddsProgressValue) oddsProgressValue.textContent = `${normalized}%`;
+    if(oddsProgressText) oddsProgressText.textContent = label;
+  }
+
+  function revealOddsResult(cleanText){
+    const textBias = hashText(cleanText) % 37;
+    const randomBias = Math.floor(Math.random() * 64);
+    const score = Math.min(99, Math.max(1, textBias + randomBias));
+    const isHigh = score >= 50;
+    const lines = isHigh ? highLuckLines : lowLuckLines;
+    const line = lines[Math.floor(Math.random() * lines.length)];
+
+    oddsScore.innerHTML = `${score}<small>LUCK INDEX</small>`;
+    oddsVerdict.textContent = isHigh ? "爆率偏高" : "爆率偏低";
+    oddsVerdict.classList.toggle("high", isHigh);
+    oddsVerdict.classList.toggle("low", !isHigh);
+    oddsLine.textContent = line;
+    PlayerCard.offer("odds", {title: `${isHigh ? "爆率偏高" : "爆率偏低"} · ${score}/99`, lines: [cleanText, line]});
+    oddsLog.textContent = `SAMPLE ${String(cleanText.length).padStart(2,"0")} // ROLL ${String(score).padStart(2,"0")} // ${isHigh ? "HIGH" : "LOW"}`;
+  }
+
+  function runOddsCheck(text){
+    PlayerCard.pending("odds");
+    const cleanText = text.trim();
+    if(oddsDetectionTimer) window.clearInterval(oddsDetectionTimer);
+    if(!cleanText){
+      oddsInput?.focus();
+      oddsButton && (oddsButton.disabled = false);
+      oddsConsole?.classList.remove("scanning");
+      oddsVerdict.textContent = "等待描述接入";
+      oddsVerdict.classList.remove("high","low");
+      oddsLine.textContent = "先输入一句爆率描述，终端才能开始一本正经地乱算。";
+      oddsLog.textContent = "SYSTEM WAITING // EMPTY SAMPLE";
+      oddsScore.innerHTML = `--<small>LUCK INDEX</small>`;
+      setOddsProgress(0, "等待有效样本");
+      return;
+    }
+
+    const duration = 1400 + Math.floor(Math.random() * 700);
+    const startedAt = Date.now();
+    oddsButton && (oddsButton.disabled = true);
+    oddsConsole?.classList.add("scanning");
+    oddsScore.innerHTML = `--<small>LUCK INDEX</small>`;
+    oddsVerdict.textContent = "爆率扫描中";
+    oddsVerdict.classList.remove("high","low");
+    oddsLine.textContent = "正在检测你的爆率，终端正在对照保险箱温度、跑刀步频和今日玄学坐姿。";
+    oddsLog.textContent = "SCANNING SAMPLE // PLEASE WAIT";
+    setOddsProgress(0, "正在检测你的爆率");
+
+    oddsDetectionTimer = window.setInterval(()=>{
+      const elapsed = Date.now() - startedAt;
+      const baseProgress = Math.min(96, Math.floor((elapsed / duration) * 100));
+      const displayProgress = Math.min(96, baseProgress + Math.floor(Math.random() * 5));
+      setOddsProgress(displayProgress, "正在检测你的爆率");
+
+      if(elapsed >= duration){
+        window.clearInterval(oddsDetectionTimer);
+        oddsDetectionTimer = null;
+        setOddsProgress(100, "检测完成，欧气样本已锁定");
+        revealOddsResult(cleanText);
+        oddsButton && (oddsButton.disabled = false);
+        oddsConsole?.classList.remove("scanning");
+      }
+    }, 90);
+  }
+
+  function createSvgNode(name, attributes = {}){
+    const node = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value])=>node.setAttribute(key, value));
+    return node;
+  }
+
+  function radarPoint(value, index, radius = 132){
+    const angle = -Math.PI / 2 + index * (Math.PI * 2 / radarTraits.length);
+    const scaledRadius = radius * (value / 100);
+    return {
+      x: 210 + Math.cos(angle) * scaledRadius,
+      y: 210 + Math.sin(angle) * scaledRadius
+    };
+  }
+
+  function renderRadarControls(){
+    if(!traitList) return;
+    traitList.innerHTML = radarTraits.map((trait)=>`
+      <label class="trait-row">
+        <span class="trait-name"><strong>${escapeHtml(trait.label)}</strong><small>${escapeHtml(trait.english)}</small></span>
+        <input type="range" min="0" max="100" value="${trait.value}" data-radar-key="${escapeHtml(trait.key)}" aria-label="${escapeHtml(trait.label)}" />
+        <span class="trait-value" id="trait-${escapeHtml(trait.key)}">${trait.value}</span>
+      </label>
+    `).join("");
+
+    traitList.querySelectorAll("[data-radar-key]").forEach((input)=>{
+      input.addEventListener("input",()=>{
+        const trait = radarTraits.find((item)=>item.key === input.dataset.radarKey);
+        if(!trait) return;
+        trait.value = Number(input.value);
+        renderRadarChart();
+      });
+    });
+  }
+
+  function renderRadarGrid(){
+    if(!radarGrid || !radarLabels) return;
+    radarGrid.innerHTML = "";
+    radarLabels.innerHTML = "";
+
+    for(let level = 1; level <= 5; level += 1){
+      const points = radarTraits.map((_, index)=>{
+        const point = radarPoint(level * 20, index);
+        return `${point.x.toFixed(1)},${point.y.toFixed(1)}`;
+      }).join(" ");
+      radarGrid.appendChild(createSvgNode("polygon", {class:"radar-grid", points}));
+    }
+
+    radarTraits.forEach((trait, index)=>{
+      const edge = radarPoint(100, index);
+      const label = radarPoint(100, index, 164);
+      radarGrid.appendChild(createSvgNode("line", {class:"radar-axis", x1:210, y1:210, x2:edge.x.toFixed(1), y2:edge.y.toFixed(1)}));
+
+      const text = createSvgNode("text", {
+        x: label.x.toFixed(1),
+        y: label.y.toFixed(1),
+        "text-anchor": index === 0 || index === 3 ? "middle" : label.x > 210 ? "start" : "end",
+        "dominant-baseline": "middle"
+      });
+      text.textContent = trait.label;
+      radarLabels.appendChild(text);
+    });
+  }
+
+  function resolveRadarArchetype(){
+    const sorted = [...radarTraits].sort((a,b)=>b.value - a.value);
+    const top = sorted[0]?.key;
+    const second = sorted[1]?.key;
+    if(top === "aggression" && second === "greed") return "突入型摸金手";
+    if(top === "stealth" && second === "greed") return "阴影搜刮专家";
+    if(top === "teamwork" && second === "tactics") return "小队指挥官";
+    if(top === "luxury") return "豪气排面";
+    if(top === "tactics") return "战术规划师";
+    return "均衡行动员";
+  }
+
+  function renderRadarChart(){
+    if(!radarShape || !radarPoints) return;
+    const points = radarTraits.map((trait, index)=>{
+      const point = radarPoint(trait.value, index);
+      return `${point.x.toFixed(1)},${point.y.toFixed(1)}`;
+    });
+
+    radarShape.setAttribute("points", points.join(" "));
+    radarPoints.innerHTML = "";
+    radarTraits.forEach((trait, index)=>{
+      const point = radarPoint(trait.value, index);
+      radarPoints.appendChild(createSvgNode("circle", {class:"radar-point", cx:point.x.toFixed(1), cy:point.y.toFixed(1), r:4}));
+      const valueNode = document.querySelector(`#trait-${trait.key}`);
+      if(valueNode) valueNode.textContent = trait.value;
+    });
+
+    if(radarArchetype) radarArchetype.textContent = resolveRadarArchetype();
+    if(radarTotal){
+      const total = radarTraits.reduce((sum, trait)=>sum + trait.value, 0);
+      radarTotal.innerHTML = `${String(total).padStart(3,"0")}<small>TOTAL SCORE</small>`;
+    }
+  }
+
+  function applyRadarPreset(name){
+    const preset = radarPresets[name];
+    if(!preset) return;
+    radarTraits.forEach((trait, index)=>{ trait.value = preset[index]; });
+    traitList?.querySelectorAll("[data-radar-key]").forEach((input)=>{
+      const trait = radarTraits.find((item)=>item.key === input.dataset.radarKey);
+      if(trait) input.value = trait.value;
+    });
+    renderRadarChart();
+  }
+
+  function rolePageUrl(op){
+    const page = rolePages[op.role] || "operators_assault.html";
+    return `${page}#${encodeURIComponent(op.slug)}`;
+  }
+
+  function renderOperators(){
+    const query = (searchInput?.value || "").trim().toLowerCase();
+    const filtered = operators.filter((op)=>{
+      const roleMatch = activeRole === "全部" || op.role === activeRole;
+      const text = `${op.name} ${op.real} ${op.role} ${op.traits.join(" ")} ${op.details.map((skill)=>skill.join(" ")).join(" ")} ${op.summary}`.toLowerCase();
+      return roleMatch && (!query || text.includes(query));
+    });
+
+    operatorGrid.innerHTML = filtered.map((op)=>`
+      <a class="operator-card" href="${escapeHtml(rolePageUrl(op))}" data-code="${escapeHtml(op.code)}">
+        <div class="operator-thumb" style="background-image:url('${escapeHtml(op.image)}')"></div>
+        <div class="operator-body">
+          <div class="operator-top">
+            <div class="operator-name"><b>${escapeHtml(op.name)}</b><small>${escapeHtml(op.real)}</small></div>
+            <span class="role-pill">${escapeHtml(op.role)}</span>
+          </div>
+          <p>${escapeHtml(op.summary)}</p>
+          <div class="skill-list">${op.details.map((skill)=>`<span>${escapeHtml(skill[0])}</span>`).join("")}</div>
+        </div>
+      </a>
+    `).join("");
+
+    operatorCount.textContent = `显示 ${filtered.length} / ${operators.length} 名干员`;
+    operatorEmpty.style.display = filtered.length ? "none" : "block";
+  }
+
+  function renderOperatorDetail(op){
+    operatorDetail.innerHTML = `
+      <div class="detail-hero" style="background-image:url('${escapeHtml(op.image)}')">
+        <div class="detail-copy">
+          <a class="back-link" href="#operators">← 返回干员档案</a>
+          <div class="eyebrow">${escapeHtml(op.code)} // ${escapeHtml(op.role)} OPERATOR</div>
+          <h2 class="detail-title">${escapeHtml(op.name)}</h2>
+          <div class="detail-real">${escapeHtml(op.real)}</div>
+          <div class="detail-tags">${op.traits.map((trait)=>`<span class="tag">${escapeHtml(trait)}</span>`).join("")}</div>
+          <p class="detail-summary">${escapeHtml(op.summary)}</p>
+        </div>
+      </div>
+      <div class="detail-layout">
+        <aside class="stat-panel">
+          <div class="kicker">OPERATOR FILE / 基础资料</div>
+          <div class="stat-list">
+            <div><span>干员代号</span><strong>${escapeHtml(op.name)}</strong></div>
+            <div><span>本名</span><strong>${escapeHtml(op.real)}</strong></div>
+            <div><span>兵种定位</span><strong>${escapeHtml(op.role)}</strong></div>
+            <div><span>档案编号</span><strong>${escapeHtml(op.code)}</strong></div>
+            <div><span>资料状态</span><strong>技能资料已接入</strong></div>
+          </div>
+        </aside>
+        <div class="skills-panel">
+          <div class="section-head"><h2>技能介绍</h2><a href="#sources">查看来源</a></div>
+          <div class="skill-detail-list">
+            ${op.details.map((skill)=>`
+              <article class="skill-detail">
+                <header><b>${escapeHtml(skill[0])}</b><small>${escapeHtml(skill[1])}</small></header>
+                <p>${escapeHtml(skill[2])}</p>
+              </article>
+            `).join("")}
+          </div>
+          <div class="detail-note">技能说明按公开图鉴资料整理，具体冷却、范围、伤害和版本调整以游戏内当前表现为准。</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderUpcomingOperators(){
+    if(!upcomingGrid) return;
+    const section = document.querySelector("#upcoming-operators");
+    if(!upcomingOperators.length){
+      if(section) section.style.display = "none";
+      return;
+    }
+    if(section) section.style.display = "";
+    upcomingGrid.innerHTML = upcomingOperators.map((op)=>{
+      const sourceLinks = (op.sourceIds || []).map((sourceId)=>wikiData.sources.find((source)=>source.id === sourceId)).filter(Boolean);
+      return `
+        <article class="intel-card official">
+          <div>
+            <div class="intel-meta"><span>${escapeHtml(op.versionStatus || "预告")}</span><span>${escapeHtml(op.role)}</span></div>
+            <b>${escapeHtml(op.name)} / ${escapeHtml(op.english || "")}</b>
+            <p>${escapeHtml(op.summary)}</p>
+            <p>${escapeHtml(op.releaseLabel || "官方预告中")}</p>
+          </div>
+          <span class="tiny">${sourceLinks.map((source)=>escapeHtml(source.name)).join(" · ") || "官方来源"}</span>
+        </article>
+      `;
+    }).join("");
+  }
+
+  function syncRoute(){
+    const slug = location.hash.startsWith("#operator-") ? location.hash.replace("#operator-","") : "";
+    const op = operators.find((item)=>item.slug === slug);
+    const mainChildren = [...document.querySelectorAll("main > section, main > footer")];
+    if(op){
+      renderOperatorDetail(op);
+      mainChildren.forEach((node)=>{ node.style.display = node === operatorDetail ? "" : "none"; });
+      operatorDetail.classList.add("active");
+      window.scrollTo({top:0, behavior:"smooth"});
+      document.title = `${op.name}｜三角洲行动 Wiki`;
+      return;
+    }
+    mainChildren.forEach((node)=>{ node.style.display = ""; });
+    operatorDetail.classList.remove("active");
+    operatorDetail.innerHTML = "";
+    document.title = "三角洲行动 Wiki｜战术资料终端";
+  }
+
+  document.querySelectorAll(".role-tab").forEach((button)=>{
+    button.addEventListener("click",()=>{
+      document.querySelectorAll(".role-tab").forEach((tab)=>tab.classList.remove("active"));
+      button.classList.add("active");
+      activeRole = button.dataset.role;
+      renderOperators();
+    });
+  });
+
+  oddsForm?.addEventListener("submit",(event)=>{
+    event.preventDefault();
+    runOddsCheck(oddsInput?.value || "");
+  });
+
+  document.querySelectorAll("[data-odds-example]").forEach((button)=>{
+    button.addEventListener("click",()=>{
+      oddsInput.value = button.dataset.oddsExample;
+      runOddsCheck(oddsInput.value);
+    });
+  });
+
+  document.querySelectorAll("[data-radar-preset]").forEach((button)=>{
+    button.addEventListener("click",()=>applyRadarPreset(button.dataset.radarPreset));
+  });
+
+  searchInput?.addEventListener("input", renderOperators);
+  window.addEventListener("hashchange", syncRoute);
+  renderRadarControls();
+  renderRadarGrid();
+  renderRadarChart();
+  renderOperators();
+  renderUpcomingOperators();
+  syncRoute();
+</script>
+</body>
+</html>

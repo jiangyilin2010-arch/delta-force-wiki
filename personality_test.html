@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>三角洲行动人格测试｜G.T.I. 终端</title>
+<style>
+  :root{
+    --bg:#07100d;--panel:#0c1712;--panel2:#111f18;--line:#24382d;--green:#9fe870;--green2:#5eae62;
+    --text:#e8f2ea;--muted:#8fa395;--warn:#d9c272;--danger:#d98672;--black:#030806;--shadow:0 18px 45px rgba(0,0,0,.35)
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;background:
+    linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),
+    radial-gradient(circle at 84% 5%,rgba(77,131,79,.15),transparent 28%),var(--bg);
+    background-size:32px 32px,32px 32px,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}.wrap{max-width:1320px;margin:auto;padding:0 28px}
+  .topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 40%,var(--green2) 70%,transparent 96%);opacity:.8}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}
+  .mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}
+  .brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}
+  nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover,nav a.active{border-color:var(--line);background:#0d1813;color:var(--green)}
+  .hero{padding:52px 0 24px;display:grid;grid-template-columns:1.08fr .92fr;gap:16px}
+  .hero-main{border:1px solid #2c4235;background:linear-gradient(90deg,rgba(4,9,7,.98),rgba(6,12,9,.74) 58%,rgba(9,17,13,.35)),radial-gradient(circle at 82% 46%,#24432c 0,#112018 20%,#07100d 54%);box-shadow:var(--shadow);padding:38px;position:relative;overflow:hidden}
+  .hero-main:after{content:"PROFILE TEST";position:absolute;right:-28px;bottom:-36px;color:rgba(159,232,112,.04);font-size:82px;font-weight:900;letter-spacing:-4px;transform:rotate(-5deg)}
+  .eyebrow,.kicker{color:var(--green);font:800 10px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:2.4px}.hero h1{position:relative;z-index:1;font-size:52px;line-height:1;margin:16px 0 14px;letter-spacing:-2px}.hero p{position:relative;z-index:1;color:#aebdb1;margin:0;max-width:720px}
+  .hero-side{border:1px solid var(--line);background:linear-gradient(180deg,#0e1a14,#09120e);padding:24px}.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}.stat{border:1px solid #21362a;background:#0d1913;padding:14px}.stat strong{display:block;font-size:25px;color:var(--green);line-height:1}.stat span{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1px}
+  .layout{display:grid;grid-template-columns:1fr 340px;gap:16px;align-items:start}.stage{border:1px solid var(--line);background:#0a140f;margin-bottom:16px;box-shadow:var(--shadow)}.stage-head{padding:18px 20px;border-bottom:1px solid #1b2d23;background:linear-gradient(90deg,#0f2118,#0a140f)}.stage-head h2{font-size:20px;margin:8px 0 0}.stage-head h2:before{content:"// ";color:var(--green)}
+  .question{padding:24px;min-height:420px;display:grid;align-content:center}.question-title{display:flex;gap:12px;align-items:flex-start;margin-bottom:18px}.question-num{width:40px;height:40px;display:grid;place-items:center;border:1px solid #446b4c;color:var(--green);font:900 12px ui-monospace,monospace;flex:0 0 auto}.question h3{font-size:24px;line-height:1.35;margin:1px 0 0;letter-spacing:-.4px}
+  .choices{display:grid;gap:10px}.choice{border:1px solid #21362a;background:#0d1913;padding:14px 15px;display:grid;grid-template-columns:30px 1fr;gap:12px;cursor:pointer;transition:.16s;text-align:left;color:inherit;font:inherit}.choice:hover{border-color:#557d5e;background:#102019}.choice.selected{border-color:var(--green);background:#13261b}.choice-letter{width:28px;height:28px;border:1px solid #34523c;display:grid;place-items:center;color:var(--green);font:900 11px ui-monospace,monospace}.choice.selected .choice-letter{background:var(--green);color:#07100d}.choice-text{color:#c7d6cb}
+  .side{position:sticky;top:90px;display:grid;gap:12px}.side-panel{border:1px solid var(--line);background:#0a140f;padding:18px}.progress{height:10px;border:1px solid #2b4535;background:#07100d;overflow:hidden;margin:12px 0}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--green),#d9c272);transition:.2s}.progress-text{display:flex;justify-content:space-between;color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1px}
+  .route-list{display:grid;gap:8px;margin-top:12px}.route-row{border:1px solid #21362a;background:#0d1913;padding:11px 12px}.route-row strong{display:block;font-size:13px}.route-row span{display:block;color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1px;margin-top:4px}
+  .actions{display:grid;gap:8px}.btn{border:1px solid #477052;background:#11261a;color:var(--text);font-weight:900;padding:12px 14px;cursor:pointer;text-align:center}.btn.primary{background:var(--green);color:#07100d;border-color:var(--green)}.btn:disabled{opacity:.45;cursor:not-allowed}.btn:hover:not(:disabled){filter:brightness(1.07)}
+  .result{display:none;border:1px solid #31513a;background:linear-gradient(135deg,#0f2118,#08110d 64%);box-shadow:var(--shadow);margin:20px 0 40px;overflow:hidden}.result.active{display:grid;grid-template-columns:minmax(360px,.92fr) 1.08fr}.result-copy,.radar-box{padding:24px;position:relative}.result-copy{border-right:1px solid #1e3327}.result-title{font-size:38px;line-height:1.05;margin:10px 0 10px;letter-spacing:-1px}.result-quote{border-left:3px solid var(--green);background:#0d1913;color:#d7eadb;margin:14px 0;padding:12px 14px;font-weight:800}.result-desc{color:#c0cec4;margin:0}.result-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.tag{border:1px solid #3b5b43;color:#abc7ae;font:800 10px ui-monospace,monospace;letter-spacing:.8px;padding:5px 8px}.easter{display:none;margin-top:16px;border:1px solid var(--warn);background:rgba(217,194,114,.08);color:#f0df9d;padding:12px}.easter.active{display:block}
+  .radar-chart-wrap{min-height:390px;display:grid;place-items:center}.radar-chart{width:min(100%,420px);height:auto;overflow:visible}.radar-chart text{fill:#c7d6cb;font:800 11px ui-monospace,monospace}.radar-grid{fill:none;stroke:rgba(159,232,112,.18);stroke-width:1}.radar-axis{stroke:rgba(159,232,112,.16);stroke-width:1}.radar-shape{fill:rgba(159,232,112,.22);stroke:var(--green);stroke-width:3;filter:drop-shadow(0 0 12px rgba(159,232,112,.2))}.radar-point{fill:#07100d;stroke:var(--green);stroke-width:3}
+  .footer{border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}
+  @media(max-width:1040px){.hero,.layout,.result.active{grid-template-columns:1fr}.side{position:static}.result-copy{border-right:0;border-bottom:1px solid #1e3327}nav{display:none}.brand{min-width:0}}
+  @media(max-width:620px){.wrap{padding:0 18px}.hero-main{padding:28px 22px}.hero h1{font-size:38px}.stat-grid{grid-template-columns:1fr}.question{padding:18px;min-height:420px}.question h3{font-size:20px}.choice{grid-template-columns:1fr}.choice-letter{width:100%}.footer{flex-direction:column}}
+</style>
+<link rel="stylesheet" href="shared/player-card.css">
+<script src="shared/player-card.js"></script>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a href="delta_force_wiki_home.html">首页</a><a class="active" href="mini_games.html">小游戏</a><a href="delta_force_wiki_home.html#operators">干员档案</a><a href="offline_chronicle.html">线下编年史</a><a href="community_forum.html">玩家交流</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="eyebrow">G.T.I. TERMINAL PREP // PLAYER PROFILE TEST</div>
+      <h1>阿萨拉行动性格测试</h1>
+      <p>从局前整备、前期运营、中期博弈、撤离施压到同人电竞日常，生成你的六维战术人格图。</p>
+    </div>
+    <aside class="hero-side">
+      <div class="kicker">TEST CONFIG / 题库状态</div>
+      <div class="stat-grid">
+        <div class="stat"><strong>20</strong><span>QUESTIONS</span></div>
+        <div class="stat"><strong>6</strong><span>TRAITS</span></div>
+        <div class="stat"><strong>5</strong><span>STAGES</span></div>
+        <div class="stat"><strong>1</strong><span>HIDDEN SIGNAL</span></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="layout">
+    <div id="quizRoot"></div>
+    <aside class="side">
+      <div class="side-panel">
+        <div class="kicker">PROGRESS / 完成度</div>
+        <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+        <div class="progress-text"><span id="answeredCount">0 / 20</span><span id="progressState">待接入</span></div>
+      </div>
+      <div class="side-panel">
+        <div class="kicker">ROUTE / 当前节点</div>
+        <div class="route-list" id="questionRoute"></div>
+      </div>
+      <div class="side-panel actions">
+        <button class="btn" id="prevBtn" type="button">上一题</button>
+        <button class="btn primary" id="nextBtn" type="button" disabled>下一题</button>
+        <button class="btn" id="resetBtn" type="button">重置答案</button>
+      </div>
+    </aside>
+  </section>
+
+  <section class="result" id="resultPanel" aria-live="polite">
+    <div class="result-copy">
+      <div class="kicker">RESULT / 行动人格档案</div>
+      <h2 class="result-title" id="resultTitle">结果生成中</h2>
+      <div class="result-quote" id="resultQuote"></div>
+      <p class="result-desc" id="resultDesc"></p>
+      <div class="result-tags" id="resultTags"></div>
+      <div class="easter" id="easterBox">隐藏信号已捕获：叽叽咕～叽叽咕。终端短暂切入神秘频道，并把这段神秘旋律写进了你的称号。</div>
+    </div>
+    <div class="radar-box">
+      <div class="radar-chart-wrap">
+        <svg class="radar-chart" viewBox="0 0 420 420" role="img" aria-label="六维测试结果雷达图">
+          <g id="radarGrid"></g>
+          <polygon class="radar-shape" id="radarShape" points=""></polygon>
+          <g id="radarPoints"></g>
+          <g id="radarLabels"></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div>非官方娱乐测试。结果用于整活和自我识别，不代表实际战斗力。</div><div>G.T.I. PROFILE BUILD 0.1 // 2026</div></footer>
+</main>
+
+<script>
+  const traits = [
+    {key:"aggression", label:"激进", english:"Aggression"},
+    {key:"greed", label:"贪婪", english:"Greed"},
+    {key:"stealth", label:"CS度", english:"Stealth"},
+    {key:"teamwork", label:"团队", english:"Teamwork"},
+    {key:"tactics", label:"战术", english:"Tactics"},
+    {key:"luxury", label:"豪", english:"Luxury"}
+  ];
+
+  const stages = [
+    {
+      title:"第一阶段：G.T.I. 终端整备（局前准备）",
+      code:"PREP",
+      questions:[
+        {
+          text:"你的枪械改装室通常是什么画风？",
+          choices:[
+            ["A","纯看数据，严格抄各大主播/职业选手的“最优解”代码。",{tactics:1}],
+            ["B","颜值即正义！属性差一点没关系，枪托和瞄具搭配起来必须要帅。",{luxury:1}],
+            ["C","极致省钱，能开火就行，破烂武器也能摸大红。",{greed:1}],
+            ["D","自己在靶场泡一小时，一点点微调出最适合自己手感的专属后座力。",{tactics:1}]
+          ]
+        },
+        {
+          text:"选择干员时，你的第一考量是？",
+          choices:[
+            ["A","版本答案是谁我选谁，技能强度决定一切。",{aggression:1,tactics:1}],
+            ["B","xx的技能和建模太豪了呀！我一定要让他们看看我新买的大红皮。",{luxury:1}],
+            ["C","谁够能帮助队伍兜底，我就选谁。",{teamwork:1}],
+            ["D","谁的技能适合苟在草丛或者阴暗角落，我就选谁。",{stealth:1}]
+          ]
+        },
+        {
+          text:"开局买装备的资金分配，你属于哪一派？",
+          choices:[
+            ["A","裸装（卡战备）进场跑刀，主打一个“零成本白嫖”。",{greed:1,stealth:1}],
+            ["B","顶级六套+金弹，我要狠狠猛攻！！",{aggression:1}],
+            ["C","护甲可以差，但必须带听力头，信息最重要。",{tactics:1,stealth:1}],
+            ["D","队友缺什么我就带什么，我是团队的百宝箱。",{teamwork:1}]
+          ]
+        },
+        {
+          text:"匹配等待加载的几十秒里，你通常在干嘛？",
+          choices:[
+            ["A","跟队友聊天，比如聊昨晚哪个主播的下饭操作或者八卦。",{teamwork:1}],
+            ["B","大脑飞速运转，规划出生点到最近保险箱的最短路线。",{tactics:1}],
+            ["C","做帅气的动作，播放干员语音。",{luxury:1}],
+            ["D","闭目养神，等待手感，准备迎接杀戮。",{aggression:1}]
+          ]
+        }
+      ]
+    },
+    {
+      title:"第二阶段：阿萨拉空降与发育（前期运营）",
+      code:"EARLY",
+      questions:[
+        {
+          text:"听到远处零号大坝传来了密集的交火声，你的反应是？",
+          choices:[
+            ["A","机会来了！马上带兄弟们去“劝架”。",{aggression:1}],
+            ["B","等他们打完，算好时间去捡他们剩下的漏。",{greed:1}],
+            ["C","太危险了，绕开交火区，去冷门大红刷新点位看看。",{tactics:1}],
+            ["D","问问队友意见，大家说冲我就冲，说走我就走。",{teamwork:1}]
+          ]
+        },
+        {
+          text:"你搜到了非洲之心，第一反应是？",
+          choices:[
+            ["A","发财了！放进安全箱，立刻规划路线准备跑路。",{greed:1,tactics:1}],
+            ["B","把心丢在显眼的路口当诱饵，在旁边架枪等有缘人。",{stealth:1}],
+            ["C","兴奋地蹦蹦跳跳，拿出来和队友轮流检视。",{teamwork:1}],
+            ["D","心拿了，但这还不够，我要把全图的队伍清干净再走。",{aggression:1}]
+          ]
+        },
+        {
+          text:"经过某个以“夺舍”闻名的地点或草丛时？",
+          choices:[
+            ["A","直接一个跳拉，先穿一梭子再说。",{aggression:1}],
+            ["B","扔个道具，探探情况，确认绝对安全再进。",{tactics:1}],
+            ["C","贴着墙边静步走，比老六还要像老六。",{stealth:1}],
+            ["D","让不清楚情况的队友先过去探探路。",{stealth:1,teamwork:-1}]
+          ]
+        },
+        {
+          text:"搜保险箱读条的时候，你是什么状态？",
+          choices:[
+            ["A","死死盯着保险箱，满脑子都是大红。",{greed:1}],
+            ["B","卡在掩体后面，准星架着唯一的入口。",{aggression:1}],
+            ["C","躲在队友的盾后面或者让队友帮我架枪。",{teamwork:1}],
+            ["D","理包，根据物品大小在包里提前留出位置。",{tactics:1}]
+          ]
+        }
+      ]
+    },
+    {
+      title:"第三阶段：烽火地带的遭遇战（中期博弈）",
+      code:"FIGHT",
+      questions:[
+        {
+          text:"队友因为冲得太猛倒在了空地上，你在安全区，你会？",
+          choices:[
+            ["A","封三颗烟，拼死也要冲过去把兄弟拉起来！",{teamwork:1}],
+            ["B","兄弟走好，我会继承你的三级包和枪的。",{greed:1,stealth:1}],
+            ["C","利用队友的尸体当诱饵，等敌人吃包。",{tactics:1,stealth:1}],
+            ["D","怒火中烧，直接跳拉出去跟对面一换一！",{aggression:1}]
+          ]
+        },
+        {
+          text:"敌方小队被你们打得只剩一个残血，他躲进了大楼死角？",
+          choices:[
+            ["A","趁他病要他命，直接冲楼干碎他！",{aggression:1}],
+            ["B","不着急，四面八方封锁出口，用投掷道具慢慢折磨。",{tactics:1}],
+            ["C","我去搜刚才打死的人的包，让队友去追那个残血。",{greed:1}],
+            ["D","我在楼外找个草丛趴着，等他以为安全了跑出来再狙掉。",{stealth:1}]
+          ]
+        },
+        {
+          text:"你打死了一个装备极其豪华的敌方特战干员（俗称老板），但你听到有人赶来：",
+          choices:[
+            ["A","随便抓两把最贵的配件塞包里，立刻转移阵地。",{tactics:1}],
+            ["B","舔！必须舔干净！就算死也要死在吃包的时候！",{greed:1}],
+            ["C","趴在还没成盒尸体上装死，来一手诈尸流。",{stealth:1}],
+            ["D","赶紧叫队友过来一起分赃，再掩护彼此撤退。",{teamwork:1}]
+          ]
+        },
+        {
+          text:"在对局中，你发现对面某个玩家的操作明显像某个职业比赛的打法或顶尖主播（或者像挂）：",
+          choices:[
+            ["A","战意燃起！我要单杀他，就算被反杀了也是和爱播交过手了不亏啊。",{aggression:1}],
+            ["B","理性分析，对面是硬茬，通知队友立刻避战绕路。",{tactics:1}],
+            ["C","和队友商量战术，正所谓三个臭皮匠顶个诸葛亮！",{teamwork:1}],
+            ["D","马上找到全图最阴暗的角落蹲好，专治各种身法怪。或者看着主播的直播蹲点。",{stealth:1}],
+            ["E","只能使出那招了吗！？（哒——哒——哒-哒-哒-）",{},"hidden"]
+          ]
+        }
+      ]
+    },
+    {
+      title:"第四阶段：撤离点的最后试炼（极限施压）",
+      code:"EXTRACT",
+      questions:[
+        {
+          text:"距离撤离时间只剩不到 3 分钟了，但你的背包只装了一半，你会？",
+          choices:[
+            ["A","算了，活着最重要，直接去撤离点。",{tactics:1}],
+            ["B","绝对不行！去撤离点的路上必须再搜几个房间，路过的垃圾桶都不放过。",{greed:1}],
+            ["C","在撤离点附近藏起来，专门打劫那些满载而归的玩家。",{stealth:1,aggression:1}],
+            ["D","队友包满了就行，我帮他们架枪断后。",{teamwork:1}]
+          ]
+        },
+        {
+          text:"到达拉闸撤离点，发现还要等 30秒，你会怎么度过这半分钟？",
+          choices:[
+            ["A","趴在草里或者躲在掩体后，准星死死盯住路口。",{tactics:1,stealth:1}],
+            ["B","抖枪，做帅气的动作，播放干员语音。",{luxury:1}],
+            ["C","跟队友分享物资，或者一起玩玩喷漆和猜拳。",{teamwork:1}],
+            ["D","再次打开背包，清点一下刚才摸到的物资到底值多少钱。",{greed:1}],
+            ["E","到处乱跑跳跃，试图吸引周围可能存在的人机出来打一架。",{aggression:1}]
+          ]
+        },
+        {
+          text:"撤离点突然亮起红光，说明有人先你们一步拉闸了！",
+          choices:[
+            ["A","摸过去，给他们来一颗精准的道具，然后再狠狠跳拉。",{aggression:1,luxury:1}],
+            ["B","立刻放弃这个撤离点，头也不回地跑向其他撤离点。",{tactics:1}],
+            ["C","不慌，躲在他们撤离必经之路的盲区，做个无情的收割机。",{stealth:1}],
+            ["D","队友商量，大家一起从不同角度包抄过去拿回主动权。",{teamwork:1}]
+          ]
+        },
+        {
+          text:"打完一局，结算面板弹出来的时候，你最先看哪个数据？",
+          choices:[
+            ["A","“带出的物资总价值”，钱才是一切。",{greed:1}],
+            ["B","击杀数和KD，这局杀得爽不爽。",{aggression:1}],
+            ["C","救援队友次数/助攻数。",{teamwork:1}],
+            ["D","我的干员熟练度，有没有拿到新成就。",{luxury:1}]
+          ]
+        }
+      ]
+    },
+    {
+      title:"第五阶段：阿萨拉之外的生态（同人、电竞与日常）",
+      code:"LIFE",
+      questions:[
+        {
+          text:"你平时逛B站/抖音/小红书，最喜欢看《三角洲行动》的什么内容？",
+          choices:[
+            ["A","干员们的同人二创，沙雕日常。",{luxury:1}],
+            ["B","战队赛的高光剪辑和职业选手的赛事复盘。",{tactics:1,aggression:1}],
+            ["C","主播们的老六套路集锦、或者跑刀路线。",{greed:1,stealth:1}],
+            ["D","找游戏群或者固排招募帖。",{teamwork:1}]
+          ]
+        },
+        {
+          text:"官方推出了新的宣传CG，你的关注点是？",
+          choices:[
+            ["A","新干员帅不帅，有没有用来嘲讽敌人的语音。",{luxury:1}],
+            ["B","这新枪管不管用？技能在实战里会不会超模？",{tactics:1}],
+            ["C","视频里有没有展示新的高价值战利品。",{greed:1}],
+            ["D","看完第一时间转发到群里和朋友们分享。",{teamwork:1}]
+          ]
+        },
+        {
+          text:"你心目中《三角洲行动》最让你沉迷的瞬间是？",
+          choices:[
+            ["A","在残血状态下一穿三，完成丝血反杀的肾上腺素飙升。",{aggression:1}],
+            ["B","蹲在阴暗处，一枪爆头击杀满配大佬的那一声脆响。",{stealth:1}],
+            ["C","一局搜出多个大红，带着价值连城的背包成功撤离。",{greed:1}],
+            ["D","沉浸在这个充满战术美学，帅气逼人的游戏里。",{luxury:1}]
+          ]
+        },
+        {
+          text:"如果要你分析一下你的三角洲游玩性格，你会给自己什么评价？",
+          choices:[
+            ["A","永远冲在第一线、战术板全选伤害的“修罗”。",{aggression:1}],
+            ["B","默默计算弹道、精通全图点位的情报大师。",{tactics:1}],
+            ["C","帅气又话痨，永远给队友提供情绪价值的后勤小队长。",{teamwork:1,luxury:1}],
+            ["D","无影无踪、雁过拔毛所到之处寸草不生的赛博拾荒者。",{greed:1,stealth:1}]
+          ]
+        }
+      ]
+    }
+  ];
+
+  const answers = new Map();
+  const quizRoot = document.querySelector("#quizRoot");
+  const questionRoute = document.querySelector("#questionRoute");
+  const progressBar = document.querySelector("#progressBar");
+  const answeredCount = document.querySelector("#answeredCount");
+  const progressState = document.querySelector("#progressState");
+  const prevBtn = document.querySelector("#prevBtn");
+  const nextBtn = document.querySelector("#nextBtn");
+  const resetBtn = document.querySelector("#resetBtn");
+  const resultPanel = document.querySelector("#resultPanel");
+  const resultTitle = document.querySelector("#resultTitle");
+  const resultDesc = document.querySelector("#resultDesc");
+  const resultTags = document.querySelector("#resultTags");
+  const resultQuote = document.querySelector("#resultQuote");
+  const easterBox = document.querySelector("#easterBox");
+  const radarGrid = document.querySelector("#radarGrid");
+  const radarShape = document.querySelector("#radarShape");
+  const radarPoints = document.querySelector("#radarPoints");
+  const radarLabels = document.querySelector("#radarLabels");
+  const questionCount = stages.reduce((sum, stage)=>sum + stage.questions.length, 0);
+  const questions = flattenQuestions();
+  const traitMaxScores = maxTraitScores();
+  let currentQuestion = 1;
+
+  function escapeHtml(value){
+    return String(value).replace(/[&<>"']/g,(char)=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char]));
+  }
+
+  function flattenQuestions(){
+    const list = [];
+    stages.forEach((stage)=>{
+      stage.questions.forEach((question)=>list.push({stage, question, number:list.length + 1}));
+    });
+    return list;
+  }
+
+  function maxTraitScores(){
+    const maxScores = Object.fromEntries(traits.map((trait)=>[trait.key, 0]));
+    questions.forEach((item)=>{
+      item.question.choices.forEach((choice)=>{
+        if(choice[3] === "hidden") return;
+        Object.entries(choice[2]).forEach(([key, value])=>{
+          if(value > 0) maxScores[key] += value;
+        });
+      });
+    });
+    return maxScores;
+  }
+
+  function renderQuiz(){
+    const item = questions[currentQuestion - 1];
+    const selectedChoice = answers.get(currentQuestion);
+    quizRoot.innerHTML = `
+      <section class="stage">
+        <div class="stage-head"><div class="kicker">${escapeHtml(item.stage.code)} / QUESTION ${String(currentQuestion).padStart(2,"0")}</div><h2>${escapeHtml(item.stage.title)}</h2></div>
+        <article class="question" id="q-${currentQuestion}">
+          <div>
+            <div class="question-title"><div class="question-num">${currentQuestion}</div><h3>${escapeHtml(item.question.text)}</h3></div>
+              <div class="choices">
+                ${item.question.choices.map((choice, index)=>`
+                  <button class="choice ${selectedChoice === index ? "selected" : ""}" type="button" data-choice="${index}">
+                    <span class="choice-letter">${escapeHtml(choice[0])}</span>
+                    <span class="choice-text">${escapeHtml(choice[1])}</span>
+                  </button>
+                `).join("")}
+              </div>
+          </div>
+        </article>
+      </section>
+    `;
+
+    document.querySelectorAll(".choice").forEach((button)=>{
+      button.addEventListener("click",()=>{
+        answers.set(currentQuestion, Number(button.dataset.choice));
+        document.querySelectorAll(".choice").forEach((item)=>item.classList.remove("selected"));
+        button.classList.add("selected");
+        resultPanel.classList.remove("active");
+        updateProgress();
+      });
+    });
+
+    updateProgress();
+  }
+
+  function getScores(){
+    const scores = Object.fromEntries(traits.map((trait)=>[trait.key, 0]));
+    let hidden = false;
+    questions.forEach((item)=>{
+      const answerIndex = answers.get(item.number);
+      if(answerIndex === undefined) return;
+      const choice = item.question.choices[answerIndex];
+      Object.entries(choice[2]).forEach(([key, value])=>{ scores[key] += value; });
+      if(choice[3] === "hidden") hidden = true;
+    });
+    return {scores, hidden};
+  }
+
+  function normalizeScores(rawScores){
+    return Object.fromEntries(traits.map((trait)=>{
+      const max = Math.max(traitMaxScores[trait.key] || 1, 1);
+      const value = Math.max(0, rawScores[trait.key]);
+      return [trait.key, Math.round((value / max) * 100)];
+    }));
+  }
+
+  function updateProgress(){
+    const answered = answers.size;
+    const percent = Math.round(answered / questionCount * 100);
+    progressBar.style.width = `${percent}%`;
+    answeredCount.textContent = `${answered} / ${questionCount}`;
+    progressState.textContent = `第 ${currentQuestion} 题`;
+    prevBtn.disabled = currentQuestion === 1;
+    nextBtn.disabled = !answers.has(currentQuestion);
+    nextBtn.textContent = currentQuestion === questionCount ? "生成结果" : "下一题";
+    renderQuestionRoute();
+  }
+
+  function renderQuestionRoute(){
+    const item = questions[currentQuestion - 1];
+    questionRoute.innerHTML = `
+      <div class="route-row">
+        <strong>${escapeHtml(item.stage.title.replace(/^第.阶段：/,""))}</strong>
+        <span>${escapeHtml(item.stage.code)} // ${String(currentQuestion).padStart(2,"0")} / ${questionCount}</span>
+      </div>
+      <div class="route-row">
+        <strong>${answers.has(currentQuestion) ? "已记录选择" : "等待选择"}</strong>
+        <span>ANSWER SIGNAL</span>
+      </div>
+    `;
+  }
+
+  function createSvgNode(name, attributes = {}){
+    const node = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value])=>node.setAttribute(key, value));
+    return node;
+  }
+
+  function radarPoint(value, index, radius = 132){
+    const angle = -Math.PI / 2 + index * (Math.PI * 2 / traits.length);
+    const scaledRadius = radius * (value / 100);
+    return {x:210 + Math.cos(angle) * scaledRadius, y:210 + Math.sin(angle) * scaledRadius};
+  }
+
+  function renderRadarGrid(){
+    radarGrid.innerHTML = "";
+    radarLabels.innerHTML = "";
+    for(let level = 1; level <= 5; level += 1){
+      const points = traits.map((_, index)=>{
+        const point = radarPoint(level * 20, index);
+        return `${point.x.toFixed(1)},${point.y.toFixed(1)}`;
+      }).join(" ");
+      radarGrid.appendChild(createSvgNode("polygon", {class:"radar-grid", points}));
+    }
+    traits.forEach((trait, index)=>{
+      const edge = radarPoint(100, index);
+      const label = radarPoint(100, index, 164);
+      radarGrid.appendChild(createSvgNode("line", {class:"radar-axis", x1:210, y1:210, x2:edge.x.toFixed(1), y2:edge.y.toFixed(1)}));
+      const text = createSvgNode("text", {
+        x: label.x.toFixed(1),
+        y: label.y.toFixed(1),
+        "text-anchor": index === 0 || index === 3 ? "middle" : label.x > 210 ? "start" : "end",
+        "dominant-baseline":"middle"
+      });
+      text.textContent = trait.label;
+      radarLabels.appendChild(text);
+    });
+  }
+
+  function renderRadar(scores){
+    const normalized = normalizeScores(scores);
+    const points = traits.map((trait, index)=>{
+      const point = radarPoint(normalized[trait.key], index);
+      return `${point.x.toFixed(1)},${point.y.toFixed(1)}`;
+    });
+    radarShape.setAttribute("points", points.join(" "));
+    radarPoints.innerHTML = "";
+    traits.forEach((trait, index)=>{
+      const point = radarPoint(normalized[trait.key], index);
+      radarPoints.appendChild(createSvgNode("circle", {class:"radar-point", cx:point.x.toFixed(1), cy:point.y.toFixed(1), r:4}));
+    });
+  }
+
+  function resultProfile(scores, hidden){
+    const normalized = normalizeScores(scores);
+    const sorted = [...traits].sort((a,b)=>normalized[b.key] - normalized[a.key]);
+    const top = sorted[0]?.key;
+    const second = sorted[1]?.key;
+    const third = sorted[2]?.key;
+    const secondValue = normalized[second] || 0;
+    const high = (key)=>normalized[key] >= 42;
+    const veryHigh = (key)=>normalized[key] >= 52;
+    const extreme = (key)=>top === key && normalized[key] >= 72 && (normalized[key] - secondValue >= 16 || secondValue < 45);
+    const topKeys = sorted.slice(0, 3).map((trait)=>trait.key);
+    const hasTopPair = (a,b)=>[a,b].every(veryHigh) && topKeys.slice(0, 2).includes(a) && topKeys.slice(0, 2).includes(b);
+    const hasTopTriple = (a,b,c)=>[a,b,c].every(high) && [a,b,c].every((key)=>topKeys.includes(key));
+    const hasBoardBoardShape = ()=>hasTopTriple("greed","aggression","luxury") && normalized.tactics <= 45;
+    let profile;
+
+    if(hasBoardBoardShape()) profile = {title:"带资进组的板板", quote:"（美美吃包中）", desc:"穿得最贵，冲得最快，包也最想舔。对面还在疑惑这一身装备怎么敢这么走位时，魔王护已经在路上了。", tags:["三维组合","带资进组","魔王护"]};
+    else if(hasTopTriple("greed","stealth","tactics")) profile = {title:"阿萨拉资产转移专家", quote:"这不是偷，这是把地图资源放到更需要它的人身上。", desc:"路线冷、脚步轻、手还快。你能把小资源点吃成自助餐，把撤离路线走成财务报销流程。", tags:["三维组合","摸金路线","低调发财"]};
+    else if(hasTopTriple("aggression","teamwork","luxury")) profile = {title:"排面冲锋队长", quote:"兄弟们看我动作，帅完这一套就进！", desc:"你冲得猛，喊得响，还要赢得好看。哪怕撤离点乱成一锅，你也要把语音、身法和队友士气一起拉满。", tags:["三维组合","排面开团","气氛担当"]};
+    else if(hasTopTriple("tactics","teamwork","luxury")) profile = {title:"豪华作战策划", quote:"撤离路线我算好了，动作也得帅着走。", desc:"你不只想赢，还想赢得有章法、有队形、有镜头感。队友跟着你跑图，像参加一场带预算的战术宣传片。", tags:["三维组合","战术排面","队伍运营"]};
+    else if(hasTopTriple("aggression","greed","stealth")) profile = {title:"暗巷收租人", quote:"别问我从哪来，问就是路过收点管理费。", desc:"你能冲，也能蹲，还很会收包。别人以为自己在撤离，你觉得他们只是走进了你的收益区。", tags:["三维组合","伏击劝架","收益区"]};
+    else if(hasTopPair("stealth","aggression")) profile = {title:"撤离点收费站站长", quote:"此桥是我开，此闸是我栽，要想从此过，留下买路财！", desc:"带上一些全家福和修脚弹，选上一些工程位干员。堵桥、卡闸、打最后一队，是你写给阿萨拉的收费说明。", tags:["泥石流玩家","堵桥","修脚弹"]};
+    else if(hasTopPair("aggression","tactics")) profile = {title:"天才少年", quote:"我玩这个游戏就两个目标：把带着曼德尔砖的人送走，把不带砖的人也送走。", desc:"高手（或者高科技）。不仅枪法狠，而且脑子清醒，属于匹配到他对面直接想点“退出游戏”的恶魂。", tags:["泥石流玩家","枪脑双修","压迫感"]};
+    else if(hasTopPair("teamwork","stealth") && normalized.aggression < 50) profile = {title:"战地解说员", quote:"你们先打，等你们倒了我拉你们。 / 说时迟那时快，只见空中那道具如同流星划过，就把对面砰啪炸得稀巴烂……", desc:"组队时永远在报点，但永远打不中人。一旦队友全灭，他能以惊人的毅力在草丛里趴15分钟直到游戏结束。", tags:["泥石流玩家","报点大师","伏地救援"]};
+    else if(hasTopPair("tactics","stealth")) profile = {title:"轮椅质检员", quote:"什么压枪？什么后座力？官方出什么轮椅枪我就用什么！", desc:"选择一些轮椅，带上一些轮椅，包里再塞一些轮椅。你不是没操作，你只是尊重版本答案。", tags:["泥石流玩家","轮椅枪","版本答案"]};
+    else if(extreme("stealth")) profile = {title:"伪装植物", quote:"我就是阿萨拉生态环境不可分割的一部分。 / 自古干员不抬头，抬头不是好干员。 / 接电话来！", desc:"顶级地缚灵，能在一个草丛或门后蹲到游戏结束。你从他面前跑过去，他不仅热情地请你吃枪子，甚至还会亲自把你送回特勤处。", tags:["绝活哥","CS度极高","生态组件"]};
+    else if(extreme("aggression")) profile = {title:"跳拉特长生", quote:"静步？什么是静步？我直接一个跳拉！", desc:"听见枪声就跟听见开饭了一样，不拿容错率当回事。见人就清空弹夹，试图让对面金属中毒。", tags:["绝活哥","激进极高","弹匣清空"]};
+    else if(extreme("greed")) profile = {title:"无情清道夫", quote:"掉在地上的盒不是盒，那是大自然赐予我的饭盒（嚼嚼嚼）。", desc:"雁过拔毛的极致，所到之处寸草不生的代表。指纹遍布他行进路线上的每一个容器，绝不空包撤离。", tags:["绝活哥","贪婪极高","全图打扫"]};
+    else if(extreme("tactics")) profile = {title:"人型计算机", quote:"前面拐角有三个脚步，穿的是6套，身份证号码和家庭住址是……", desc:"耳机开到最大音量，满脑子都是穿甲概率、弹道轨迹抛物线和最佳跑图路线，把一个FPS射击游戏硬生生玩成了高等数学。", tags:["绝活哥","战术极高","高等数学"]};
+    else if(extreme("teamwork")) profile = {title:"妈妈", quote:"别怕，我起烟了！我打针了！我来拉你了！ / 复活吧！我的队友！", desc:"队友不管怎么白给，他都给予肯定和鼓励。是交战、搜索、搞定就撤的必备稳定器。", tags:["绝活哥","团队极高","复活队友"]};
+    else if(extreme("luxury")) profile = {title:"这才是真正的热爱", quote:"这把刀皮的数值虽然是依托答辩，但它真的很帅！", desc:"别人进游戏是来摸金和打架的，TA进游戏是来沉浸式体验的。上能爬树听鸟叫，下能河里战鳄鱼。嘲讽语音放起来，抖枪抖起来！按自己喜欢的方式玩，这才是游戏的意义！", tags:["绝活哥","豪极高","排面玩家"]};
+    else if(top === "aggression" && second === "greed") profile = {title:"高压突入摸金手", quote:"最好的保险箱在敌人的包里。", desc:"你相信最好的保险箱在敌人的包里。能打、敢冲、见到红光就想把局势压到爆表。", tags:["强攻","高风险","快节奏"]};
+    else if(top === "stealth" && second === "greed") profile = {title:"阴影赛博拾荒者", quote:"没人看见，就等于我没来过。", desc:"你总能找到最黑的角落和最肥的包。你不一定第一个开枪，但经常最后一个发财。", tags:["老六","摸金","低成本"]};
+    else if(top === "teamwork" && second === "tactics") profile = {title:"小队指挥官", quote:"先别急，撤离窗口和枪线一起算。", desc:"你会把胜利拆成路线、分工和撤离窗口。队友跟着你走，至少不会迷路到离谱。", tags:["协同","复盘","控节奏"]};
+    else if(top === "luxury") profile = {title:"豪气排面小队长", quote:"可以不赚，但不能不帅。", desc:"你玩的是枪，也是排面。皮肤、动作、语音、成就和帅气瞬间，都是你在阿萨拉留下来的理由。", tags:["排面拉满","干员厨","帅气开麦"]};
+    else if(top === "tactics") profile = {title:"情报战术大师", quote:"这条线看着近，但撤离收益不对。", desc:"你脑子里有路线图、声纹图和风险表。别人问冲不冲，你已经在算撤离收益。", tags:["点位","信息","稳健"]};
+    else if(top === "greed") profile = {title:"价值优先主义者", quote:"这格还能塞，再搜一个。", desc:"你看世界自带价格标签。能带走的都不浪费，能省下的都算赢。", tags:["收益","理包","大红雷达"]};
+    else profile = {title:"均衡行动员", quote:"看局势吧，该冲冲，该撤撤。", desc:"你没有明显短板，临场会根据局势切换角色。今天当枪男，明天也能当队伍保险。", tags:["全能","适应","稳定"]};
+
+    if(hidden){
+      profile = {
+        ...profile,
+        title:`${profile.title} · 叽叽咕～叽叽咕`,
+        quote:`${profile.quote} / 叽叽咕～叽叽咕`,
+        tags:[...profile.tags,"隐藏彩蛋"]
+      };
+    }
+    return profile;
+  }
+
+  function showResult(){
+    if(answers.size !== questionCount) return;
+    const {scores, hidden} = getScores();
+    const profile = resultProfile(scores, hidden);
+    PlayerCard.offer("personality", {title: profile.title, lines: [profile.quote, profile.tags.join(" / ")], scores: normalizeScores(scores)});
+    resultTitle.textContent = profile.title;
+    resultQuote.textContent = `经典语录：${profile.quote}`;
+    resultDesc.textContent = profile.desc;
+    resultTags.innerHTML = profile.tags.map((tag)=>`<span class="tag">${escapeHtml(tag)}</span>`).join("");
+    easterBox.classList.toggle("active", hidden);
+    renderRadar(scores);
+    resultPanel.classList.add("active");
+    resultPanel.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  function resetQuiz(){
+    PlayerCard.pending("personality");
+    answers.clear();
+    currentQuestion = 1;
+    resultPanel.classList.remove("active");
+    renderQuiz();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function nextQuestion(){
+    if(!answers.has(currentQuestion)) return;
+    if(currentQuestion === questionCount){
+      showResult();
+      return;
+    }
+    currentQuestion += 1;
+    resultPanel.classList.remove("active");
+    renderQuiz();
+    quizRoot.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  function previousQuestion(){
+    if(currentQuestion === 1) return;
+    currentQuestion -= 1;
+    resultPanel.classList.remove("active");
+    renderQuiz();
+    quizRoot.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  nextBtn.addEventListener("click", nextQuestion);
+  prevBtn.addEventListener("click", previousQuestion);
+  resetBtn.addEventListener("click", resetQuiz);
+  renderQuiz();
+  renderRadarGrid();
+  updateProgress();
+</script>
+</body>
+</html>

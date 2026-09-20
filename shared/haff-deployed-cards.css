@@ -1,0 +1,25 @@
+/* The two deployed rows have one card layout, independent of legacy sidebar/avatar rules. */
+.seat-stars{display:none}
+#prep-view :is(#squad,#rear-squad)>.formation-cell{position:relative;overflow:hidden;isolation:isolate;padding:0;min-width:0;border-radius:5px}
+#prep-view :is(#squad,#rear-squad) .operator-piece{--seat-slot:clamp(20px,2.8vw,28px);position:absolute;inset:0;display:block;width:auto;height:auto;min-height:0;margin:0;padding:0;grid-template-columns:none;grid-template-rows:none;gap:0;overflow:hidden;background:#182a24;outline:0}
+#prep-view :is(#squad,#rear-squad) .operator-piece>.roster-member{position:absolute;inset:0;display:block;width:100%;height:100%;min-height:0;max-width:none;max-height:none;margin:0;padding:0;border:0;opacity:1;grid-area:auto;transform:none;border-radius:0;overflow:hidden;z-index:0}
+#prep-view :is(#squad,#rear-squad) .roster-member>.operator-avatar{display:block;width:100%;height:100%;min-height:0;max-width:none;max-height:none;aspect-ratio:auto;object-fit:cover;object-position:50% 20%;margin:0;border-radius:0;filter:none}
+#prep-view :is(#squad,#rear-squad) .operator-piece::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,#07110c70,transparent 26%,transparent 42%,#07110c9c 67%,#07110cf5 100%)}
+#prep-view :is(#squad,#rear-squad) .operator-piece::after{content:'';position:absolute;inset:0;z-index:5;pointer-events:none;box-shadow:inset 0 0 0 1px #b2c9b133}
+#prep-view :is(#squad,#rear-squad) .operator-piece[data-selected=true]::after{box-shadow:inset 0 0 0 2px #c4ef9b}
+#prep-view :is(#squad,#rear-squad) .operator-namebar{display:contents;position:static;pointer-events:auto}
+#prep-view :is(#squad,#rear-squad) .roster-copy{display:none}
+#prep-view :is(#squad,#rear-squad) .seat-stars{display:block;position:absolute;top:4px;right:5px;z-index:3;color:#ffe09b;font:700 12px/20px ui-monospace,monospace;letter-spacing:1px;text-shadow:0 1px 4px #000;pointer-events:none}
+#prep-view :is(#squad,#rear-squad) :is(.operator-relic-slots,.worn-equipment){position:absolute;left:5px;right:5px;z-index:3;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));justify-content:space-between;justify-items:center;align-items:center;gap:3px;width:auto;max-width:none;height:var(--seat-slot);min-height:0;flex:none;margin:0;padding:0;grid-area:auto}
+#prep-view :is(#squad,#rear-squad) .operator-relic-slots{bottom:5px}
+#prep-view :is(#squad,#rear-squad) .worn-equipment{bottom:calc(var(--seat-slot) + 9px)}
+#prep-view :is(#squad,#rear-squad) :is(.operator-relic-slots,.worn-equipment)>.worn-icon{display:block;position:relative;width:100%;height:auto;min-width:0;min-height:0;max-width:var(--seat-slot);max-height:var(--seat-slot);aspect-ratio:1;flex:none;padding:2px;margin:0;border-width:1px;border-radius:3px;box-sizing:border-box;transform:none;background-color:#101e18e8;overflow:hidden}
+#prep-view :is(#squad,#rear-squad) .worn-icon>.equipment-icon{width:100%;height:100%;aspect-ratio:1;object-fit:contain}
+#prep-view :is(#squad,#rear-squad) .operator-relic-slots>.worn-icon{border-bottom-width:2px}
+#prep-view :is(#squad,#rear-squad) .worn-icon:focus-visible{outline:2px solid #ffe09b;outline-offset:-2px}
+#prep-view :is(#squad,#rear-squad) .roster-member:focus-visible{outline:2px solid #fff1c0;outline-offset:-3px}
+#prep-view :is(#squad,#rear-squad) .cell-index{position:absolute;top:4px;left:4px;z-index:4;width:30px;height:20px;min-width:0;min-height:0;padding:1px 2px;border:0;border-radius:3px;box-sizing:border-box;background:#08150ce0;color:#d2e4c8;overflow:hidden;transform:none}
+#prep-view :is(#squad,#rear-squad) .cell-index .hi-symbol{width:12px;height:12px;flex-basis:12px}
+#prep-view :is(#squad,#rear-squad) .cell-index .hi-number{font-size:10px}
+#prep-view :is(#squad,#rear-squad) .empty-position{position:absolute;inset:0;width:100%;height:100%;padding:24px 0 0;box-sizing:border-box}
+@media(max-width:680px){#prep-view :is(#squad,#rear-squad) .operator-piece{--seat-slot:22px}}

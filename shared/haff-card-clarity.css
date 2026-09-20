@@ -1,0 +1,18 @@
+/* Prices are one action; ancillary market information lives in hover descriptions. */
+.campaign-hud .hc-wallet .hc-income-preview{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 8px;flex-basis:100%;min-width:0}.campaign-hud .hc-wallet .hc-streak-preview{font:10px/1.4 system-ui;color:#e2ba7d;white-space:nowrap;letter-spacing:0;cursor:help}.hc-streak-preview:focus-visible{outline:1px solid #e2ba7d;outline-offset:2px}@media(max-width:680px){.campaign-hud .hc-wallet .hc-streak-preview{font-size:9px}.campaign-hud .hc-wallet .hc-income-preview{gap:2px 5px}}
+.hbm-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.hbm-help{width:30px;height:30px;min-height:0;padding:0;border:1px solid #526452;border-radius:50%;background:transparent;color:#a9bfae;font-size:18px;cursor:help}
+.hbm-help-wrap{position:relative}.hbm-help{display:grid;place-items:center;list-style:none;cursor:pointer}.hbm-help::-webkit-details-marker{display:none}.hbm-help-copy{position:absolute;right:0;top:34px;z-index:8;width:min(300px,75vw);margin:0;padding:14px;background:#101c16;border:1px solid #526452;box-shadow:0 10px 25px #0008;color:#bac9b9;font-size:12px;line-height:1.7;white-space:pre-line}.hbm-help:focus-visible{outline:2px solid #edd598;outline-offset:3px}
+.hbm-shelf-heading{margin-bottom:10px}.hbm-recruits .campaign-heading{padding:12px 0}.hbm-recruits .campaign-heading>span:empty{display:none}
+.hbm-recruits .market-card>button{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;padding:9px 6px;font-variant-numeric:tabular-nums}
+.hbm-current{font-size:16px;font-weight:700;color:#f2dfac}.hbm-original{font-size:11px;color:#9da99c;text-decoration-thickness:1px;text-decoration-color:#bec5b9}
+.hbm-recruits .market-card>button:disabled .hbm-current{color:inherit}.hbm-recruits .market-card>img{height:100px}
+/* Reserve names stay in the existing accessible label and hover title. */
+#prep-view #bench-squad .operator-namebar,#prep-view #bench-squad .roster-copy{display:none}
+/* Keep the top rank badges and the two equipment rows outside the portrait window. */
+#prep-view :is(#squad,#rear-squad) .operator-piece>.roster-member{top:25px;bottom:calc(var(--seat-slot)*2 + 16px);height:auto;border-radius:0;background:#14211e}
+#prep-view :is(#squad,#rear-squad) .roster-member>.operator-avatar{object-position:var(--face-x,50%) var(--face-y,0%);filter:none}
+#prep-view :is(#squad,#rear-squad) .operator-piece::before{background:linear-gradient(180deg,#091610 0 24px,transparent 25px,transparent calc(100% - 66px),#091610 100%)}
+#prep-view .operator-piece[data-operator=sineva]{--face-x:40%}#prep-view .operator-piece[data-operator=nitro]{--face-x:56%}#prep-view .operator-piece[data-operator=toxik]{--face-x:56%}#prep-view .operator-piece[data-operator=echo]{--face-x:53%}#prep-view .operator-piece[data-operator=butterfly]{--face-x:46%}#prep-view .operator-piece[data-operator=tempest]{--face-x:53%}#prep-view .operator-piece[data-operator=uluru]{--face-x:56%}#prep-view .operator-piece[data-operator=stinger]{--face-x:43%}
+#prep-view .operator-piece[data-operator=tempest]{--face-y:70%}#prep-view .operator-piece[data-operator=toxik]{--face-y:20%}
+#prep-view #bench-squad .operator-piece>.roster-member{top:17px;bottom:0;height:auto}
+#prep-view #bench-squad .operator-avatar{object-position:var(--face-x,50%) 0%;filter:none}

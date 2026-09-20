@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>避黑屋指南｜三角洲行动 Wiki</title>
+<style>
+  :root{--bg:#07100d;--panel:#0c1712;--line:#24382d;--green:#9fe870;--gold:#d9c272;--red:#d07a63;--text:#e8f2ea;--muted:#8fa395;--shadow:0 18px 45px rgba(0,0,0,.35)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),radial-gradient(circle at 82% 6%,rgba(208,122,99,.13),transparent 28%),var(--bg);background-size:32px 32px,32px 32px,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}.wrap{max-width:1440px;margin:auto;padding:0 28px}.topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 38%,var(--red) 70%,transparent 96%)}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}.mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}.brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover,nav a.active{border-color:#77ae68;background:#0d1813;color:var(--green)}.back{height:40px;border:1px solid var(--line);background:#08110d;display:flex;align-items:center;padding:0 12px;color:var(--muted);white-space:nowrap}
+  .hero{padding:58px 0 28px;display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.hero-main{min-height:430px;border:1px solid #2c4235;background:linear-gradient(90deg,rgba(4,9,7,.98),rgba(6,12,9,.78) 58%,rgba(34,13,9,.38));box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-main:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(118deg,transparent 0 38px,rgba(159,232,112,.04) 39px 40px)}.hero-main:after{content:"SAFE PLAY";position:absolute;right:-22px;bottom:-40px;color:rgba(208,122,99,.075);font-size:104px;font-weight:900;letter-spacing:-6px;transform:rotate(-7deg)}.hero-copy{position:relative;z-index:1;max-width:720px;padding:48px}.eyebrow,.kicker{color:var(--green);font:800 10px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:2.4px}h1{font-size:68px;line-height:.94;margin:18px 0 14px;letter-spacing:-3px}.lead{max-width:700px;color:#b5c5b8;font-size:15px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.btn{padding:12px 17px;border:1px solid #477052;background:#11261a;font-weight:800}.btn.primary{background:var(--green);color:#07100d;border-color:var(--green)}
+  .check-panel{border:1px solid var(--line);background:linear-gradient(180deg,#111d15,#09120e);box-shadow:var(--shadow);min-height:430px;padding:24px;display:grid;align-content:center;gap:12px;position:relative;overflow:hidden}.check-panel:after{content:"CHECKLIST";position:absolute;right:-14px;bottom:-18px;color:rgba(159,232,112,.045);font-size:76px;font-weight:900;letter-spacing:-4px}.signal{position:relative;z-index:1;border:1px solid #21362a;background:#0d1913;padding:14px;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}.signal b{color:var(--green);font:900 18px ui-monospace,monospace}.signal strong{display:block;font-size:14px}.signal span{display:block;color:var(--muted);font-size:12px}
+  .section{padding:24px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:15px}.section h2{font-size:20px;margin:0;letter-spacing:.5px}.section h2:before{content:"// ";color:var(--green)}.section-head span{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1.2px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{border:1px solid #21362a;background:linear-gradient(155deg,#11231a,#0a130f 68%);padding:18px;min-height:220px}.card.warning{border-color:#684035}.card.safe{border-color:#3d6747}.card b{display:block;font-size:19px;margin:8px 0}.card p{margin:0;color:#b5c5b8;font-size:13px}.tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.tag{font-size:10px;padding:3px 7px;border:1px solid #3b5b43;color:#abc7ae}.danger-tag{border-color:#704337;color:#d9b0a4}
+  .board{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px}.panel{border:1px solid var(--line);background:#0a140f;padding:22px}.list{display:grid;gap:8px}.row{display:grid;grid-template-columns:58px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #17271e}.row:last-child{border-bottom:0}.badge{font:900 10px ui-monospace,monospace;color:var(--green)}.row strong{font-size:13px}.row span{color:var(--muted);font-size:11px;text-align:right}.flow{display:grid;gap:10px}.step{border:1px solid #21362a;background:#0d1913;padding:14px;display:grid;grid-template-columns:54px 1fr;gap:12px}.step code{font:900 11px ui-monospace,monospace;color:var(--green);background:#08110d;border:1px solid #24402f;padding:6px 0;text-align:center;height:max-content}.step strong{display:block;font-size:14px}.step span{display:block;color:#aabaae;font-size:12px;margin-top:4px}
+  details{border:1px solid #21362a;background:#0d1913;padding:14px}summary{cursor:pointer;color:var(--green);font-weight:900}details p{color:#b5c5b8;margin:10px 0 0;font-size:13px}.source-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.source{border:1px solid #21362a;background:#0d1913;padding:14px}.source strong{display:block;font-size:12px;margin-bottom:5px}.source span{display:block;color:var(--muted);font-size:11px}.footer{margin-top:36px;border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}.warning-text{color:#a9b7ac;max-width:940px}
+  @media(max-width:1120px){.hero,.board{grid-template-columns:1fr}.grid,.source-grid{grid-template-columns:repeat(2,1fr)}nav{display:none}.brand{min-width:0}}
+  @media(max-width:680px){.wrap{padding:0 18px}.hero-copy{padding:34px 24px}h1{font-size:42px}.grid,.source-grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.row span{text-align:left}.step{grid-template-columns:1fr}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a class="active" href="operations_fire.html">烽火地带</a><a href="playstyles.html">打法流派</a><a href="streamers.html">主播名片</a><a href="delta_force_wiki_home.html#database">资料库</a></nav>
+  <a class="back" href="operations_fire.html">返回烽火地带</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <div class="eyebrow">SAFE PLAY MANUAL // BLACKROOM RISK</div>
+        <h1>避黑屋指南</h1>
+        <p class="lead">“黑屋”是玩家社区对高压匹配、观察局、限制状态或疑似异常池的统称。这个页面只整理安全、正常、可持续的避坑方法：不教挂机、不教恶意送、不教绕过检测。</p>
+        <div class="actions"><a class="btn primary" href="#checklist">快速自查</a><a class="btn" href="#recovery">恢复流程</a><a class="btn" href="#sources">查看来源</a></div>
+      </div>
+    </div>
+    <aside class="check-panel">
+      <div class="signal"><b>01</b><div><strong>固定设备与网络</strong><span>少换设备、少跨区异地登录，账号安全状态更稳定。</span></div></div>
+      <div class="signal"><b>02</b><div><strong>正常搜打撤</strong><span>不要挂机、开局自雷、故意白给或机械重复同一路线。</span></div></div>
+      <div class="signal"><b>03</b><div><strong>远离违规收益</strong><span>不跟挂车、不找黑产代打、不参与现金交易和异常转移。</span></div></div>
+      <div class="signal"><b>04</b><div><strong>异常先停手</strong><span>出现观察局、限制、追缴或异常提示时，先查邮件和安全中心。</span></div></div>
+    </aside>
+  </section>
+
+  <section class="section" id="checklist">
+    <div class="section-head"><h2>快速自查</h2><span>先看自己是不是踩了高风险行为</span></div>
+    <div class="grid">
+      <article class="card warning"><span class="tag danger-tag">高风险</span><b>消极行为</b><p>长时间挂机、开局反复白给、故意送装备、只做极端控数据，都可能被系统或玩家举报认为异常。</p><div class="tag-row"><span class="tag danger-tag">挂机</span><span class="tag danger-tag">恶意送</span><span class="tag danger-tag">机械重复</span></div></article>
+      <article class="card warning"><span class="tag danger-tag">高风险</span><b>账号与设备异常</b><p>频繁换设备、异地登录、借号代打、租号、扫码给陌生人，都容易触发安全风险或后续追缴纠纷。</p><div class="tag-row"><span class="tag danger-tag">换设备</span><span class="tag danger-tag">代打</span><span class="tag danger-tag">租号</span></div></article>
+      <article class="card warning"><span class="tag danger-tag">高风险</span><b>违规收益与黑产</b><p>刻意与外挂组队、利用 BUG、局内不当交易、工作室刷图、现金交易，官方安全公约明确属于处罚范围。</p><div class="tag-row"><span class="tag danger-tag">外挂车</span><span class="tag danger-tag">BUG</span><span class="tag danger-tag">不当交易</span></div></article>
+      <article class="card safe"><span class="tag">推荐</span><b>低成本正常练图</b><p>想降压时不要硬控数据，改成普通低配练图：搜容器、做任务、听脚步、活着撤，慢慢把节奏打回来。</p><div class="tag-row"><span class="tag">低配</span><span class="tag">练路线</span><span class="tag">稳撤</span></div></article>
+      <article class="card safe"><span class="tag">推荐</span><b>把高光局和止损局分开</b><p>连续大赚后休息、整理仓库或换普通任务局；连续亏损后降低预算，不要继续带高价值装备硬撞。</p><div class="tag-row"><span class="tag">止损</span><span class="tag">降预算</span><span class="tag">别上头</span></div></article>
+      <article class="card safe"><span class="tag">推荐</span><b>留证据，少争吵</b><p>被误判、追缴或异常限制时，保留截图、录像、时间、模式和账号信息，按官方客服/安全中心路径处理。</p><div class="tag-row"><span class="tag">截图</span><span class="tag">录像</span><span class="tag">申诉</span></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="habits">
+    <div class="section-head"><h2>日常避坑打法</h2><span>不靠玄学，靠稳定行为</span></div>
+    <div class="board">
+      <div class="panel">
+        <div class="kicker">DO / 建议做</div>
+        <div class="list">
+          <div class="row"><div class="badge">DO-01</div><strong>固定常用设备登录</strong><span>账号安全</span></div>
+          <div class="row"><div class="badge">DO-02</div><strong>每局有真实行动目标</strong><span>任务/搜图/撤离</span></div>
+          <div class="row"><div class="badge">DO-03</div><strong>连亏后降预算，不硬上高配</strong><span>止损</span></div>
+          <div class="row"><div class="badge">DO-04</div><strong>路线多样化，避免机械重复</strong><span>正常行为</span></div>
+          <div class="row"><div class="badge">DO-05</div><strong>陌生队友疑似违规时尽快脱离</strong><span>风险隔离</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="kicker">DON'T / 别这样</div>
+        <div class="list">
+          <div class="row"><div class="badge">NO-01</div><strong>不要用外挂、宏、改文件或第三方异常工具</strong><span>封号风险</span></div>
+          <div class="row"><div class="badge">NO-02</div><strong>不要故意挂机、开局自雷、反复送装备</strong><span>消极游戏</span></div>
+          <div class="row"><div class="badge">NO-03</div><strong>不要参与现金交易、代打、租号和黑产刷图</strong><span>追缴风险</span></div>
+          <div class="row"><div class="badge">NO-04</div><strong>不要为了“养号”照抄极端控数据教程</strong><span>异常行为</span></div>
+          <div class="row"><div class="badge">NO-05</div><strong>不要连着高压局硬冲到红温</strong><span>心态风险</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="recovery">
+    <div class="section-head"><h2>已经疑似进黑屋怎么办</h2><span>先确认状态，再恢复正常节奏</span></div>
+    <div class="flow">
+      <div class="step"><code>01</code><div><strong>确认是不是官方限制</strong><span>看登录界面、局内提示、邮件、安全中心和客服入口。玩家说的“黑屋”不一定都是官方处罚。</span></div></div>
+      <div class="step"><code>02</code><div><strong>立刻停止高风险行为</strong><span>停止借号、代打、异常组队、挂机、极端控数据和重复送装备；先把账号行为恢复正常。</span></div></div>
+      <div class="step"><code>03</code><div><strong>打一组低成本正常局</strong><span>选择熟图和低预算装备，正常搜图、做任务、撤离；目标是恢复节奏，不是强行追大红。</span></div></div>
+      <div class="step"><code>04</code><div><strong>如果有处罚或追缴，走官方申诉</strong><span>准备截图、录像、时间、设备、登录地和对局信息；不要点不明链接，不要找所谓解黑服务。</span></div></div>
+      <div class="step"><code>05</code><div><strong>恢复后调整打法结构</strong><span>把“高收益局、任务局、练图局”分开打，避免一直用同一种极端打法把账号状态打歪。</span></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="section-head"><h2>常见误区</h2><span>把玄学和风险分开</span></div>
+    <div class="grid">
+      <details open><summary>“黑屋”一定是官方惩罚吗？</summary><p>不一定。玩家口中的黑屋可能指高压匹配、观察局、疑似异常池、低爆率体感或账号限制。真正要处理的是官方显示的限制、处罚、追缴和安全提示。</p></details>
+      <details><summary>能不能靠故意输来避黑屋？</summary><p>不建议。故意输、挂机、送装备都可能被视为消极游戏。更稳的做法是低成本正常练图，降低预算和对抗强度，但保持真实操作。</p></details>
+      <details><summary>装糖流还能不能放网站里？</summary><p>可以放，但要写成“低成本恢复打法”，不能写成绕检测教程。网站的价值是帮玩家少踩坑，不是把账号推向更高风险。</p></details>
+      <details><summary>被误判时最重要的是什么？</summary><p>证据。保留限制截图、对局录像、时间和设备信息，按官方客服或安全中心路径申诉。不要相信第三方“解黑屋”服务。</p></details>
+    </div>
+  </section>
+
+  <section class="section" id="sources">
+    <div class="section-head"><h2>来源与核验</h2><span>官方规则优先，社区经验辅助</span></div>
+    <div class="source-grid">
+      <a class="source" href="https://deltaforce.garena.com/zh_tw/news/announcement/Y76DN4" target="_blank" rel="noreferrer"><strong>Garena 安全公约</strong><span>核对消极游戏、外挂组队、BUG、不当交易、资源追缴等处罚范围。</span></a>
+      <a class="source" href="https://gl.ali213.net/html/2025-11/1717485.html" target="_blank" rel="noreferrer"><strong>游侠：降低对局强度</strong><span>社区对战斗分、搜索分、撤离分和小黑屋说法的整理。</span></a>
+      <a class="source" href="https://www.bilibili.com/video/BV1ZAJ6z3Ey4/" target="_blank" rel="noreferrer"><strong>B站：逃离小黑屋</strong><span>装糖流、低压局和社区讨论入口。</span></a>
+      <a class="source" href="https://www.douyin.com/shipin/7509305243793229876" target="_blank" rel="noreferrer"><strong>抖音：装唐 2.0</strong><span>装唐/糖人号社区说法和风险提醒参考。</span></a>
+      <a class="source" href="https://forum.gamer.com.tw/C.php?bsn=78342&last=1&snA=1110&tnum=1" target="_blank" rel="noreferrer"><strong>巴哈姆特玩家分析</strong><span>匹配分池、高压局和防黑屋经验，作为非官方参考。</span></a>
+      <a class="source" href="https://deltaforce.garena.com/en/news/system/RMDWVM" target="_blank" rel="noreferrer"><strong>Garena Operations 101</strong><span>核对搜刮、撤离、声音、护甲弹药等正常玩法底层规则。</span></a>
+      <a class="source" href="https://deltaforce.garena.com/anticheat/en" target="_blank" rel="noreferrer"><strong>G.T.I. Security</strong><span>核对反作弊、安全环境和处罚方向。</span></a>
+      <a class="source" href="playstyles.html"><strong>打法流派库</strong><span>和装糖、输四保一、粑粑流等社区流派互相跳转。</span></a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="warning-text">资料说明：本页把“避黑屋”处理为安全游戏和账号风险管理，不提供绕过检测、外挂、黑产、挂机、恶意送头或其他破坏游戏环境的方法。具体限制和处罚以官方公告、游戏内提示与客服回复为准。</div><div>SAFE PLAY MANUAL // 2026-08-31</div></footer>
+</main>
+</body>
+</html>

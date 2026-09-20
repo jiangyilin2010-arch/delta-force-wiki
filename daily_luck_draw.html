@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>今日新运物品抽签｜G.T.I. 摸金签筒</title>
+<style>
+  :root{--bg:#07100d;--panel:#0a140f;--panel2:#0d1913;--line:#24382d;--green:#9fe870;--green2:#5eae62;--text:#e8f2ea;--muted:#8fa395;--warn:#d9c272;--red:#ff4b55;--rare:#83c7ff;--epic:#c190ff;--shadow:0 18px 45px rgba(0,0,0,.35)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),radial-gradient(circle at 82% 6%,rgba(217,194,114,.14),transparent 28%),radial-gradient(circle at 16% 78%,rgba(255,75,85,.08),transparent 24%),var(--bg);background-size:32px 32px,32px 32px,auto,auto,auto;color:var(--text);font:14px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:inherit;text-decoration:none}.wrap{max-width:1320px;margin:auto;padding:0 28px}.topline{height:3px;background:linear-gradient(90deg,transparent 5%,var(--green) 40%,var(--green2) 70%,transparent 96%);opacity:.8}
+  header{position:sticky;top:0;z-index:20;background:rgba(6,14,11,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:26px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}.mark{width:38px;height:38px;border:1px solid #79b46d;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(145deg,#203728,#0b1711);display:grid;place-items:center;color:var(--green);font-weight:900}.brand b{font-size:17px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.4px;margin-top:-2px}nav{display:flex;gap:8px;flex:1}nav a{padding:10px 12px;color:#b9c7bc;border:1px solid transparent}nav a:hover,nav a.active{border-color:var(--line);background:#0d1813;color:var(--green)}
+  .hero{padding:48px 0 16px;display:grid;grid-template-columns:1.12fr .88fr;gap:16px}.hero-main{min-height:300px;border:1px solid #2c4235;background:linear-gradient(90deg,rgba(4,9,7,.98),rgba(6,12,9,.74) 58%,rgba(9,17,13,.35)),linear-gradient(180deg,rgba(3,8,6,.08),rgba(3,8,6,.9)),url("assets/mini-games-cover-atlas.png");background-size:100% 100%,100% 100%,170% auto;background-position:center,center,100% 82%;box-shadow:var(--shadow);padding:34px;position:relative;overflow:hidden}.hero-main:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 38px,rgba(159,232,112,.04) 39px 40px);pointer-events:none}.hero-main:after{content:"LUCK DRAW";position:absolute;right:-26px;bottom:-38px;color:rgba(217,194,114,.08);font-size:92px;font-weight:1000;letter-spacing:-5px;transform:rotate(-5deg)}
+  .eyebrow,.kicker{color:var(--green);font:800 10px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:2.4px}.hero h1{position:relative;z-index:1;font-size:52px;line-height:1;margin:16px 0 14px;letter-spacing:-2px}.hero p{position:relative;z-index:1;color:#aebdb1;margin:0;max-width:720px}.status-card{border:1px solid var(--line);background:linear-gradient(180deg,#0e1a14,#09120e);padding:24px}.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}.stat{border:1px solid #21362a;background:#0d1913;padding:14px}.stat strong{display:block;font-size:26px;color:var(--green);line-height:1}.stat span{color:var(--muted);font:800 10px ui-monospace,monospace;letter-spacing:1px}
+  .game{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;margin:16px 0 42px;align-items:start}.terminal{border:1px solid #31513a;background:#0a140f;box-shadow:var(--shadow);overflow:hidden}.terminal-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid #1b2d23;background:linear-gradient(90deg,#0f2118,#0a140f)}.terminal-head h2{font-size:20px;margin:0}.run-id{font:900 12px ui-monospace,monospace;color:var(--muted);letter-spacing:1px}
+  .draw-zone{min-height:560px;padding:22px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 44%,rgba(217,194,114,.09),transparent 34%),linear-gradient(rgba(159,232,112,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(159,232,112,.025) 1px,transparent 1px),#07100d;background-size:auto,34px 34px,34px 34px}.draw-zone.scanning:after{content:"";position:absolute;inset:-40% -10%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.18) 47%,rgba(217,194,114,.24) 51%,transparent 62%);animation:sweep .9s ease-out both;pointer-events:none}.draw-zone.red-pulse{animation:redPulse .9s ease-out both}@keyframes sweep{from{transform:translateX(-35%)}to{transform:translateX(35%)}}@keyframes redPulse{35%{box-shadow:inset 0 0 0 2px rgba(255,75,85,.74),0 0 52px rgba(255,75,85,.35);filter:saturate(1.45)}100%{box-shadow:none;filter:saturate(1)}}
+  .ticket{width:min(100%,680px);border:1px solid #3b5b43;background:linear-gradient(145deg,#10231a,#08110d 64%);padding:26px;position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.38)}.ticket:before{content:"G.T.I. DAILY LOT";position:absolute;right:-18px;top:8px;color:rgba(159,232,112,.05);font-size:58px;font-weight:1000;letter-spacing:-3px;transform:rotate(-8deg)}.ticket.red{border-color:rgba(255,75,85,.62);background:linear-gradient(145deg,rgba(85,12,18,.96),#090f0c 62%,rgba(217,194,114,.08));box-shadow:0 0 0 1px rgba(255,75,85,.28),0 0 42px rgba(255,75,85,.18)}.ticket.red:after{content:"HIGH VALUE";position:absolute;right:20px;top:18px;color:rgba(255,211,124,.24);font:900 18px ui-monospace,monospace;letter-spacing:2px}.rarity{display:inline-flex;border:1px solid #3b5b43;color:#abc7ae;font:900 10px ui-monospace,monospace;letter-spacing:1px;padding:5px 8px;margin-bottom:14px}.rarity.N{color:#aebdb1}.rarity.R{color:var(--rare);border-color:rgba(131,199,255,.4)}.rarity.SR{color:var(--epic);border-color:rgba(193,144,255,.42)}.rarity.SSR{color:var(--warn);border-color:rgba(217,194,114,.5)}.rarity.RED{color:#ffd3c8;border-color:rgba(255,75,85,.72);background:rgba(255,75,85,.12);text-shadow:0 0 12px rgba(255,75,85,.42)}.item-name{font-size:56px;line-height:.95;margin:0 0 12px;letter-spacing:-2px;position:relative;z-index:1}.item-line{font-size:16px;color:#c7d6cb;margin:0 0 16px;position:relative;z-index:1}.fortune-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;position:relative;z-index:1}.fortune{border:1px solid #21362a;background:#0d1913;padding:13px}.fortune b{display:block;color:var(--green);font-size:13px}.fortune span{display:block;color:#b4c4b8;font-size:12px;margin-top:6px}.quote{margin-top:14px;border-left:3px solid var(--green);background:#0d1913;padding:13px;color:#dce9df;font-weight:800;position:relative;z-index:1}
+  .side{display:grid;gap:12px;position:sticky;top:90px}.panel{border:1px solid var(--line);background:#0a140f;padding:18px}.form{display:grid;gap:10px}.form input{border:1px solid #2b4535;background:#07100d;color:var(--text);padding:12px 13px;outline:0}.form input:focus{border-color:#75af66;box-shadow:0 0 0 2px rgba(159,232,112,.12)}.btn{border:1px solid #477052;background:#11261a;color:var(--text);font-weight:900;padding:12px 14px;cursor:pointer;text-align:center}.btn.primary{background:var(--green);color:#07100d;border-color:var(--green)}.btn:hover{filter:brightness(1.07)}.btn:disabled{opacity:.5;cursor:wait}.history{display:grid;gap:8px;max-height:230px;overflow:auto}.history-item{border-left:3px solid #3f6748;background:#0d1913;padding:9px 11px;color:#c7d6cb;font-size:12px}.history-item.red{border-color:var(--red);color:#ffd1c8}.footer{border-top:1px solid var(--line);padding:28px 0 50px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}
+  @media(max-width:1040px){.hero,.game{grid-template-columns:1fr}.side{position:static}nav{display:none}.brand{min-width:0}}@media(max-width:620px){.wrap{padding:0 18px}.hero-main{padding:28px 22px}.hero h1{font-size:38px}.stat-grid,.fortune-grid{grid-template-columns:1fr}.item-name{font-size:40px}.draw-zone{min-height:500px}.terminal-head{align-items:flex-start;flex-direction:column}.footer{flex-direction:column}}
+</style>
+<link rel="stylesheet" href="shared/player-card.css">
+<script src="shared/player-card.js"></script>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+  <a class="brand" href="delta_force_wiki_home.html"><div class="mark">Δ</div><div><b>三角洲行动 WIKI</b><small>TACTICAL DATA ARCHIVE</small></div></a>
+  <nav><a href="delta_force_wiki_home.html">首页</a><a class="active" href="mini_games.html">小游戏</a><a href="operations_fire.html">烽火地带</a><a href="delta_force_wiki_home.html#operators">干员档案</a><a href="community_forum.html">玩家交流</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="eyebrow">G.T.I. DAILY LOTTERY // LUCK ITEM</div>
+      <h1>今日新运物品抽签</h1>
+      <p>输入呼号，终端会用今天的日期给你抽一件“今日新运物品”。同一个呼号当天结果固定，红货会有尊贵特效。</p>
+    </div>
+    <aside class="status-card">
+      <div class="kicker">LOT CONFIG / 抽签参数</div>
+      <div class="stat-grid">
+        <div class="stat"><strong>每日</strong><span>FIXED SIGN</span></div>
+        <div class="stat"><strong>红</strong><span>HIGH VALUE</span></div>
+        <div class="stat"><strong>宜忌</strong><span>RUN ADVICE</span></div>
+        <div class="stat"><strong>玄学</strong><span>EXTRA DRAW</span></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="game">
+    <div class="terminal">
+      <div class="terminal-head"><div><div class="kicker">LUCK TERMINAL / 今日签文</div><h2>摸金签筒</h2></div><div class="run-id" id="runId">SIGN // STANDBY</div></div>
+      <div class="draw-zone" id="drawZone">
+        <article class="ticket" id="ticket">
+          <span class="rarity" id="rarity">WAITING</span>
+          <h2 class="item-name" id="itemName">等待抽签</h2>
+          <p class="item-line" id="itemLine">今天的仓库还没有收到你的呼号。</p>
+          <div class="fortune-grid">
+            <div class="fortune"><b>推荐地图</b><span id="mapText">--</span></div>
+            <div class="fortune"><b>宜</b><span id="goodText">--</span></div>
+            <div class="fortune"><b>忌</b><span id="badText">--</span></div>
+          </div>
+          <div class="quote" id="quoteText">输入呼号，然后让终端认真玄学一次。</div>
+        </article>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="panel form">
+        <div class="kicker">CALLSIGN / 呼号</div>
+        <input id="nameInput" maxlength="18" autocomplete="off" placeholder="输入你的摸金呼号" />
+        <button class="btn primary" id="dailyBtn" type="button">抽今日新运</button>
+        <button class="btn" id="randomBtn" type="button">玄学补抽</button>
+      </div>
+      <div class="panel">
+        <div class="kicker">RULE / 签筒规则</div>
+        <p class="item-line">今日签按日期和呼号生成，适合每天发群里立人设。补抽不固定，适合不服命。</p>
+      </div>
+      <div class="panel">
+        <div class="kicker">DRAW LOG / 抽签记录</div>
+        <div class="history" id="history"></div>
+      </div>
+    </aside>
+  </section>
+
+  <footer class="footer"><div>非官方娱乐小游戏。抽到红货不代表下一局一定能带出来，只代表今天可以先开心三秒。</div><div>G.T.I. DAILY LOT BUILD 0.1 // 2026</div></footer>
+</main>
+
+<script>
+  const items = [
+    {name:"半卷绷带",rarity:"N",value:"2,000",line:"仓库底层友情赞助，主打一个活着就行。"},
+    {name:"便宜止痛片",rarity:"N",value:"3,500",line:"腿可以断，嘴不能停。"},
+    {name:"UZI低配套",rarity:"R",value:"28,000",line:"新手快乐喷泉，响亮但诚实。"},
+    {name:"野牛备用弹匣",rarity:"R",value:"31,000",line:"便宜、倔强、陪伴型武器信仰今日上线。"},
+    {name:"高级燃料",rarity:"SR",value:"86,000",line:"不算大富，但足够让包有点温度。"},
+    {name:"军用电台",rarity:"SR",value:"112,000",line:"今天的信号不错，至少比队友报点稳定。"},
+    {name:"高性能处理器",rarity:"SR",value:"126,000",line:"适合说一句：这把脑子已经上线。"},
+    {name:"卫星电话",rarity:"SSR",value:"236,000",line:"包里一响，撤离欲望直接拉满。"},
+    {name:"机密文件",rarity:"SSR",value:"288,000",line:"今天适合低头发财，少抬头挨打。"},
+    {name:"满改K416",rarity:"SSR",value:"420,000",line:"今日枪线有点硬，别拿它修脚。"},
+    {name:"金条",rarity:"RED",value:"580,000",line:"红光一亮，今天的鼠鼠突然站直了。"},
+    {name:"刀片服务器",rarity:"RED",value:"760,000",line:"尊贵红货，摸到的一瞬间已经开始想撤离路线。"},
+    {name:"非洲之心",rarity:"RED",value:"999,999",line:"今天不是你在抽签，是签筒在给你上桌。"},
+    {name:"曼德尔砖",rarity:"RED",value:"命运无价",line:"它会带来财富，也会让整条路线开始看你。"}
+  ];
+  const maps = ["零号大坝行政楼外圈","长弓溪谷酒店边线","航天基地黑市外围","巴克什浴场旁路","潮汐监狱管道口","潮汐监狱核心区边线","AZ3核电站外圈","AZ3泄漏区旁路","零号大坝水泥厂二层","长弓溪谷雷达站"];
+  const good = ["带野牛进场", "先摸小容器", "贴边走冷门线", "看见红光先深呼吸", "给队友分一个止痛片", "撤离前再检查安全箱"];
+  const bad = ["桥口硬逛", "舔包舔到忘记时间", "拿G18正面挑战六套", "空包还要装老板", "听见枪声立刻上头", "相信每片草都很清白"];
+  const quotes = [
+    "终端建议：今天先别证明自己，先证明仓库能变大。",
+    "你的爆率正在轻微发热，注意别把命也发出去。",
+    "这签不一定准，但很适合截图发群里嘴硬。",
+    "阿萨拉今日给你的温柔，是让你至少看见一点值钱东西。",
+    "如果撤离点亮红，请先问问自己：这是机会，还是邀请函。"
+  ];
+  const weights = {N:26,R:28,SR:24,SSR:17,RED:5};
+  const drawZone = document.querySelector("#drawZone");
+  const ticket = document.querySelector("#ticket");
+  const rarityNode = document.querySelector("#rarity");
+  const itemName = document.querySelector("#itemName");
+  const itemLine = document.querySelector("#itemLine");
+  const mapText = document.querySelector("#mapText");
+  const goodText = document.querySelector("#goodText");
+  const badText = document.querySelector("#badText");
+  const quoteText = document.querySelector("#quoteText");
+  const nameInput = document.querySelector("#nameInput");
+  const dailyBtn = document.querySelector("#dailyBtn");
+  const randomBtn = document.querySelector("#randomBtn");
+  const historyNode = document.querySelector("#history");
+  const runId = document.querySelector("#runId");
+
+  function hash(value){
+    let h = 2166136261;
+    for(let i = 0; i < value.length; i += 1){
+      h ^= value.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+
+  function rng(seed){
+    let t = seed >>> 0;
+    return () => {
+      t += 0x6D2B79F5;
+      let r = Math.imul(t ^ t >>> 15, 1 | t);
+      r ^= r + Math.imul(r ^ r >>> 7, 61 | r);
+      return ((r ^ r >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  function pickByRarity(rand){
+    const roll = rand() * 100;
+    let cursor = 0;
+    const rarity = Object.entries(weights).find(([,weight])=>{
+      cursor += weight;
+      return roll <= cursor;
+    })?.[0] || "N";
+    const pool = items.filter(item => item.rarity === rarity);
+    return pool[Math.floor(rand() * pool.length)];
+  }
+
+  function pick(list, rand){
+    return list[Math.floor(rand() * list.length)];
+  }
+
+  function todayKey(){
+    const now = new Date();
+    return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+  }
+
+  function draw(mode){
+    if(dailyBtn.disabled || randomBtn.disabled) return;
+    const name = nameInput.value.trim() || "无名摸金人";
+    const seed = mode === "daily" ? hash(`${todayKey()}|${name}|asala`) : Math.floor(Math.random() * 2 ** 32);
+    const rand = rng(seed);
+    const item = pickByRarity(rand);
+    const data = {name, item, map:pick(maps, rand), good:pick(good, rand), bad:pick(bad, rand), quote:pick(quotes, rand), no:String(seed).slice(0, 6).padStart(6, "0")};
+    animateDraw(data, mode);
+  }
+
+  function animateDraw(data, mode){
+    PlayerCard.pending("fortune");
+    dailyBtn.disabled = true;
+    randomBtn.disabled = true;
+    drawZone.classList.remove("scanning","red-pulse");
+    ticket.className = "ticket";
+    void drawZone.offsetWidth;
+    drawZone.classList.add("scanning");
+    rarityNode.textContent = "SCANNING";
+    itemName.textContent = "签筒滚动中";
+    itemLine.textContent = "终端正在从仓库角落里翻今天的命运。";
+    setTimeout(()=>{
+      drawZone.classList.remove("scanning");
+      renderResult(data, mode);
+      dailyBtn.disabled = false;
+      randomBtn.disabled = false;
+    }, 760);
+  }
+
+  function renderResult(data, mode){
+    const {item} = data;
+    const isRed = item.rarity === "RED";
+    ticket.className = `ticket ${isRed ? "red" : ""}`;
+    if(isRed){
+      drawZone.classList.remove("red-pulse");
+      void drawZone.offsetWidth;
+      drawZone.classList.add("red-pulse");
+    }
+    rarityNode.className = `rarity ${item.rarity}`;
+    rarityNode.textContent = `${item.rarity} // ${mode === "daily" ? "今日新运" : "玄学补抽"}`;
+    itemName.textContent = item.name;
+    itemLine.textContent = `${item.line} 参考价值：${item.value}`;
+    mapText.textContent = data.map;
+    goodText.textContent = data.good;
+    badText.textContent = data.bad;
+    quoteText.textContent = isRed ? `哎呀！你今天有点太开心了：${data.quote}` : data.quote;
+    runId.textContent = `SIGN // ${data.no}`;
+    PlayerCard.offer("fortune", {title: item.name, date: PlayerCard.day(), lines: [`${item.rarity} · ${mode === "daily" ? "今日签" : "玄学补抽"} · ${data.name}`, `参考价值：${item.value}`, `幸运地点：${data.map}`, `宜：${data.good}`, `忌：${data.bad}`, data.quote]});
+    addHistory(`${mode === "daily" ? "今日签" : "补抽"}：${item.name}（${item.rarity}）`, isRed);
+  }
+
+  function addHistory(text, isRed){
+    const item = document.createElement("div");
+    item.className = `history-item ${isRed ? "red" : ""}`;
+    item.textContent = text;
+    historyNode.prepend(item);
+  }
+
+  dailyBtn.addEventListener("click", () => draw("daily"));
+  randomBtn.addEventListener("click", () => draw("random"));
+  nameInput.addEventListener("keydown", event => {
+    if(event.key === "Enter") draw("daily");
+  });
+</script>
+</body>
+</html>
