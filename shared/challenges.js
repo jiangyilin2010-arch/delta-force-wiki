@@ -14,7 +14,7 @@
       if (draft.dish.trim()) lines.push("", `菜品：${draft.dish.trim()}`, `卖相 ${draft.appearance}/10 · 价值 ${draft.value}/10 · 服务态度 ${draft.service}/10`);
       if (draft.judged) lines.push("", `本局自报结算：${settlement()}`);
     }
-    lines.push("", "三角洲行动 WIKI · 玩家自定挑战");
+    lines.push("", "三角洲Wiki · 阿萨拉整活办 · 玩家自定挑战");
     return lines.join("\n");
   }
   function settlement() {
@@ -28,7 +28,7 @@
   function render() {
     const challenge = selected();
     activeId = challenge.id;
-    document.title = `${challenge.title}｜玩法挑战｜三角洲行动 Wiki`;
+    document.title = `${challenge.title}｜玩法挑战｜三角洲Wiki · 阿萨拉整活办`;
     list.innerHTML = challenges.map(item => `<button type="button" class="challenge-choice" data-challenge="${item.id}" aria-pressed="${item.id === challenge.id}"><span class="number">${item.number}</span><span><strong>${escape(item.title)}</strong><small>${escape(item.players)} · ${escape(item.label)}</small></span></button>`).join("");
     list.querySelectorAll("button").forEach(button => button.addEventListener("click", () => choose(button.dataset.challenge)));
     detail.innerHTML = `

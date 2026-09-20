@@ -1,6 +1,6 @@
-# 三角洲玩家共创站
+# 三角洲Wiki · 阿萨拉整活办
 
-干员档案、玩家工具、同人小游戏与哈夫币战争的独立静态镜像。
+琳站长的阿萨拉整活办：干员档案、玩家工具、同人小游戏与哈夫币战争的独立静态镜像。
 
 - [GitHub Pages 网站](https://jiangyilin2010-arch.github.io/delta-force-wiki/)
 - [原网站（独立保留）](https://delta-force-wiki.jiangyilin2010.chatgpt.site/)

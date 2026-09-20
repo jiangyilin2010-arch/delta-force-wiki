@@ -263,7 +263,7 @@
       });
       y += rowHeight + gap;
     }
-    text("三角洲行动 WIKI  ·  玩出你的档案", margin, y + 34, 27, "#a5ef78", 800);
+    text("阿萨拉整活办  ·  玩出你的档案", margin, y + 34, 27, "#a5ef78", 800);
     text("非官方娱乐结果 · 自选收藏，不代表实际战斗力或游戏爆率", margin, y + 76, 21, "#9bb49f");
     text("delta-force-wiki.jiangyilin2010.chatgpt.site", margin, y + 112, 21, "#9bb49f");
     canvas.setAttribute("aria-label", `${name.trim() || "无名摸金人"}的身份卡。` + definitions.map(def => `${def.label}：${data[def.key]?.title || "待解锁"}`).join("；"));

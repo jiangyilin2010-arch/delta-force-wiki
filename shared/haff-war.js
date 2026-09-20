@@ -621,7 +621,7 @@
     awaiting = null; selectedAction = null; selectedTarget = null; committed = null;
     $("prep-view").hidden = false; $("battle-view").hidden = true;
     $("view-phase").textContent = "01 / 小队整备"; $("view-status").textContent = "待命";
-    document.title = "哈夫币战争｜小队整备";
+    document.title = "哈夫币战争｜小队整备｜阿萨拉整活办";
     $("result-overlay").hidden = true;
     $("combat-log").replaceChildren(); $("log-count").textContent = "0 条记录";
     $("actor-name").textContent = "G.T.I."; $("action-name").textContent = "小队已集结"; $("action-note").textContent = "等待行动指令";
@@ -646,7 +646,7 @@
     $("loading").hidden = true;
     const battlefield = window.HaffPlaneBackdrops?.theme(display).name || "零号大坝";
     $("view-phase").textContent = `02 / ${battlefield}`; $("view-status").textContent = "任务执行中";
-    document.title = `哈夫币战争｜${battlefield}`;
+    document.title = `哈夫币战争｜${battlefield}｜阿萨拉整活办`;
     ensureGame();
     window.HaffCombatEntry?.show({ mission: campaign?.missionName || "零号大坝 · 训练交战" });
     $("action-note").textContent = "接敌，行动开始";
